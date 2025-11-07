@@ -1,0 +1,155 @@
+.footer {
+    background-color: var(--background-color);
+    display: flex;
+    justify-content: center;
+    flex-direction: row-reverse;
+    gap: 60px;
+
+    font-family: Forum;
+    font-weight: 400;
+    font-size: 30px;
+    padding-inline: 60px;
+    padding-bottom: 30px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.footer.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.footer-txt {
+    max-width: 650px;
+    width: 100%;
+}
+
+.footer-txt h1 {
+    font-family: Canelope;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: var(--black-color);
+    font-size: 48px;
+    letter-spacing: 3px;
+}
+
+.footer-map {
+    max-width: 650px;
+    width: 100%;
+    margin-top: 25px;
+}
+
+.footer-address-and-time,
+.footer-contacts {
+    display: flex;
+    align-items: center;
+    column-gap: 60px;
+}
+
+.footer-address-and-time {
+    line-height: 60px;
+}
+
+.phone-number-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.footer-address-and-time a,
+.phone-number-footer a {
+    text-decoration: none;
+    color: var(--black-color);
+}
+
+.footer-address-and-time a,
+.phone-number-footer {
+    max-width: 330px;
+    width: 100%;
+    color: var(--black-color);
+}
+
+.footer-btn {
+    display: flex;
+    gap: 10px;
+    padding-top: 20px;
+}
+
+.btn-tg-footer {
+    margin-right: 5px;
+}
+
+.btn-wh-footer {
+    margin-left: -1px;
+}
+
+@media (max-width: 1330px) {
+    .footer {
+        flex-wrap: wrap;
+        flex-direction: row;
+    }
+
+    .footer-address-and-time,
+    .footer-contacts {
+        justify-content: space-between;
+
+    }
+}
+
+@media (max-width: 720px) {
+    .footer {
+        padding-inline: 20px;
+    }
+
+}
+
+@media (max-width: 648px) {
+    .footer {
+        font-size: 24px;
+        gap: 20px;
+    }
+    
+    .footer-txt h1 {
+        font-size: 38px;
+    }
+
+    .footer-address-and-time,
+    .footer-contacts {
+        column-gap: 20px;
+    }
+}
+
+@media (max-width: 520px) {
+    .footer-address-and-time,
+    .footer-contacts {
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+        
+    }
+
+    .footer {
+        font-size: 22px;
+    }
+
+    .footer-txt h1 {
+        text-align: center;
+    }
+    
+    .footer-address-and-time {
+        line-height: 37px;
+        
+    }
+
+    .phone-number-footer {
+        gap: 14px;
+        margin-top: 10px;
+    }
+
+    .footer-btn {
+        padding-top: 30px;
+        gap: 40px;
+    }
+}

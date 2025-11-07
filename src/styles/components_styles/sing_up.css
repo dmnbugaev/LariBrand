@@ -1,0 +1,40 @@
+.sing-up {
+    background-color: var(--red-color);
+    padding-top: 60px;
+    padding-bottom: 60px;
+    text-align: center; /* Центрируем содержимое */
+}
+
+.sing-up-img {
+    max-width: 420px;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    border-radius: 10px;
+    border: 1px solid var(--black-color);
+    margin-inline: auto;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 0px; 
+}
+
+.sing-up-img-img {
+    object-fit: cover;
+    object-position: top;
+}
+
+.sing-up :global(.ui-kit-link-sing-up) {
+    display: inline-block; 
+    text-align: center;
+    margin: 0 auto; 
+}
+
+@media (max-width: 460px) {
+    .sing-up {
+        padding-inline: 20px;
+    }
+
+    .sing-up-img {
+        max-width: 420px;
+        width: 100%;
+    }
+}

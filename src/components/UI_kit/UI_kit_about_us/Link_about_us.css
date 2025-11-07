@@ -1,0 +1,25 @@
+.about-us-link-item {
+    width: 150px;
+    height: 60px;
+    background-color: var(--red-color);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+}
+
+.about-us-link-item:hover {
+    transform: scale(1.05);
+}
+
+.about-us-link-item:active {
+    transform: scale(0.95);
+}
+
+
+@media (max-width: 620px) {
+    .about-us-link-item {
+        width: 200px;
+    }
+}

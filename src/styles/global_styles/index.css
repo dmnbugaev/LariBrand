@@ -1,0 +1,19 @@
+@import './styles/fonts.css';
+
+
+
+/* 
+
+Нормализацию отключил
+если подключить по левому краю страницы все ровно а правый с отступом
+
+РЕШИТЬ ПРОБЛЕМУ!!!
+
+@import './styles/normalize.css';
+
+*/
+
+@import './styles/root.css';
+
+
+@import './styles/globals.css'

@@ -1,0 +1,417 @@
+.header {
+    font-family: Forum;
+    font-size: 18px;
+    height: 80px;
+    width: auto;
+    background-color: var(--white-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+.nav-and-logo {
+    padding-inline: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    transition: right 0.4s ease;
+}
+
+.nav a {
+    color: var(--black-color);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.header-logo-icons {
+    width: 50px;
+    height: 50px;
+}
+
+.phone-and-address {
+    display: flex;
+    gap: 60px;
+    align-items: center;
+}
+
+.header-bottom {
+    height: 1px;
+    width: auto;
+    background-color: var(--black-color);
+}
+
+/* ===== Бургер ===== */
+.burger {
+    position: relative;
+    width: 40px;
+    height: 26px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 200;
+}
+
+.burger span {
+    position: absolute;
+    left: 0;
+    width: 36px;
+    height: 4px;
+    background-color: var(--black-color);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.burger span:nth-child(1) { top: 0; }
+.burger span:nth-child(2) { top: 11px; }
+.burger span:nth-child(3) { top: 22px; }
+
+/* анимация крестика */
+.burger.open span:nth-child(1) {
+    transform: rotate(45deg);
+    top: 11px;
+}
+.burger.open span:nth-child(2) {
+    opacity: 0;
+}
+.burger.open span:nth-child(3) {
+    transform: rotate(-45deg);
+    top: 11px;
+}
+
+/* ===== Мобильное меню ===== */
+.burger {
+    display: block;
+}
+
+.nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100vh;
+    width: 25%;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: var(--white-color);
+    box-shadow: -4px 0 20px rgba(0,0,0,0.1);
+    padding: 0;
+    gap: 0px;
+    transition: right 0.4s ease;
+    z-index: 150;
+    overflow: hidden;
+}
+
+.nav.open {
+    right: 0;
+}
+
+.phone-and-address {
+    flex-direction: column;
+    gap: 30px;
+}
+
+.nav a {
+    font-size: 18px;
+    color: var(--black-color);
+}
+    
+/* ===== Затемнение фона ===== */
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 120;
+}
+
+.overlay.show {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* ===== Контент бургер меню ===== */
+.burger-menu-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    overflow: hidden;
+}
+
+/* Заголовок меню */
+.burger-menu-header {
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--black-color);
+    margin-top: 15px;
+    flex-shrink: 0;
+}
+
+.burger-menu-title {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--black-color);
+    font-family: Forum;
+}
+
+/* Ссылки навигации */
+.burger-links {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-right: 5px;
+    margin: 15px 0;
+    max-height: calc(100vh - 300px);
+}
+
+/* Кастомный скроллбар для ссылок */
+.burger-links::-webkit-scrollbar {
+    width: 3px;
+}
+
+.burger-links::-webkit-scrollbar-track {
+    background: var(--black-color);
+    border-radius: 2px;
+}
+
+.burger-links::-webkit-scrollbar-thumb {
+    background: var(--black-color);
+    border-radius: 2px;
+}
+
+.burger-links::-webkit-scrollbar-thumb:hover {
+    background: var(--black-color);
+}
+
+/* Для Firefox */
+.burger-links {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.05);
+}
+
+.burger-link {
+    padding: 12px 0;
+    text-decoration: none;
+    color: var(--black-color);
+    font-size: 1.1rem;
+    border-bottom: 1px solid var(--white-color);
+    transition: color 0.3s ease;
+    font-family: Forum;
+    flex-shrink: 0;
+}
+
+.burger-link:hover {
+    color: var(--red-color);
+}
+
+.main-page-link {
+    font-weight: 400;
+    color: var(--black-color);
+}
+
+/* Телефоны */
+.burger-phones {
+    padding: 20px 0;
+    border-top: 1px solid var(--white-color);
+    border-bottom: 1px solid var(--white-color);
+    margin: 0;
+    flex-shrink: 0;
+}
+
+.phones-title {
+    margin: 0 0 15px 0;
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--background-color);
+    font-family: Forum;
+}
+
+.phone-numbers {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.phone-link {
+    text-decoration: none;
+    color: var(--black-color);
+    font-size: 1.1rem;
+    font-weight: 400;
+    transition: color 0.3s ease;
+    font-family: Forum;
+}
+
+.phone-link:hover {
+    color: var(--red-color);
+}
+
+/* Кнопка записи - ПРОСТАЯ АНИМАЦИЯ */
+.burger-bottom {
+    margin-top: 20px;
+    flex-shrink: 0;
+}
+
+.appointment-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 190px;
+    padding: 20px 20px;
+    color: var(--white-color) !important;
+    background: var(--red-color);
+    font-weight: 400;
+    font-size: 18px;
+    border-radius: 14px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: Forum;
+}
+
+/* Простая анимация увеличения/уменьшения */
+.appointment-button:hover {
+    transform: scale(1.05);
+}
+
+.appointment-button:active {
+    transform: scale(0.95);
+}
+
+/* Адаптивность */
+@media (max-width: 1250px) {
+    .nav {
+        width: 35%;
+    }
+}
+
+@media (max-width: 780px) {
+    .nav-and-logo {
+        padding-inline: 20px;
+    }
+
+    .nav {
+        width: 50%;
+    }
+    
+    .burger-menu-content {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 560px) {
+    .nav {
+        width: 60%;
+    }
+    
+    .burger-menu-content {
+        padding: 12px;
+    }
+    
+    .burger-links {
+        margin: 10px 0;
+        max-height: calc(100vh - 280px);
+    }
+    
+    .burger-link {
+        font-size: 1rem;
+        padding: 10px 0;
+    }
+    
+    .phone-link {
+        font-size: 1rem;
+    }
+    
+    .appointment-button {
+        padding: 18px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav {
+        width: 100%;
+    }
+    
+    .burger-menu-title {
+        font-size: 1.3rem;
+    }
+    
+    .burger-links {
+        max-height: calc(100vh - 250px);
+    }
+}
+
+/* Для очень высоких экранов */
+@media (min-height: 900px) {
+    .burger-links {
+        max-height: calc(100vh - 350px);
+    }
+}
+
+/* Центрирование текста на самых маленьких экранах */
+@media (max-width: 479px) {
+    .burger-menu-content {
+        text-align: center;
+        align-items: center;
+    }
+    
+    .burger-menu-header {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .burger-links {
+        align-items: center;
+        width: 100%;
+    }
+    
+    .burger-link {
+        text-align: center;
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .burger-phones {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    
+    .phones-title {
+        text-align: center;
+    }
+    
+    .phone-numbers {
+        align-items: center;
+    }
+    
+    .burger-bottom {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+    
+    .appointment-button {
+        justify-content: center;
+    }
+}

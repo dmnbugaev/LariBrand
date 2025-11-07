@@ -1,0 +1,130 @@
+/* ====== БАЗОВЫЕ СТИЛИ ====== */
+body {
+  margin: 0;
+  font-family: "Forum", serif;
+  background-color: var(--white-color);
+  color: var(--black-color);
+}
+
+/* ====== СЕКЦИЯ ====== */
+.services-section {
+  padding: 60px 60px;
+  text-align: center;
+
+  /* центрируем ВСЕ внутри секции */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.services-title {
+  font-size: 36px;
+  font-weight: 500;
+  margin-bottom: 50px;
+  letter-spacing: 2px;
+}
+
+/* ====== GRID ====== */
+.services-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center; /* ← центрируем каждую строку */
+  align-items: center;
+
+  width: 100%;
+  max-width: 1400px; /* чтобы не растягивалось на огромных экранах */
+  margin: 0 auto;
+}
+
+/* ====== КАРТОЧКА УСЛУГИ ====== */
+.service-card-link {
+  text-decoration: none;
+  color: inherit;
+
+  width: 285px; /* фикс ширина карточки */
+  display: flex;
+  justify-content: center;
+}
+
+
+.service-card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  min-height: 380px;
+  overflow: hidden;
+  border-radius: 14px;
+  border: 1px solid var(--black-color);
+  cursor: pointer;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+/* При наведении */
+.service-card:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 12px 25px rgba(0,0,0,.1);
+}
+
+/* ====== КАРТИНКА ====== */
+.service-image {
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.service-card:hover .service-image {
+  transform: scale(1.08);
+}
+
+/* ====== ОВЕРЛЕЙ С ТЕКСТОМ ====== */
+.service-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 20px;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 40%,
+    rgba(0, 0, 0, .25) 65%,
+    rgba(0, 0, 0, .45) 100%
+  );
+}
+
+.service-overlay p {
+  color: white;
+  font-size: 22px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+/* ====== АНИМАЦИЯ ПРИ СКРОЛЛЕ ====== */
+.service-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* ====== АДАПТИВ ====== */
+@media (max-width: 720px) {
+  .services-section {
+    padding-inline: 20px;
+    padding-top: 0px;
+    padding-bottom: 60px;
+  }
+
+  .services-title {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+
+  .service-overlay p {
+    font-size: 18px;
+  }
+}

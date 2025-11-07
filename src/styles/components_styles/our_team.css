@@ -1,0 +1,137 @@
+body {
+  margin: 0;
+  font-family: 'Forum', serif;
+  background-color: var(--white-color);
+  color: var(--black-color);
+}
+
+/* --- OUR TEAM --- */
+
+.team-section {
+  text-align: center;
+  padding: 60px;
+  padding-top: 30px;
+}
+
+.team-title {
+  font-size: 28px;
+  letter-spacing: 3px;
+  margin-bottom: 50px;
+  font-weight: 400;
+}
+
+.team-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 60px;
+}
+
+/* общий контейнер для одинаковых размеров */
+.team-item {
+  flex: 1;
+  max-width: 630px;
+}
+
+/* текст */
+.team-text {
+  background-color: var(--background-color);
+  border: 1px solid var(--black-color);
+  border-radius: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  font-family: 'Forum', serif;
+  font-weight: 400;
+  padding: 10px 10px;
+  line-height: 1.3;
+  width: 100%;
+  height: 354px; /* 630 / 16 * 9 = 354px */
+  box-sizing: border-box;
+}
+
+/* картинка контейнер */
+.team-image {
+  border: 1px solid var(--black-color);
+  border-radius: 14px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 354px; /* такой же высоты как у текста */
+  box-sizing: border-box;
+}
+
+/* картинка */
+.team-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: bottom;
+}
+
+/* стартовое состояние */
+.fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity .9s ease, transform .9s ease;
+}
+
+/* когда элемент в зоне видимости */
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* планшеты (1024px - 769px) */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .team-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    max-width: 66.666%; /* в 1.5 раза уже (100% / 1.5) */
+    margin: 0 auto; /* центрируем */
+  }
+  
+  .team-item {
+    max-width: 100%;
+    width: 100%;
+  }
+  
+  .team-text,
+  .team-image {
+    height: auto;
+    aspect-ratio: 16/9;
+  }
+}
+
+/* телефоны (768px и меньше) */
+@media (max-width: 768px) {
+  .team-section {
+    padding: 30px 20px 25px;
+  }
+  
+  .team-title {
+    margin-bottom: 35px;
+  }
+  
+  .team-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    max-width: none;
+    margin: 0;
+    width: 100%;
+  }
+  
+  .team-item {
+    max-width: 100%;
+    width: 100%;
+  }
+  
+  .team-text,
+  .team-image {
+    height: auto;
+    aspect-ratio: 16/9;
+  }
+}

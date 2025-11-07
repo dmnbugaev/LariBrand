@@ -1,0 +1,37 @@
+import Image from 'next/image'
+import content from "../../../../content/content.json"
+import styles from './afro_weaving_component.module.css'
+
+export default function Afro_Weaving() {
+  return (
+    <main className={styles.page}>
+      {/* HERO */}
+      <section className={styles.hero}>
+        <Image src={content.afro_weaving.hero.image} alt="hero" fill className={styles.heroImg} />
+        <h1 className={styles.heroTitle}>{content.afro_weaving.hero.title}</h1>
+      </section>
+
+      {/* INFORM */}
+      <section className={styles.inform}>
+        <p>{content.afro_weaving.info.text}</p>
+      </section>
+
+      {/* PRICE */}
+      <section className={styles.prices}>
+        {content.afro_weaving.price.map((item, i) => (
+          <div key={i} className={styles.priceRow}>
+            <span className={styles.priceTitle}>{item.title}</span>
+            <span className={styles.dots}></span>
+            <span className={styles.priceTitle}>{item.price}</span>
+          </div>
+        ))}
+      </section>
+
+      {/* BOOKING */}
+      <section className={styles.book}>
+        <p>{content.afro_weaving.book.text}</p>
+        <a href={content.afro_weaving.book.link} className={styles.btn} target="_blank">Записаться</a>
+      </section>
+    </main>
+  )
+}

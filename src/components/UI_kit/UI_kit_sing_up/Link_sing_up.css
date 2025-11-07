@@ -1,0 +1,27 @@
+.sing_up_link {
+    margin-inline: auto;
+    margin-top: 40px;
+    
+    max-width: 420px;
+    height: 60px;
+    background-color: var(--white-color);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+
+    text-decoration: none;
+    text-transform: uppercase;
+    color: var(--black-color);
+    font-size: 28px;
+    font-family: Forum;
+}
+
+.sing_up_link:hover {
+    transform: scale(1.05);
+}
+
+.sing_up_link:active {
+    transform: scale(0.95);
+}

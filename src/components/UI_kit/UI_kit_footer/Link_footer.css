@@ -1,0 +1,18 @@
+.footer-link-item {
+    width: 55px;
+    height: 55px;
+    background-color: var(--red-color);
+    border-radius: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+}
+
+.footer-link-item:hover {
+    transform: scale(1.1);
+}
+
+.footer-link-item:active {
+    transform: scale(0.95);
+}

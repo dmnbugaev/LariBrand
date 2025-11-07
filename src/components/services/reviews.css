@@ -1,0 +1,57 @@
+.reviews {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  background: var(--white-color);
+  padding: 40px;
+  font-family: Forum;
+  font-size: 20px;
+  line-height: 27px;
+}
+
+.review {
+  background: var(--white-color);
+  border: 1px solid var(--black-color);
+  border-radius: 10px;
+  padding: 12px;
+  width: 320px;
+  box-sizing: border-box;
+}
+
+.review-author {
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+@media (max-width: 760px) {
+    .review {
+        width: 620px;
+    }
+}
+
+@media (max-width: 680px) {
+    .review {
+        width: 520px;
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 600px) {
+  .reviews {
+    padding: 40px 10px;
+  }
+}
+
+@media (max-width: 540px ) {
+    .review {
+        width: 420px;
+    }
+}
+
+@media (max-width: 480px) {
+    .review {
+        width: 360px;
+    }
+}
+
