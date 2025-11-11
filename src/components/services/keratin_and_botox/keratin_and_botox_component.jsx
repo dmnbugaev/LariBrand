@@ -30,7 +30,7 @@ export default function Keratin_And_Botox_Component() {
       {/* BOOKING */}
       <section className={styles.book}>
         <p>{content.keratin_and_botox.book.text}</p>
-        <a href={content.keratin_and_botox.book.link} className={styles.btn} target="_blank">Записаться</a>
+        <a href={content.sing_up_link} className={styles.btn} target="_blank">Записаться</a>
       </section>
     </main>
   )

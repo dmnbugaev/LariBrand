@@ -30,7 +30,7 @@ export default function Bioavailability() {
       {/* BOOKING */}
       <section className={styles.book}>
         <p>{content.bioavailability.book.text}</p>
-        <a href={content.bioavailability.book.link} className={styles.btn} target="_blank">Записаться</a>
+        <a href={content.sing_up_link} className={styles.btn} target="_blank">Записаться</a>
       </section>
     </main>
   )

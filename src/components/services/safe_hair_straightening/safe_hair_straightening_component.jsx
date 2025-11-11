@@ -30,7 +30,7 @@ export default function Safe_Hair_Straightenung() {
       {/* BOOKING */}
       <section className={styles.book}>
         <p>{content.safe_hair_straightening.book.text}</p>
-        <a href={content.keratin_and_botox.book.link} className={styles.btn} target="_blank">Записаться</a>
+        <a href={content.sing_up_link} className={styles.btn} target="_blank">Записаться</a>
       </section>
     </main>
   )

@@ -124,6 +124,13 @@ export default function Header() {
                             >
                                 УКЛАДКИ
                             </Link>
+                            <Link 
+                                href="/additional_services" 
+                                className="burger-link"
+                                onClick={() => setIsOpen(false)}
+                            >
+                                ДОП УСЛУГИ
+                            </Link>
                         </div>
 
                         {/* Телефоны */}
@@ -142,11 +149,20 @@ export default function Header() {
                         {/* Кнопка записи внизу меню */}
                         <div className="burger-bottom">
                             <Link 
-                                href="" 
+                                href={content.sing_up_link} 
                                 className="appointment-button"
                                 onClick={() => setIsOpen(false)}
                             >
-                                ЗАПИСАТЬСЯ
+                                Записаться
+                            </Link>
+                        </div>
+                        <div className="burger-bottom">
+                            <Link 
+                                href={content.whatsapp_link} 
+                                className="appointment-button"
+                                onClick={() => setIsOpen(false)}
+                            >
+                                WhatsApp
                             </Link>
                         </div>
                     </div>

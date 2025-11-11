@@ -1,7 +1,8 @@
 import CookieConsent from '../components/CookieConsent';
+import YandexMetrika from '../components/YandexMetrika';
 
 export const metadata = {
-  title: 'Ваш сайт',
+  title: 'LariBrand',
   description: 'Описание вашего сайта',
 };
 
@@ -11,6 +12,7 @@ export default function RootLayout({ children }) {
       <body>
         {children}
         <CookieConsent />
+        <YandexMetrika />
       </body>
     </html>
   );

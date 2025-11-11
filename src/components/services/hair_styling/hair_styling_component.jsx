@@ -30,7 +30,7 @@ export default function Hair_Styling() {
       {/* BOOKING */}
       <section className={styles.book}>
         <p>{content.hair_styling.book.text}</p>
-        <a href={content.hair_styling.book.link} className={styles.btn} target="_blank">Записаться</a>
+        <a href={content.sing_up_link} className={styles.btn} target="_blank">Записаться</a>
       </section>
     </main>
   )

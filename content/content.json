@@ -1,5 +1,5 @@
 {
-  "hero_title": "lari brand ",
+  "hero_title": "laribrand ",
   "hero_subtitle": "Дом эстетики волос",
   "hero_p": "«Эстетика — это стиль, доведённый до совершенства. Именно так мы видим ваши волосы.»",
   "hero_image": "/upload/1762277381106-IMG_5217.JPG",
@@ -9,14 +9,14 @@
   "about_text_4": "Добро пожаловать в Дом эстетики волос, где красота становится частью вашей жизни.",
   "grid_1": "/upload/1762285489176-IMG_5231.JPG",
   "grid_2": "/upload/1762285562476-IMG_5760.JPG",
-  "grid_3": "/upload/1762286018367-IMG_5236.jpg",
-  "grid_4": "/upload/1762285647632-IMG_5227.JPG",
-  "grid_5": "/upload/1762286043589-IMG_5261.jpg",
+  "grid_3": "/upload/1762876882074-IMG_0863.jpg",
+  "grid_4": "/upload/1762876846693-IMG_1885.DNG",
+  "grid_5": "/upload/1762876816862-IMG_4353.jpg",
   "grid_6": "/upload/1762286058065-IMG_5235.jpg",
   "grid_7": "/upload/1762286099188-IMG_5269.jpg",
   "grid_8": "/upload/1762285725336-IMG_5287.JPG",
   "sing_up_img": "/upload/1762289911635-IMG_5216.JPG",
-  "sing_up_link": "",
+  "sing_up_link": "https://ru.wikipedia.org/wiki/Dota_2",
   "our_team": "Команда LariBrand — это мастера, объединённые любовью к эстетике и совершенству. Мы создаём не просто причёски, а образы, отражающие индивидуальность каждого гостя.",
   "our_team_img": "/upload/1762286318508-IMG_5220.JPG",
   "phone_number_2": "",
@@ -144,7 +144,7 @@
   },
   "cold_hair_reconstruction": {
     "hero": {
-      "image": "/upload/1762286018367-IMG_5236.jpg",
+      "image": "/upload/1762876982434-IMG_0863.jpg",
       "title": "Холодная реконструкция"
     },
     "info": {
@@ -194,7 +194,7 @@
   },
   "bioavailability": {
     "hero": {
-      "image": "/upload/1762285647632-IMG_5227.JPG",
+      "image": "/upload/1762876368682-IMG_1885.DNG",
       "title": "Биозавивка"
     },
     "info": {
@@ -264,7 +264,7 @@
   },
   "hair_coloring": {
     "hero": {
-      "image": "/upload/1762286043589-IMG_5261.jpg",
+      "image": "/upload/1762876574232-IMG_4353.jpg",
       "title": "Окрашивание"
     },
     "info": {
@@ -402,6 +402,44 @@
       },
       {
         "title": "Выпрямление утюжком",
+        "price": "500"
+      }
+    ]
+  },
+  "additional_services": {
+    "hero": {
+      "image": "",
+      "title": "Дополнительные услуги"
+    },
+    "info": {
+      "text": ""
+    },
+    "book": {
+      "text": ""
+    },
+    "price": [
+      {
+        "title": "Хелатное мытье",
+        "price": "1500"
+      },
+      {
+        "title": "Чистка полотна",
+        "price": "от 1500"
+      },
+      {
+        "title": "Экспресс смывка",
+        "price": "от 2000"
+      },
+      {
+        "title": "Экспресс уход",
+        "price": "от 1000"
+      },
+      {
+        "title": "Густота от 8см",
+        "price": "500"
+      },
+      {
+        "title": "Пористые волосы",
         "price": "500"
       }
     ]

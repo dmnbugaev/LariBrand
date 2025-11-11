@@ -1,24 +1,24 @@
 import Image from 'next/image'
 import content from "../../../../content/content.json"
-import styles from './afro_weaving_component.module.css'
+import styles from './additional_services_component.module.css'
 
-export default function Afro_Weaving() {
+export default function Additional_Services() {
   return (
     <main className={styles.page}>
       {/* HERO */}
       <section className={styles.hero}>
-        <Image src={content.afro_weaving.hero.image} alt="hero" fill className={styles.heroImg} />
-        <h1 className={styles.heroTitle}>{content.afro_weaving.hero.title}</h1>
+        <Image src={content.additional_services.hero.image} alt="hero" fill className={styles.heroImg} />
+        <h1 className={styles.heroTitle}>{content.additional_services.hero.title}</h1>
       </section>
 
       {/* INFORM */}
       <section className={styles.inform}>
-        <p>{content.afro_weaving.info.text}</p>
+        <p>{content.additional_services.info.text}</p>
       </section>
 
       {/* PRICE */}
       <section className={styles.prices}>
-        {content.afro_weaving.price.map((item, i) => (
+        {content.additional_services.price.map((item, i) => (
           <div key={i} className={styles.priceRow}>
             <span className={styles.priceTitle}>{item.title}</span>
             <span className={styles.dots}></span>
@@ -29,7 +29,7 @@ export default function Afro_Weaving() {
 
       {/* BOOKING */}
       <section className={styles.book}>
-        <p>{content.afro_weaving.book.text}</p>
+        <p>{content.additional_services.book.text}</p>
         <a href={content.sing_up_link} className={styles.btn} target="_blank">Записаться</a>
       </section>
     </main>

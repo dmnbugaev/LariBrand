@@ -30,7 +30,7 @@ export default function Cold_Hair_Reconstruction() {
       {/* BOOKING */}
       <section className={styles.book}>
         <p>{content.cold_hair_reconstruction.book.text}</p>
-        <a href={content.cold_hair_reconstruction.book.link} className={styles.btn} target="_blank">Записаться</a>
+        <a href={content.sing_up_link} className={styles.btn} target="_blank">Записаться</a>
       </section>
     </main>
   )
