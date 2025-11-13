@@ -22,7 +22,7 @@
     object-position: top;
 }
 
-.sing-up :global(.ui-kit-link-sing-up) {
+.sing-up .ui-kit-link-sing-up {
     display: inline-block; 
     text-align: center;
     margin: 0 auto; 

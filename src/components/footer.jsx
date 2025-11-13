@@ -32,7 +32,7 @@ export default function Footer() {
                 <YandexMap />
             </div>
             <div className="footer-txt">
-                <h1>Lari Brand</h1>
+                <h1>LariBrand</h1>
                 <div className="footer-address-and-time">
                     <a href="" >Где нас найти?<br />ул. Н.Г. Чернышевского, 145</a>
                     <p>Время работы:<br />10:00 - 20:00</p>
