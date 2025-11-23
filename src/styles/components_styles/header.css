@@ -94,6 +94,7 @@
 /* ===== Мобильное меню ===== */
 .burger {
     display: block;
+    margin-top: -2px;
 }
 
 .nav {
@@ -256,6 +257,53 @@
     font-weight: 400;
     transition: color 0.3s ease;
     font-family: Forum;
+}
+
+.header-address-and-home {
+    display: flex;
+    gap: 30px;
+    margin-left: auto;
+    margin-right: 60px;
+}
+
+@media (max-width: 780px) {
+    .header-address-and-home {
+        gap: 0;
+        display: inline;
+        margin-top: 4px;
+        margin-right: 23px;
+    }
+
+    .header-address-and-home p {
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        font-size: 15px;
+    }
+
+    .burger {
+        margin-top: 7px;
+    }
+
+    .header {
+        height: 84px;
+    }
+
+    .header-logo-icons {
+        height: 53px;
+        width: 45px;
+    }
+    
+    .header-flex-gap {
+        gap: 15px;
+    }
+}
+
+@media (max-width: 600px) {
+    .header-address-and-home {
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 .phone-link:hover {
