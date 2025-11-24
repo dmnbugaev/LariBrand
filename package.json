@@ -3,11 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 80",
+    "dev": "next dev",
     "build": "next build",
-    "start": "next start -p 80",
-    "lint": "eslint",
-    "start:80": "set PORT=80 && next start"
+    "start": "next start",
+    "lint": "eslint"
   },
   "dependencies": {
     "react": "19.1.0",
