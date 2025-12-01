@@ -2,6 +2,7 @@ import Hair_Coloring from "@/components/services/hair_coloring/hair_coloring_com
 import Header from "@/components/header"
 import Footer from "@/components/footer"
 import "../../styles/global_styles/index.css"
+import { BeforeAfterGallery } from "@/components/BeforeAfterGallery"
 import Reviews from "@/components/services/reviews"
 
 export default function Hair_Coloring_Page() {
@@ -9,6 +10,7 @@ export default function Hair_Coloring_Page() {
         <>
             <Header />
             <Hair_Coloring />
+            <BeforeAfterGallery />
             <Reviews />
             <Footer />
         </>

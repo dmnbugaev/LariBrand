@@ -4,13 +4,14 @@ import Footer from "@/components/footer"
 import "../../styles/global_styles/index.css"
 import BeautySalonGallery from "@/components/services/BeautySalonGallery"
 import Reviews from "@/components/services/reviews"
+import { BeforeAfterGallery } from "@/components/BeforeAfterGallery"
 
 export default function Keratin_And_Botox_Page() {
     return (
         <>
             <Header />
             <Keratin_And_Botox_Component />
-            <BeautySalonGallery />
+            <BeforeAfterGallery />
             <Reviews />
             <Footer />
         </>

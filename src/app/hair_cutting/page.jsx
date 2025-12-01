@@ -2,6 +2,7 @@ import Hair_Cutting from "@/components/services/hair_cutting/hair_cutting_compon
 import Header from "@/components/header"
 import Footer from "@/components/footer"
 import "../../styles/global_styles/index.css"
+import { BeforeAfterGallery } from "@/components/BeforeAfterGallery"
 import Reviews from "@/components/services/reviews"
 
 export default function Hair_Cutting_Page() {
@@ -9,6 +10,7 @@ export default function Hair_Cutting_Page() {
         <>
             <Header />
             <Hair_Cutting />
+            <BeforeAfterGallery />
             <Reviews />
             <Footer />
         </>
