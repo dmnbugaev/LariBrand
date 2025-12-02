@@ -1,20 +1,31 @@
-// app/api/upload/route.js
-import { writeFile } from "fs/promises"
+import { NextResponse } from "next/server"
+import fs from "fs/promises"
 import path from "path"
 
 export async function POST(req) {
-  const formData = await req.formData()
-  const file = formData.get("file")
+  try {
+    const formData = await req.formData()
+    const file = formData.get("file")
 
-  const bytes = await file.arrayBuffer()
-  const buffer = Buffer.from(bytes)
+    if (!file) {
+      return NextResponse.json({ error: "No file" }, { status: 400 })
+    }
 
-  const fileName = Date.now() + "-" + file.name
-  const filePath = path.join(process.cwd(), "public", "upload", fileName)
+    const bytes = await file.arrayBuffer()
+    const buffer = Buffer.from(bytes)
 
-  await writeFile(filePath, buffer)
+    // Безопасное имя файла
+    const fileName = Date.now() + "-" + file.name.replace(/[^a-zA-Z0-9.-]/g, '_')
+    const filePath = path.join(process.cwd(), "public", "upload", fileName)
 
-  return new Response(JSON.stringify({ url: "/upload/" + fileName }), {
-    headers: { "Content-Type":"application/json" }
-  })
+    // Создаем папку если не существует
+    await fs.mkdir(path.dirname(filePath), { recursive: true })
+    
+    await fs.writeFile(filePath, buffer)
+
+    return NextResponse.json({ url: "/upload/" + fileName })
+    
+  } catch (error) {
+    return NextResponse.json({ error: error.message }, { status: 500 })
+  }
 }

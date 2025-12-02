@@ -3,10 +3,10 @@ import Head from 'next/head'
 import content from '../../content/content.json'
 
 const SEO = ({ 
-  title = "Салон красоты LariBrand в Саратове | Кератин, ботокс, парикмахерские услуги",
+  title = "Салон красоты LariBrand в Саратове | Кератин, ботокс, парикмахерские услуги Саратов",
   description = "Салон красоты LariBrand в Саратове: кератиновое выпрямление, ботокс для волос, стрижки, окрашивание, уход за волосами. Профессиональные парикмахерские услуги.",
   keywords = "салон красоты саратов, кератин саратов, ботокс для волос саратов, парикмахерские саратов, стрижки саратов, окрашивание волос саратов",
-  canonical = "https://laribrand-saratov.ru",
+  canonical = "https://laribrand.ru",
   ogImage = "/og-image.jpg",
   structuredData = null
 }) => {
