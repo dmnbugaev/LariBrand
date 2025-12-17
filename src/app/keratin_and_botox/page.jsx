@@ -11,7 +11,7 @@ export default function Keratin_And_Botox_Page() {
         <>
             <Header />
             <Keratin_And_Botox_Component />
-            <BeforeAfterGallery />
+            <BeforeAfterGallery defaultCategory="Кератин и ботокс" />
             <Reviews />
             <Footer />
         </>

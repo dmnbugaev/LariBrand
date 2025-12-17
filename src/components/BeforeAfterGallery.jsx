@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { BeforeAfterSlider } from './BeforeAfterSlider';
 import '../styles/components_styles/BeforeAfterGallery.css';
 
@@ -89,7 +89,6 @@ const galleryItems = [
     beforeImage: './images/IMG_7988.jpg',
     afterImage: './images/IMG_7987.jpg',
   },
-
   {
     id: 13,
     title: 'Биозавивка волос',
@@ -113,10 +112,23 @@ const galleryItems = [
   },
 ];
 
-export function BeforeAfterGallery() {
-  const [selectedCategory, setSelectedCategory] = useState('Все');
-  
+export function BeforeAfterGallery({ defaultCategory = 'Все' }) {
   const categories = ['Все', 'Кератин и ботокс', 'Холодная реконструкция', 'Биозавивка', 'Окрашивание'];
+  
+  // Валидация категории
+  const isValidCategory = defaultCategory && categories.includes(defaultCategory);
+  const initialCategory = isValidCategory ? defaultCategory : 'Все';
+  
+  const [selectedCategory, setSelectedCategory] = useState(initialCategory);
+  
+  // Синхронизация, если defaultCategory изменится
+  useEffect(() => {
+    if (defaultCategory && categories.includes(defaultCategory)) {
+      setSelectedCategory(defaultCategory);
+    } else {
+      setSelectedCategory('Все');
+    }
+  }, [defaultCategory]);
   
   const filteredItems = selectedCategory === 'Все' 
     ? galleryItems 

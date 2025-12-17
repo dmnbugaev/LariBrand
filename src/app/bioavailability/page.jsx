@@ -10,7 +10,7 @@ export default function Bioavailability_Page() {
         <>
             <Header />
             <Bioavailability />
-            <BeforeAfterGallery />
+            <BeforeAfterGallery defaultCategory="Биозавивка" />
             <Reviews />
             <Footer />
         </>

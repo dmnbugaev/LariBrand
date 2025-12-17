@@ -10,7 +10,7 @@ export default function Hair_Coloring_Page() {
         <>
             <Header />
             <Hair_Coloring />
-            <BeforeAfterGallery />
+            <BeforeAfterGallery defaultCategory="Окрашивание" />
             <Reviews />
             <Footer />
         </>

@@ -10,7 +10,7 @@ export default function Cold_Hair_Reconstruction_Page() {
         <>
             <Header />
             <Cold_Hair_Reconstruction />
-            <BeforeAfterGallery />
+            <BeforeAfterGallery defaultCategory="Холодная реконструкция" />
             <Reviews />
             <Footer />
         </>
