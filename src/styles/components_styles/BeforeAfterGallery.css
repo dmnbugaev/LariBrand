@@ -2,7 +2,6 @@
   padding: 64px 16px;
   max-width: 1280px;
   margin: -60px auto;
-
   font-family: Forum;
 }
 
@@ -86,6 +85,15 @@
   }
 }
 
+/* Контейнер для слайдера с фиксированным соотношением сторон */
+.before-after-gallery-slider-container {
+  width: 100%;
+  aspect-ratio: 4/3;
+  position: relative;
+  overflow: hidden;
+  background-color: #f5f5f5;
+}
+
 .before-after-gallery-item-wrapper {
   transition: transform 300ms;
 }
@@ -100,6 +108,9 @@
   overflow: hidden;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   transition: box-shadow 300ms;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .before-after-gallery-card:hover {
@@ -108,6 +119,9 @@
 
 .before-after-gallery-card-content {
   padding: 24px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .before-after-gallery-category {
@@ -118,12 +132,14 @@
   border-radius: 9999px;
   font-size: 14px;
   margin-bottom: 8px;
+  align-self: flex-start;
 }
 
 .before-after-gallery-item-title {
   font-size: 1.25rem;
   font-weight: 600;
   color: #1f2937;
+  margin-top: auto;
 }
 
 .before-after-gallery-cta {
@@ -131,9 +147,14 @@
   margin-top: 64px;
 }
 
-
-
 .before-after-gallery-cta-button:hover {
   box-shadow: 0 10px 15px -3px rgba(219, 39, 119, 0.1), 0 4px 6px -2px rgba(219, 39, 119, 0.05);
   transform: translateY(-2px);
+}
+
+/* Адаптивность для слайдера */
+@media (max-width: 640px) {
+  .before-after-gallery-slider-container {
+    aspect-ratio: 3/4;
+  }
 }

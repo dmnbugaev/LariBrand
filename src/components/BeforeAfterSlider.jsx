@@ -3,9 +3,10 @@
 import { useState, useRef, useEffect } from 'react';
 import '../styles/components_styles/BeforeAfterSlider.css';
 
-export function BeforeAfterSlider({ beforeImage, afterImage }) {
+export function BeforeAfterSlider({ beforeImage, afterImage, className = '' }) {
   const [sliderPosition, setSliderPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
   const containerRef = useRef(null);
 
   const handleMove = (clientX) => {
@@ -35,6 +36,10 @@ export function BeforeAfterSlider({ beforeImage, afterImage }) {
     if (e.touches.length > 0) {
       handleMove(e.touches[0].clientX);
     }
+  };
+
+  const handleImageLoad = () => {
+    setImageLoaded(true);
   };
 
   useEffect(() => {
@@ -88,7 +93,7 @@ export function BeforeAfterSlider({ beforeImage, afterImage }) {
   return (
     <div
       ref={containerRef}
-      className="before-after-container"
+      className={`before-after-container ${className}`}
       onMouseMove={handleMouseMove}
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseUp}
@@ -96,7 +101,7 @@ export function BeforeAfterSlider({ beforeImage, afterImage }) {
       onTouchStart={() => setIsDragging(true)}
       onTouchEnd={() => setIsDragging(false)}
     >
-      {/* Before Image - будет показывать левую часть */}
+      {/* Before Image */}
       <div
         className="before-after-image-wrapper"
         style={{
@@ -109,6 +114,7 @@ export function BeforeAfterSlider({ beforeImage, afterImage }) {
             src={beforeImage}
             alt="До"
             className="before-after-image"
+            onLoad={handleImageLoad}
             onError={(e) => {
               const target = e.target;
               target.src = '/fallback-image.jpg';
@@ -120,7 +126,7 @@ export function BeforeAfterSlider({ beforeImage, afterImage }) {
         </div>
       </div>
 
-      {/* After Image - будет показывать правую часть */}
+      {/* After Image */}
       <div
         className="before-after-image-wrapper"
         style={{
@@ -133,6 +139,7 @@ export function BeforeAfterSlider({ beforeImage, afterImage }) {
             src={afterImage}
             alt="После"
             className="before-after-image"
+            onLoad={handleImageLoad}
             onError={(e) => {
               const target = e.target;
               target.src = '/fallback-image.jpg';
@@ -157,11 +164,13 @@ export function BeforeAfterSlider({ beforeImage, afterImage }) {
       </div>
 
       {/* Instruction overlay */}
-      <div className="before-after-instruction">
-        <div className="before-after-instruction-text">
-          Перетащите ползунок
+      {!imageLoaded && (
+        <div className="before-after-instruction">
+          <div className="before-after-instruction-text">
+            Перетащите ползунок
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
