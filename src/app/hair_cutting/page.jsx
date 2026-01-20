@@ -10,7 +10,7 @@ export default function Hair_Cutting_Page() {
         <>
             <Header />
             <Hair_Cutting />
-            <BeforeAfterGallery />
+            <BeforeAfterGallery defaultCategory="Стрижка волос" />
             <Reviews />
             <Footer />
         </>
