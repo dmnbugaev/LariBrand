@@ -96,10 +96,94 @@ const galleryItems = [
     beforeImage: './images/IMG_8002.jpg',
     afterImage: './images/IMG_8004.jpg',
   },
+  {
+    id: 14,
+    title: 'Холодная реконструкция волос',
+    category: 'Холодная реконструкция',
+    beforeImage: './images/IMG_3315.jpg',
+    afterImage: './images/IMG_3373.jpg',
+  },
+  {
+    id: 15,
+    title: 'Холодная реконструкция волос',
+    category: 'Холодная реконструкция',
+    beforeImage: './images/IMG_3678.JPG',
+    afterImage: './images/IMG_3311.jpg',
+  },
+  {
+    id: 16,
+    title: 'Окрашивание и контуринг волос',
+    category: 'Окрашивание',
+    beforeImage: './images/IMG_2573.jpg',
+    afterImage: './images/IMG_2655.jpg',
+  },
+  {
+    id: 17,
+    title: 'Биозавивка волос',
+    category: 'Биозавивка',
+    beforeImage: './images/IMG_3648.JPG',
+    afterImage: './images/IMG_3647.jpg',
+  },
+  {
+    id: 18,
+    title: 'Кератиновое выпрямление',
+    category: 'Кератин и ботокс',
+    beforeImage: './images/IMG_2163.jpg',
+    afterImage: './images/IMG_3653.jpg',
+  },
+  {
+    id: 19,
+    title: 'Окрашивание волос',
+    category: 'Окрашивание',
+    beforeImage: './images/IMG_3657.JPG',
+    afterImage: './images/IMG_3658.JPG',
+  },
+  {
+    id: 20,
+    title: 'Кератиновое выпрямление',
+    category: 'Кератин и ботокс',
+    beforeImage: './images/IMG_1501.jpg',
+    afterImage: './images/IMG_1531.jpg',
+  },
+  {
+    id: 21,
+    title: 'Окрашивание волос',
+    category: 'Окрашивание',
+    beforeImage: './images/IMG_0936.jpg',
+    afterImage: './images/IMG_3660.jpg',
+  },
+  {
+    id: 22,
+    title: 'Биозавивка волос',
+    category: 'Биозавивка',
+    beforeImage: './images/IMG_3651.jpg',
+    afterImage: './images/IMG_3652.jpg',
+  },
+  {
+    id: 23,
+    title: 'Тотальная реконструкция',
+    category: 'Тотальная реконструкция',
+    beforeImage: './images/IMG_3665.jpg',
+    afterImage: './images/IMG_3664.jpg',
+  },
+  {
+    id: 24,
+    title: 'Окрашивание сложное',
+    category: 'Окрашивание',
+    beforeImage: './images/IMG_3666.jpg',
+    afterImage: './images/IMG_0258.JPG',
+  },
+  {
+    id: 25,
+    title: 'Окрашивание волос',
+    category: 'Окрашивание',
+    beforeImage: './images/IMG_2898.jpg',
+    afterImage: './images/IMG_3685.JPG',
+  },
 ];
 
 export function BeforeAfterGallery({ defaultCategory = 'Все' }) {
-  const categories = ['Все', 'Кератин и ботокс', 'Холодная реконструкция', 'Биозавивка', 'Окрашивание'];
+  const categories = ['Все', 'Кератин и ботокс', 'Холодная реконструкция', 'Биозавивка', 'Окрашивание', 'Тотальная реконструкция', 'Мужская стрижка'];
   
   // Валидация категории
   const isValidCategory = defaultCategory && categories.includes(defaultCategory);
