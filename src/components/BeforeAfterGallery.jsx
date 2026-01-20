@@ -180,10 +180,89 @@ const galleryItems = [
     beforeImage: './images/IMG_2898.jpg',
     afterImage: './images/IMG_3685.JPG',
   },
+  // Новые элементы для категорий "Стрижка волос" и "Мужская стрижка"
+  {
+    id: 26,
+    title: 'Стрижка каскад + укладка на стайлер Dyson',
+    category: 'Стрижка волос',
+    singleImage: './images/IMG_3121.jpg',
+  },
+  {
+    id: 27,
+    title: 'Женская стрижка',
+    category: 'Стрижка волос',
+    singleImage: './images/IMG_3114.jpg',
+  },
+  {
+    id: 28,
+    title: 'Мужская стрижка',
+    category: 'Мужская стрижка',
+    singleImage: './images/IMG_3703.jpg',
+  },
+  {
+    id: 29,
+    title: 'Мужская стрижка',
+    category: 'Мужская стрижка',
+    singleImage: './images/IMG_3704.jpg',
+  },
+  {
+    id: 30,
+    title: 'Мужская стрижка',
+    category: 'Мужская стрижка',
+    singleImage: './images/IMG_3705.jpg',
+  },
+  {
+    id: 31,
+    title: 'Мужская стрижка',
+    category: 'Мужская стрижка',
+    singleImage: './images/IMG_3706.jpg',
+  },
+  {
+    id: 32,
+    title: 'Мужская стрижка',
+    category: 'Мужская стрижка',
+    singleImage: './images/IMG_3707.jpg',
+  },
+  {
+    id: 33,
+    title: 'Мужская стрижка',
+    category: 'Мужская стрижка',
+    singleImage: './images/IMG_3708.jpg',
+  },
+  {
+    id: 34,
+    title: 'Мужская стрижка',
+    category: 'Мужская стрижка',
+    singleImage: './images/IMG_3709.jpg',
+  },
+  {
+    id: 35,
+    title: 'Мужская стрижка',
+    category: 'Мужская стрижка',
+    singleImage: './images/IMG_3710.jpg',
+  },
+  {
+    id: 36,
+    title: 'Мужская стрижка',
+    category: 'Мужская стрижка',
+    singleImage: './images/IMG_3711.jpg',
+  },
+  {
+    id: 37,
+    title: 'Мужская стрижка',
+    category: 'Мужская стрижка',
+    singleImage: './images/IMG_3712.jpg',
+  },
+  {
+    id: 38,
+    title: 'Мужская стрижка',
+    category: 'Мужская стрижка',
+    singleImage: './images/IMG_3713.jpg',
+  },
 ];
 
 export function BeforeAfterGallery({ defaultCategory = 'Все' }) {
-  const categories = ['Все', 'Кератин и ботокс', 'Холодная реконструкция', 'Биозавивка', 'Окрашивание', 'Тотальная реконструкция', 'Мужская стрижка'];
+  const categories = ['Все', 'Кератин и ботокс', 'Холодная реконструкция', 'Биозавивка', 'Окрашивание', 'Стрижка волос', 'Тотальная реконструкция', 'Мужская стрижка'];
   
   // Валидация категории
   const isValidCategory = defaultCategory && categories.includes(defaultCategory);
@@ -212,7 +291,10 @@ export function BeforeAfterGallery({ defaultCategory = 'Все' }) {
           Примеры наших работ
         </h2>
         <p className="before-after-gallery-description">
-          Посмотрите удивительные преображения наших клиентов. Проведите пальцем по фото, чтобы увидеть результат "до и после"
+          {selectedCategory === 'Стрижка волос' || selectedCategory === 'Мужская стрижка'
+            ? 'Примеры наших работ по стрижкам. Для других услуг проведите пальцем по фото, чтобы увидеть результат "до и после"'
+            : 'Посмотрите удивительные преображения наших клиентов. Проведите пальцем по фото, чтобы увидеть результат "до и после"'
+          }
         </p>
       </div>
 
@@ -238,10 +320,22 @@ export function BeforeAfterGallery({ defaultCategory = 'Все' }) {
             <div className="before-after-gallery-card">
               {/* Контейнер с фиксированным соотношением сторон */}
               <div className="before-after-gallery-slider-container">
-                <BeforeAfterSlider
-                  beforeImage={item.beforeImage}
-                  afterImage={item.afterImage}
-                />
+                {item.singleImage ? (
+                  // Отображение одиночного изображения для стрижек
+                  <div className="single-image-container">
+                    <img 
+                      src={item.singleImage} 
+                      alt={item.title}
+                      className="single-image"
+                    />
+                  </div>
+                ) : (
+                  // Отображение слайдера "до/после" для других категорий
+                  <BeforeAfterSlider
+                    beforeImage={item.beforeImage}
+                    afterImage={item.afterImage}
+                  />
+                )}
               </div>
               <div className="before-after-gallery-card-content">
                 <span className="before-after-gallery-category">
