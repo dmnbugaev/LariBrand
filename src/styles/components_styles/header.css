@@ -351,12 +351,15 @@
 }
 
 @media (max-width: 780px) {
+    .burger {
+        margin-top: -6px;
+    }
     .nav-and-logo {
         padding-inline: 20px;
     }
-
-    .nav {
-        width: 50%;
+    
+    .header-address-and-home {
+        margin-top: -9px;
     }
     
     .burger-menu-content {
