@@ -101,6 +101,13 @@ export default function Header() {
                                         БИОЗАВИВКА
                                     </Link>
                                     <Link 
+                                        href="/total_reconstruction" 
+                                        className="burger-link"
+                                        onClick={() => setIsOpen(false)}
+                                    >
+                                        ТОТАЛЬНАЯ РЕКОНСТРУКЦИЯ
+                                    </Link>
+                                    <Link 
                                         href="/hair_coloring" 
                                         className="burger-link"
                                         onClick={() => setIsOpen(false)}
