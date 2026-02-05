@@ -110,6 +110,10 @@
   line-height: 1.6;
 }
 
+.priceTitle {
+  text-align: left; /* Выравнивание текста внутри элемента по левому краю */
+}
+
 /* PRICES */
 .prices {
   font-size: 20px;

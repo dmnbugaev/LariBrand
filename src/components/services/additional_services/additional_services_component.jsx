@@ -20,7 +20,12 @@ export default function Additional_Services() {
       <section className={styles.prices}>
         {content.additional_services.price.map((item, i) => (
           <div key={i} className={styles.priceRow}>
-            <span className={styles.priceTitle}>{item.title}</span>
+            <span 
+              className={styles.priceTitle}
+              dangerouslySetInnerHTML={{ 
+                __html: item.title.replace(/<\/br>/g, '<br/>')
+              }} 
+            />
             <span className={styles.dots}></span>
             <span className={styles.priceTitle}>{item.price}</span>
           </div>
