@@ -7,6 +7,18 @@ import content from '../../content/content.json'
 
 export default function Header() {
     const [isOpen, setIsOpen] = useState(false)
+    const [isMobile, setIsMobile] = useState(false)
+
+    // Определение мобильного устройства
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth <= 780)
+        }
+        
+        checkMobile()
+        window.addEventListener('resize', checkMobile)
+        return () => window.removeEventListener('resize', checkMobile)
+    }, [])
 
     // Закрытие меню при изменении размера окна
     useEffect(() => {
@@ -24,12 +36,16 @@ export default function Header() {
     useEffect(() => {
         if (isOpen) {
             document.body.style.overflow = 'hidden'
+            document.body.style.position = 'fixed'
+            document.body.style.width = '100%'
         } else {
             document.body.style.overflow = 'unset'
+            document.body.style.position = 'static'
         }
 
         return () => {
             document.body.style.overflow = 'unset'
+            document.body.style.position = 'static'
         }
     }, [isOpen])
 
@@ -52,146 +68,142 @@ export default function Header() {
                     />
                 </Link>
                 
-                    <div className='header-address-and-home'>
-                        <p>Дом эстетики волос</p>
-                        <p>ул.Чернышевского 145</p>
-                    </div>
-                        <div className={`nav ${isOpen ? "open" : ""}`}>
-                            <div className="burger-menu-content">
-                                {/* Заголовок меню */}
-                                <div className="burger-menu-header">
-                                    <h2 className="burger-menu-title">МЕНЮ</h2>
-                                </div>
+                <div className='header-address-and-home'>
+                    <p>Дом эстетики волос</p>
+                    <p>ул.Чернышевского 145</p>
+                </div>
+                
+                <div className={`nav ${isOpen ? "open" : ""}`}>
+                    <div className="burger-menu-content">
+                        {/* Заголовок меню */}
+                        <div className="burger-menu-header">
+                            <h2 className="burger-menu-title">МЕНЮ</h2>
+                        </div>
 
-                                {/* Основные ссылки навигации */}
-                                <div className="burger-links">
-                                    <Link 
-                                        href="/" 
-                                        className="burger-link main-page-link"
-                                        onClick={() => setIsOpen(false)}
-                                    >
-                                        ГЛАВНАЯ
-                                    </Link>
-                                    <Link 
-                                        href="/keratin_and_botox" 
-                                        className="burger-link"
-                                        onClick={() => setIsOpen(false)}
-                                    >
-                                        КЕРАТИН И БОТОКС
-                                    </Link>
-                                    <Link 
-                                        href="/safe_hair_straightening" 
-                                        className="burger-link"
-                                        onClick={() => setIsOpen(false)}
-                                    >
-                                        БЕЗОПАСНОЕ ВЫПРЯМЛЕНИЕ
-                                    </Link>
-                                    <Link 
-                                        href="/cold_hair_reconstruction" 
-                                        className="burger-link"
-                                        onClick={() => setIsOpen(false)}
-                                    >
-                                        ХОЛОДНАЯ РЕКОНСТРУКЦИЯ
-                                    </Link>
-                                    <Link 
-                                        href="/bioavailability" 
-                                        className="burger-link"
-                                        onClick={() => setIsOpen(false)}
-                                    >
-                                        БИОЗАВИВКА
-                                    </Link>
-                                    <Link 
-                                        href="/total_reconstruction" 
-                                        className="burger-link"
-                                        onClick={() => setIsOpen(false)}
-                                    >
-                                        ТОТАЛЬНАЯ РЕКОНСТРУКЦИЯ
-                                    </Link>
-                                    <Link 
-                                        href="/hair_coloring" 
-                                        className="burger-link"
-                                        onClick={() => setIsOpen(false)}
-                                    >
-                                        ОКРАШИВАНИЕ
-                                    </Link>
-                                    <Link 
-                                        href="/hair_cutting" 
-                                        className="burger-link"
-                                        onClick={() => setIsOpen(false)}
-                                    >
-                                        СТРИЖКА ВОЛОС
-                                    </Link>
-                                    <Link 
-                                        href="/afro_weaving" 
-                                        className="burger-link"
-                                        onClick={() => setIsOpen(false)}
-                                    >
-                                        АФРО-ПЛЕТЕНИЕ
-                                    </Link>
-                                    <Link 
-                                        href="/hair_styling" 
-                                        className="burger-link"
-                                        onClick={() => setIsOpen(false)}
-                                    >
-                                        УКЛАДКИ
-                                    </Link>
-                                    <Link 
-                                        href="/additional_services" 
-                                        className="burger-link"
-                                        onClick={() => setIsOpen(false)}
-                                    >
-                                        ДОП УСЛУГИ
-                                    </Link>
-                                </div>
+                        {/* Основные ссылки навигации */}
+                        <div className="burger-links">
+                            <Link 
+                                href="/" 
+                                className="burger-link main-page-link"
+                                onClick={() => setIsOpen(false)}
+                            >
+                                ГЛАВНАЯ
+                            </Link>
+                            <Link 
+                                href="/keratin_and_botox" 
+                                className="burger-link"
+                                onClick={() => setIsOpen(false)}
+                            >
+                                КЕРАТИН И БОТОКС
+                            </Link>
+                            <Link 
+                                href="/safe_hair_straightening" 
+                                className="burger-link"
+                                onClick={() => setIsOpen(false)}
+                            >
+                                БЕЗОПАСНОЕ ВЫПРЯМЛЕНИЕ
+                            </Link>
+                            <Link 
+                                href="/cold_hair_reconstruction" 
+                                className="burger-link"
+                                onClick={() => setIsOpen(false)}
+                            >
+                                ХОЛОДНАЯ РЕКОНСТРУКЦИЯ
+                            </Link>
+                            <Link 
+                                href="/bioavailability" 
+                                className="burger-link"
+                                onClick={() => setIsOpen(false)}
+                            >
+                                БИОЗАВИВКА
+                            </Link>
+                            <Link 
+                                href="/total_reconstruction" 
+                                className="burger-link"
+                                onClick={() => setIsOpen(false)}
+                            >
+                                ТОТАЛЬНАЯ РЕКОНСТРУКЦИЯ
+                            </Link>
+                            <Link 
+                                href="/hair_coloring" 
+                                className="burger-link"
+                                onClick={() => setIsOpen(false)}
+                            >
+                                ОКРАШИВАНИЕ
+                            </Link>
+                            <Link 
+                                href="/hair_cutting" 
+                                className="burger-link"
+                                onClick={() => setIsOpen(false)}
+                            >
+                                СТРИЖКА ВОЛОС
+                            </Link>
+                            <Link 
+                                href="/afro_weaving" 
+                                className="burger-link"
+                                onClick={() => setIsOpen(false)}
+                            >
+                                АФРО-ПЛЕТЕНИЕ
+                            </Link>
+                            <Link 
+                                href="/hair_styling" 
+                                className="burger-link"
+                                onClick={() => setIsOpen(false)}
+                            >
+                                УКЛАДКИ
+                            </Link>
+                            <Link 
+                                href="/additional_services" 
+                                className="burger-link"
+                                onClick={() => setIsOpen(false)}
+                            >
+                                ДОП УСЛУГИ
+                            </Link>
+                        </div>
 
-                                {/* Телефоны */}
-                                <div className="burger-phones">
-                                    <h3 className="phones-title">Телефоны для связи:</h3>
-                                    <div className="phone-numbers">
-                                        <a href={content.phone_number_2_link} className="phone-link">
-                                            {content.phone_number_2}
-                                        </a>
-                                        <a href={content.phone_number_1_link} className="phone-link">
-                                            {content.phone_number_1}
-                                        </a>
-                                    </div>
-                                </div>
-
-                                {/* Кнопка записи внизу меню */}
-                                <div className="burger-bottom">
-                                    <Link 
-                                        href={content.sing_up_link} 
-                                        className="appointment-button"
-                                        onClick={() => setIsOpen(false)}
-                                    >
-                                        Записаться
-                                    </Link>
-                                </div>
-                                <div className="burger-bottom">
-                                    <Link 
-                                        href={content.whatsapp_link} 
-                                        className="appointment-button"
-                                        onClick={() => setIsOpen(false)}
-                                    >
-                                        WhatsApp
-                                    </Link>
-                                </div>
+                        {/* Телефоны */}
+                        <div className="burger-phones">
+                            <h3 className="phones-title">Телефоны для связи:</h3>
+                            <div className="phone-numbers">
+                                <a href={content.phone_number_2_link} className="phone-link">
+                                    {content.phone_number_2}
+                                </a>
+                                <a href={content.phone_number_1_link} className="phone-link">
+                                    {content.phone_number_1}
+                                </a>
                             </div>
                         </div>
-                
-                
 
-                    <button
-                        className={`burger ${isOpen ? "open" : ""}`}
-                        onClick={() => setIsOpen(!isOpen)}
-                        aria-label={isOpen ? "Закрыть меню" : "Открыть меню"}
-                        aria-expanded={isOpen}
-                    >
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
-                
+                        {/* Кнопки внизу меню */}
+                        <div className="burger-buttons-container">
+                            <Link 
+                                href={content.sing_up_link} 
+                                className="appointment-button"
+                                onClick={() => setIsOpen(false)}
+                            >
+                                Записаться
+                            </Link>
+                            <Link 
+                                href={content.telegram_link} 
+                                className="appointment-button"
+                                onClick={() => setIsOpen(false)}
+                            >
+                                Telegram
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+
+                <button
+                    className={`burger ${isOpen ? "open" : ""}`}
+                    onClick={() => setIsOpen(!isOpen)}
+                    aria-label={isOpen ? "Закрыть меню" : "Открыть меню"}
+                    aria-expanded={isOpen}
+                >
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </nav>
 
             <div className="header-bottom"></div>
