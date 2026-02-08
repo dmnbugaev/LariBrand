@@ -102,6 +102,8 @@
     top: 0;
     right: -100%;
     height: 100vh;
+    height: -webkit-fill-available; /* Для iOS */
+    height: 100dvh; /* Динамическая высота для мобильных устройств */
     width: 25%;
     flex-direction: column;
     justify-content: flex-start;
@@ -151,6 +153,7 @@
     flex-direction: column;
     padding: 20px;
     overflow: hidden;
+    box-sizing: border-box;
 }
 
 /* Заголовок меню */
@@ -179,7 +182,8 @@
     -webkit-overflow-scrolling: touch;
     padding-right: 5px;
     margin: 15px 0;
-    max-height: calc(100vh - 300px);
+    max-height: calc(100vh - 280px);
+    box-sizing: border-box;
 }
 
 /* Кастомный скроллбар для ссылок */
@@ -266,6 +270,17 @@
     margin-right: 60px;
 }
 
+/* Контейнер для кнопок */
+.burger-buttons-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-top: 20px;
+    margin-top: auto;
+    flex-shrink: 0;
+    padding-bottom: 20px; /* Фиксированный отступ вместо env() */
+}
+
 @media (max-width: 780px) {
     .header-address-and-home {
         gap: 0;
@@ -311,27 +326,26 @@
 }
 
 /* Кнопка записи */
-.burger-bottom {
-    margin-top: 10px;
-    flex-shrink: 0;
-}
-
 .appointment-button {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    max-width: 190px;
-    padding: 20px 20px;
+    padding: 18px 20px;
     color: var(--white-color) !important;
     background: var(--red-color);
     font-weight: 400;
-    font-size: 18px;
+    font-size: 17px;
     border-radius: 14px;
     border: none;
     cursor: pointer;
     transition: all 0.2s ease;
     font-family: Forum;
+    text-decoration: none;
+    text-align: center;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    min-height: 56px;
 }
 
 /* Простая анимация увеличения/уменьшения */
@@ -365,25 +379,35 @@
     .burger-menu-content {
         padding: 15px;
     }
+    
+    .nav {
+        width: 100%;
+        max-width: 400px;
+    }
+    
+    .burger-buttons-container {
+        padding-bottom: 30px; /* Увеличенный отступ для мобильных */
+    }
 }
 
 @media (max-width: 560px) {
     .nav {
-        width: 60%;
+        width: 100%;
+        max-width: 100%;
     }
     
     .burger-menu-content {
-        padding: 12px;
+        padding: 15px;
     }
     
     .burger-links {
         margin: 10px 0;
-        max-height: calc(100vh - 280px);
+        max-height: calc(100vh - 240px);
     }
     
     .burger-link {
         font-size: 1rem;
-        padding: 8.5px 0;
+        padding: 10px 0;
     }
     
     .phone-link {
@@ -391,7 +415,13 @@
     }
     
     .appointment-button {
-        padding: 18px 20px;
+        padding: 16px 20px;
+        font-size: 16px;
+        min-height: 52px;
+    }
+    
+    .burger-buttons-container {
+        padding-bottom: 25px;
     }
 }
 
@@ -405,14 +435,18 @@
     }
     
     .burger-links {
-        max-height: calc(100vh - 250px);
+        max-height: calc(100vh - 220px);
+    }
+    
+    .burger-buttons-container {
+        padding-bottom: 20px;
     }
 }
 
 /* Для очень высоких экранов */
 @media (min-height: 900px) {
     .burger-links {
-        max-height: calc(100vh - 350px);
+        max-height: calc(100vh - 320px);
     }
 }
 
@@ -421,6 +455,7 @@
     .burger-menu-content {
         text-align: center;
         align-items: center;
+        padding: 12px;
     }
     
     .burger-menu-header {
@@ -428,17 +463,21 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        padding-bottom: 15px;
+        margin-top: 10px;
     }
     
     .burger-links {
         align-items: center;
         width: 100%;
+        margin: 10px 0;
     }
     
     .burger-link {
         text-align: center;
         width: 100%;
         justify-content: center;
+        padding: 8px 0;
     }
     
     .burger-phones {
@@ -446,23 +485,74 @@
         flex-direction: column;
         align-items: center;
         width: 100%;
+        padding: 15px 0;
     }
     
     .phones-title {
         text-align: center;
+        margin-bottom: 10px;
+        font-size: 16px;
     }
     
     .phone-numbers {
         align-items: center;
     }
     
-    .burger-bottom {
+    .burger-buttons-container {
         display: flex;
         justify-content: center;
         width: 100%;
+        max-width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-top: 15px;
+        padding-bottom: 25px; /* Больше отступ для iOS */
     }
     
     .appointment-button {
         justify-content: center;
+        padding: 15px 20px;
+        font-size: 16px;
+        min-height: 50px;
+    }
+}
+
+/* Исправление для iOS Safari - безопасные зоны */
+@supports (padding: max(0px)) {
+    .burger-menu-content {
+        padding-left: max(15px, env(safe-area-inset-left));
+        padding-right: max(15px, env(safe-area-inset-right));
+    }
+    
+    .burger-buttons-container {
+        padding-bottom: max(25px, env(safe-area-inset-bottom, 25px));
+    }
+}
+
+/* Для очень маленьких устройств с большой безопасной зоной */
+@media (max-width: 380px) and (max-height: 700px) {
+    .burger-links {
+        max-height: calc(100vh - 200px);
+    }
+    
+    .burger-buttons-container {
+        padding-bottom: 30px;
+    }
+    
+    .appointment-button {
+        padding: 14px 18px;
+        font-size: 15px;
+        min-height: 48px;
+    }
+}
+
+/* Фикс для горизонтальной ориентации на мобильных */
+@media (max-height: 500px) {
+    .burger-links {
+        max-height: calc(100vh - 180px);
+    }
+    
+    .burger-buttons-container {
+        padding-bottom: 15px;
     }
 }
