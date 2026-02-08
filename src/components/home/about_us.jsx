@@ -14,17 +14,7 @@ export default function About_Us() {
                 <p>{content.about_text_4}</p>
             </div>
             <div className="about-us-link">
-                <UI_kit_link_about_us href={content.whatsapp_link}>
-                    <Image
-                        src="/icons/about-us-icon/wh.svg"
-                        width={39}
-                        height={39}
-                        className='about-us-phone-icon'
-                        alt='LariBrand записаться'
-                    >
-                    </Image>
-                </UI_kit_link_about_us>
-                                <UI_kit_link_about_us href={content.phone_number_1_link}>
+                <UI_kit_link_about_us href={content.phone_number_1_link}>
                     <Image
                         src="/icons/about-us-icon/ph.svg"
                         width={37}
