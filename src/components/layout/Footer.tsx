@@ -48,10 +48,10 @@ export default function Footer() {
 
           {/* Column 1: Brand + Map */}
           <div>
-            <h2 className="font-canelope font-normal uppercase text-brand-black text-[40px] tracking-[3px] mb-2 max-[648px]:text-[32px]">
+            <h2 className="font-canelope font-normal uppercase text-brand-black text-[42px] tracking-[3px] mb-2 max-[648px]:text-[34px]">
               LariBrand
             </h2>
-            <p className="text-[16px] text-brand-black mb-5 leading-[1.5] opacity-80">
+            <p className="text-[17px] text-brand-black mb-5 leading-[1.5] opacity-80">
               Дом эстетики волос · Саратов
             </p>
             <div className="w-full">
@@ -61,7 +61,7 @@ export default function Footer() {
 
           {/* Column 2: Navigation */}
           <div>
-            <h3 className="text-[18px] font-normal text-brand-black uppercase tracking-[1.5px] mb-4 pb-3 border-b border-brand-black">
+            <h3 className="text-[19px] font-normal text-brand-black uppercase tracking-[1.5px] mb-4 pb-3 border-b border-brand-black">
               Услуги
             </h3>
             <nav className="flex flex-col gap-[10px]">
@@ -69,7 +69,7 @@ export default function Footer() {
                 <Link
                   key={href}
                   href={href}
-                  className="text-[15px] text-brand-black no-underline transition-colors duration-200 hover:text-brand-red"
+                  className="text-[16px] text-brand-black no-underline transition-colors duration-200 hover:text-brand-red"
                 >
                   {label}
                 </Link>
@@ -79,41 +79,41 @@ export default function Footer() {
 
           {/* Column 3: Contacts */}
           <div>
-            <h3 className="text-[18px] font-normal text-brand-black uppercase tracking-[1.5px] mb-4 pb-3 border-b border-brand-black">
+            <h3 className="text-[19px] font-normal text-brand-black uppercase tracking-[1.5px] mb-4 pb-3 border-b border-brand-black">
               Контакты
             </h3>
             <div className="flex flex-col gap-[18px]">
               <div>
-                <p className="text-[12px] uppercase tracking-[1px] text-brand-black opacity-60 mb-1">Адрес</p>
-                <p className="text-[15px] text-brand-black leading-[1.5] m-0">
+                <p className="text-[13px] uppercase tracking-[1px] text-brand-black opacity-60 mb-1">Адрес</p>
+                <p className="text-[16px] text-brand-black leading-[1.5] m-0">
                   ул. Н.Г. Чернышевского, 145
                 </p>
               </div>
               <div>
-                <p className="text-[12px] uppercase tracking-[1px] text-brand-black opacity-60 mb-1">Время работы</p>
-                <p className="text-[15px] text-brand-black m-0">10:00 — 20:00</p>
+                <p className="text-[13px] uppercase tracking-[1px] text-brand-black opacity-60 mb-1">Время работы</p>
+                <p className="text-[16px] text-brand-black m-0">10:00 — 20:00</p>
               </div>
               <div>
-                <p className="text-[12px] uppercase tracking-[1px] text-brand-black opacity-60 mb-1">Телефон</p>
+                <p className="text-[13px] uppercase tracking-[1px] text-brand-black opacity-60 mb-1">Телефон</p>
                 <div className="flex flex-col gap-2">
                   {content.phone_number_2 && (
                     <a
                       href={content.phone_number_2_link}
-                      className="text-[15px] text-brand-black no-underline transition-colors duration-200 hover:text-brand-red"
+                      className="text-[16px] text-brand-black no-underline transition-colors duration-200 hover:text-brand-red"
                     >
                       {content.phone_number_2}
                     </a>
                   )}
                   <a
                     href={content.phone_number_1_link}
-                    className="text-[15px] text-brand-black no-underline transition-colors duration-200 hover:text-brand-red"
+                    className="text-[16px] text-brand-black no-underline transition-colors duration-200 hover:text-brand-red"
                   >
                     {content.phone_number_1}
                   </a>
                 </div>
               </div>
               <div>
-                <p className="text-[12px] uppercase tracking-[1px] text-brand-black opacity-60 mb-2">Мессенджеры</p>
+                <p className="text-[13px] uppercase tracking-[1px] text-brand-black opacity-60 mb-2">Мессенджеры</p>
                 <div className="flex gap-3">
                   <a
                     href={content.telegram_link}
@@ -139,12 +139,12 @@ export default function Footer() {
 
         {/* Bottom strip */}
         <div className="mt-[40px] pt-[20px] border-t border-brand-black flex justify-between items-center max-[500px]:flex-col max-[500px]:gap-3 max-[500px]:text-center">
-          <p className="text-[13px] text-brand-black opacity-50 m-0">
+          <p className="text-[15px] text-brand-black opacity-50 m-0">
             © {new Date().getFullYear()} LariBrand. Все права защищены.
           </p>
           <Link
             href={content.sing_up_link}
-            className="text-[13px] text-brand-red no-underline transition-opacity duration-200 hover:opacity-70"
+            className="text-[15px] text-brand-red no-underline transition-opacity duration-200 hover:opacity-70"
           >
             Записаться онлайн →
           </Link>

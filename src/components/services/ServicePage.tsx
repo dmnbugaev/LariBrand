@@ -18,17 +18,11 @@ const ServicePage = memo(function ServicePage({ data, htmlTitles = false }: Serv
             src={data.hero.image}
             alt="hero"
             fill
-            className="object-cover object-center"
-            style={{ transform: 'translateZ(0)', willChange: 'transform' }}
+            className="object-cover object-center service-hero-image"
             priority
           />
         )}
-        <h1 className="absolute text-white z-[2] font-normal px-[25px] py-[15px] leading-[1.2] tracking-[0.5px] font-forum"
-          style={{
-            fontSize: 'clamp(32px, 5vw, 48px)',
-            textShadow: '0 2px 10px rgba(0,0,0,0.3), 0 4px 30px rgba(0,0,0,0.2), 0 8px 50px rgba(0,0,0,0.15)',
-          }}
-        >
+        <h1 className="service-hero-title absolute text-white z-[2] font-normal px-[25px] py-[15px] leading-[1.2] tracking-[0.5px] font-forum">
           {data.hero.title}
         </h1>
       </section>
@@ -72,7 +66,7 @@ const ServicePage = memo(function ServicePage({ data, htmlTitles = false }: Serv
         )}
         <a
           href={content.sing_up_link}
-          className="font-forum text-[20px] inline-block py-[15px] px-[30px] bg-brand-red text-white rounded-[10px] no-underline uppercase font-normal transition-transform duration-300 hover:scale-105 active:scale-95"
+          className="font-forum text-[20px] inline-block py-[15px] px-[30px] bg-brand-red text-white rounded-[10px] no-underline uppercase font-normal transition-all duration-300 hover:scale-105 hover:shadow-[0_8px_24px_rgba(137,29,26,0.3)] active:scale-95"
           target="_blank"
           rel="noopener noreferrer"
         >

@@ -154,6 +154,32 @@
     }
   }
 
+  /* --- Service page hero title (replaces inline style) --- */
+  .service-hero-title {
+    font-size: clamp(32px, 5vw, 48px);
+    text-shadow:
+      0 2px 10px rgba(0, 0, 0, 0.3),
+      0 4px 30px rgba(0, 0, 0, 0.2),
+      0 8px 50px rgba(0, 0, 0, 0.15);
+  }
+
+  /* --- Service page hero image (replaces inline style) --- */
+  .service-hero-image {
+    transform: translateZ(0);
+    will-change: transform;
+  }
+
+  /* --- Section fade-up (for about_us, sing_up) --- */
+  .section-fade {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .section-fade.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
   /* --- Hero entrance animations --- */
   @keyframes heroFadeUp {
     from { opacity: 0; transform: translateY(28px); }

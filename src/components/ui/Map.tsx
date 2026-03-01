@@ -28,7 +28,7 @@ export default function Map() {
   return (
     <div
       id="yandex-map"
-      style={{ width: '100%', height: '380px', border: '1px solid #000' }}
+      className="w-full h-[380px] border border-brand-black"
     />
   )
 }

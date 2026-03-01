@@ -89,10 +89,10 @@ export function BeforeAfterGallery({ defaultCategory = 'Все' }: BeforeAfterGa
     <section className="py-16 px-4 max-w-[1280px] mx-auto -mt-[60px] font-forum max-[768px]:py-12 max-[768px]:px-3 max-[768px]:-mt-10">
       {/* Header */}
       <div className="text-center mb-12">
-        <h2 className="text-[1.875rem] font-bold text-[#111827] mb-4 md:text-[2.25rem]">
+        <h2 className="text-[1.875rem] font-bold text-brand-black mb-4 md:text-[2.25rem]">
           Примеры наших работ
         </h2>
-        <p className="text-[#4b5563] max-w-[42rem] mx-auto text-lg leading-7">
+        <p className="text-brand-black opacity-60 max-w-[42rem] mx-auto text-lg leading-7">
           {isCutCategory
             ? 'Примеры наших работ по стрижкам. Для других услуг проведите пальцем по фото, чтобы увидеть результат "до и после"'
             : 'Посмотрите удивительные преображения наших клиентов. Проведите пальцем по фото, чтобы увидеть результат "до и после"'}
@@ -108,7 +108,7 @@ export function BeforeAfterGallery({ defaultCategory = 'Все' }: BeforeAfterGa
             className={`py-2 px-6 rounded-full transition-all duration-300 border text-sm cursor-pointer max-[768px]:py-[6px] max-[768px]:px-4 max-[768px]:text-[13px] ${
               selectedCategory === category
                 ? 'bg-brand-red text-white border-brand-red shadow-lg'
-                : 'bg-white text-brand-black border-black hover:bg-[#fdf2f8] hover:text-brand-red'
+                : 'bg-white text-brand-black border-black hover:bg-brand-bg hover:text-brand-red'
             }`}
           >
             {category}
@@ -124,7 +124,7 @@ export function BeforeAfterGallery({ defaultCategory = 'Все' }: BeforeAfterGa
             className="transition-transform duration-300 hover:-translate-y-1"
           >
             <div className="bg-white rounded-2xl overflow-hidden shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-2px_rgba(0,0,0,0.05)] transition-shadow duration-300 h-full flex flex-col hover:shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1),0_10px_10px_-5px_rgba(0,0,0,0.04)]">
-              <div className="w-full aspect-[4/3] relative overflow-hidden bg-[#f5f5f5] max-[640px]:aspect-[3/4]">
+              <div className="w-full aspect-[4/3] relative overflow-hidden bg-brand-bg max-[640px]:aspect-[3/4]">
                 {item.singleImage ? (
                   <div className="single-image-container relative w-full h-full">
                     <img
@@ -141,10 +141,10 @@ export function BeforeAfterGallery({ defaultCategory = 'Все' }: BeforeAfterGa
                 )}
               </div>
               <div className="p-6 flex-grow flex flex-col">
-                <span className="inline-block py-1 px-3 bg-[#f3e8ff] text-brand-black rounded-full text-sm mb-2 self-start">
+                <span className="inline-block py-1 px-3 bg-brand-bg text-brand-black rounded-full text-sm mb-2 self-start">
                   {item.category}
                 </span>
-                <h3 className="text-[1.25rem] font-semibold text-[#1f2937] mt-auto">
+                <h3 className="text-[1.25rem] font-semibold text-brand-black mt-auto">
                   {item.title}
                 </h3>
               </div>
