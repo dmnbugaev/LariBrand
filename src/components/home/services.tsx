@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { useMemo } from 'react'
 import content from '../../../content/content.json'
 import ScrollAnimation from '../ui/ScrollAnimation'
 
@@ -10,18 +9,18 @@ interface ServiceItem {
   link: string
 }
 
-export default function Services() {
-  const services: ServiceItem[] = useMemo(() => [
-    { title: 'КЕРАТИН | БОТОКС', img: content.grid_1, link: '/keratin_and_botox' },
-    { title: 'БЕЗОПАСНОЕ ВЫПРЯМЛЕНИЕ', img: content.grid_2, link: '/safe_hair_straightening' },
-    { title: 'ХОЛОДНАЯ РЕКОНСТРУКЦИЯ', img: content.grid_3, link: '/cold_hair_reconstruction' },
-    { title: 'БИОЗАВИВКА', img: content.grid_4, link: '/bioavailability' },
-    { title: 'ОКРАШИВАНИЕ', img: content.grid_5, link: '/hair_coloring' },
-    { title: 'СТРИЖКА ВОЛОС', img: content.grid_6, link: '/hair_cutting' },
-    { title: 'АФРО-ПЛЕТЕНИЕ', img: content.grid_7, link: '/afro_weaving' },
-    { title: 'УКЛАДКА', img: content.grid_8, link: '/hair_styling' },
-  ], [])
+const services: ServiceItem[] = [
+  { title: 'КЕРАТИН | БОТОКС', img: content.grid_1, link: '/keratin_and_botox' },
+  { title: 'БЕЗОПАСНОЕ ВЫПРЯМЛЕНИЕ', img: content.grid_2, link: '/safe_hair_straightening' },
+  { title: 'ХОЛОДНАЯ РЕКОНСТРУКЦИЯ', img: content.grid_3, link: '/cold_hair_reconstruction' },
+  { title: 'БИОЗАВИВКА', img: content.grid_4, link: '/bioavailability' },
+  { title: 'ОКРАШИВАНИЕ', img: content.grid_5, link: '/hair_coloring' },
+  { title: 'СТРИЖКА ВОЛОС', img: content.grid_6, link: '/hair_cutting' },
+  { title: 'АФРО-ПЛЕТЕНИЕ', img: content.grid_7, link: '/afro_weaving' },
+  { title: 'УКЛАДКА', img: content.grid_8, link: '/hair_styling' },
+]
 
+export default function Services() {
   return (
     <section className="py-[60px] px-[60px] text-center flex flex-col justify-center items-center max-[720px]:px-5 max-[720px]:pt-0 max-[720px]:pb-[60px]">
       <ScrollAnimation />

@@ -24,7 +24,7 @@ export default function OurTeam() {
   }, [])
 
   return (
-    <main
+    <section
       ref={blockRef}
       className="fade-up text-center p-[60px] pt-[30px] max-[1024px]:p-[30px] max-[768px]:p-[30px] max-[768px]:px-5 max-[768px]:pt-[30px] max-[768px]:pb-[25px]"
     >
@@ -47,6 +47,6 @@ export default function OurTeam() {
           />
         </div>
       </div>
-    </main>
+    </section>
   )
 }
