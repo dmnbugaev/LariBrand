@@ -1,11 +1,31 @@
+'use client'
+
+import { useEffect, useRef } from 'react'
 import Image from 'next/image'
 import content from '../../../content/content.json'
 import LinkAboutUs from '../ui/LinkAboutUs'
 
 export default function About_Us() {
+  const sectionRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    if (!sectionRef.current) return
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          sectionRef.current?.classList.add('visible')
+          observer.unobserve(entry.target)
+        }
+      },
+      { threshold: 0.15 }
+    )
+    observer.observe(sectionRef.current)
+    return () => observer.disconnect()
+  }, [])
+
   return (
-    <section className="pt-5 pb-[50px] bg-brand-bg">
-      <div className="px-[60px] text-center font-forum text-[22px] max-[720px]:px-5">
+    <section ref={sectionRef} className="section-fade pt-5 pb-[50px] bg-brand-bg">
+      <div className="px-[60px] text-center font-forum text-[22px] leading-[1.6] max-[720px]:px-5">
         <p>{content.about_text_1}</p>
         <p>{content.about_text_2}</p>
         <p>{content.about_text_3}</p>

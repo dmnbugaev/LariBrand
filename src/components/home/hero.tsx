@@ -21,10 +21,10 @@ export default function Hero() {
               />
             </div>
             <div className="max-[600px]:text-center">
-              <h1 className="hero-title text-[58px] font-canelope uppercase m-0 leading-[1] max-[500px]:text-[44px] max-[350px]:text-[38px]">
+              <h1 className="hero-title text-[66px] font-canelope uppercase m-0 leading-[1] max-[500px]:text-[48px] max-[350px]:text-[40px]">
                 {content.hero_title}
               </h1>
-              <h2 className="text-[28px] font-forum font-normal m-0 text-brand-red max-[500px]:text-[22px]">
+              <h2 className="text-[32px] font-forum font-normal m-0 text-brand-red max-[500px]:text-[24px]">
                 {content.hero_subtitle}
               </h2>
             </div>
@@ -32,7 +32,7 @@ export default function Hero() {
 
           {/* Description */}
           <div className="hero-animate-3">
-            <p className="text-[20px] text-justify leading-[1.6] mb-8 max-[600px]:text-[17px] max-[600px]:text-center">
+            <p className="text-[22px] text-justify leading-[1.6] mb-8 max-[600px]:text-[18px] max-[600px]:text-center">
               {content.hero_p}
             </p>
           </div>

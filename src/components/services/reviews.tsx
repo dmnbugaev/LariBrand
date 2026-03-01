@@ -21,7 +21,7 @@ const Reviews = React.memo(function Reviews() {
       <a
         target="_blank"
         rel="noopener noreferrer"
-        className="no-underline font-forum text-[20px] text-brand-black flex justify-center mb-10 hover:underline hover:decoration-[1px]"
+        className="no-underline font-forum text-[20px] text-brand-black flex justify-center mb-10 transition-colors duration-200 hover:text-brand-red"
         href="https://yandex.ru/maps/org/laribrand/103694209198/reviews/?ll=46.029038%2C51.522243&z=16"
       >
         Все отзывы
