@@ -1,12 +1,33 @@
 'use client'
 
 import Link from 'next/link'
-import { useState, useEffect } from 'react'
 import Image from 'next/image'
-import content from '../../content/content.json'
+import { useState, useEffect } from 'react'
+import content from '../../../content/content.json'
+
+const NAV_LINKS = [
+  { href: '/', label: 'ГЛАВНАЯ' },
+  { href: '/keratin_and_botox', label: 'КЕРАТИН И БОТОКС' },
+  { href: '/safe_hair_straightening', label: 'БЕЗОПАСНОЕ ВЫПРЯМЛЕНИЕ' },
+  { href: '/cold_hair_reconstruction', label: 'ХОЛОДНАЯ РЕКОНСТРУКЦИЯ' },
+  { href: '/bioavailability', label: 'БИОЗАВИВКА' },
+  { href: '/total_reconstruction', label: 'ТОТАЛЬНАЯ РЕКОНСТРУКЦИЯ' },
+  { href: '/hair_coloring', label: 'ОКРАШИВАНИЕ' },
+  { href: '/hair_cutting', label: 'СТРИЖКА ВОЛОС' },
+  { href: '/afro_weaving', label: 'АФРО-ПЛЕТЕНИЕ' },
+  { href: '/hair_styling', label: 'УКЛАДКИ' },
+  { href: '/additional_services', label: 'ДОП УСЛУГИ' },
+]
 
 export default function Header() {
-  const [isOpen, setIsOpen] = useState<boolean>(false)
+  const [isOpen, setIsOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 10)
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   useEffect(() => {
     const handleResize = () => {
@@ -22,22 +43,30 @@ export default function Header() {
       document.body.style.position = 'fixed'
       document.body.style.width = '100%'
     } else {
-      document.body.style.overflow = 'unset'
-      document.body.style.position = 'static'
+      document.body.style.overflow = ''
+      document.body.style.position = ''
+      document.body.style.width = ''
     }
     return () => {
-      document.body.style.overflow = 'unset'
-      document.body.style.position = 'static'
+      document.body.style.overflow = ''
+      document.body.style.position = ''
+      document.body.style.width = ''
     }
   }, [isOpen])
 
   const close = () => setIsOpen(false)
 
   return (
-    <header className="font-forum text-[18px] h-[80px] bg-white flex flex-col justify-end gap-[10px] fixed top-0 left-0 w-full z-[100] max-[780px]:h-[84px]">
+    <header
+      className={`font-forum text-[18px] h-[80px] flex flex-col justify-end gap-[10px] fixed top-0 left-0 w-full z-[100] transition-all duration-300 max-[780px]:h-[84px] ${
+        scrolled
+          ? 'bg-white/92 backdrop-blur-md shadow-[0_2px_16px_rgba(0,0,0,0.08)]'
+          : 'bg-white'
+      }`}
+    >
       <nav className="px-[60px] flex justify-between items-center max-[780px]:px-[20px]">
         {/* Logo */}
-        <Link href="/" onClick={close} aria-label="На главную страницу" className="logo-link">
+        <Link href="/" onClick={close} aria-label="На главную страницу">
           <Image
             src="/icons/Logo.svg"
             alt="Саратов LariBrand"
@@ -56,8 +85,9 @@ export default function Header() {
 
         {/* Mobile nav drawer */}
         <div
-          className={`burger-links-nav fixed top-0 right-0 h-[100dvh] w-1/4 flex-col justify-start bg-white shadow-[-4px_0_20px_rgba(0,0,0,0.1)] gap-0 transition-[right] duration-[0.4s] ease-in-out z-[150] overflow-hidden flex max-[1250px]:w-[35%] max-[780px]:w-full max-[780px]:max-w-[400px] max-[560px]:max-w-full ${isOpen ? 'right-0' : 'right-[-100%]'}`}
-          style={{ right: isOpen ? '0' : '-100%' }}
+          className={`fixed top-0 right-0 h-[100dvh] w-1/4 flex-col justify-start bg-white shadow-[-4px_0_20px_rgba(0,0,0,0.1)] gap-0 transition-[right] duration-[0.4s] ease-in-out z-[150] overflow-hidden flex max-[1250px]:w-[35%] max-[780px]:w-full max-[780px]:max-w-[400px] max-[560px]:max-w-full ${
+            isOpen ? 'right-0' : 'right-[-100%]'
+          }`}
         >
           <div className="h-full flex flex-col p-5 overflow-hidden box-border burger-menu-content">
             {/* Menu header */}
@@ -67,19 +97,7 @@ export default function Header() {
 
             {/* Nav links */}
             <div className="burger-links flex-1 flex flex-col gap-2 overflow-y-auto pr-[5px] my-[15px] max-h-[calc(100vh-280px)] box-border">
-              {[
-                { href: '/', label: 'ГЛАВНАЯ' },
-                { href: '/keratin_and_botox', label: 'КЕРАТИН И БОТОКС' },
-                { href: '/safe_hair_straightening', label: 'БЕЗОПАСНОЕ ВЫПРЯМЛЕНИЕ' },
-                { href: '/cold_hair_reconstruction', label: 'ХОЛОДНАЯ РЕКОНСТРУКЦИЯ' },
-                { href: '/bioavailability', label: 'БИОЗАВИВКА' },
-                { href: '/total_reconstruction', label: 'ТОТАЛЬНАЯ РЕКОНСТРУКЦИЯ' },
-                { href: '/hair_coloring', label: 'ОКРАШИВАНИЕ' },
-                { href: '/hair_cutting', label: 'СТРИЖКА ВОЛОС' },
-                { href: '/afro_weaving', label: 'АФРО-ПЛЕТЕНИЕ' },
-                { href: '/hair_styling', label: 'УКЛАДКИ' },
-                { href: '/additional_services', label: 'ДОП УСЛУГИ' },
-              ].map(({ href, label }) => (
+              {NAV_LINKS.map(({ href, label }) => (
                 <Link
                   key={href}
                   href={href}
@@ -92,7 +110,7 @@ export default function Header() {
             </div>
 
             {/* Phones */}
-            <div className="py-5 border-t border-white border-b border-white-0 m-0 shrink-0">
+            <div className="py-5 border-t border-white shrink-0">
               <h3 className="m-0 mb-[15px] text-[18px] font-normal text-brand-bg font-forum">
                 Телефоны для связи:
               </h3>
@@ -136,7 +154,7 @@ export default function Header() {
 
         {/* Burger button */}
         <button
-          className={`burger relative w-[40px] h-[26px] bg-transparent border-none cursor-pointer z-[200] mt-[-2px] max-[780px]:mt-[-6px]`}
+          className={`burger ${isOpen ? 'open' : ''} relative w-[40px] h-[26px] bg-transparent border-none cursor-pointer z-[200] mt-[-2px] max-[780px]:mt-[-6px]`}
           onClick={() => setIsOpen(!isOpen)}
           aria-label={isOpen ? 'Закрыть меню' : 'Открыть меню'}
           aria-expanded={isOpen}
@@ -148,11 +166,15 @@ export default function Header() {
       </nav>
 
       {/* Bottom border line */}
-      <div className="h-[1px] bg-brand-black w-auto" />
+      <div
+        className={`h-[1px] bg-brand-black w-auto transition-opacity duration-300 ${
+          scrolled ? 'opacity-0' : 'opacity-100'
+        }`}
+      />
 
       {/* Overlay */}
       <div
-        className={`overlay fixed inset-0 bg-black/40 opacity-0 pointer-events-none transition-opacity duration-300 ease-in-out z-[120]`}
+        className={`overlay ${isOpen ? 'show' : ''} fixed inset-0 bg-black/40 opacity-0 pointer-events-none transition-opacity duration-300 ease-in-out z-[120]`}
         onClick={close}
         aria-hidden="true"
       />

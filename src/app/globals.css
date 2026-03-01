@@ -153,4 +153,24 @@
       padding-bottom: max(25px, env(safe-area-inset-bottom, 25px));
     }
   }
+
+  /* --- Hero entrance animations --- */
+  @keyframes heroFadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-animate-1 { animation: heroFadeUp 0.9s ease both; }
+  .hero-animate-2 { animation: heroFadeUp 0.9s ease 0.15s both; }
+  .hero-animate-3 { animation: heroFadeUp 0.9s ease 0.3s both; }
+  .hero-animate-4 { animation: heroFadeUp 0.9s ease 0.45s both; }
+  .hero-animate-5 { animation: heroFadeUp 0.9s ease 0.2s both; }
+
+  /* --- Hero title gradient --- */
+  .hero-title {
+    background: linear-gradient(135deg, #222222 0%, #891D1A 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
 }

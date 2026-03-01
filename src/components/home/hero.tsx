@@ -1,40 +1,63 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import content from '../../../content/content.json'
 
 export default function Hero() {
   return (
-    <section className="flex justify-center items-center gap-[60px] flex-wrap px-[60px] bg-white pt-[140px] pb-[60px] text-[36px] font-forum font-normal max-[1440px]:justify-between max-[1302px]:justify-center max-[720px]:px-5 max-[600px]:gap-0 max-[500px]:pt-[130px] max-[420px]:pt-[120px] max-[400px]:pt-[105px] max-[375px]:pt-[105px] max-[360px]:pt-[100px]">
-      <div className="pt-10 w-[560px] max-[600px]:pt-0 max-[600px]:w-full max-[600px]:text-[22px]">
-        <div className="flex justify-center gap-[60px] max-[600px]:flex-col max-[600px]:items-center max-[600px]:gap-0">
-          <div>
-            <Image
-              src="/icons/logo_hero.svg"
-              width={180}
-              height={180}
-              alt="LariBrand Saratov"
-            />
-          </div>
-          <div className="flex justify-center flex-col gap-[10px] max-[500px]:h-[185px] max-[420px]:h-[165px] max-[400px]:h-[120px] max-[375px]:h-[200px] max-[360px]:h-[100px]">
-            <h1 className="text-[58px] font-canelope uppercase m-0 max-[350px]:text-[52px] max-[350px]:text-center">
-              {content.hero_title}
-            </h1>
-            <h2 className="text-[36px] font-forum font-normal m-0 -mt-[30px] max-[400px]:-mt-[50px] max-[350px]:text-[30px] max-[350px]:text-center">
-              {content.hero_subtitle}
-            </h2>
-          </div>
-        </div>
-        <div className="-mt-5 text-justify max-[600px]:max-w-[304px] max-[600px]:mx-auto max-[400px]:pt-[10px] max-[375px]:pb-[30px] max-[360px]:pt-5">
-          <p>{content.hero_p}</p>
-        </div>
-      </div>
+    <section className="min-h-[100dvh] flex items-center justify-center px-[60px] bg-white pt-[80px] pb-[60px] max-[720px]:px-5 max-[600px]:min-h-0 max-[600px]:pt-[100px] max-[600px]:pb-[50px]">
+      <div className="w-full max-w-[1200px] mx-auto flex items-center justify-between gap-[60px] flex-wrap max-[1302px]:justify-center max-[600px]:flex-col max-[600px]:gap-[36px]">
 
-      <div className="relative w-[560px] h-[420px] rounded-[10px] border border-brand-black overflow-hidden max-[600px]:w-full max-[600px]:max-h-[420px] max-[600px]:h-[300px] max-[420px]:-mb-[15px] max-[400px]:-mb-[35px] max-[375px]:h-[200px]">
-        <Image
-          src={content.hero_image}
-          alt="hero"
-          fill
-          style={{ objectFit: 'cover' }}
-        />
+        {/* Text block */}
+        <div className="hero-animate-1 w-[540px] font-forum max-[600px]:w-full">
+
+          {/* Logo + Title row */}
+          <div className="flex gap-[40px] items-center mb-6 max-[600px]:flex-col max-[600px]:items-center max-[600px]:gap-4">
+            <div className="hero-animate-2">
+              <Image
+                src="/icons/logo_hero.svg"
+                width={160}
+                height={160}
+                alt="LariBrand Saratov"
+              />
+            </div>
+            <div className="max-[600px]:text-center">
+              <h1 className="hero-title text-[58px] font-canelope uppercase m-0 leading-[1] max-[500px]:text-[44px] max-[350px]:text-[38px]">
+                {content.hero_title}
+              </h1>
+              <h2 className="text-[28px] font-forum font-normal m-0 text-brand-red max-[500px]:text-[22px]">
+                {content.hero_subtitle}
+              </h2>
+            </div>
+          </div>
+
+          {/* Description */}
+          <div className="hero-animate-3">
+            <p className="text-[20px] text-justify leading-[1.6] mb-8 max-[600px]:text-[17px] max-[600px]:text-center">
+              {content.hero_p}
+            </p>
+          </div>
+
+          {/* CTA */}
+          <div className="hero-animate-4 max-[600px]:flex max-[600px]:justify-center">
+            <Link
+              href={content.sing_up_link}
+              className="inline-flex items-center justify-center py-[16px] px-[48px] bg-brand-red text-white text-[20px] font-forum rounded-[12px] no-underline transition-all duration-300 hover:scale-105 hover:shadow-[0_8px_24px_rgba(137,29,26,0.3)] active:scale-95"
+            >
+              Записаться
+            </Link>
+          </div>
+        </div>
+
+        {/* Image block */}
+        <div className="hero-animate-5 relative w-[500px] h-[440px] rounded-[14px] border border-brand-black overflow-hidden max-[600px]:w-full max-[600px]:h-[300px] max-[420px]:h-[250px]">
+          <Image
+            src={content.hero_image}
+            alt="LariBrand — дом эстетики волос"
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
       </div>
     </section>
   )
