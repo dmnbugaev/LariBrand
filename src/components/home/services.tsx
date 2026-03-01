@@ -24,7 +24,9 @@ export default function Services() {
   return (
     <section className="py-[60px] px-[60px] text-center flex flex-col justify-center items-center max-[720px]:px-5 max-[720px]:pt-0 max-[720px]:pb-[60px]">
       <ScrollAnimation />
-      <h2 className="text-[36px] font-medium mb-[50px] tracking-[2px] max-[720px]:text-[28px] max-[720px]:mb-[30px]">
+      <h2 
+        className="text-[36px] font-medium mb-[50px] tracking-[2px] max-[720px]:text-[28px] max-[720px]:mb-[30px] max-[720px]:mt-[30px]"
+      >
         УСЛУГИ
       </h2>
       <div className="flex flex-wrap gap-[30px] justify-center items-center w-full max-w-[1400px] mx-auto">
