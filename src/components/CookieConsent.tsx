@@ -12,6 +12,7 @@ const CookieConsent: React.FC = () => {
 
   const acceptCookies = (): void => {
     localStorage.setItem('cookieConsent', 'accepted')
+    window.dispatchEvent(new Event('cookieConsentChanged'))
     setShowBanner(false)
   }
 

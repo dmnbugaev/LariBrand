@@ -10,7 +10,7 @@ const Reviews = React.memo(function Reviews() {
       <div className="flex flex-wrap justify-center gap-10 bg-white px-10 py-10 font-forum text-[20px] leading-[27px] max-[600px]:px-[10px]">
         {reviews.map((item, index) => (
           <div
-            key={index}
+            key={`${item.author}-${index}`}
             className="bg-white border border-brand-black rounded-[10px] p-3 w-[320px] box-border max-[760px]:w-[620px] max-[680px]:w-[520px] max-[680px]:text-lg max-[540px]:w-[420px] max-[480px]:w-[360px]"
           >
             <div className="font-bold mb-[6px]">{item.author}</div>

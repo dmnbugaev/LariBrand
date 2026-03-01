@@ -16,7 +16,7 @@ const ServicePage = memo(function ServicePage({ data, htmlTitles = false }: Serv
         {data.hero.image && (
           <Image
             src={data.hero.image}
-            alt="hero"
+            alt={data.hero.title}
             fill
             className="object-cover object-center service-hero-image"
             priority
@@ -40,7 +40,7 @@ const ServicePage = memo(function ServicePage({ data, htmlTitles = false }: Serv
       <section className="text-[20px] font-forum flex flex-wrap justify-center gap-5 -mb-10 px-4">
         {data.price.map((item, i) => (
           <div
-            key={i}
+            key={`${item.title}-${i}`}
             className="flex items-center w-[800px] max-[1024px]:w-[600px] max-[680px]:w-[500px] max-[540px]:w-[400px] max-[480px]:w-[350px] max-[420px]:w-[330px] max-[350px]:w-[300px]"
           >
             {htmlTitles ? (

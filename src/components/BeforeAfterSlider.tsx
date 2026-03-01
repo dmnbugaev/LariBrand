@@ -35,6 +35,11 @@ export const BeforeAfterSlider = memo(function BeforeAfterSlider({
     if (e.touches.length > 0) handleMove(e.touches[0].clientX)
   }, [handleMove])
 
+  const handleKeyDown = useCallback((e: React.KeyboardEvent<HTMLDivElement>): void => {
+    if (e.key === 'ArrowLeft') setSliderPosition(prev => Math.max(prev - 5, 0))
+    else if (e.key === 'ArrowRight') setSliderPosition(prev => Math.min(prev + 5, 100))
+  }, [])
+
   useEffect(() => {
     const handleGlobalMouseUp = () => setIsDragging(false)
     const handleGlobalMouseMove = (e: MouseEvent) => {
@@ -84,6 +89,12 @@ export const BeforeAfterSlider = memo(function BeforeAfterSlider({
   return (
     <div
       ref={containerRef}
+      tabIndex={0}
+      role="slider"
+      aria-label="Ползунок сравнения до и после"
+      aria-valuemin={0}
+      aria-valuemax={100}
+      aria-valuenow={Math.round(sliderPosition)}
       className={`relative w-full h-full overflow-hidden cursor-ew-resize select-none rounded-[8px] shadow-[0_4px_20px_rgba(0,0,0,0.15)] bg-[#f5f5f5] ${className}`}
       onMouseMove={handleMouseMove}
       onMouseDown={() => setIsDragging(true)}
@@ -91,6 +102,7 @@ export const BeforeAfterSlider = memo(function BeforeAfterSlider({
       onTouchMove={handleTouchMove}
       onTouchStart={() => setIsDragging(true)}
       onTouchEnd={() => setIsDragging(false)}
+      onKeyDown={handleKeyDown}
     >
       {/* Before Image */}
       <div
@@ -101,6 +113,7 @@ export const BeforeAfterSlider = memo(function BeforeAfterSlider({
           <img
             src={beforeImage}
             alt="До"
+            loading="lazy"
             className="w-full h-full object-cover object-center pointer-events-none transition-opacity duration-300"
             onLoad={() => setImageLoaded(true)}
             onError={(e) => { (e.target as HTMLImageElement).src = '/fallback-image.jpg' }}
@@ -120,6 +133,7 @@ export const BeforeAfterSlider = memo(function BeforeAfterSlider({
           <img
             src={afterImage}
             alt="После"
+            loading="lazy"
             className="w-full h-full object-cover object-center pointer-events-none transition-opacity duration-300"
             onLoad={() => setImageLoaded(true)}
             onError={(e) => { (e.target as HTMLImageElement).src = '/fallback-image.jpg' }}

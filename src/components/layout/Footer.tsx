@@ -64,7 +64,7 @@ export default function Footer() {
             <h3 className="text-[19px] font-normal text-brand-black uppercase tracking-[1.5px] mb-4 pb-3 border-b border-brand-black">
               Услуги
             </h3>
-            <nav className="flex flex-col gap-[10px]">
+            <nav className="flex flex-col gap-[10px]" aria-label="Услуги">
               {NAV_LINKS.map(({ href, label }) => (
                 <Link
                   key={href}
