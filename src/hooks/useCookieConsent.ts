@@ -6,8 +6,12 @@ export const useCookieConsent = (): boolean => {
   const [hasConsent, setHasConsent] = useState<boolean>(false)
 
   useEffect(() => {
-    const consent = localStorage.getItem('cookieConsent')
-    setHasConsent(consent === 'accepted')
+    const update = () => {
+      setHasConsent(localStorage.getItem('cookieConsent') === 'accepted')
+    }
+    update()
+    window.addEventListener('cookieConsentChanged', update)
+    return () => window.removeEventListener('cookieConsentChanged', update)
   }, [])
 
   return hasConsent

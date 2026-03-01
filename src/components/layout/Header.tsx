@@ -58,14 +58,15 @@ export default function Header() {
 
   return (
     <header
-      className={`font-forum text-[18px] h-[80px] flex flex-col justify-end gap-[10px] fixed top-0 left-0 w-full z-[100] transition-all duration-300 max-[780px]:h-[84px] ${
+      className={`font-forum text-[18px] h-[80px] flex flex-col fixed top-0 left-0 w-full z-[100] transition-all duration-300 max-[780px]:h-[84px] ${
         scrolled
           ? 'bg-white/92 backdrop-blur-md shadow-[0_2px_16px_rgba(0,0,0,0.08)]'
           : 'bg-white'
       }`}
     >
-      <nav className="px-[60px] flex justify-between items-center max-[780px]:px-[20px]">
-        {/* Logo */}
+      {/* Навигация занимает всю высоту header (кроме нижней линии) */}
+      <nav className="flex-1 px-[60px] flex items-center justify-between max-[780px]:px-[20px]">
+        {/* Логотип */}
         <Link href="/" onClick={close} aria-label="На главную страницу">
           <Image
             src="/icons/Logo.svg"
@@ -77,84 +78,25 @@ export default function Header() {
           />
         </Link>
 
-        {/* Address */}
-        <div className="flex gap-[30px] ml-auto mr-[60px] max-[780px]:gap-0 max-[780px]:inline max-[780px]:mt-1 max-[780px]:mr-[23px] max-[600px]:mx-auto">
-          <p className="m-0 p-0 max-[780px]:text-center max-[780px]:text-[15px]">Дом эстетики волос</p>
-          <p className="m-0 p-0 max-[780px]:text-center max-[780px]:text-[15px]">ул.Чернышевского 145</p>
-        </div>
-
-        {/* Mobile nav drawer */}
+        {/* Адрес: на десктопе строка, на мобильных колонка по центру */}
         <div
-          className={`fixed top-0 right-0 h-[100dvh] w-1/4 flex-col justify-start bg-white shadow-[-4px_0_20px_rgba(0,0,0,0.1)] gap-0 transition-[right] duration-[0.4s] ease-in-out z-[150] overflow-hidden flex max-[1250px]:w-[35%] max-[780px]:w-full max-[780px]:max-w-[400px] max-[560px]:max-w-full ${
-            isOpen ? 'right-0' : 'right-[-100%]'
-          }`}
+          className={`
+            flex items-center gap-[30px] 
+            max-[780px]:flex-col max-[780px]:gap-1 max-[780px]:items-center max-[780px]:flex-1
+            ml-auto mr-[60px] max-[780px]:ml-0 max-[780px]:mr-0
+          `}
         >
-          <div className="h-full flex flex-col p-5 overflow-hidden box-border burger-menu-content">
-            {/* Menu header */}
-            <div className="pb-5 border-b border-brand-black mt-[15px] shrink-0">
-              <h2 className="m-0 text-2xl font-normal text-brand-black font-forum">МЕНЮ</h2>
-            </div>
-
-            {/* Nav links */}
-            <div className="burger-links flex-1 flex flex-col gap-2 overflow-y-auto pr-[5px] my-[15px] max-h-[calc(100vh-280px)] box-border">
-              {NAV_LINKS.map(({ href, label }) => (
-                <Link
-                  key={href}
-                  href={href}
-                  onClick={close}
-                  className="py-3 no-underline text-brand-black text-[1.1rem] border-b border-white transition-colors duration-300 hover:text-brand-red font-forum shrink-0"
-                >
-                  {label}
-                </Link>
-              ))}
-            </div>
-
-            {/* Phones */}
-            <div className="py-5 border-t border-white shrink-0">
-              <h3 className="m-0 mb-[15px] text-[18px] font-normal text-brand-bg font-forum">
-                Телефоны для связи:
-              </h3>
-              <div className="flex flex-col gap-[10px]">
-                {content.phone_number_2 && (
-                  <a
-                    href={content.phone_number_2_link}
-                    className="no-underline text-brand-black text-[1.1rem] font-normal transition-colors duration-300 hover:text-brand-red font-forum"
-                  >
-                    {content.phone_number_2}
-                  </a>
-                )}
-                <a
-                  href={content.phone_number_1_link}
-                  className="no-underline text-brand-black text-[1.1rem] font-normal transition-colors duration-300 hover:text-brand-red font-forum"
-                >
-                  {content.phone_number_1}
-                </a>
-              </div>
-            </div>
-
-            {/* Buttons */}
-            <div className="burger-buttons-container flex flex-col gap-[10px] pt-5 mt-auto shrink-0 pb-5">
-              <Link
-                href={content.sing_up_link}
-                onClick={close}
-                className="flex justify-center items-center w-full py-[18px] px-5 text-white bg-brand-red font-normal text-[17px] rounded-[14px] no-underline text-center shrink-0 box-border min-h-[56px] font-forum transition-transform duration-200 hover:scale-105 active:scale-95"
-              >
-                Записаться
-              </Link>
-              <Link
-                href={content.telegram_link}
-                onClick={close}
-                className="flex justify-center items-center w-full py-[18px] px-5 text-white bg-brand-red font-normal text-[17px] rounded-[14px] no-underline text-center shrink-0 box-border min-h-[56px] font-forum transition-transform duration-200 hover:scale-105 active:scale-95"
-              >
-                Telegram
-              </Link>
-            </div>
-          </div>
+          <p className="m-0 p-0 max-[780px]:text-center max-[780px]:text-[15px]">
+            Дом эстетики волос
+          </p>
+          <p className="m-0 p-0 max-[780px]:text-center max-[780px]:text-[15px]">
+            ул.Чернышевского 145
+          </p>
         </div>
 
-        {/* Burger button */}
+        {/* Кнопка бургер-меню */}
         <button
-          className={`burger ${isOpen ? 'open' : ''} relative w-[40px] h-[26px] bg-transparent border-none cursor-pointer z-[200] mt-[-2px] max-[780px]:mt-[-6px]`}
+          className={`burger ${isOpen ? 'open' : ''} relative w-[40px] h-[26px] bg-transparent border-none cursor-pointer z-[200]`}
           onClick={() => setIsOpen(!isOpen)}
           aria-label={isOpen ? 'Закрыть меню' : 'Открыть меню'}
           aria-expanded={isOpen}
@@ -165,14 +107,83 @@ export default function Header() {
         </button>
       </nav>
 
-      {/* Bottom border line */}
+      {/* Нижняя линия */}
       <div
-        className={`h-[1px] bg-brand-black w-auto transition-opacity duration-300 ${
+        className={`h-[1px] bg-brand-black w-full transition-opacity duration-300 ${
           scrolled ? 'opacity-0' : 'opacity-100'
         }`}
       />
 
-      {/* Overlay */}
+      {/* Мобильное меню (drawer) */}
+      <div
+        className={`fixed top-0 right-0 h-[100dvh] w-1/4 flex-col justify-start bg-white shadow-[-4px_0_20px_rgba(0,0,0,0.1)] gap-0 transition-[right] duration-[0.4s] ease-in-out z-[150] overflow-hidden flex max-[1250px]:w-[35%] max-[780px]:w-full max-[780px]:max-w-[400px] max-[560px]:max-w-full ${
+          isOpen ? 'right-0' : 'right-[-100%]'
+        }`}
+      >
+        <div className="h-full flex flex-col p-5 overflow-hidden box-border burger-menu-content">
+          {/* Заголовок меню */}
+          <div className="pb-5 border-b border-brand-black mt-[15px] shrink-0">
+            <h2 className="m-0 text-2xl font-normal text-brand-black font-forum">МЕНЮ</h2>
+          </div>
+
+          {/* Ссылки */}
+          <div className="burger-links flex-1 flex flex-col gap-2 overflow-y-auto pr-[5px] my-[15px] max-h-[calc(100vh-280px)] box-border">
+            {NAV_LINKS.map(({ href, label }) => (
+              <Link
+                key={href}
+                href={href}
+                onClick={close}
+                className="py-3 no-underline text-brand-black text-[1.1rem] border-b border-white transition-colors duration-300 hover:text-brand-red font-forum shrink-0"
+              >
+                {label}
+              </Link>
+            ))}
+          </div>
+
+          {/* Телефоны */}
+          <div className="py-5 border-t border-white shrink-0">
+            <h3 className="m-0 mb-[15px] text-[18px] font-normal text-brand-bg font-forum">
+              Телефоны для связи:
+            </h3>
+            <div className="flex flex-col gap-[10px]">
+              {content.phone_number_2 && (
+                <a
+                  href={content.phone_number_2_link}
+                  className="no-underline text-brand-black text-[1.1rem] font-normal transition-colors duration-300 hover:text-brand-red font-forum"
+                >
+                  {content.phone_number_2}
+                </a>
+              )}
+              <a
+                href={content.phone_number_1_link}
+                className="no-underline text-brand-black text-[1.1rem] font-normal transition-colors duration-300 hover:text-brand-red font-forum"
+              >
+                {content.phone_number_1}
+              </a>
+            </div>
+          </div>
+
+          {/* Кнопки действий */}
+          <div className="burger-buttons-container flex flex-col gap-[10px] pt-5 mt-auto shrink-0 pb-5">
+            <Link
+              href={content.sing_up_link}
+              onClick={close}
+              className="flex justify-center items-center w-full py-[18px] px-5 text-white bg-brand-red font-normal text-[17px] rounded-[14px] no-underline text-center shrink-0 box-border min-h-[56px] font-forum transition-transform duration-200 hover:scale-105 active:scale-95"
+            >
+              Записаться
+            </Link>
+            <Link
+              href={content.telegram_link}
+              onClick={close}
+              className="flex justify-center items-center w-full py-[18px] px-5 text-white bg-brand-red font-normal text-[17px] rounded-[14px] no-underline text-center shrink-0 box-border min-h-[56px] font-forum transition-transform duration-200 hover:scale-105 active:scale-95"
+            >
+              Telegram
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* Оверлей */}
       <div
         className={`overlay ${isOpen ? 'show' : ''} fixed inset-0 bg-black/40 opacity-0 pointer-events-none transition-opacity duration-300 ease-in-out z-[120]`}
         onClick={close}
