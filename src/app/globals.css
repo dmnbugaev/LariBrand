@@ -1,0 +1,156 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== Font Faces ===== */
+@font-face {
+  font-family: 'Forum';
+  src: url('/fonts/Forum-1.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Canelope';
+  src: url('/fonts/CanelopeDemo.woff2') format('woff2');
+  font-display: swap;
+}
+
+/* ===== Base ===== */
+@layer base {
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Forum', serif;
+    color: #222222;
+    background-color: #ffffff;
+  }
+}
+
+/* ===== Components — complex styles that can't be expressed inline ===== */
+@layer components {
+
+  /* --- Burger menu animation (nth-child selectors) --- */
+  .burger span:nth-child(1) { top: 0; }
+  .burger span:nth-child(2) { top: 11px; }
+  .burger span:nth-child(3) { top: 22px; }
+
+  .burger.open span:nth-child(1) {
+    transform: rotate(45deg);
+    top: 11px;
+  }
+  .burger.open span:nth-child(2) {
+    opacity: 0;
+  }
+  .burger.open span:nth-child(3) {
+    transform: rotate(-45deg);
+    top: 11px;
+  }
+
+  /* --- Overlay visibility --- */
+  .overlay.show {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* --- Custom scrollbar for burger links --- */
+  .burger-links::-webkit-scrollbar { width: 3px; }
+  .burger-links::-webkit-scrollbar-track { background: #222222; border-radius: 2px; }
+  .burger-links::-webkit-scrollbar-thumb { background: #222222; border-radius: 2px; }
+  .burger-links { scrollbar-width: thin; scrollbar-color: rgba(0,0,0,0.2) rgba(0,0,0,0.05); }
+
+  /* --- Service card scroll animation --- */
+  .service-card {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  .service-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  .service-card:hover .service-image {
+    transform: scale(1.08);
+  }
+
+  /* --- Fade-up intersection animation --- */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+  }
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* --- Footer slide-up animation --- */
+  .footer-anim {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  .footer-anim.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* --- Service page hero overlay (::after pseudo-element) --- */
+  .service-hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      135deg,
+      rgba(0, 0, 0, 0.2) 0%,
+      rgba(0, 0, 0, 0.1) 50%,
+      rgba(0, 0, 0, 0.25) 100%
+    );
+    z-index: 1;
+  }
+
+  /* --- Service overlay gradient --- */
+  .services-overlay-gradient {
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0) 40%,
+      rgba(0, 0, 0, 0.25) 65%,
+      rgba(0, 0, 0, 0.45) 100%
+    );
+  }
+
+  /* --- Before/After container hover instruction --- */
+  .before-after-container:hover .before-after-instruction {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+  .before-after-container:hover .before-after-instruction-text {
+    opacity: 1;
+  }
+
+  /* --- Single image hover --- */
+  .single-image-container:hover .single-image {
+    transform: scale(1.05);
+  }
+
+  /* --- Dots separator for price rows --- */
+  .price-dots {
+    flex-grow: 1;
+    border-bottom: 1px dotted #222222;
+    margin: 0 10px;
+    height: 20px;
+    align-self: center;
+  }
+
+  /* iOS safe area support for burger menu */
+  @supports (padding: max(0px)) {
+    .burger-menu-content {
+      padding-left: max(15px, env(safe-area-inset-left));
+      padding-right: max(15px, env(safe-area-inset-right));
+    }
+    .burger-buttons-container {
+      padding-bottom: max(25px, env(safe-area-inset-bottom, 25px));
+    }
+  }
+}
