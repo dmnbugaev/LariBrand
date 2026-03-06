@@ -24,7 +24,11 @@ const CookieConsent: React.FC = () => {
   if (!showBanner) return null
 
   return (
-    <div className="font-forum text-sm fixed bottom-0 left-0 right-0 bg-white text-brand-black px-5 py-5 z-[1000] shadow-[0_0_5px_#222222]">
+    <div
+      role="region"
+      aria-label="Уведомление о cookies"
+      className="font-forum text-sm fixed bottom-0 left-0 right-0 bg-white text-brand-black px-5 py-5 z-[1000] shadow-[0_0_5px_#222222]"
+    >
       <div className="max-w-[1200px] mx-auto flex justify-between items-center gap-5 max-[768px]:flex-col max-[768px]:text-center max-[768px]:gap-0">
         <p className="m-0 flex-1 text-sm leading-[1.4] max-[768px]:mb-5">
           Мы используем файлы cookie для улучшения работы сайта.
@@ -32,13 +36,15 @@ const CookieConsent: React.FC = () => {
         </p>
         <div className="flex flex-row-reverse gap-5 shrink-0">
           <button
-            className="bg-brand-red text-white border border-brand-black py-[10px] px-0 text-center w-[110px] rounded-[10px] cursor-pointer text-sm transition-all hover:scale-105"
+            type="button"
+            className="bg-brand-red text-white border border-brand-black py-[10px] px-0 text-center w-[110px] rounded-[10px] cursor-pointer text-sm transition-all hover:scale-105 active:scale-95"
             onClick={acceptCookies}
           >
             Принять
           </button>
           <button
-            className="bg-transparent text-brand-black border border-brand-black py-[10px] px-0 text-center rounded-[10px] w-[110px] cursor-pointer text-sm"
+            type="button"
+            className="bg-transparent text-brand-black border border-brand-black py-[10px] px-0 text-center rounded-[10px] w-[110px] cursor-pointer text-sm transition-all hover:bg-gray-100 active:scale-95"
             onClick={declineCookies}
           >
             Отклонить

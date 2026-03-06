@@ -32,20 +32,22 @@ export default function About_Us() {
         <p>{content.about_text_4}</p>
       </div>
       <div className="flex justify-center items-center gap-[60px] mt-10 max-[620px]:flex-wrap max-[620px]:gap-10 max-[620px]:px-[100px] max-[425px]:px-[60px]">
-        <LinkAboutUs href={content.phone_number_1_link}>
+        <LinkAboutUs href={content.phone_number_1_link} aria-label="Позвонить нам">
           <Image
             src="/icons/about-us-icon/ph.svg"
             width={37}
             height={37}
-            alt="LariBrand номер телефона"
+            alt=""
+            aria-hidden="true"
           />
         </LinkAboutUs>
-        <LinkAboutUs href={content.telegram_link}>
+        <LinkAboutUs href={content.telegram_link} aria-label="Написать в Telegram">
           <Image
             src="/icons/about-us-icon/tg.svg"
             width={37}
             height={37}
-            alt="Ларибренд саратов записаться"
+            alt=""
+            aria-hidden="true"
           />
         </LinkAboutUs>
       </div>

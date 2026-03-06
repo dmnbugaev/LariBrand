@@ -2,27 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ===== Font Faces ===== */
-@font-face {
-  font-family: 'Forum';
-  src: url('/fonts/Forum-1.woff2') format('woff2');
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Canelope';
-  src: url('/fonts/CanelopeDemo.woff2') format('woff2');
-  font-display: swap;
-}
-
 /* ===== Base ===== */
 @layer base {
   body {
     margin: 0;
     padding: 0;
-    font-family: 'Forum', serif;
+    font-family: var(--font-forum), Georgia, 'Times New Roman', serif;
     color: #222222;
     background-color: #ffffff;
+  }
+
+  /* Global focus-visible ring for keyboard navigation */
+  :focus-visible {
+    outline: 2px solid #891D1A;
+    outline-offset: 3px;
+    border-radius: 4px;
   }
 }
 
@@ -54,7 +48,7 @@
 
   /* --- Custom scrollbar for burger links --- */
   .burger-links::-webkit-scrollbar { width: 3px; }
-  .burger-links::-webkit-scrollbar-track { background: #222222; border-radius: 2px; }
+  .burger-links::-webkit-scrollbar-track { background: rgba(0,0,0,0.05); border-radius: 2px; }
   .burger-links::-webkit-scrollbar-thumb { background: #222222; border-radius: 2px; }
   .burger-links { scrollbar-width: thin; scrollbar-color: rgba(0,0,0,0.2) rgba(0,0,0,0.05); }
 
