@@ -3,6 +3,26 @@ export interface PriceItem {
   price: string
 }
 
+export interface PriceV2Item {
+  title: string
+  price: string
+  note?: string
+}
+
+export interface PriceV2Section {
+  title?: string
+  subtitle?: string
+  badge?: string
+  headers?: string[]
+  rows?: string[][]
+  simpleItems?: PriceV2Item[]
+  notes?: string[]
+}
+
+export interface PriceV2 {
+  sections: PriceV2Section[]
+}
+
 export interface ServiceHero {
   image: string
   title: string
@@ -21,6 +41,7 @@ export interface ServiceData {
   info: ServiceInfo
   book: ServiceBook
   price: PriceItem[]
+  priceV2?: PriceV2
 }
 
 export interface Review {

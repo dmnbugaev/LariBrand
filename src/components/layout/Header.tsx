@@ -133,7 +133,7 @@ export default function Header() {
                 key={href}
                 href={href}
                 onClick={close}
-                className="py-3 no-underline text-brand-black text-[1.1rem] border-b border-white transition-colors duration-300 hover:text-brand-red font-forum shrink-0"
+                className="py-3 no-underline text-brand-black text-[1.1rem] border-b border-gray-100 transition-colors duration-300 hover:text-brand-red font-forum shrink-0"
               >
                 {label}
               </Link>
@@ -141,8 +141,8 @@ export default function Header() {
           </div>
 
           {/* Телефоны */}
-          <div className="py-5 border-t border-white shrink-0">
-            <h3 className="m-0 mb-[15px] text-[18px] font-normal text-brand-bg font-forum">
+          <div className="py-5 border-t border-gray-200 shrink-0">
+            <h3 className="m-0 mb-[15px] text-[18px] font-normal text-brand-black/60 font-forum">
               Телефоны для связи:
             </h3>
             <div className="flex flex-col gap-[10px]">
@@ -168,6 +168,7 @@ export default function Header() {
             <Link
               href={content.sing_up_link}
               onClick={close}
+              aria-label="Записаться онлайн"
               className="flex justify-center items-center w-full py-[18px] px-5 text-white bg-brand-red font-normal text-[17px] rounded-[14px] no-underline text-center shrink-0 box-border min-h-[56px] font-forum transition-transform duration-200 hover:scale-105 active:scale-95"
             >
               Записаться
@@ -175,6 +176,9 @@ export default function Header() {
             <Link
               href={content.telegram_link}
               onClick={close}
+              aria-label="Написать в Telegram"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex justify-center items-center w-full py-[18px] px-5 text-white bg-brand-red font-normal text-[17px] rounded-[14px] no-underline text-center shrink-0 box-border min-h-[56px] font-forum transition-transform duration-200 hover:scale-105 active:scale-95"
             >
               Telegram

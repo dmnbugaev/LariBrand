@@ -30,9 +30,9 @@ export default function Services() {
         УСЛУГИ
       </h2>
       <div className="flex flex-wrap gap-[30px] justify-center items-center w-full max-w-[1400px] mx-auto">
-        {services.map((service, index) => (
+        {services.map((service) => (
           <Link
-            key={index}
+            key={service.link}
             href={service.link}
             className="no-underline text-inherit w-[285px] flex justify-center"
           >

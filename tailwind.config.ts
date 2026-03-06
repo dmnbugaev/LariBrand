@@ -14,8 +14,8 @@ const config: Config = {
         'brand-bg': '#E1DCD8',
       },
       fontFamily: {
-        forum: ['Forum', 'serif'],
-        canelope: ['Canelope', 'sans-serif'],
+        forum: ['var(--font-forum)', 'Georgia', 'Times New Roman', 'serif'],
+        canelope: ['var(--font-canelope)', 'Palatino Linotype', 'Palatino', 'Georgia', 'serif'],
       },
     },
   },

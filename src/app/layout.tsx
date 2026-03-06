@@ -1,8 +1,25 @@
 import type { Metadata } from 'next'
+import localFont from 'next/font/local'
 import CookieConsent from '../components/CookieConsent'
 import YandexMetrika from '../components/YandexMetrika'
 import LocalBusinessSchema from '../components/LocalBusinessSchema'
 import './globals.css'
+
+const forum = localFont({
+  src: '../../public/fonts/Forum-1.woff2',
+  variable: '--font-forum',
+  display: 'swap',
+  fallback: ['Georgia', 'Times New Roman', 'serif'],
+  preload: true,
+})
+
+const canelope = localFont({
+  src: '../../public/fonts/CanelopeDemo.woff2',
+  variable: '--font-canelope',
+  display: 'swap',
+  fallback: ['Palatino Linotype', 'Palatino', 'Georgia', 'serif'],
+  preload: true,
+})
 
 const BASE_URL = 'https://laribrand.ru'
 
@@ -81,7 +98,7 @@ interface RootLayoutProps {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="ru">
+    <html lang="ru" className={`${forum.variable} ${canelope.variable}`}>
       <body>
         <LocalBusinessSchema />
         {children}
