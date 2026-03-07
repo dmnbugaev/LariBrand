@@ -4,19 +4,11 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import content from '../../../content/content.json'
+import { SERVICE_NAV_LINKS } from '../../lib/nav-links'
 
 const NAV_LINKS = [
   { href: '/', label: 'ГЛАВНАЯ' },
-  { href: '/keratin_and_botox', label: 'КЕРАТИН И БОТОКС' },
-  { href: '/safe_hair_straightening', label: 'БЕЗОПАСНОЕ ВЫПРЯМЛЕНИЕ' },
-  { href: '/cold_hair_reconstruction', label: 'ХОЛОДНАЯ РЕКОНСТРУКЦИЯ' },
-  { href: '/bioavailability', label: 'БИОЗАВИВКА' },
-  { href: '/total_reconstruction', label: 'ТОТАЛЬНАЯ РЕКОНСТРУКЦИЯ' },
-  { href: '/hair_coloring', label: 'ОКРАШИВАНИЕ' },
-  { href: '/hair_cutting', label: 'СТРИЖКА ВОЛОС' },
-  { href: '/afro_weaving', label: 'АФРО-ПЛЕТЕНИЕ' },
-  { href: '/hair_styling', label: 'УКЛАДКИ' },
-  { href: '/additional_services', label: 'ДОП УСЛУГИ' },
+  ...SERVICE_NAV_LINKS.map(({ href, label }) => ({ href, label: label.toUpperCase() })),
 ]
 
 export default function Header() {
@@ -64,9 +56,7 @@ export default function Header() {
           : 'bg-white'
       }`}
     >
-      {/* Навигация занимает всю высоту header (кроме нижней линии) */}
       <nav className="flex-1 px-[60px] flex items-center justify-between max-[780px]:px-[20px]">
-        {/* Логотип */}
         <Link href="/" onClick={close} aria-label="На главную страницу">
           <Image
             src="/icons/Logo.svg"
@@ -78,14 +68,7 @@ export default function Header() {
           />
         </Link>
 
-        {/* Адрес: на десктопе строка, на мобильных колонка по центру */}
-        <div
-          className={`
-            flex items-center gap-[30px] 
-            max-[780px]:flex-col max-[780px]:gap-1 max-[780px]:items-center max-[780px]:flex-1
-            ml-auto mr-[60px] max-[780px]:ml-0 max-[780px]:mr-0
-          `}
-        >
+        <div className="flex items-center gap-[30px] max-[780px]:flex-col max-[780px]:gap-1 max-[780px]:items-center max-[780px]:flex-1 ml-auto mr-[60px] max-[780px]:ml-0 max-[780px]:mr-0">
           <p className="m-0 p-0 max-[780px]:text-center max-[780px]:text-[15px]">
             Дом эстетики волос
           </p>
@@ -94,7 +77,6 @@ export default function Header() {
           </p>
         </div>
 
-        {/* Кнопка бургер-меню */}
         <button
           className={`burger ${isOpen ? 'open' : ''} relative w-[40px] h-[26px] bg-transparent border-none cursor-pointer z-[200]`}
           onClick={() => setIsOpen(!isOpen)}
@@ -107,26 +89,23 @@ export default function Header() {
         </button>
       </nav>
 
-      {/* Нижняя линия */}
       <div
         className={`h-[1px] bg-brand-black w-full transition-opacity duration-300 ${
           scrolled ? 'opacity-0' : 'opacity-100'
         }`}
       />
 
-      {/* Мобильное меню (drawer) */}
+      {/* Мобильное меню */}
       <div
         className={`fixed top-0 right-0 h-[100dvh] w-1/4 flex-col justify-start bg-white shadow-[-4px_0_20px_rgba(0,0,0,0.1)] gap-0 transition-[right] duration-[0.4s] ease-in-out z-[150] overflow-hidden flex max-[1250px]:w-[35%] max-[780px]:w-full max-[780px]:max-w-[400px] max-[560px]:max-w-full ${
           isOpen ? 'right-0' : 'right-[-100%]'
         }`}
       >
         <div className="h-full flex flex-col p-5 overflow-hidden box-border burger-menu-content">
-          {/* Заголовок меню */}
           <div className="pb-5 border-b border-brand-black mt-[15px] shrink-0">
             <h2 className="m-0 text-2xl font-normal text-brand-black font-forum">МЕНЮ</h2>
           </div>
 
-          {/* Ссылки */}
           <div className="burger-links flex-1 flex flex-col gap-2 overflow-y-auto pr-[5px] my-[15px] max-h-[calc(100vh-280px)] box-border">
             {NAV_LINKS.map(({ href, label }) => (
               <Link
@@ -140,7 +119,6 @@ export default function Header() {
             ))}
           </div>
 
-          {/* Телефоны */}
           <div className="py-5 border-t border-gray-200 shrink-0">
             <h3 className="m-0 mb-[15px] text-[18px] font-normal text-brand-black/60 font-forum">
               Телефоны для связи:
@@ -163,7 +141,6 @@ export default function Header() {
             </div>
           </div>
 
-          {/* Кнопки действий */}
           <div className="burger-buttons-container flex flex-col gap-[10px] pt-5 mt-auto shrink-0 pb-5">
             <Link
               href={content.sing_up_link}

@@ -3,11 +3,6 @@ import { memo } from 'react'
 import type { ServiceData, PriceV2Section } from '../../types'
 import content from '../../../content/content.json'
 
-interface ServicePageProps {
-  data: ServiceData
-  htmlTitles?: boolean
-}
-
 function PriceSectionBlock({ section }: { section: PriceV2Section }) {
   const isMultiCol = section.headers && section.headers.length > 2
   const hasTwoColRows = !isMultiCol && section.rows && section.rows.length > 0
@@ -15,7 +10,6 @@ function PriceSectionBlock({ section }: { section: PriceV2Section }) {
 
   return (
     <div className="w-full">
-      {/* Section title bar */}
       {section.title && (
         <div className="bg-brand-black py-3 px-6 text-center">
           <h3 className="font-forum text-white uppercase tracking-[3px] text-[13px] font-normal m-0">
@@ -24,26 +18,18 @@ function PriceSectionBlock({ section }: { section: PriceV2Section }) {
         </div>
       )}
 
-      {/* Badge */}
       {section.badge && (
         <p className="font-forum text-center text-[18px] text-gray-400 tracking-wide mt-5 mb-0 px-4">
           {section.badge}
         </p>
       )}
 
-      {/* Subtitle */}
       {section.subtitle && (
         <p className="font-forum text-center text-[22px] text-brand-black mt-5 mb-1 leading-tight px-4 max-[480px]:text-[18px]">
           {section.subtitle}
         </p>
       )}
 
-      {/* Spacer when no title but has table */}
-      {!section.title && !section.subtitle && !section.badge && (
-        <div className="h-0" />
-      )}
-
-      {/* Multi-column table (3+ columns) — fully responsive, no horizontal scroll */}
       {hasMultiColRows && (
         <div className="w-full mt-6">
           <table className="w-full border-collapse table-fixed">
@@ -69,17 +55,12 @@ function PriceSectionBlock({ section }: { section: PriceV2Section }) {
             </thead>
             <tbody>
               {section.rows!.map((row, i) => (
-                <tr
-                  key={i}
-                  className="border-b border-gray-100 hover:bg-[#fafafa] transition-colors"
-                >
+                <tr key={i} className="border-b border-gray-100 hover:bg-[#fafafa] transition-colors">
                   {row.map((cell, j) => (
                     <td
                       key={j}
                       className={`py-3.5 px-3 font-forum text-[15px] max-[540px]:py-3 max-[540px]:px-2 max-[540px]:text-[14px] max-[400px]:py-2.5 max-[400px]:px-1.5 max-[400px]:text-[13px] ${
-                        j === 0
-                          ? 'text-left font-medium text-brand-black'
-                          : 'text-center text-brand-black'
+                        j === 0 ? 'text-left font-medium text-brand-black' : 'text-center text-brand-black'
                       } ${cell === '' ? 'text-gray-300' : ''}`}
                     >
                       {cell === '' ? '—' : cell}
@@ -92,15 +73,11 @@ function PriceSectionBlock({ section }: { section: PriceV2Section }) {
         </div>
       )}
 
-      {/* Two-column rows */}
       {hasTwoColRows && (
         <table className="w-full border-collapse">
           <tbody>
             {section.rows!.map((row, i) => (
-              <tr
-                key={i}
-                className="border-b border-gray-100 hover:bg-[#fafafa] transition-colors"
-              >
+              <tr key={i} className="border-b border-gray-100 hover:bg-[#fafafa] transition-colors">
                 <td className="py-3.5 px-5 font-forum text-[15px] text-left text-brand-black max-[480px]:py-3 max-[480px]:px-3 max-[480px]:text-[14px]">
                   {row[0]}
                 </td>
@@ -113,7 +90,6 @@ function PriceSectionBlock({ section }: { section: PriceV2Section }) {
         </table>
       )}
 
-      {/* Simple items list */}
       {section.simpleItems && section.simpleItems.length > 0 && (
         <div className="w-full">
           {section.simpleItems.map((item, i) => (
@@ -139,7 +115,6 @@ function PriceSectionBlock({ section }: { section: PriceV2Section }) {
         </div>
       )}
 
-      {/* Notes */}
       {section.notes && section.notes.length > 0 && (
         <div className="mt-4 mb-1 px-5 space-y-1 max-[480px]:px-3">
           {section.notes.map((note, i) => (
@@ -150,18 +125,14 @@ function PriceSectionBlock({ section }: { section: PriceV2Section }) {
         </div>
       )}
 
-      {/* Bottom padding when no notes */}
-      {(!section.notes || section.notes.length === 0) && (
-        <div className="h-1" />
-      )}
+      {(!section.notes || section.notes.length === 0) && <div className="h-1" />}
     </div>
   )
 }
 
-const ServicePage = memo(function ServicePage({ data, htmlTitles = false }: ServicePageProps) {
+const ServicePage = memo(function ServicePage({ data }: { data: ServiceData }) {
   return (
     <main className="pt-[80px] flex flex-col items-center justify-center text-center text-brand-black gap-[60px] max-[1200px]:gap-[80px]">
-      {/* HERO */}
       <section className="service-hero relative bg-brand-black w-full h-[60vh] min-h-[400px] flex justify-center items-center uppercase overflow-hidden font-forum max-[1200px]:h-screen max-[1200px]:max-h-[1200px] max-[1200px]:min-h-[600px] max-[1199px]:h-[80vh] max-[1199px]:min-h-[500px] max-[768px]:h-[60vh] max-[540px]:h-[50vh] max-[480px]:h-[45vh] max-[420px]:h-[40vh] max-[350px]:h-[35vh]">
         {data.hero.image && (
           <Image
@@ -177,7 +148,6 @@ const ServicePage = memo(function ServicePage({ data, htmlTitles = false }: Serv
         </h1>
       </section>
 
-      {/* INFORM */}
       {data.info.text && (
         <section className="px-4 w-full">
           <p className="font-forum max-w-[800px] mx-auto text-[24px] leading-[1.6] m-0 max-[540px]:text-[22px] max-[420px]:text-[20px]">
@@ -186,41 +156,16 @@ const ServicePage = memo(function ServicePage({ data, htmlTitles = false }: Serv
         </section>
       )}
 
-      {/* PRICES — modern v2 design */}
-      {data.priceV2 ? (
+      {data.priceV2 && (
         <section className="w-full max-w-[860px] px-4 -mb-10 flex flex-col gap-8">
           {data.priceV2.sections.map((section, i) => (
-            <div
-              key={i}
-              className="w-full border border-gray-200 overflow-hidden"
-            >
+            <div key={i} className="w-full border border-gray-200 overflow-hidden">
               <PriceSectionBlock section={section} />
-            </div>
-          ))}
-        </section>
-      ) : (
-        /* Legacy price display */
-        <section className="text-[20px] font-forum flex flex-col items-center gap-0 -mb-10 px-4 w-full">
-          {data.price.map((item, i) => (
-            <div
-              key={`${item.title}-${i}`}
-              className="flex items-center w-full max-w-[800px] border-b border-gray-100 py-3 gap-3"
-            >
-              {htmlTitles ? (
-                <span
-                  className="text-left flex-1 text-[18px] max-[480px]:text-[16px]"
-                  dangerouslySetInnerHTML={{ __html: item.title.replace(/<\/br>/g, '<br/>') }}
-                />
-              ) : (
-                <span className="text-left flex-1 text-[18px] max-[480px]:text-[16px]">{item.title}</span>
-              )}
-              <span className="text-right whitespace-nowrap font-medium text-[18px] max-[480px]:text-[16px]">{item.price}</span>
             </div>
           ))}
         </section>
       )}
 
-      {/* BOOKING */}
       <section className="pb-[60px] px-4 w-full flex flex-col items-center">
         {data.book.text && (
           <p className="font-forum text-[1.2rem] mb-10 max-w-[800px] w-full text-center">

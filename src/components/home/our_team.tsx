@@ -1,27 +1,11 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
 import Image from 'next/image'
 import content from '../../../content/content.json'
+import { useScrollReveal } from '../../hooks/useScrollReveal'
 
 export default function OurTeam() {
-  const blockRef = useRef<HTMLElement>(null)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible')
-          }
-        })
-      },
-      { threshold: 0.2 }
-    )
-
-    if (blockRef.current) observer.observe(blockRef.current)
-    return () => observer.disconnect()
-  }, [])
+  const blockRef = useScrollReveal(0.2)
 
   return (
     <section
@@ -34,12 +18,12 @@ export default function OurTeam() {
 
       <div className="flex justify-center items-start gap-[60px] max-[1024px]:flex-col max-[1024px]:items-center max-[1024px]:gap-[30px] max-[1024px]:max-w-[66.666%] max-[1024px]:mx-auto max-[768px]:flex-col max-[768px]:items-center max-[768px]:gap-5 max-[768px]:max-w-none max-[768px]:w-full">
         <div className="bg-brand-bg border border-brand-black rounded-[14px] flex justify-center items-center text-[22px] font-forum font-normal p-[10px] leading-[1.3] w-full h-[354px] box-border flex-1 max-w-[630px] max-[1024px]:h-auto max-[1024px]:aspect-video max-[768px]:h-auto max-[768px]:aspect-video">
-          <p>{content.our_team || 'Текст не найден'}</p>
+          <p>{content.our_team}</p>
         </div>
 
         <div className="border border-brand-black rounded-[14px] overflow-hidden relative w-full h-[354px] box-border flex-1 max-w-[630px] max-[1024px]:h-auto max-[1024px]:aspect-video max-[768px]:h-auto max-[768px]:aspect-video">
           <Image
-            src={content.our_team_img || '/default-image.jpg'}
+            src={content.our_team_img}
             alt="Команда LariBrand"
             width={630}
             height={400}

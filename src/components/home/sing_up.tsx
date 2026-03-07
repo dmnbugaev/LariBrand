@@ -1,27 +1,12 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
 import Image from 'next/image'
 import content from '../../../content/content.json'
 import LinkSingUp from '../ui/LinkSingUp'
+import { useScrollReveal } from '../../hooks/useScrollReveal'
 
 export default function Sing_Up() {
-  const sectionRef = useRef<HTMLElement>(null)
-
-  useEffect(() => {
-    if (!sectionRef.current) return
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          sectionRef.current?.classList.add('visible')
-          observer.unobserve(entry.target)
-        }
-      },
-      { threshold: 0.15 }
-    )
-    observer.observe(sectionRef.current)
-    return () => observer.disconnect()
-  }, [])
+  const sectionRef = useScrollReveal(0.15)
 
   return (
     <section ref={sectionRef} className="section-fade bg-brand-red pt-[60px] pb-[60px] text-center max-[460px]:px-5">

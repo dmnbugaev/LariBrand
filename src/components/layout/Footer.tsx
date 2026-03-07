@@ -1,49 +1,19 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import YandexMap from '../ui/Map'
 import content from '../../../content/content.json'
-
-const NAV_LINKS = [
-  { href: '/keratin_and_botox', label: 'Кератин и ботокс' },
-  { href: '/safe_hair_straightening', label: 'Безопасное выпрямление' },
-  { href: '/cold_hair_reconstruction', label: 'Холодная реконструкция' },
-  { href: '/bioavailability', label: 'Биозавивка' },
-  { href: '/total_reconstruction', label: 'Тотальная реконструкция' },
-  { href: '/hair_coloring', label: 'Окрашивание' },
-  { href: '/hair_cutting', label: 'Стрижка волос' },
-  { href: '/afro_weaving', label: 'Афро-плетение' },
-  { href: '/hair_styling', label: 'Укладки' },
-  { href: '/additional_services', label: 'Доп. услуги' },
-]
+import { useScrollReveal } from '../../hooks/useScrollReveal'
+import { SERVICE_NAV_LINKS } from '../../lib/nav-links'
 
 export default function Footer() {
-  const footerRef = useRef<HTMLElement>(null)
-
-  useEffect(() => {
-    if (!footerRef.current) return
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          footerRef.current?.classList.add('visible')
-          observer.unobserve(entry.target)
-        }
-      },
-      { threshold: 0.1 }
-    )
-
-    observer.observe(footerRef.current)
-    return () => observer.disconnect()
-  }, [])
+  const footerRef = useScrollReveal<HTMLElement>(0.1)
 
   return (
     <footer ref={footerRef} className="footer-anim bg-brand-bg font-forum">
       <div className="px-[60px] pt-[50px] pb-[30px] max-w-[1400px] mx-auto max-[720px]:px-5 max-[720px]:pt-[40px] max-[720px]:pb-[24px]">
 
-        {/* Main grid */}
         <div className="grid grid-cols-[2fr_1fr_1fr] gap-[60px] max-[1100px]:grid-cols-[1fr_1fr] max-[600px]:grid-cols-1 max-[600px]:gap-[32px]">
 
           {/* Column 1: Brand + Map */}
@@ -65,7 +35,7 @@ export default function Footer() {
               Услуги
             </h3>
             <nav className="flex flex-col gap-[10px]" aria-label="Услуги">
-              {NAV_LINKS.map(({ href, label }) => (
+              {SERVICE_NAV_LINKS.map(({ href, label }) => (
                 <Link
                   key={href}
                   href={href}
