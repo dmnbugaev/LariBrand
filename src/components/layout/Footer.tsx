@@ -92,7 +92,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <Image src="/icons/about-us-icon/tg.svg" width={22} height={22} alt="Max" />
+                    <Image src="/icons/about-us-icon/max.svg" width={22} height={22} alt="Max" />
                   </a>
                   <a
                     href={content.phone_number_1_link}
