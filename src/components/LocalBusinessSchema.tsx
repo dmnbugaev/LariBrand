@@ -40,7 +40,7 @@ export default function LocalBusinessSchema() {
     ],
     sameAs: [
       'https://vk.com/lari_brand',
-      'https://t.me/Lari_Brand64',
+      'https://max.ru/u/f9LHodD0cOID7BufLjRhKQsdUk99Sz2soXHkc3bJp__hN1mSBXPsk4-52wg',
     ],
     hasOfferCatalog: {
       '@type': 'OfferCatalog',

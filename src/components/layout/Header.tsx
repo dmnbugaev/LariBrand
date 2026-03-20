@@ -153,12 +153,12 @@ export default function Header() {
             <Link
               href={content.telegram_link}
               onClick={close}
-              aria-label="Написать в Telegram"
+              aria-label="Написать в Max"
               target="_blank"
               rel="noopener noreferrer"
               className="flex justify-center items-center w-full py-[18px] px-5 text-white bg-brand-red font-normal text-[17px] rounded-[14px] no-underline text-center shrink-0 box-border min-h-[56px] font-forum transition-transform duration-200 hover:scale-105 active:scale-95"
             >
-              Telegram
+              Max
             </Link>
           </div>
         </div>
