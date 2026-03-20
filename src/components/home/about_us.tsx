@@ -21,7 +21,7 @@ export default function About_Us() {
           <Image src="/icons/about-us-icon/ph.svg" width={37} height={37} alt="" aria-hidden="true" />
         </LinkAboutUs>
         <LinkAboutUs href={content.telegram_link} aria-label="Написать в Max">
-          <Image src="/icons/about-us-icon/tg.svg" width={37} height={37} alt="" aria-hidden="true" />
+          <Image src="/icons/about-us-icon/max.svg" width={37} height={37} alt="" aria-hidden="true" />
         </LinkAboutUs>
       </div>
     </section>
