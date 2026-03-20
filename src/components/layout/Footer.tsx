@@ -119,6 +119,24 @@ export default function Footer() {
             Записаться онлайн →
           </Link>
         </div>
+
+        {/* Реквизиты и юридические ссылки */}
+        <div className="mt-6 text-[13px] text-brand-black opacity-60">
+          <div>ИП Козлова Кристина Сергеевна</div>
+          <div>ИНН 643101311828</div>
+          <div>ОГРНИП 324645700069027</div>
+          <nav className="flex flex-col md:flex-row gap-3 mt-2" aria-label="Юридические документы">
+            <Link href="/privacy-policy" className="no-underline transition-opacity duration-200 hover:opacity-100">
+              Политика в отношении обработки персональных данных
+            </Link>
+            <Link href="/consent" className="no-underline transition-opacity duration-200 hover:opacity-100">
+              Согласие на обработку персональных данных
+            </Link>
+            <Link href="/offer" className="no-underline transition-opacity duration-200 hover:opacity-100">
+              Оферта
+            </Link>
+          </nav>
+        </div>
       </div>
     </footer>
   )
