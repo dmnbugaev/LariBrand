@@ -88,11 +88,11 @@ export default function Footer() {
                   <a
                     href={content.telegram_link}
                     className="w-[44px] h-[44px] bg-brand-red rounded-full flex items-center justify-center transition-transform duration-200 hover:scale-110 active:scale-95"
-                    aria-label="Написать в Telegram"
+                    aria-label="Написать в Max"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <Image src="/icons/about-us-icon/tg.svg" width={22} height={22} alt="Telegram" />
+                    <Image src="/icons/about-us-icon/tg.svg" width={22} height={22} alt="Max" />
                   </a>
                   <a
                     href={content.phone_number_1_link}

@@ -20,7 +20,7 @@ export default function About_Us() {
         <LinkAboutUs href={content.phone_number_1_link} aria-label="Позвонить нам">
           <Image src="/icons/about-us-icon/ph.svg" width={37} height={37} alt="" aria-hidden="true" />
         </LinkAboutUs>
-        <LinkAboutUs href={content.telegram_link} aria-label="Написать в Telegram">
+        <LinkAboutUs href={content.telegram_link} aria-label="Написать в Max">
           <Image src="/icons/about-us-icon/tg.svg" width={37} height={37} alt="" aria-hidden="true" />
         </LinkAboutUs>
       </div>

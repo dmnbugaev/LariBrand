@@ -75,7 +75,7 @@ export default function OfferPage() {
           <ul>
             <li>оформление записи через форму онлайн-записи на сайте laribrand.ru;</li>
             <li>запись по телефону +7 (987) 329-89-96;</li>
-            <li>запись через мессенджер Telegram (@Lari_Brand64);</li>
+            <li>запись через мессенджер Max;</li>
             <li>явка в салон LariBrand и заказ Услуги.</li>
           </ul>
           <p>
