@@ -43,6 +43,7 @@ const galleryItems: GalleryItem[] = [
   { id: 36, title: 'Мужская стрижка', category: 'Мужская стрижка', singleImage: '/images/IMG_3711.jpg' },
   { id: 37, title: 'Мужская стрижка', category: 'Мужская стрижка', singleImage: '/images/IMG_3712.jpg' },
   { id: 38, title: 'Мужская стрижка', category: 'Мужская стрижка', singleImage: '/images/IMG_3713.jpg' },
+  { id: 39, title: 'Горячая реконструкция', category: 'Кератин и ботокс', beforeImage: '/images/IMG_9826.jpg', afterImage: '/images/IMG_9863.jpg' },
 ]
 
 const CATEGORIES = [
