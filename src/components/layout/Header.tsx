@@ -8,6 +8,7 @@ import { SERVICE_NAV_LINKS } from '../../lib/nav-links'
 
 const NAV_LINKS = [
   { href: '/', label: 'ГЛАВНАЯ' },
+  { href: '/promo', label: '✨ АКЦИИ' },
   ...SERVICE_NAV_LINKS.map(({ href, label }) => ({ href, label: label.toUpperCase() })),
 ]
 

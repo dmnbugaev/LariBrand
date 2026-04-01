@@ -6,6 +6,8 @@ import About_Us from '@/components/home/about_us'
 import Services from '@/components/home/services'
 import Our_Team from '@/components/home/our_team'
 import Sing_Up from '@/components/home/sing_up'
+import PromoBanner from '@/components/home/PromoBanner'
+import PromoModal from '@/components/PromoModal'
 
 export const metadata: Metadata = {
   title: 'LariBrand Саратов — Салон красоты | Кератин, ботокс, стрижки, окрашивание',
@@ -44,7 +46,9 @@ export default function HomePage() {
   return (
     <>
       <Header />
+      <PromoModal />
       <Hero />
+      <PromoBanner />
       <About_Us />
       <Services />
       <Sing_Up />
