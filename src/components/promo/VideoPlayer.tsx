@@ -107,7 +107,7 @@ export default function VideoPlayer({ src }: { src: string }) {
   return (
     <div
       ref={containerRef}
-      className={`relative bg-black overflow-hidden cursor-pointer select-none ${fullscreen ? '' : 'rounded-[14px]'}`}
+      className={`relative bg-black overflow-hidden cursor-pointer select-none ${fullscreen ? '' : 'rounded-[14px] max-[600px]:rounded-none'}`}
       onMouseMove={showControls}
       onMouseLeave={() => playing && setControlsVisible(false)}
       onClick={togglePlay}
@@ -115,7 +115,7 @@ export default function VideoPlayer({ src }: { src: string }) {
       <video
         ref={videoRef}
         src={src}
-        className="w-full block"
+        className="w-full block aspect-video"
         onTimeUpdate={() => {
           const v = videoRef.current
           if (v) setCurrentTime(v.currentTime)

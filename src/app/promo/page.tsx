@@ -131,12 +131,12 @@ export default function PromoPage() {
         </section>
 
         {/* Video */}
-        <section className="px-[60px] py-[70px] bg-white max-[600px]:px-5 max-[600px]:py-[50px]">
+        <section className="px-[60px] py-[70px] bg-white max-[600px]:px-0 max-[600px]:py-[50px]">
           <div className="max-w-[900px] mx-auto">
-            <h2 className="font-forum text-[38px] text-brand-black text-center mb-[40px] m-0 max-[600px]:text-[28px] max-[600px]:mb-8">
+            <h2 className="font-forum text-[38px] text-brand-black text-center mb-[40px] m-0 max-[600px]:text-[28px] max-[600px]:mb-8 max-[600px]:px-5">
               Взгляните на результат
             </h2>
-            <div className="shadow-[0_8px_40px_rgba(0,0,0,0.12)]">
+            <div className="shadow-[0_8px_40px_rgba(0,0,0,0.12)] max-[600px]:shadow-none">
               <VideoPlayer src="/images/images_window/video_promo.mp4" />
             </div>
           </div>

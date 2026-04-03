@@ -17,7 +17,8 @@ jobs:
           port: 22222
           script: |
             cd /var/www/LariBrand
-            git pull origin main
+            git fetch origin
+            git reset --hard origin/main
             npm ci
             npm run build
             pm2 restart laribrand
