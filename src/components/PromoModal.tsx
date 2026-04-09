@@ -4,29 +4,25 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-const STORAGE_KEY = 'promo-v1-dismissed'
+const STORAGE_KEY = 'promo-april-2026-dismissed'
 
 const OFFERS = [
   {
-    emoji: '🌸',
-    title: 'Стрижка + Пилинг + SPA-уход',
+    title: 'Стрижка + Пилинг + СПА-уход',
     newPrice: '2 900 ₽',
     oldPrice: '5 200 ₽',
   },
   {
-    emoji: '🌀',
     title: 'Биозавивка классическая',
     newPrice: '5 500 ₽',
     oldPrice: '9 000 ₽',
   },
   {
-    emoji: '🎨',
-    title: 'Окрашивание + Холодная реконструкция + Dyson',
+    title: 'Окрашивание + Реконструкция + Dyson',
     newPrice: '5 500 ₽',
     oldPrice: '10 500 ₽',
   },
   {
-    emoji: '🌿',
     title: 'Пилинг + Реконструкция + Ботокс',
     newPrice: '4 500 ₽',
     oldPrice: '8 900 ₽',
@@ -75,23 +71,22 @@ export default function PromoModal() {
             </svg>
           </button>
           <p className="font-forum text-[12px] text-white/70 uppercase tracking-widest mb-1 m-0">
-            Специальное предложение
+            13 — 30 апреля
           </p>
           <h2 className="font-forum text-[26px] text-white m-0 leading-tight">
-            Ваше время сиять ✨
+            Весна — время сиять ✨
           </h2>
         </div>
 
         {/* Body */}
         <div className="px-6 py-5">
           <p className="font-forum text-[15px] text-brand-black/70 mb-4 leading-relaxed">
-            Мы подготовили специальные предложения, чтобы Ваш путь к идеальному образу был ещё приятнее:
+            Специальные весенние комплексы — четыре повода подарить волосам заботу со скидкой до 50%:
           </p>
 
           <div className="flex flex-col gap-2.5 mb-6">
             {OFFERS.map((o, i) => (
               <div key={i} className="flex items-center gap-3 bg-[#F0EDE9] rounded-[12px] px-3 py-3">
-                <span className="text-[22px] shrink-0">{o.emoji}</span>
                 <div className="flex-1 min-w-0">
                   <p className="font-forum text-[14px] text-brand-black leading-snug m-0">{o.title}</p>
                 </div>
