@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import content from '../../../content/content.json'
-//sdfsdf
+
 export default function Hero() {
   return (
     <section className="min-h-[100dvh] flex items-center justify-center px-[60px] bg-white pt-[80px] pb-[60px] max-[720px]:px-5 max-[600px]:min-h-0 max-[600px]:pt-[100px] max-[600px]:pb-[50px]">
