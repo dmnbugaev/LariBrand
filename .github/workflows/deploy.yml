@@ -15,10 +15,13 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
           script: |
+            cp -r /var/www/LariBrand/public/upload /tmp/laribrand_upload_backup || true
             cd /var/www/LariBrand
             git fetch origin
             git reset --hard origin/main
             npm ci
             npm run build
+            cp -r /tmp/laribrand_upload_backup /var/www/LariBrand/public/upload || true
+            cp -r /var/www/LariBrand/public /var/www/LariBrand/.next/standalone/public
+            cp -r /var/www/LariBrand/.next/static /var/www/LariBrand/.next/standalone/.next/static
             pm2 restart laribrand
-          command_timeout: 30m
