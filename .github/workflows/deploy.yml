@@ -14,6 +14,7 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
+          passphrase: ${{ secrets.SSH_PASSPHRASE }}
           port: 22222
           script: |
             cp -r /var/www/LariBrand/public/upload /tmp/laribrand_upload_backup || true
