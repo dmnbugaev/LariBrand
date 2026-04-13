@@ -44,6 +44,14 @@ const galleryItems: GalleryItem[] = [
   { id: 37, title: 'Мужская стрижка', category: 'Мужская стрижка', singleImage: '/images/IMG_3712.jpg' },
   { id: 38, title: 'Мужская стрижка', category: 'Мужская стрижка', singleImage: '/images/IMG_3713.jpg' },
   { id: 39, title: 'Горячая реконструкция', category: 'Кератин и ботокс', beforeImage: '/images/IMG_9826.jpg', afterImage: '/images/IMG_9863.jpg' },
+  { id: 40, title: 'Тотальная реконструкция ', category: 'Тотальная реконструкция', beforeImage: '/images/IMG_2950.jpg', afterImage: '/images/IMG_2951.jpg' },
+  { id: 41, title: 'Холодная реконструкция волос', category: 'Холодная реконструкция', singleImage: '/images/IMG_2063.jpg' },
+  { id: 42, title: 'Стрижка каскад', category: 'Стрижка волос', singleImage: '/images/2111.jpg' },
+  { id: 43, title: 'Стрижка каскад', category: 'Стрижка волос', singleImage: '/images/2669.jpg' },
+  { id: 44, title: 'Биозавивка волос', category: 'Биозавивка', singleImage: '/images/3130.jpg' },
+  { id: 45, title: 'Биозавивка волос', category: 'Биозавивка', singleImage: '/images/2633.jpg' },
+  { id: 46, title: 'Стрижка каскад', category: 'Стрижка волос', beforeImage: '/images/IMG_2822.jpg', afterImage: '/images/IMG_2823.jpg' },
+
 ]
 
 const CATEGORIES = [
