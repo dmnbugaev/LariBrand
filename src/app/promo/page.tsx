@@ -157,6 +157,47 @@ export default function PromoPage() {
           </div>
         </section>
 
+        {/* Gallery Section */}
+        <section className="bg-white px-[60px] py-[70px] max-[600px]:px-5 max-[600px]:py-[50px]">
+          <div className="max-w-[1200px] mx-auto">
+            <p className="font-forum text-[13px] text-brand-black/50 uppercase tracking-widest text-center mb-3 m-0">
+              Наш салон в деталях
+            </p>
+            <h2 className="font-forum text-[38px] text-brand-black text-center mb-[50px] m-0 max-[600px]:text-[28px] max-[600px]:mb-8">
+              Атмосфера LariBrand
+            </h2>
+
+            <div className="grid grid-cols-3 gap-4 max-[900px]:grid-cols-2 max-[600px]:grid-cols-1">
+              {[
+                '/images/images_window/new/IMG_4229.JPG',
+                '/images/images_window/new/IMG_4243.JPG',
+                '/images/images_window/new/IMG_4245.JPG',
+                '/images/images_window/new/IMG_4239.JPG',
+                '/images/images_window/new/IMG_4240.JPG',
+                '/images/images_window/new/IMG_4241.JPG',
+                '/images/images_window/new/IMG_4238.JPG',
+                '/images/images_window/new/IMG_4270.JPG',
+                '/images/images_window/new/IMG_4247.JPG',
+              ].map((src, idx) => (
+                <div
+                  key={idx}
+                  className="group relative rounded-[16px] overflow-hidden shadow-[0_6px_24px_rgba(0,0,0,0.10)] transition-all duration-500 hover:shadow-[0_12px_40px_rgba(0,0,0,0.16)]"
+                  style={{ aspectRatio: '1' }}
+                >
+                  <Image
+                    src={src}
+                    alt={`LariBrand салон фото ${idx + 1}`}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-[1.05]"
+                    sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-500"></div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Bottom CTA */}
         <section className="bg-brand-red text-white text-center px-[60px] py-[60px] max-[600px]:px-5 max-[600px]:py-[50px]">
           <p className="font-forum text-[13px] text-white/70 uppercase tracking-widest mb-3 m-0">

@@ -51,6 +51,7 @@ const galleryItems: GalleryItem[] = [
   { id: 44, title: 'Биозавивка волос', category: 'Биозавивка', singleImage: '/images/3130.jpg' },
   { id: 45, title: 'Биозавивка волос', category: 'Биозавивка', singleImage: '/images/2633.jpg' },
   { id: 46, title: 'Стрижка каскад', category: 'Стрижка волос', beforeImage: '/images/IMG_2822.jpg', afterImage: '/images/IMG_2823.jpg' },
+  { id: 47, title: 'Корейская биозавивка', category: 'Биозавивка', singleImage: '/images/4880.jpg' },
 
 ]
 
