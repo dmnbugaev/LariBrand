@@ -4,7 +4,6 @@ import Footer from '@/components/layout/Footer'
 import Hero from '@/components/home/hero'
 import About_Us from '@/components/home/about_us'
 import Services from '@/components/home/services'
-import Our_Team from '@/components/home/our_team'
 import Sing_Up from '@/components/home/sing_up'
 import PromoBanner from '@/components/home/PromoBanner'
 import PromoModal from '@/components/PromoModal'
@@ -52,7 +51,6 @@ export default function HomePage() {
       <About_Us />
       <Services />
       <Sing_Up />
-      <Our_Team />
       <Footer />
     </>
   )
