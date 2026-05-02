@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useMemo, useCallback } from 'react'
+import Image from 'next/image'
 import { BeforeAfterSlider } from './BeforeAfterSlider'
 import type { GalleryItem } from '../types'
 
@@ -15,18 +16,18 @@ const galleryItems: GalleryItem[] = [
   { id: 8, title: 'Кератиновое выпрямление', category: 'Кератин и ботокс', beforeImage: '/images/IMG_7976.jpg', afterImage: '/images/IMG_7979.jpg' },
   { id: 9, title: 'Окрашивание волос', category: 'Окрашивание', beforeImage: '/images/IMG_7994.jpg', afterImage: '/images/IMG_7993.jpg' },
   { id: 10, title: 'Окрашивание волос', category: 'Окрашивание', beforeImage: '/images/IMG_7988.jpg', afterImage: '/images/IMG_7987.jpg' },
-  { id: 11, title: 'Биозавивка волос', category: 'Биозавивка', beforeImage: '/images/IMG_8011.jpg', afterImage: '/images/IMG_8012.jpg' },
-  { id: 12, title: 'Биозавивка волос', category: 'Биозавивка', beforeImage: '/images/IMG_8009.jpg', afterImage: '/images/IMG_8008.jpg' },
-  { id: 13, title: 'Биозавивка волос', category: 'Биозавивка', beforeImage: '/images/IMG_8002.jpg', afterImage: '/images/IMG_8004.jpg' },
+  { id: 11, title: 'Биозавивка волос', category: 'Классическая биозавивка', beforeImage: '/images/IMG_8011.jpg', afterImage: '/images/IMG_8012.jpg' },
+  { id: 12, title: 'Биозавивка волос', category: 'Классическая биозавивка', beforeImage: '/images/IMG_8009.jpg', afterImage: '/images/IMG_8008.jpg' },
+  { id: 13, title: 'Биозавивка волос', category: 'Классическая биозавивка', beforeImage: '/images/IMG_8002.jpg', afterImage: '/images/IMG_8004.jpg' },
   { id: 14, title: 'Холодная реконструкция волос', category: 'Холодная реконструкция', beforeImage: '/images/IMG_3315.jpg', afterImage: '/images/IMG_3373.jpg' },
   { id: 15, title: 'Холодная реконструкция волос', category: 'Холодная реконструкция', beforeImage: '/images/IMG_3678.JPG', afterImage: '/images/IMG_3311.jpg' },
   { id: 16, title: 'Окрашивание и контуринг волос', category: 'Окрашивание', beforeImage: '/images/IMG_2573.jpg', afterImage: '/images/IMG_2655.jpg' },
-  { id: 17, title: 'Биозавивка волос', category: 'Биозавивка', beforeImage: '/images/IMG_3648.JPG', afterImage: '/images/IMG_3647.jpg' },
+  { id: 17, title: 'Биозавивка волос', category: 'Классическая биозавивка', beforeImage: '/images/IMG_3648.JPG', afterImage: '/images/IMG_3647.jpg' },
   { id: 18, title: 'Кератиновое выпрямление', category: 'Кератин и ботокс', beforeImage: '/images/IMG_2163.jpg', afterImage: '/images/IMG_3653.jpg' },
   { id: 19, title: 'Окрашивание волос', category: 'Окрашивание', beforeImage: '/images/IMG_3657.JPG', afterImage: '/images/IMG_3658.JPG' },
   { id: 20, title: 'Кератиновое выпрямление', category: 'Кератин и ботокс', beforeImage: '/images/IMG_1501.jpg', afterImage: '/images/IMG_1531.jpg' },
   { id: 21, title: 'Окрашивание волос', category: 'Окрашивание', beforeImage: '/images/IMG_0936.jpg', afterImage: '/images/IMG_3660.jpg' },
-  { id: 22, title: 'Биозавивка волос', category: 'Биозавивка', beforeImage: '/images/IMG_3651.jpg', afterImage: '/images/IMG_3652.jpg' },
+  { id: 22, title: 'Биозавивка волос', category: 'Классическая биозавивка', beforeImage: '/images/IMG_3651.jpg', afterImage: '/images/IMG_3652.jpg' },
   { id: 23, title: 'Тотальная реконструкция', category: 'Тотальная реконструкция', beforeImage: '/images/IMG_3665.jpg', afterImage: '/images/IMG_3664.jpg' },
   { id: 24, title: 'Окрашивание сложное', category: 'Окрашивание', beforeImage: '/images/IMG_3666.jpg', afterImage: '/images/IMG_0258.JPG' },
   { id: 25, title: 'Окрашивание волос', category: 'Окрашивание', beforeImage: '/images/IMG_2898.jpg', afterImage: '/images/IMG_3685.JPG' },
@@ -46,12 +47,12 @@ const galleryItems: GalleryItem[] = [
   { id: 39, title: 'Горячая реконструкция', category: 'Кератин и ботокс', beforeImage: '/images/IMG_9826.jpg', afterImage: '/images/IMG_9863.jpg' },
   { id: 40, title: 'Тотальная реконструкция ', category: 'Тотальная реконструкция', beforeImage: '/images/IMG_2950.jpg', afterImage: '/images/IMG_2951.jpg' },
   { id: 41, title: 'Холодная реконструкция волос', category: 'Холодная реконструкция', singleImage: '/images/IMG_2063.jpg' },
-  { id: 42, title: 'Стрижка каскад', category: 'Стрижка волос', singleImage: '/images/2111.jpg' },
-  { id: 43, title: 'Стрижка каскад', category: 'Стрижка волос', singleImage: '/images/2669.jpg' },
-  { id: 44, title: 'Биозавивка волос', category: 'Биозавивка', singleImage: '/images/3130.jpg' },
-  { id: 45, title: 'Биозавивка волос', category: 'Биозавивка', singleImage: '/images/2633.jpg' },
+  { id: 42, title: 'Стрижка каскад', category: 'Стрижка волос', singleImage: '/images/IMG_2111.JPG' },
+  { id: 43, title: 'Стрижка каскад', category: 'Стрижка волос', singleImage: '/images/IMG_2669.jpg' },
+  { id: 44, title: 'Биозавивка волос', category: 'Классическая биозавивка', singleImage: '/images/IMG_3130.jpg' },
+  { id: 45, title: 'Биозавивка волос', category: 'Классическая биозавивка', singleImage: '/images/IMG_2633.jpg' },
   { id: 46, title: 'Стрижка каскад', category: 'Стрижка волос', beforeImage: '/images/IMG_2822.jpg', afterImage: '/images/IMG_2823.jpg' },
-  { id: 47, title: 'Корейская биозавивка', category: 'Биозавивка', singleImage: '/images/4880.jpg' },
+  { id: 47, title: 'Корейская биозавивка', category: 'Корейская биозавивка', singleImage: '/images/IMG_4480.JPG' },
 
 ]
 
@@ -66,25 +67,42 @@ const CATEGORIES = [
   'Мужская стрижка',
 ]
 
+const BIO_WAVE_SUBCATEGORIES = ['Классическая биозавивка', 'Корейская биозавивка']
+const BIO_WAVE_FILTER = ['Все', ...BIO_WAVE_SUBCATEGORIES]
+
 interface BeforeAfterGalleryProps {
   defaultCategory?: string
 }
 
 export function BeforeAfterGallery({ defaultCategory = 'Все' }: BeforeAfterGalleryProps) {
-  const initialCategory = CATEGORIES.includes(defaultCategory) ? defaultCategory : 'Все'
+  const isBioWavePage = defaultCategory === 'Биозавивка'
+
+  const initialCategory = isBioWavePage
+    ? 'Все'
+    : CATEGORIES.includes(defaultCategory)
+    ? defaultCategory
+    : 'Все'
+
   const [selectedCategory, setSelectedCategory] = useState<string>(initialCategory)
 
   useEffect(() => {
-    setSelectedCategory(CATEGORIES.includes(defaultCategory) ? defaultCategory : 'Все')
-  }, [defaultCategory])
+    setSelectedCategory(
+      isBioWavePage ? 'Все' : CATEGORIES.includes(defaultCategory) ? defaultCategory : 'Все'
+    )
+  }, [defaultCategory, isBioWavePage])
 
-  const filteredItems = useMemo(
-    () =>
-      selectedCategory === 'Все'
-        ? galleryItems
-        : galleryItems.filter((item) => item.category === selectedCategory),
-    [selectedCategory]
-  )
+  const filteredItems = useMemo(() => {
+    if (isBioWavePage) {
+      const bioItems = galleryItems.filter((item) => BIO_WAVE_SUBCATEGORIES.includes(item.category))
+      if (selectedCategory === 'Все') return bioItems
+      return bioItems.filter((item) => item.category === selectedCategory)
+    }
+    if (selectedCategory === 'Все') return galleryItems
+    if (selectedCategory === 'Биозавивка') {
+      return galleryItems.filter((item) => BIO_WAVE_SUBCATEGORIES.includes(item.category))
+    }
+    return galleryItems.filter((item) => item.category === selectedCategory)
+  }, [selectedCategory, isBioWavePage])
 
   const isCutCategory = useMemo(
     () => selectedCategory === 'Стрижка волос' || selectedCategory === 'Мужская стрижка',
@@ -94,6 +112,8 @@ export function BeforeAfterGallery({ defaultCategory = 'Все' }: BeforeAfterGa
   const handleCategorySelect = useCallback((category: string) => {
     setSelectedCategory(category)
   }, [])
+
+  const displayCategories = isBioWavePage ? BIO_WAVE_FILTER : CATEGORIES
 
   return (
     <section className="py-16 px-4 max-w-[1280px] mx-auto -mt-[60px] font-forum max-[768px]:py-12 max-[768px]:px-3 max-[768px]:-mt-10">
@@ -111,7 +131,7 @@ export function BeforeAfterGallery({ defaultCategory = 'Все' }: BeforeAfterGa
 
       {/* Filter */}
       <div className="flex flex-wrap justify-center gap-3 mb-12 max-[768px]:gap-2 max-[768px]:mb-8">
-        {CATEGORIES.map((category) => (
+        {displayCategories.map((category) => (
           <button
             key={category}
             onClick={() => handleCategorySelect(category)}
@@ -138,11 +158,11 @@ export function BeforeAfterGallery({ defaultCategory = 'Все' }: BeforeAfterGa
               <div className="w-full aspect-[4/3] relative overflow-hidden bg-brand-bg max-[640px]:aspect-[3/4]">
                 {item.singleImage ? (
                   <div className="single-image-container relative w-full h-full">
-                    <img
+                    <Image
                       src={item.singleImage}
                       alt={item.title}
-                      loading="lazy"
-                      className="single-image w-full h-full object-cover block transition-transform duration-300"
+                      fill
+                      className="single-image object-cover transition-transform duration-300"
                     />
                   </div>
                 ) : (

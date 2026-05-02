@@ -3,6 +3,7 @@ import localFont from 'next/font/local'
 import CookieConsent from '../components/CookieConsent'
 import YandexMetrika from '../components/YandexMetrika'
 import LocalBusinessSchema from '../components/LocalBusinessSchema'
+import FloatingBookingButton from '../components/ui/FloatingBookingButton'
 import './globals.css'
 
 const forum = localFont({
@@ -102,6 +103,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <body>
         <LocalBusinessSchema />
         {children}
+        <FloatingBookingButton />
         <CookieConsent />
         <YandexMetrika />
       </body>

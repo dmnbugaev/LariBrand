@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\({k:v for k,v in d.items\\(\\) if not k.startswith\\('grid_'\\) and k not in ['reviews','works']}\\)\")",
+      "Bash(npx next *)",
+      "Bash(npx tsc *)",
+      "Bash(cat eslint.config.mjs)",
+      "Bash(cat .eslintrc.json)",
+      "Bash(cat .eslintrc.js)",
+      "PowerShell(Get-ChildItem -Path \"D:\\\\WebSite\\\\LariBrand\" -Force | Format-Table Name, @{Name=\"Type\";Expression={if \\($_.PSIsContainer\\) {\"DIR\"} else {\"FILE\"}}} -AutoSize)",
+      "Bash(xargs grep *)",
+      "Bash(node -e \"const c = require\\('./content/content.json'\\); console.log\\(JSON.stringify\\({sing_up_link: c.sing_up_link, max_link: c.max_link, contacts: c.contacts}, null, 2\\)\\)\")",
+      "Bash(node -e \"const c = require\\('./content/content.json'\\); const keys = Object.keys\\(c\\); keys.forEach\\(k => { if\\(k.includes\\('max'\\) || k.includes\\('Max'\\) || k.includes\\('contact'\\) || k.includes\\('link'\\) || k.includes\\('social'\\) || k.includes\\('telegram'\\) || k.includes\\('messenger'\\)\\) console.log\\(k+':', JSON.stringify\\(c[k]\\).slice\\(0,100\\)\\) }\\)\")",
+      "Bash(npm run *)",
+      "Bash(node -e \"const c = require\\('./content/content.json'\\); console.log\\(JSON.stringify\\(c.bioavailability, null, 2\\)\\)\")",
+      "Bash(python3 -c ' *)",
+      "Bash(powershell -Command ' *)"
+    ]
+  }
+}

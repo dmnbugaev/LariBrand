@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useCallback, useEffect } from 'react'
+import Image from 'next/image'
 import content from '../../../content/content.json'
 import type { Work } from '../../types'
 
@@ -70,11 +71,11 @@ const BeautySalonGallery: React.FC = () => {
               key={work.id}
               className="min-w-full relative h-full shrink-0 flex items-center justify-center"
             >
-              <img
+              <Image
                 src={work.image}
                 alt={work.title}
-                className="object-contain w-full h-full block max-[760px]:object-cover"
-                loading="lazy"
+                fill
+                className="object-contain max-[760px]:object-cover"
               />
               <div className="absolute bottom-0 left-0 right-0 bg-brand-bg text-brand-black p-6 text-center max-[760px]:p-5">
                 <h3 className="m-0 mb-2 text-2xl font-medium tracking-[0.5px] max-[760px]:text-xl max-[480px]:text-[1.1rem]">

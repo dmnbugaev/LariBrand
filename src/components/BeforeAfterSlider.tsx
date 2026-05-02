@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useRef, useEffect, useCallback, memo } from 'react'
+import Image from 'next/image'
 
 interface BeforeAfterSliderProps {
   beforeImage: string
@@ -110,13 +111,12 @@ export const BeforeAfterSlider = memo(function BeforeAfterSlider({
         style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)`, zIndex: 10 }}
       >
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden flex justify-center items-center">
-          <img
+          <Image
             src={beforeImage}
             alt="До"
-            loading="lazy"
-            className="w-full h-full object-cover object-center pointer-events-none transition-opacity duration-300"
+            fill
+            className="object-cover object-center pointer-events-none transition-opacity duration-300"
             onLoad={() => setImageLoaded(true)}
-            onError={(e) => { (e.target as HTMLImageElement).src = '/fallback-image.jpg' }}
           />
         </div>
         <div className="absolute top-4 left-4 text-white py-[6px] px-4 rounded-full text-sm font-medium z-20 backdrop-blur-sm bg-black/70 pointer-events-none max-[640px]:top-3 max-[640px]:left-3 max-[640px]:text-[13px] max-[640px]:px-3">
@@ -130,13 +130,12 @@ export const BeforeAfterSlider = memo(function BeforeAfterSlider({
         style={{ clipPath: `inset(0 0 0 ${sliderPosition}%)`, zIndex: 5 }}
       >
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden flex justify-center items-center">
-          <img
+          <Image
             src={afterImage}
             alt="После"
-            loading="lazy"
-            className="w-full h-full object-cover object-center pointer-events-none transition-opacity duration-300"
+            fill
+            className="object-cover object-center pointer-events-none transition-opacity duration-300"
             onLoad={() => setImageLoaded(true)}
-            onError={(e) => { (e.target as HTMLImageElement).src = '/fallback-image.jpg' }}
           />
         </div>
         <div className="absolute top-4 right-4 text-white py-[6px] px-4 rounded-full text-sm font-medium z-20 backdrop-blur-sm bg-black/70 pointer-events-none max-[640px]:top-3 max-[640px]:right-3 max-[640px]:text-[13px] max-[640px]:px-3">
