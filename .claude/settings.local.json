@@ -14,7 +14,12 @@
       "Bash(npm run *)",
       "Bash(node -e \"const c = require\\('./content/content.json'\\); console.log\\(JSON.stringify\\(c.bioavailability, null, 2\\)\\)\")",
       "Bash(python3 -c ' *)",
-      "Bash(powershell -Command ' *)"
+      "Bash(powershell -Command ' *)",
+      "Bash(Remove-Item -Path \"D:\\\\WebSite\\\\LariBrand\\\\src\\\\app\\\\promo\\\\page.tsx\" -Force)",
+      "Bash(Remove-Item -Path \"D:\\\\WebSite\\\\LariBrand\\\\src\\\\app\\\\promo\" -Force -Recurse)",
+      "Bash(Remove-Item -Path \"D:\\\\WebSite\\\\LariBrand\\\\src\\\\components\\\\PromoModal.tsx\" -Force)",
+      "Bash(Remove-Item -Path \"D:\\\\WebSite\\\\LariBrand\\\\src\\\\components\\\\home\\\\PromoBanner.tsx\" -Force)",
+      "Bash(Remove-Item -Path \"D:\\\\WebSite\\\\LariBrand\\\\src\\\\components\\\\promo\\\\VideoPlayer.tsx\" -Force)"
     ]
   }
 }
