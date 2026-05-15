@@ -43,7 +43,7 @@ export default function Hero() {
               href={content.sing_up_link}
               className="inline-flex items-center justify-center py-[16px] px-[48px] bg-brand-red text-white text-[20px] font-forum rounded-[12px] no-underline transition-all duration-300 hover:scale-105 hover:shadow-[0_8px_24px_rgba(137,29,26,0.3)] active:scale-95"
             >
-              Записаться
+              аписаться
             </Link>
           </div>
         </div>
