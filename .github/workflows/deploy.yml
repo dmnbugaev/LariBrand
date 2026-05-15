@@ -23,6 +23,4 @@ jobs:
             npm ci
             npm run build
             cp -r /tmp/laribrand_upload_backup /var/www/LariBrand/public/upload || true
-            cp -r /var/www/LariBrand/public /var/www/LariBrand/.next/standalone/public
-            cp -r /var/www/LariBrand/.next/static /var/www/LariBrand/.next/standalone/.next/static
             pm2 restart laribrand
