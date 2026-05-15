@@ -194,12 +194,14 @@
     background-clip: text;
   }
 
-  /* --- Promo modal entrance animation --- */
-  @keyframes modalIn {
-    from { opacity: 0; transform: scale(0.96) translateY(12px); }
-    to   { opacity: 1; transform: scale(1)    translateY(0); }
+  /* --- Floating booking buttons: скрываются при открытом бургер-меню --- */
+  .floating-booking {
+    transition: opacity 0.22s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.22s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  .modal-enter {
-    animation: modalIn 0.3s ease both;
+  body.menu-open .floating-booking {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(20px);
   }
 }

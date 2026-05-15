@@ -3,7 +3,7 @@ import content from '../../../content/content.json'
 
 export default function FloatingBookingButton() {
   return (
-    <div className="fixed bottom-5 left-1/2 -translate-x-1/2 flex gap-3 z-[200]">
+    <div className="floating-booking fixed bottom-5 left-1/2 -translate-x-1/2 flex gap-3 z-[200]">
       <Link
         href={content.sing_up_link}
         aria-label="Записаться онлайн"

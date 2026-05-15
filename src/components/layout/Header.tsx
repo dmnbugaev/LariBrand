@@ -34,15 +34,18 @@ export default function Header() {
       document.body.style.overflow = 'hidden'
       document.body.style.position = 'fixed'
       document.body.style.width = '100%'
+      document.body.classList.add('menu-open')
     } else {
       document.body.style.overflow = ''
       document.body.style.position = ''
       document.body.style.width = ''
+      document.body.classList.remove('menu-open')
     }
     return () => {
       document.body.style.overflow = ''
       document.body.style.position = ''
       document.body.style.width = ''
+      document.body.classList.remove('menu-open')
     }
   }, [isOpen])
 
