@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import content from '../../../content/content.json'
 import { SERVICE_NAV_LINKS } from '../../lib/nav-links'
+import { useMenu } from '../../context/MenuContext'
 
 const NAV_LINKS = [
   { href: '/', label: 'ГЛАВНАЯ' },
@@ -14,6 +15,7 @@ const NAV_LINKS = [
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const { setMenuOpen } = useMenu()
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 10)
@@ -30,24 +32,23 @@ export default function Header() {
   }, [])
 
   useEffect(() => {
+    setMenuOpen(isOpen)
     if (isOpen) {
       document.body.style.overflow = 'hidden'
       document.body.style.position = 'fixed'
       document.body.style.width = '100%'
-      document.body.classList.add('menu-open')
     } else {
       document.body.style.overflow = ''
       document.body.style.position = ''
       document.body.style.width = ''
-      document.body.classList.remove('menu-open')
     }
     return () => {
       document.body.style.overflow = ''
       document.body.style.position = ''
       document.body.style.width = ''
-      document.body.classList.remove('menu-open')
+      setMenuOpen(false)
     }
-  }, [isOpen])
+  }, [isOpen, setMenuOpen])
 
   const close = () => setIsOpen(false)
 

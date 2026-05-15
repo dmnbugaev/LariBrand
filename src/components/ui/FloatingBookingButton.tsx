@@ -1,9 +1,22 @@
+'use client'
+
 import Link from 'next/link'
 import content from '../../../content/content.json'
+import { useMenu } from '../../context/MenuContext'
 
 export default function FloatingBookingButton() {
+  const { isMenuOpen } = useMenu()
+
   return (
-    <div className="floating-booking fixed bottom-5 left-1/2 -translate-x-1/2 flex gap-3 z-[200]">
+    <div
+      className={[
+        'fixed bottom-5 left-1/2 -translate-x-1/2 flex gap-3 z-[200]',
+        'transition-[opacity,transform] duration-[220ms] ease-[cubic-bezier(0.4,0,0.2,1)]',
+        isMenuOpen
+          ? 'opacity-0 translate-y-5 pointer-events-none'
+          : 'opacity-100 translate-y-0 pointer-events-auto',
+      ].join(' ')}
+    >
       <Link
         href={content.sing_up_link}
         aria-label="Записаться онлайн"

@@ -4,6 +4,7 @@ import CookieConsent from '../components/CookieConsent'
 import YandexMetrika from '../components/YandexMetrika'
 import LocalBusinessSchema from '../components/LocalBusinessSchema'
 import FloatingBookingButton from '../components/ui/FloatingBookingButton'
+import { MenuProvider } from '../context/MenuContext'
 import './globals.css'
 
 const forum = localFont({
@@ -101,11 +102,13 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="ru" className={`${forum.variable} ${canelope.variable}`}>
       <body>
-        <LocalBusinessSchema />
-        {children}
-        <FloatingBookingButton />
-        <CookieConsent />
-        <YandexMetrika />
+        <MenuProvider>
+          <LocalBusinessSchema />
+          {children}
+          <FloatingBookingButton />
+          <CookieConsent />
+          <YandexMetrika />
+        </MenuProvider>
       </body>
     </html>
   )
