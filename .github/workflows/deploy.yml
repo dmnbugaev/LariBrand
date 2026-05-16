@@ -22,5 +22,6 @@ jobs:
             git reset --hard origin/main
             npm ci
             npm run build
-            cp -r /tmp/laribrand_upload_backup /var/www/LariBrand/public/upload || true
+            cp -r /tmp/laribrand_upload_backup/upload /var/www/LariBrand/public/upload || true
+            rm -rf /tmp/laribrand_upload_backup
             pm2 restart laribrand
