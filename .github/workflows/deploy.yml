@@ -16,12 +16,12 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22222
           script: |
-            cp -r /var/www/LariBrand/public/upload /tmp/laribrand_upload_backup || true
+            cp -r /var/www/LariBrand/public/upload/. /tmp/laribrand_upload_backup/ || true
             cd /var/www/LariBrand
             git fetch origin
             git reset --hard origin/main
             npm ci
             npm run build
-            cp -r /tmp/laribrand_upload_backup/upload /var/www/LariBrand/public/upload || true
+            cp -r /tmp/laribrand_upload_backup/. /var/www/LariBrand/public/upload/ || true
             rm -rf /tmp/laribrand_upload_backup
             pm2 restart laribrand
