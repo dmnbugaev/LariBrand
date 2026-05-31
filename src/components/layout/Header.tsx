@@ -9,6 +9,7 @@ import { useMenu } from '../../context/MenuContext'
 
 const NAV_LINKS = [
   { href: '/', label: 'ГЛАВНАЯ' },
+  { href: '/promo', label: 'АКЦИЯ' },
   ...SERVICE_NAV_LINKS.map(({ href, label }) => ({ href, label: label.toUpperCase() })),
 ]
 

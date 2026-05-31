@@ -4,6 +4,7 @@ import CookieConsent from '../components/CookieConsent'
 import YandexMetrika from '../components/YandexMetrika'
 import LocalBusinessSchema from '../components/LocalBusinessSchema'
 import FloatingBookingButton from '../components/ui/FloatingBookingButton'
+import PromoPopup from '../components/PromoPopup'
 import { MenuProvider } from '../context/MenuContext'
 import './globals.css'
 
@@ -106,6 +107,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           <LocalBusinessSchema />
           {children}
           <FloatingBookingButton />
+          <PromoPopup />
           <CookieConsent />
           <YandexMetrika />
         </MenuProvider>

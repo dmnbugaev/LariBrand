@@ -19,7 +19,9 @@
       "Bash(Remove-Item -Path \"D:\\\\WebSite\\\\LariBrand\\\\src\\\\app\\\\promo\" -Force -Recurse)",
       "Bash(Remove-Item -Path \"D:\\\\WebSite\\\\LariBrand\\\\src\\\\components\\\\PromoModal.tsx\" -Force)",
       "Bash(Remove-Item -Path \"D:\\\\WebSite\\\\LariBrand\\\\src\\\\components\\\\home\\\\PromoBanner.tsx\" -Force)",
-      "Bash(Remove-Item -Path \"D:\\\\WebSite\\\\LariBrand\\\\src\\\\components\\\\promo\\\\VideoPlayer.tsx\" -Force)"
+      "Bash(Remove-Item -Path \"D:\\\\WebSite\\\\LariBrand\\\\src\\\\components\\\\promo\\\\VideoPlayer.tsx\" -Force)",
+      "Bash(npx --no-install next build)",
+      "Bash(node_modules\\\\.bin\\\\next build *)"
     ]
   }
 }

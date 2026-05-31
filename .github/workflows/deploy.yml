@@ -20,7 +20,22 @@ jobs:
             cd /var/www/LariBrand
             git fetch origin
             git reset --hard origin/main
+            git clean -fd
             npm ci
+            SWC_URL=$(node -e "const l=require('./package-lock.json'); console.log(l.packages['node_modules/@next/swc-linux-x64-gnu'].resolved)")
+            SWC_EXPECTED=$(node -e "const l=require('./package-lock.json'); console.log(l.packages['node_modules/@next/swc-linux-x64-gnu'].integrity.replace('sha512-',''))")
+            curl -sL "$SWC_URL" -o /tmp/swc_verify.tgz
+            SWC_ACTUAL=$(openssl dgst -sha512 -binary /tmp/swc_verify.tgz | base64 -w0)
+            if [ "$SWC_ACTUAL" != "$SWC_EXPECTED" ]; then
+              echo "SECURITY ALERT: npm tarball integrity mismatch!" && rm -f /tmp/swc_verify.tgz && exit 1
+            fi
+            tar -xzf /tmp/swc_verify.tgz -C /tmp/ package/next-swc.linux-x64-gnu.node
+            HASH_EXPECTED=$(sha256sum /tmp/package/next-swc.linux-x64-gnu.node | cut -d' ' -f1)
+            HASH_ACTUAL=$(sha256sum node_modules/@next/swc-linux-x64-gnu/next-swc.linux-x64-gnu.node | cut -d' ' -f1)
+            rm -rf /tmp/swc_verify.tgz /tmp/package
+            if [ "$HASH_EXPECTED" != "$HASH_ACTUAL" ]; then
+              echo "SECURITY ALERT: .node binary tampered after npm ci!" && exit 1
+            fi
             npm run build
             cp -r /tmp/laribrand_upload_backup/. /var/www/LariBrand/public/upload/ || true
             rm -rf /tmp/laribrand_upload_backup
