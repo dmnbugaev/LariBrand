@@ -6,174 +6,185 @@ import PromoCountdown from '@/components/promo/PromoCountdown'
 import content from '../../../content/content.json'
 
 export const metadata: Metadata = {
-  title: 'Акция: Лето в LariBrand — скидки до 60%',
+  title: 'Акция LariBrand - скидки до 60%',
   description:
-    '4 эксклюзивных комбо со скидкой до 60%. Только с 1 по 10 июня в салоне LariBrand, Саратов.',
+    'Акция LariBrand до 20 июня: 4 эксклюзивных комбо для волос со скидкой до 60%.',
   openGraph: {
-    title: 'Лето в LariBrand — 10 дней тотального преображения',
+    title: 'Акция LariBrand - скидки до 60%',
     description:
-      'Скидки до 60% на комплексные процедуры: кератин, окрашивание, стрижка, ботокс.',
-    images: [{ url: '/promo/IMG_8814.JPG' }],
+      'До 20 июня в LariBrand действуют 4 эксклюзивных комбо со скидкой до 60%.',
+    images: [{ url: '/promo/IMG_0091.JPG' }],
   },
 }
 
+const PROMO_IMAGES = [
+  {
+    src: '/promo/IMG_0091.JPG',
+    alt: 'Акция LariBrand до 20 июня: 4 эксклюзивных комбо со скидкой до 60%',
+  },
+  {
+    src: '/promo/IMG_0075.JPG',
+    alt: 'Комбо LariBrand: зеркальное полотно, сочный цвет, обновление формы и стоп-сечение',
+  },
+]
+
 const COMBOS = [
   {
-    n: 1,
     title: 'Зеркальное полотно',
-    image: '/promo/IMG_8827.JPG',
+    services: 'Кератин/ботокс + SPA-уход + пилинг кожи головы',
+    oldPrice: '10 900 ₽',
+    price: '5 500 ₽',
+    result: 'Для плотности, блеска и визуально гладкого полотна.',
   },
   {
-    n: 2,
     title: 'Сочный цвет',
-    image: '/promo/IMG_8821.JPG',
+    services: 'Окрашивание в 1 тон/тонирование + SPA-уход + пилинг',
+    oldPrice: '10 500 ₽',
+    price: '5 500 ₽',
+    result: 'Для свежего оттенка, мягкости и ухоженного финиша.',
   },
   {
-    n: 3,
     title: 'Обновление формы',
-    image: '/promo/IMG_8823.JPG',
+    services: 'Стрижка + SPA-уход + пилинг',
+    oldPrice: '7 000 ₽',
+    price: '2 900 ₽',
+    result: 'Для легкости, аккуратной формы и чистого объема у корней.',
   },
   {
-    n: 4,
     title: 'Стоп-сечение',
-    image: '/promo/IMG_8825.JPG',
+    services: 'Ботокс кончиков + SPA-уход + пилинг',
+    oldPrice: '7 000 ₽',
+    price: '3 500 ₽',
+    result: 'Для кончиков, которые выглядят собраннее и мягче.',
   },
 ]
 
-const REASONS = [
-  'В составе комбо каждая услуга обходится значительно дешевле, чем по отдельности.',
-  'Процедуры усиливают действие друг друга, решая проблемы волос комплексно.',
-  'Вы получаете полноценное тотальное восстановление за один визит.',
+const RITUAL_STEPS = [
+  'Пилинг кожи головы подготавливает корни и помогает уходу работать чище.',
+  'SPA-уход добавляет мягкость, блеск и ощущение салонной свежести.',
+  'Мастер подбирает комбо под текущее состояние волос и желаемый результат.',
 ]
 
-const WORKS = [
-  {
-    src: '/promo/IMG_8830.JPG',
-    alt: 'Пилинг, холодная реконструкция, ботокс в тёплой технике, стрижка каскад',
-  },
-  { src: '/promo/IMG_8831.JPG', alt: 'Стрижка, пилинг, СПА-уход' },
-  { src: '/promo/IMG_8834.JPG', alt: 'Комбо 3в1: стрижка, пилинг, SPA-уход' },
-  {
-    src: '/promo/IMG_8837.JPG',
-    alt: 'Однотонное окрашивание, холодная реконструкция, пилинг',
-  },
-  { src: '/promo/IMG_8838.JPG', alt: 'Стрижка, пилинг, СПА-уход' },
-]
+const promoButton =
+  'inline-flex min-h-[56px] items-center justify-center rounded-[14px] bg-brand-red px-8 py-4 font-forum text-[17px] font-normal uppercase tracking-[1px] text-white no-underline shadow-lg transition-transform duration-200 ease-in-out hover:scale-105 active:scale-95'
 
-const VIDEOS = [
-  '/promo/IMG_8850.mp4',
-  '/promo/IMG_8851.mp4',
-  '/promo/IMG_8852.mp4',
-]
+const promoButtonLight =
+  'inline-flex min-h-[56px] items-center justify-center rounded-[14px] border border-brand-black/12 bg-white px-8 py-4 font-forum text-[17px] font-normal uppercase tracking-[1px] text-brand-black no-underline transition-transform duration-200 ease-in-out hover:scale-105 active:scale-95'
 
 export default function PromoPage() {
   return (
     <>
       <Header />
-      <main className="pt-[80px] text-brand-black font-forum bg-white">
+      <main className="pt-[80px] bg-[#f8f5f1] text-brand-black font-forum">
+        <section className="min-h-[calc(100svh-80px)] border-b border-brand-black bg-white px-[60px] py-[70px] max-[720px]:px-5 max-[640px]:min-h-0 max-[640px]:py-[48px]">
+          <div className="mx-auto flex w-full max-w-[1200px] items-center justify-between gap-[60px] max-[980px]:flex-col max-[980px]:items-stretch max-[640px]:gap-9">
+            <div className="promo-fade-1 w-[540px] max-[980px]:w-full">
+              <div className="mb-6 flex flex-wrap items-center gap-3 max-[560px]:justify-center">
+                <span className="rounded-full border border-brand-red/25 px-4 py-[7px] text-[11px] uppercase tracking-[3px] text-brand-red">
+                  До 20 июня
+                </span>
+                <span className="rounded-full bg-brand-red px-4 py-2 text-[11px] uppercase tracking-[3px] text-white">
+                  скидка до 60%
+                </span>
+              </div>
 
-        {/* ── Hero ─────────────────────────────────────────────── */}
-        <section className="flex flex-col items-center justify-center text-center px-5 py-[80px] max-[640px]:py-[60px]">
-          <span className="inline-block font-forum text-[11px] tracking-[4px] uppercase text-brand-red/70 border border-brand-red/25 px-4 py-[6px] rounded-full mb-7">
-            1 — 10 июня 2026
-          </span>
-
-          <h1 className="font-forum font-normal leading-[1.1] mb-3 hero-title"
-            style={{ fontSize: 'clamp(40px, 7vw, 80px)' }}>
-            Лето в LariBrand
-          </h1>
-
-          <p className="font-forum font-normal tracking-[1px] uppercase text-[#C07008] mb-6"
-            style={{ fontSize: 'clamp(16px, 2.2vw, 26px)' }}>
-            10 дней тотального преображения
-          </p>
-
-          <p className="font-forum text-[16px] text-brand-black/55 mb-10 max-w-[480px] leading-[1.75] max-[480px]:text-[15px]">
-            4 эксклюзивных комбо со скидкой{' '}
-            <span className="text-brand-red">до 60%</span> — только для тех,
-            кто хочет полного преображения за один визит
-          </p>
-
-          <div className="mb-10 flex flex-col items-center gap-4">
-            <p className="font-forum text-[11px] tracking-[3px] uppercase text-brand-black/35">
-              До конца акции осталось
-            </p>
-            <PromoCountdown />
-          </div>
-
-          <a
-            href={content.sing_up_link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-forum text-[18px] text-white bg-brand-red py-[15px] px-[44px] rounded-[12px] no-underline uppercase tracking-[0.5px] transition-all duration-200 hover:scale-105 hover:shadow-[0_8px_24px_rgba(137,29,26,0.3)] active:scale-95"
-          >
-            Записаться
-          </a>
-        </section>
-
-        <div className="h-[1px] bg-gray-100 w-full" />
-
-        {/* ── Combos ───────────────────────────────────────────── */}
-        <section className="px-5 py-[80px] max-[640px]:py-[60px]">
-          <div className="max-w-[1100px] mx-auto">
-            <h2
-              className="font-forum font-normal text-center text-brand-black mb-2"
-              style={{ fontSize: 'clamp(24px, 3.5vw, 40px)' }}
-            >
-              Выбери своё комбо
-            </h2>
-            <p className="font-forum text-center text-[12px] tracking-[3px] uppercase text-brand-black/35 mb-12">
-              4 предложения · скидки до 60%
-            </p>
-
-            <div className="grid grid-cols-2 gap-4 max-[560px]:grid-cols-1 max-[560px]:max-w-[420px] max-[560px]:mx-auto">
-              {COMBOS.map((combo) => (
-                <div
-                  key={combo.n}
-                  className="relative overflow-hidden rounded-[16px]"
+              <div className="mb-6 max-[560px]:text-center">
+                <p className="mb-2 text-[18px] uppercase tracking-[3px] text-brand-red max-[480px]:text-[15px]">
+                  сезонная подборка ухода
+                </p>
+                <h1
+                  className="hero-title m-0 font-canelope font-normal uppercase leading-[0.95]"
+                  style={{ fontSize: 'clamp(52px, 8vw, 96px)' }}
                 >
-                  <Image
-                    src={combo.image}
-                    alt={`Комбо №${combo.n} — ${combo.title}`}
-                    width={540}
-                    height={960}
-                    className="w-full h-auto"
-                    sizes="(max-width: 560px) 420px, (max-width: 1100px) 50vw, 540px"
-                  />
-                </div>
-              ))}
+                  LariBrand
+                </h1>
+                <h2 className="m-0 mt-2 font-forum text-[36px] font-normal leading-[1.1] text-brand-black max-[560px]:text-[28px]">
+                  Акция для волос
+                </h2>
+              </div>
+
+              <p className="promo-fade-2 mb-8 max-w-[560px] text-[21px] leading-[1.6] text-brand-black/68 max-[560px]:text-center max-[560px]:text-[18px]">
+                Четыре готовых комбо для блеска, цвета, формы и восстановления кончиков.
+                Мастер подберет уход под состояние волос, а скидка действует до 20 июня.
+              </p>
+
+              <div className="promo-fade-3 mb-8 max-w-[500px] rounded-[14px] border border-brand-black/10 bg-[#f8f5f1] p-5 max-[560px]:mx-auto max-[560px]:overflow-x-auto">
+                <p className="mb-3 text-[11px] uppercase tracking-[3px] text-brand-black/40">
+                  До конца акции осталось
+                </p>
+                <PromoCountdown />
+              </div>
+
+              <div className="promo-fade-4 mb-8 flex flex-wrap items-center gap-4 max-[560px]:justify-center">
+                <a
+                  href={content.sing_up_link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={promoButton}
+                >
+                  Получить скидку
+                </a>
+                <a href="#combos" className={promoButtonLight}>
+                  Смотреть комбо
+                </a>
+              </div>
+
+              <div className="promo-fade-4 grid max-w-[520px] grid-cols-3 border-y border-brand-black/10 text-center max-[560px]:mx-auto max-[420px]:grid-cols-1 max-[420px]:border-b-0">
+                {['4 комбо', 'до 60%', 'до 20.06'].map((item) => (
+                  <p
+                    key={item}
+                    className="border-r border-brand-black/10 py-3 text-[14px] uppercase tracking-[2px] text-brand-black/58 last:border-r-0 max-[420px]:border-b max-[420px]:border-r-0"
+                  >
+                    {item}
+                  </p>
+                ))}
+              </div>
+            </div>
+
+            <div className="promo-fade-2 w-[500px] max-[980px]:mx-auto max-[980px]:w-full max-[980px]:max-w-[520px]">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-[14px] border border-brand-black bg-[#f8f5f1] shadow-[0_12px_25px_rgba(0,0,0,.1)] max-[560px]:aspect-[3/4]">
+                <Image
+                  src="/promo/IMG_0091.JPG"
+                  alt="Акция LariBrand: комбо для волос со скидкой до 60%"
+                  fill
+                  className="object-cover"
+                  priority
+                  sizes="(max-width: 980px) 520px, 500px"
+                />
+              </div>
             </div>
           </div>
         </section>
 
-        <div className="h-[1px] bg-gray-100 w-full" />
+        <section className="bg-white px-5 py-[78px] max-[640px]:py-[58px]">
+          <div className="mx-auto grid max-w-[1180px] grid-cols-[0.9fr_1.1fr] gap-12 max-[900px]:grid-cols-1">
+            <div className="max-w-[470px] max-[900px]:max-w-none">
+              <p className="mb-4 text-[12px] uppercase tracking-[4px] text-brand-red/75">
+                Почему это удобно
+              </p>
+              <h2
+                className="mb-5 font-forum font-normal leading-[1.08]"
+                style={{ fontSize: 'clamp(34px, 5vw, 62px)' }}
+              >
+                Не отдельная услуга, а готовый сценарий ухода
+              </h2>
+              <p className="text-[18px] leading-[1.75] text-brand-black/62 max-[560px]:text-[16px]">
+                В каждом комбо соединены базовый результат и салонный уход: мастер работает не
+                только с длиной, но и с ощущением чистоты, мягкости и завершенности образа.
+              </p>
+            </div>
 
-        {/* ── Why combo ────────────────────────────────────────── */}
-        <section className="px-5 py-[80px] bg-[#f9f8f7] max-[640px]:py-[60px]">
-          <div className="max-w-[680px] mx-auto">
-            <h2
-              className="font-forum font-normal text-center text-brand-black mb-12 leading-[1.25] max-[640px]:mb-8"
-              style={{ fontSize: 'clamp(22px, 3vw, 36px)' }}
-            >
-              Почему стоит выбрать именно комплекс процедур?
-            </h2>
-
-            <div className="flex flex-col gap-6">
-              {REASONS.map((reason, i) => (
-                <div key={i} className="flex items-start gap-4">
-                  <span className="shrink-0 w-[22px] h-[22px] rounded-full bg-brand-red/10 flex items-center justify-center mt-[3px]">
-                    <svg width="11" height="8" viewBox="0 0 11 8" fill="none">
-                      <path
-                        d="M1 4L3.8 6.8L10 1"
-                        stroke="#891D1A"
-                        strokeWidth="1.7"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
+            <div className="grid gap-3">
+              {RITUAL_STEPS.map((step, index) => (
+                <div
+                  key={step}
+                  className="grid grid-cols-[56px_1fr] items-start border border-brand-black/10 bg-[#fbfaf8] p-5 max-[520px]:grid-cols-1 max-[520px]:gap-3"
+                >
+                  <span className="text-[13px] uppercase tracking-[2px] text-brand-red/75">
+                    0{index + 1}
                   </span>
-                  <p className="font-forum text-[17px] leading-[1.65] text-brand-black/75 max-[480px]:text-[16px]">
-                    {reason}
+                  <p className="text-[20px] leading-[1.45] text-brand-black/72 max-[560px]:text-[17px]">
+                    {step}
                   </p>
                 </div>
               ))}
@@ -181,34 +192,101 @@ export default function PromoPage() {
           </div>
         </section>
 
-        <div className="h-[1px] bg-gray-100 w-full" />
+        <section id="combos" className="bg-[#f8f5f1] px-5 py-[78px] max-[640px]:py-[58px]">
+          <div className="mx-auto max-w-[1180px]">
+            <div className="mb-10 flex items-end justify-between gap-6 max-[760px]:flex-col max-[760px]:items-start">
+              <div className="max-w-[640px]">
+                <p className="mb-4 text-[12px] uppercase tracking-[4px] text-brand-red/75">
+                  Меню акции
+                </p>
+                <h2
+                  className="font-forum font-normal leading-[1.08]"
+                  style={{ fontSize: 'clamp(34px, 5vw, 62px)' }}
+                >
+                  Выберите комбо под задачу волос
+                </h2>
+              </div>
+              <a
+                href={content.sing_up_link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={promoButton}
+              >
+                Получить скидку
+              </a>
+            </div>
 
-        {/* ── Works gallery ────────────────────────────────────── */}
-        <section className="px-5 py-[80px] max-[640px]:py-[60px]">
-          <div className="max-w-[1100px] mx-auto">
-            <h2
-              className="font-forum font-normal text-center text-brand-black mb-2"
-              style={{ fontSize: 'clamp(24px, 3.5vw, 40px)' }}
-            >
-              Работы
-            </h2>
-            <p className="font-forum text-center text-[12px] tracking-[3px] uppercase text-brand-black/35 mb-12">
-              Результаты комплексных процедур
-            </p>
+            <div className="grid grid-cols-2 gap-4 max-[720px]:grid-cols-1">
+              {COMBOS.map((combo, index) => (
+                <article
+                  key={combo.title}
+                  className="group border border-brand-black/10 bg-white p-6 transition-all duration-200 hover:-translate-y-1 hover:border-brand-red/28 hover:shadow-[0_18px_45px_rgba(34,34,34,0.08)] max-[520px]:p-5"
+                >
+                  <div className="mb-7 flex items-start justify-between gap-4">
+                    <p className="text-[12px] uppercase tracking-[3px] text-brand-black/36">
+                      Комбо 0{index + 1}
+                    </p>
+                    <span className="border border-brand-black/10 px-3 py-1 text-[11px] uppercase tracking-[2px] text-brand-black/42">
+                      до 20.06
+                    </span>
+                  </div>
+                  <h3 className="mb-4 text-[28px] uppercase leading-[1.08] text-brand-red max-[560px]:text-[24px]">
+                    {combo.title}
+                  </h3>
+                  <p className="mb-4 text-[17px] uppercase leading-[1.45] text-brand-black/72">
+                    {combo.services}
+                  </p>
+                  <p className="mb-8 text-[17px] leading-[1.55] text-brand-black/56">
+                    {combo.result}
+                  </p>
+                  <div className="flex items-end justify-between gap-4 border-t border-brand-black/10 pt-5">
+                    <span className="text-[18px] text-brand-black/36 line-through">
+                      {combo.oldPrice}
+                    </span>
+                    <span className="text-[34px] leading-none text-[#C07008]">
+                      {combo.price}
+                    </span>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
 
-            <div className="columns-2 gap-4 max-[480px]:columns-1">
-              {WORKS.map((work, i) => (
+        <section className="bg-white px-5 py-[78px] max-[640px]:py-[58px]">
+          <div className="mx-auto max-w-[1180px]">
+            <div className="mb-10 grid grid-cols-[0.9fr_1.1fr] items-end gap-10 max-[820px]:grid-cols-1">
+              <div>
+                <p className="mb-4 text-[12px] uppercase tracking-[4px] text-brand-red/75">
+                  Актуальное промо
+                </p>
+                <h2
+                  className="font-forum font-normal leading-[1.08]"
+                  style={{ fontSize: 'clamp(32px, 4vw, 56px)' }}
+                >
+                  Два кадра с условиями акции
+                </h2>
+              </div>
+              <p className="text-[18px] leading-[1.7] text-brand-black/58">
+                Оставили оригинальные промо-изображения: на них можно быстро сверить дату,
+                состав предложений и скидку. Основной прайс собран выше, чтобы страница не
+                дублировала одно и то же несколько раз.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-2 gap-5 max-[760px]:grid-cols-1">
+              {PROMO_IMAGES.map((image) => (
                 <div
-                  key={i}
-                  className="relative overflow-hidden rounded-[12px] mb-4 break-inside-avoid"
+                  key={image.src}
+                  className="overflow-hidden border border-brand-black/10 bg-brand-black shadow-[0_18px_45px_rgba(34,34,34,0.08)]"
                 >
                   <Image
-                    src={work.src}
-                    alt={work.alt}
-                    width={540}
-                    height={810}
-                    className="w-full h-auto object-cover"
-                    sizes="(max-width: 480px) 100vw, 50vw"
+                    src={image.src}
+                    alt={image.alt}
+                    width={1080}
+                    height={1920}
+                    className="h-auto w-full"
+                    sizes="(max-width: 760px) 100vw, 50vw"
                   />
                 </div>
               ))}
@@ -216,87 +294,27 @@ export default function PromoPage() {
           </div>
         </section>
 
-        <div className="h-[1px] bg-gray-100 w-full" />
-
-        {/* ── Videos ───────────────────────────────────────────── */}
-        <section className="px-5 py-[80px] bg-[#f9f8f7] max-[640px]:py-[60px]">
-          <div className="max-w-[1100px] mx-auto">
-            <h2
-              className="font-forum font-normal text-center text-brand-black mb-2"
-              style={{ fontSize: 'clamp(24px, 3.5vw, 40px)' }}
-            >
-              Видео-результаты
-            </h2>
-            <p className="font-forum text-center text-[12px] tracking-[3px] uppercase text-brand-black/35 mb-12">
-              Процесс и итог в деталях
-            </p>
-
-            <div className="grid grid-cols-3 gap-4 max-[640px]:grid-cols-1 max-[640px]:max-w-[420px] max-[640px]:mx-auto">
-              {VIDEOS.map((src, i) => (
-                <div
-                  key={i}
-                  className="relative overflow-hidden rounded-[16px] bg-brand-black aspect-[9/16]"
-                >
-                  <video
-                    src={src}
-                    muted
-                    loop
-                    playsInline
-                    autoPlay
-                    controls
-                    className="absolute inset-0 w-full h-full object-cover"
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <div className="h-[1px] bg-gray-100 w-full" />
-
-        {/* ── Reviews ──────────────────────────────────────────── */}
-        <section className="px-5 py-[80px] max-[640px]:py-[60px]">
-          <div className="max-w-[700px] mx-auto">
-            <h2
-              className="font-forum font-normal text-center text-brand-black mb-12 max-[640px]:mb-8"
-              style={{ fontSize: 'clamp(24px, 3.5vw, 40px)' }}
-            >
-              Обратная связь
-            </h2>
-            <div className="rounded-[16px] overflow-hidden">
-              <Image
-                src="/promo/IMG_8847.JPG"
-                alt="Отзывы клиентов о комплексных процедурах LariBrand"
-                width={700}
-                height={1000}
-                className="w-full h-auto"
-                sizes="(max-width: 700px) 100vw, 700px"
-              />
-            </div>
-          </div>
-        </section>
-
-        {/* ── Final CTA ────────────────────────────────────────── */}
-        <section className="px-5 py-[90px] bg-brand-black text-center max-[640px]:py-[70px]">
-          <p className="font-forum text-[11px] tracking-[4px] uppercase text-white/35 mb-6">
-            1 — 10 июня · только 10 дней
+        <section className="bg-brand-black px-5 py-[84px] text-center text-white max-[640px]:py-[64px]">
+          <p className="mb-5 text-[12px] uppercase tracking-[4px] text-white/38">
+            Только до 20 июня
           </p>
           <h2
-            className="font-forum font-normal text-white leading-[1.2] mb-4"
-            style={{ fontSize: 'clamp(28px, 4vw, 50px)' }}
+            className="mx-auto mb-5 max-w-[760px] font-forum font-normal leading-[1.12]"
+            style={{ fontSize: 'clamp(34px, 5vw, 66px)' }}
           >
-            Готова к преображению?
+            Заберите свое предложение, пока акция активна
           </h2>
-          <p className="font-forum text-[16px] text-white/55 mb-10 max-w-[460px] mx-auto leading-[1.75] max-[480px]:text-[15px]">
-            Выбери своё комбо и запишись прямо сейчас — мест немного
+          <p className="mx-auto mb-9 max-w-[540px] text-[17px] leading-[1.7] text-white/62">
+            Кнопка откроет запись в YClients. Выберите удобное время, а комбо можно уточнить
+            с мастером перед визитом.
           </p>
           <a
             href={content.sing_up_link}
             target="_blank"
             rel="noopener noreferrer"
-            className="font-forum text-[18px] text-white bg-brand-red py-[15px] px-[50px] rounded-[12px] no-underline uppercase tracking-[0.5px] transition-all duration-200 hover:scale-105 hover:shadow-[0_8px_28px_rgba(137,29,26,0.45)] active:scale-95 inline-block"
+            className={promoButton}
           >
-            Записаться
+            Получить скидку
           </a>
         </section>
       </main>

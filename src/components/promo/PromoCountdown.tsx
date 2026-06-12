@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 
-const END_DATE = new Date('2026-06-10T23:59:59')
+const END_DATE = new Date('2026-06-20T23:59:59')
 
 const UNITS = ['дней', 'часов', 'минут', 'секунд'] as const
 
@@ -17,7 +17,11 @@ function calc() {
   ]
 }
 
-export default function PromoCountdown() {
+type PromoCountdownProps = {
+  variant?: 'light' | 'dark'
+}
+
+export default function PromoCountdown({ variant = 'light' }: PromoCountdownProps) {
   const [values, setValues] = useState<number[]>([0, 0, 0, 0])
   const [mounted, setMounted] = useState(false)
 
@@ -34,7 +38,11 @@ export default function PromoCountdown() {
 
   if (ended) {
     return (
-      <p className="font-forum text-[16px] text-brand-black/50 tracking-[2px] uppercase">
+      <p
+        className={`font-forum text-[16px] tracking-[2px] uppercase ${
+          variant === 'dark' ? 'text-white/62' : 'text-brand-black/50'
+        }`}
+      >
         Акция завершена
       </p>
     )
@@ -45,15 +53,29 @@ export default function PromoCountdown() {
       {UNITS.map((label, i) => (
         <div key={label} className="flex items-start">
           <div className="flex flex-col items-center min-w-[64px] max-[480px]:min-w-[52px]">
-            <div className="bg-brand-black text-white font-forum text-[36px] leading-none w-full text-center py-3 rounded-[8px] tabular-nums max-[480px]:text-[26px] max-[480px]:py-2.5">
+            <div
+              className={`font-forum text-[36px] leading-none w-full text-center py-3 rounded-[8px] tabular-nums max-[480px]:text-[26px] max-[480px]:py-2.5 ${
+                variant === 'dark'
+                  ? 'bg-white text-brand-black'
+                  : 'bg-brand-black text-white'
+              }`}
+            >
               {String(values[i]).padStart(2, '0')}
             </div>
-            <span className="font-forum text-[10px] text-brand-black/45 tracking-[1.5px] uppercase mt-2 max-[480px]:text-[9px]">
+            <span
+              className={`font-forum text-[10px] tracking-[1.5px] uppercase mt-2 max-[480px]:text-[9px] ${
+                variant === 'dark' ? 'text-white/58' : 'text-brand-black/45'
+              }`}
+            >
               {label}
             </span>
           </div>
           {i < UNITS.length - 1 && (
-            <span className="font-forum text-[30px] text-brand-black/25 leading-none mt-1 mx-1 max-[480px]:text-[22px]">
+            <span
+              className={`font-forum text-[30px] leading-none mt-1 mx-1 max-[480px]:text-[22px] ${
+                variant === 'dark' ? 'text-white/30' : 'text-brand-black/25'
+              }`}
+            >
               :
             </span>
           )}

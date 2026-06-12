@@ -194,4 +194,60 @@
     background-clip: text;
   }
 
+  /* --- Promo hero animation --- */
+  @keyframes promoLine {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+  }
+
+  .promo-fade-1 { animation: heroFadeUp 0.8s ease both; }
+  .promo-fade-2 { animation: heroFadeUp 0.8s ease 0.12s both; }
+  .promo-fade-3 { animation: heroFadeUp 0.8s ease 0.24s both; }
+  .promo-fade-4 { animation: heroFadeUp 0.8s ease 0.36s both; }
+  .promo-line { transform-origin: left; animation: promoLine 1s ease 0.45s both; }
+
+  @keyframes promoPanelDrift {
+    0%, 100% { transform: translate3d(0, 0, 0) rotate(-7deg); }
+    50% { transform: translate3d(10px, -12px, 0) rotate(-4deg); }
+  }
+
+  @keyframes promoPanelCounter {
+    0%, 100% { transform: translate3d(0, 0, 0) rotate(9deg); }
+    50% { transform: translate3d(-9px, 10px, 0) rotate(5deg); }
+  }
+
+  @keyframes promoStripeMove {
+    0%, 100% { transform: translateY(-10px); opacity: 0.45; }
+    50% { transform: translateY(16px); opacity: 0.85; }
+  }
+
+  @keyframes promoSweepMove {
+    0% { transform: translateX(-18%) rotate(-18deg); opacity: 0; }
+    18%, 72% { opacity: 1; }
+    100% { transform: translateX(18%) rotate(-18deg); opacity: 0; }
+  }
+
+  .promo-kinetic-panel {
+    transform: rotate(-7deg);
+    animation: promoPanelDrift 7s ease-in-out infinite;
+  }
+
+  .promo-kinetic-panel-alt {
+    transform: rotate(9deg);
+    animation: promoPanelCounter 8s ease-in-out infinite;
+  }
+
+  .promo-kinetic-stripe {
+    animation: promoStripeMove 5s ease-in-out infinite;
+  }
+
+  .promo-kinetic-stripe-alt {
+    animation-delay: 0.8s;
+  }
+
+  .promo-kinetic-sweep {
+    transform: rotate(-18deg);
+    animation: promoSweepMove 4.8s ease-in-out infinite;
+  }
+
 }
