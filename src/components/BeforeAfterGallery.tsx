@@ -53,8 +53,8 @@ const galleryItems: GalleryItem[] = [
   { id: 45, title: 'Биозавивка волос', category: 'Классическая биозавивка', singleImage: '/images/IMG_2633.jpg' },
   { id: 46, title: 'Стрижка каскад', category: 'Стрижка волос', beforeImage: '/images/IMG_2822.jpg', afterImage: '/images/IMG_2823.jpg' },
   { id: 47, title: 'Корейская биозавивка', category: 'Корейская биозавивка', singleImage: '/images/IMG_4480.JPG' },
-  { id: 48, title: 'Окрашивание тон в тон', category: 'Окрашивание волос', singleImage: '/images/IMG_0504.jpg'},
-  { id: 49, title: 'Яркое тонирование', category: 'Окрашивание волос', singleImage: '/images/IMG_0440.jpg' },
+  { id: 48, title: 'Окрашивание тон в тон', category: 'Окрашивание', singleImage: '/images/IMG_0504.jpg'},
+  { id: 49, title: 'Яркое тонирование', category: 'Окрашивание', singleImage: '/images/IMG_0440.jpg' },
 ]
 
 const CATEGORIES = [
