@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react'
 import content from '../../../content/content.json'
 import { SERVICE_NAV_LINKS } from '../../lib/nav-links'
 import { useMenu } from '../../context/MenuContext'
+import { sanitizeHref } from '../../lib/security'
 
 const NAV_LINKS = [
   { href: '/', label: 'ГЛАВНАЯ' },
@@ -131,14 +132,14 @@ export default function Header() {
             <div className="flex flex-col gap-[10px]">
               {content.phone_number_2 && (
                 <a
-                  href={content.phone_number_2_link}
+                  href={sanitizeHref(content.phone_number_2_link)}
                   className="no-underline text-brand-black text-[1.1rem] font-normal transition-colors duration-300 hover:text-brand-red font-forum"
                 >
                   {content.phone_number_2}
                 </a>
               )}
               <a
-                href={content.phone_number_1_link}
+                href={sanitizeHref(content.phone_number_1_link)}
                 className="no-underline text-brand-black text-[1.1rem] font-normal transition-colors duration-300 hover:text-brand-red font-forum"
               >
                 {content.phone_number_1}
@@ -148,7 +149,7 @@ export default function Header() {
 
           <div className="burger-buttons-container flex flex-col gap-[10px] pt-5 mt-auto shrink-0 pb-5">
             <Link
-              href={content.sing_up_link}
+              href={sanitizeHref(content.sing_up_link)}
               onClick={close}
               aria-label="Записаться онлайн"
               className="flex justify-center items-center w-full py-[18px] px-5 text-white bg-brand-red font-normal text-[17px] rounded-[14px] no-underline text-center shrink-0 box-border min-h-[56px] font-forum transition-transform duration-200 hover:scale-105 active:scale-95"
@@ -156,7 +157,7 @@ export default function Header() {
               Записаться
             </Link>
             <Link
-              href={content.telegram_link}
+              href={sanitizeHref(content.telegram_link)}
               onClick={close}
               aria-label="Написать в Max"
               target="_blank"

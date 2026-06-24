@@ -4,9 +4,10 @@ import { useState } from 'react'
 import Image from 'next/image'
 import content from '../../../../content/content.json'
 import type { PriceV2Section } from '../../../types'
+import { sanitizeHref } from '../../../lib/security'
 
 const data = content.bioavailability
-const singUpLink = content.sing_up_link
+const singUpLink = sanitizeHref(content.sing_up_link)
 
 const INFO_TEXT = {
   classic:

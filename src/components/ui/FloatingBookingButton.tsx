@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import content from '../../../content/content.json'
 import { useMenu } from '../../context/MenuContext'
+import { sanitizeHref } from '../../lib/security'
 
 export default function FloatingBookingButton() {
   const { isMenuOpen } = useMenu()
@@ -18,14 +19,14 @@ export default function FloatingBookingButton() {
       ].join(' ')}
     >
       <Link
-        href={content.sing_up_link}
+        href={sanitizeHref(content.sing_up_link)}
         aria-label="Записаться онлайн"
         className="bg-brand-red text-white font-forum text-[17px] px-7 py-[14px] rounded-[14px] shadow-lg hover:scale-105 active:scale-95 transition-transform duration-200 no-underline whitespace-nowrap"
       >
         Записаться
       </Link>
       <Link
-        href={content.telegram_link}
+        href={sanitizeHref(content.telegram_link)}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Написать в Max"

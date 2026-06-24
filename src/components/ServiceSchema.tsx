@@ -1,3 +1,5 @@
+import { safeJsonLd } from '../lib/security'
+
 interface ServiceSchemaProps {
   name: string
   description: string
@@ -50,7 +52,7 @@ export default function ServiceSchema({ name, description, url, image, priceFrom
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      dangerouslySetInnerHTML={{ __html: safeJsonLd(schema) }}
     />
   )
 }

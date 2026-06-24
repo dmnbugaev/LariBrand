@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { memo } from 'react'
 import type { ServiceData, PriceV2Section } from '../../types'
 import content from '../../../content/content.json'
+import { sanitizeHref } from '../../lib/security'
 
 function PriceSectionBlock({ section }: { section: PriceV2Section }) {
   const isMultiCol = section.headers && section.headers.length > 2
@@ -173,7 +174,7 @@ const ServicePage = memo(function ServicePage({ data }: { data: ServiceData }) {
           </p>
         )}
         <a
-          href={content.sing_up_link}
+          href={sanitizeHref(content.sing_up_link)}
           className="font-forum text-[20px] inline-block py-[15px] px-[30px] bg-brand-red text-white rounded-[10px] no-underline uppercase font-normal transition-all duration-300 hover:scale-105 hover:shadow-[0_8px_24px_rgba(137,29,26,0.3)] active:scale-95"
           target="_blank"
           rel="noopener noreferrer"

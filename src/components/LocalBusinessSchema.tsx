@@ -1,3 +1,5 @@
+import { safeJsonLd } from '../lib/security'
+
 export default function LocalBusinessSchema() {
   const schema = {
     '@context': 'https://schema.org',
@@ -63,7 +65,7 @@ export default function LocalBusinessSchema() {
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      dangerouslySetInnerHTML={{ __html: safeJsonLd(schema) }}
     />
   )
 }

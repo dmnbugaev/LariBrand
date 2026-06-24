@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import content from '../../../content/content.json'
+import { sanitizeHref } from '../../lib/security'
 
 export default function Hero() {
   return (
@@ -40,7 +41,7 @@ export default function Hero() {
           {/* CTA */}
           <div className="hero-animate-4 max-[600px]:flex max-[600px]:justify-center">
             <Link
-              href={content.sing_up_link}
+              href={sanitizeHref(content.sing_up_link)}
               className="inline-flex items-center justify-center py-[16px] px-[48px] bg-brand-red text-white text-[20px] font-forum rounded-[12px] no-underline transition-all duration-300 hover:scale-105 hover:shadow-[0_8px_24px_rgba(137,29,26,0.3)] active:scale-95"
             >
               Записаться

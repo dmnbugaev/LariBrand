@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import content from '../../../content/content.json'
+import { sanitizeHref } from '@/lib/security'
 
 const PROMO_BASE = '/images/images_window'
 
@@ -104,7 +105,7 @@ export default function PromoPage() {
               </div>
               <div className="flex flex-wrap gap-4 max-[520px]:justify-center">
                 <a
-                  href={content.sing_up_link}
+                  href={sanitizeHref(content.sing_up_link)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={promoButton}
@@ -257,7 +258,7 @@ export default function PromoPage() {
             перед визитом.
           </p>
           <a
-            href={content.sing_up_link}
+            href={sanitizeHref(content.sing_up_link)}
             target="_blank"
             rel="noopener noreferrer"
             className={promoButton}
