@@ -2,6 +2,7 @@ const ALLOWED_EXTERNAL_HOSTS = new Set([
   'api.whatsapp.com',
   'max.ru',
   'n782275.yclients.com',
+  't.me',
   'vk.com',
 ])
 
