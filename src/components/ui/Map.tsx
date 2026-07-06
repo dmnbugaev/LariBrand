@@ -1,34 +1,35 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 
 export default function Map() {
+  const containerRef = useRef<HTMLDivElement>(null)
+
   useEffect(() => {
-    if (document.querySelector('script[src*="api-maps.yandex.ru"]')) return
+    const mapContainer = containerRef.current
+    if (!mapContainer) return
+
+    mapContainer.innerHTML = ''
 
     const script = document.createElement('script')
     script.type = 'text/javascript'
     script.charset = 'utf-8'
     script.async = true
     script.src =
-      'https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Aa4c44388f23506ce84cd0c42145a6cc5ab329a6cb6819afe9a3f7ae9e6367c4c&amp;width=100%25&amp;height=380&amp;lang=ru_RU&amp;scroll=true'
+      'https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Aa4c44388f23506ce84cd0c42145a6cc5ab329a6cb6819afe9a3f7ae9e6367c4c&width=100%25&height=380&lang=ru_RU&scroll=false'
 
-    const mapContainer = document.getElementById('yandex-map')
-    if (mapContainer) {
-      mapContainer.appendChild(script)
-    }
+    mapContainer.appendChild(script)
 
     return () => {
-      if (script.parentNode) {
-        script.parentNode.removeChild(script)
-      }
+      mapContainer.innerHTML = ''
     }
   }, [])
 
   return (
     <div
-      id="yandex-map"
-      className="w-full h-[380px] border border-brand-black"
+      ref={containerRef}
+      className="h-[380px] w-full border border-brand-black"
+      aria-label="Карта проезда в LariBrand"
     />
   )
 }
