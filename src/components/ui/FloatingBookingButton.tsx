@@ -1,12 +1,16 @@
 'use client'
 
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import content from '../../../content/content.json'
 import { useMenu } from '../../context/MenuContext'
 import { sanitizeHref } from '../../lib/security'
 
 export default function FloatingBookingButton() {
   const { isMenuOpen } = useMenu()
+  const pathname = usePathname()
+
+  if (pathname === '/promo') return null
 
   return (
     <div

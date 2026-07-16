@@ -3,11 +3,12 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import PromoLoopVideo from './PromoLoopVideo'
 
 const STORAGE_KEY = 'laribrand-promo-popup-closed'
 
 const actionButton =
-  'flex min-h-[52px] items-center justify-center rounded-[14px] bg-brand-red px-5 py-4 text-center font-forum text-[17px] uppercase text-white no-underline shadow-[0_12px_28px_rgba(137,29,26,0.22)] transition-transform duration-200 hover:scale-105 active:scale-95 max-[520px]:min-h-[48px] max-[520px]:text-[15px]'
+  'flex min-h-[52px] min-w-0 items-center justify-center rounded-[14px] bg-brand-red px-5 py-4 text-center font-forum text-[17px] uppercase leading-none text-white no-underline shadow-[0_12px_28px_rgba(137,29,26,0.22)] transition-transform duration-200 hover:scale-105 active:scale-95 max-[520px]:min-h-[48px] max-[520px]:text-[15px]'
 
 export default function PromoPopup() {
   const pathname = usePathname()
@@ -71,43 +72,34 @@ export default function PromoPopup() {
           </svg>
         </button>
 
-        <div className="bg-brand-black max-[760px]:hidden">
-          <video
-            className="block h-full min-h-[560px] w-full object-cover"
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            aria-label="Специальное предложение июля LariBrand"
-          >
-            <source src="/promo/IMG_4638.MOV" type="video/quicktime" />
-          </video>
+        <div className="bg-white max-[760px]:hidden">
+          <PromoLoopVideo
+            src="/promo/IMG_4638.MOV"
+            poster="/promo/poster-4638.png"
+            title="Специальное предложение июля LariBrand"
+            className="min-h-[560px] object-contain"
+            startAt={1.15}
+          />
         </div>
 
         <div className="relative overflow-y-auto px-8 py-8 max-[760px]:max-h-[calc(100dvh-40px)] max-[520px]:max-h-[calc(100dvh-24px)] max-[520px]:px-4 max-[520px]:py-4">
-          <div className="relative mb-5 hidden aspect-[16/9] overflow-hidden rounded-[8px] bg-brand-black max-[760px]:block">
-            <video
-              className="block h-full w-full object-cover"
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="auto"
-              aria-label="Специальное предложение июля LariBrand"
-            >
-              <source src="/promo/IMG_4638.MOV" type="video/quicktime" />
-            </video>
+          <div className="relative mx-auto mb-5 hidden aspect-[9/16] max-h-[280px] w-full max-w-[160px] overflow-hidden rounded-[8px] border border-brand-black/12 bg-white max-[760px]:block">
+            <PromoLoopVideo
+              src="/promo/IMG_4638.MOV"
+              poster="/promo/poster-4638.png"
+              title="Специальное предложение июля LariBrand"
+              startAt={1.15}
+            />
           </div>
 
-          <p className="mb-5 w-fit border border-brand-red px-3 py-2 pr-12 text-[10px] uppercase tracking-[3px] text-brand-red max-[520px]:mb-3">
+          <p className="mb-5 max-w-full w-fit border border-brand-red px-3 py-2 pr-12 text-[10px] uppercase tracking-[3px] text-brand-red max-[520px]:mb-3 max-[380px]:tracking-[1.5px]">
             LariBrand / комбо 3в1
           </p>
 
-          <h2 className="mb-4 font-forum text-[46px] font-normal uppercase leading-[0.96] text-brand-black max-[520px]:text-[31px]">
+          <h2 className="mb-4 font-forum text-[46px] font-normal uppercase leading-[0.96] text-brand-black max-[520px]:text-[31px] max-[380px]:text-[28px]">
             Специальное предложение июля
           </h2>
-          <p className="mb-6 text-[21px] uppercase leading-[1.28] text-brand-black/76 max-[520px]:text-[16px]">
+          <p className="mb-6 break-words text-[21px] uppercase leading-[1.28] text-brand-black/76 max-[520px]:text-[16px]">
             Сочный цвет, зеркальное полотно, глубокое восстановление и обновление формы по специальной цене.
           </p>
 

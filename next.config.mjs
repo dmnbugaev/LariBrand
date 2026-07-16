@@ -1,4 +1,6 @@
 /** @type {import('next').NextConfig} */
+const isProduction = process.env.NODE_ENV === 'production'
+
 const securityHeaders = [
   {
     key: 'Content-Security-Policy',
@@ -54,6 +56,15 @@ const nextConfig = {
   poweredByHeader: false,
   productionBrowserSourceMaps: false,
   async headers() {
+    if (!isProduction) {
+      return [
+        {
+          source: '/upload/:path*',
+          headers: uploadHeaders,
+        },
+      ]
+    }
+
     return [
       {
         source: '/:path*',
