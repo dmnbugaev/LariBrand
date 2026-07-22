@@ -55,6 +55,10 @@ const galleryItems: GalleryItem[] = [
   { id: 47, title: 'Корейская биозавивка', category: 'Корейская биозавивка', singleImage: '/images/IMG_4480.JPG' },
   { id: 48, title: 'Окрашивание тон в тон', category: 'Окрашивание', singleImage: '/images/IMG_0504.jpg'},
   { id: 49, title: 'Яркое тонирование', category: 'Окрашивание', singleImage: '/images/IMG_0440.jpg' },
+  { id: 50, title: 'Кератиновое выпрямление', category: 'Кератин и ботокс', singleImage: '/images/IMG_5337.jpg' },
+  { id: 51, title: 'Кератиновое выпрямление', category: 'Кератин и ботокс', singleImage: '/images/IMG_5335.JPG' },
+  { id: 52, title: 'Корейская биозавивка', category: 'Корейская биозавивка', singleImage: '/images/IMG_5336.jpg' },
+  { id: 53, title: 'Стрижка и укладка на Dyson', category: 'Стрижка волос', singleImage: '/images/IMG_5339.jpg' },
 ]
 
 const CATEGORIES = [
