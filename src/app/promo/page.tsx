@@ -1,81 +1,94 @@
 import type { Metadata } from 'next'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
+import PromoCampaignAvailability from '@/components/PromoCampaignAvailability'
+import PromoCountdown from '@/components/PromoCountdown'
 import PromoLoopVideo from '@/components/PromoLoopVideo'
 import content from '../../../content/content.json'
 import { sanitizeHref } from '@/lib/security'
+import { PROMO_DEADLINE, PROMO_DEADLINE_LABEL, PROMO_MEDIA } from '@/lib/promo'
 
 const TELEGRAM_LINK = 'https://t.me/Lari_Brand64'
 
-const PROMO_VIDEOS = [
+const PROMO_BLOCKS = [
   {
-    title: 'Сочный цвет',
-    video: '/promo/IMG_4640.MOV',
-    poster: '/promo/poster-4640.png',
-    oldPrice: '10 500 ₽',
-    price: '6 000 ₽',
-    saving: '5 000 ₽',
+    eyebrow: '−50% на горячие процедуры',
+    title: 'Гладкость и восстановление',
+    ...PROMO_MEDIA.hotProcedures,
     services: [
-      'Пилинг кожи головы, очищение - 1 500 ₽',
-      'Spa-уход: питание и увлажнение - 1 500 ₽',
-      'Окрашивание в 1 тон / тонирование - 7 500 ₽',
+      'Предложение недели действует только на оставшиеся окна.',
+    ],
+    offers: [
+      {
+        title: 'Безопасное выпрямление: холодная реконструкция + ботокс',
+        oldPrice: '11 000 ₽',
+        price: '5 500 ₽',
+        saving: '5 500 ₽',
+      },
+      {
+        title: 'Кератин + SPA-уход',
+        oldPrice: '9 800 ₽',
+        price: '4 900 ₽',
+        saving: '4 900 ₽',
+      },
     ],
   },
   {
-    title: 'Зеркальное полотно',
-    video: '/promo/IMG_4641.MOV',
-    poster: '/promo/poster-4641.png',
-    oldPrice: '8 900 ₽',
-    price: '5 500 ₽',
-    saving: '3 400 ₽',
-    services: [
-      'Пилинг кожи головы, очищение - 1 500 ₽',
-      'Spa-уход: питание и увлажнение - 1 500 ₽',
-      'Ботокс в теплой технике - 5 900 ₽',
-    ],
-  },
-  {
+    eyebrow: 'Комбо 3в1',
     title: 'Терапия глубокого восстановления',
-    video: '/promo/IMG_4643.MOV',
-    poster: '/promo/poster-4643.png',
-    oldPrice: '9 700 ₽',
-    price: '5 500 ₽',
-    saving: '4 200 ₽',
+    ...PROMO_MEDIA.deepRecovery,
     services: [
       'Пилинг кожи головы, очищение - 1 500 ₽',
-      'Холодная реконструкция Dr. Sorbie - 6 700 ₽',
-      'Визуальное завершение Limba - 1 500 ₽',
+      'Холодная реконструкция Dr. Sorbie: глубокое питание и восстановление - 6 700 ₽',
+      'Визуальное завершение Limba: премиальный пленочный состав-ревиталайзер - 1 500 ₽',
+    ],
+    offers: [
+      {
+        oldPrice: '9 700 ₽',
+        price: '5 500 ₽',
+        saving: '4 200 ₽',
+      },
     ],
   },
   {
+    eyebrow: 'Комбо 3в1',
     title: 'Обновление формы',
-    video: '/promo/IMG_4644.MOV',
-    poster: '/promo/poster-4644.png',
-    oldPrice: 'от 5 500 ₽',
-    price: 'от 2 900 ₽',
-    saving: 'до 2 600 ₽',
+    ...PROMO_MEDIA.shapeRefresh,
     services: [
       'Пилинг кожи головы, очищение - 1 500 ₽',
       'Spa-уход: питание и увлажнение - 1 500 ₽',
-      'Стрижка волос: форма или ровный срез - 2 500-2 900 ₽',
+      'Стрижка: смена образа, обновление формы или оформление ровного среза - 2 500-2 900 ₽',
     ],
-    note: 'У ведущего мастера: 3 300 ₽ вместо 5 900 ₽',
+    offers: [
+      {
+        title: 'Мастер',
+        oldPrice: '5 500 ₽',
+        price: '2 900 ₽',
+        saving: '2 600 ₽',
+      },
+      {
+        title: 'Ведущий мастер',
+        oldPrice: '5 900 ₽',
+        price: '3 300 ₽',
+        saving: '2 600 ₽',
+      },
+    ],
   },
 ]
 
 const REVIEWS = content.reviews.slice(0, 3)
 
 export const metadata: Metadata = {
-  title: 'Специальное предложение июля - LariBrand Саратов',
+  title: 'Специальное предложение до 16 августа - LariBrand Саратов',
   description:
-    'Новые комбо 3в1 в LariBrand: сочный цвет, зеркальное полотно, глубокое восстановление и обновление формы по специальной цене.',
+    'Четыре специальных предложения LariBrand: безопасное выпрямление, кератин с SPA-уходом и комбо 3в1. Действуют до 16 августа 2026 года включительно.',
   alternates: {
     canonical: 'https://laribrand.ru/promo',
   },
   openGraph: {
-    title: 'Специальное предложение июля LariBrand',
-    description: 'Комбо 3в1 для волос: уход, цвет, восстановление и форма по специальной цене.',
-    images: [{ url: '/upload/1762277381106-IMG_5217.JPG' }],
+    title: 'Специальное предложение до 16 августа LariBrand',
+    description: 'Горячие процедуры со скидкой 50% и комбо 3в1 по специальной цене.',
+    images: [{ url: PROMO_MEDIA.hotProcedures.poster }],
   },
 }
 
@@ -95,28 +108,39 @@ export default function PromoPage() {
                 LariBrand / специальное предложение
               </p>
               <h1 className="mb-6 max-w-[650px] font-forum text-[72px] font-normal uppercase leading-[0.95] text-brand-black max-[720px]:text-[52px] max-[560px]:mx-auto max-[560px]:max-w-[315px] max-[560px]:text-center max-[560px]:text-[36px] max-[380px]:text-[33px]">
-                Комбо 3в1 для волос
+                Четыре предложения для волос
               </h1>
-              <p className="mb-8 max-w-[580px] text-[25px] uppercase leading-[1.26] text-brand-black/78 max-[560px]:mx-auto max-[560px]:max-w-[290px] max-[560px]:text-center max-[560px]:text-[16px]">
-                Уход, цвет, восстановление и форма в готовых процедурах по специальной цене.
+              <p className="mb-6 max-w-[580px] text-[25px] uppercase leading-[1.26] text-brand-black/78 max-[560px]:mx-auto max-[560px]:max-w-[290px] max-[560px]:text-center max-[560px]:text-[16px]">
+                Горячие процедуры со скидкой 50% и комбо 3в1 по специальной цене. {PROMO_DEADLINE_LABEL}.
               </p>
-              <div className="flex max-w-full flex-wrap gap-3 max-[560px]:justify-center max-[420px]:mx-auto max-[420px]:w-full max-[420px]:max-w-[250px] max-[420px]:flex-col max-[380px]:gap-2">
-                <a href={sanitizeHref(content.sing_up_link)} target="_blank" rel="noopener noreferrer" className={buttonClass}>
-                  Записаться
-                </a>
-                <a href={sanitizeHref(TELEGRAM_LINK)} target="_blank" rel="noopener noreferrer" className={buttonClass}>
-                  Telegram
-                </a>
+              <div className="mb-6 max-w-[580px]">
+                <PromoCountdown deadline={PROMO_DEADLINE} deadlineLabel={PROMO_DEADLINE_LABEL} />
               </div>
+              <PromoCampaignAvailability
+                expired={
+                  <p className="max-w-[580px] border border-brand-red px-5 py-4 text-center text-[17px] uppercase tracking-[1.5px] text-brand-red">
+                    Специальное предложение завершено
+                  </p>
+                }
+              >
+                <div className="flex max-w-full flex-wrap gap-3 max-[560px]:justify-center max-[420px]:mx-auto max-[420px]:w-full max-[420px]:max-w-[250px] max-[420px]:flex-col max-[380px]:gap-2">
+                  <a href={sanitizeHref(content.sing_up_link)} target="_blank" rel="noopener noreferrer" className={buttonClass}>
+                    Записаться
+                  </a>
+                  <a href={sanitizeHref(TELEGRAM_LINK)} target="_blank" rel="noopener noreferrer" className={buttonClass}>
+                    Telegram
+                  </a>
+                </div>
+              </PromoCampaignAvailability>
             </div>
 
             <div className="promo-fade-2 relative mx-auto w-full max-w-[470px] overflow-hidden rounded-[8px] border border-brand-black bg-white shadow-[0_24px_70px_rgba(0,0,0,0.18)] max-[520px]:max-w-[300px]">
               <div className="aspect-[9/16]">
                 <PromoLoopVideo
-                  src="/promo/IMG_4638.MOV"
-                  poster="/promo/poster-4638.png"
-                  title="Специальное предложение июля LariBrand"
-                  startAt={1.15}
+                  src={PROMO_MEDIA.hotProcedures.video}
+                  poster={PROMO_MEDIA.hotProcedures.poster}
+                  title="Специальное предложение до 16 августа LariBrand"
+                  startAt={0}
                 />
               </div>
             </div>
@@ -127,9 +151,9 @@ export default function PromoPage() {
           <div className="mx-auto w-full max-w-[1180px]">
             <div className="mb-10 flex items-end justify-between gap-6 max-[760px]:block">
               <div className="min-w-0">
-                <p className="mb-4 text-[12px] uppercase tracking-[4px] text-brand-red max-[520px]:tracking-[2px]">Выберите комбо</p>
+                <p className="mb-4 text-[12px] uppercase tracking-[4px] text-brand-red max-[520px]:tracking-[2px]">Выберите предложение</p>
                 <h2 className="max-w-[760px] break-words text-[54px] font-normal uppercase leading-[1] max-[640px]:max-w-[300px] max-[640px]:text-[24px]">
-                  Четыре предложения с понятной выгодой
+                  Четыре предложения в трех видео
                 </h2>
               </div>
               <p className="max-w-[330px] text-[19px] uppercase leading-[1.35] text-brand-black/62 max-[760px]:mt-5 max-[640px]:max-w-[300px] max-[640px]:text-[15px]">
@@ -138,21 +162,21 @@ export default function PromoPage() {
             </div>
 
             <div className="grid w-full grid-cols-2 gap-6 max-[920px]:grid-cols-1">
-              {PROMO_VIDEOS.map((item, index) => (
+              {PROMO_BLOCKS.map((item, index) => (
                 <article key={item.title} className="grid min-w-0 grid-cols-[minmax(190px,0.68fr)_minmax(0,1fr)] items-stretch overflow-hidden rounded-[8px] border border-brand-black/18 bg-white shadow-[0_18px_48px_rgba(0,0,0,0.09)] max-[1180px]:grid-cols-1">
                   <div className="flex min-w-0 items-start justify-center bg-[#f7f4f1] p-4 pt-10 max-[1180px]:p-6 max-[1180px]:pt-6 max-[520px]:p-4">
                     <div className="relative aspect-[9/16] w-full max-w-[220px] overflow-hidden rounded-[6px] border border-brand-black/12 bg-white shadow-[0_12px_28px_rgba(0,0,0,0.08)] max-[1180px]:max-w-[250px] max-[520px]:max-w-[210px]">
                       <PromoLoopVideo
                         src={item.video}
                         poster={item.poster}
-                        title={`Комбо 3в1 ${item.title}`}
-                        startAt={1.05}
+                        title={`${item.eyebrow}: ${item.title}`}
+                        startAt={0}
                       />
                     </div>
                   </div>
                   <div className="flex min-w-0 flex-col justify-between p-7 max-[520px]:p-5">
                     <div>
-                      <p className="mb-4 text-[12px] uppercase tracking-[3px] text-brand-red/80 max-[420px]:tracking-[1.5px]">Комбо 3в1 / 0{index + 1}</p>
+                      <p className="mb-4 text-[12px] uppercase tracking-[3px] text-brand-red/80 max-[420px]:tracking-[1.5px]">{item.eyebrow} / 0{index + 1}</p>
                       <h3 className="mb-5 max-w-full text-[34px] font-normal uppercase leading-[1.03] max-[520px]:text-[28px] max-[380px]:text-[25px]">
                         {item.title}
                       </h3>
@@ -165,17 +189,23 @@ export default function PromoPage() {
                       </ul>
                     </div>
                     <div>
-                      <div className="mb-5 border-t border-brand-black/14 pt-5">
-                        <div className="mb-2 flex flex-wrap items-end justify-between gap-x-4 gap-y-2 max-[640px]:grid max-[640px]:justify-start">
-                          <span className="text-[25px] text-brand-black/42 line-through max-[640px]:text-[21px]">{item.oldPrice}</span>
-                          <span className="text-[45px] leading-none text-brand-red max-[640px]:text-[34px]">{item.price}</span>
-                        </div>
-                        <p className="m-0 break-words text-[15px] uppercase tracking-[1.5px] text-brand-black/58 max-[380px]:tracking-[0.8px]">Ваша выгода - {item.saving}</p>
-                        {item.note ? <p className="mt-3 text-[15px] uppercase leading-[1.3] text-brand-red">{item.note}</p> : null}
+                      <div className="mb-5 grid gap-4 border-t border-brand-black/14 pt-5">
+                        {item.offers.map((offer) => (
+                          <div key={`${'title' in offer ? offer.title : item.title}-${offer.price}`} className="border-b border-brand-black/10 pb-4 last:border-b-0 last:pb-0">
+                            {'title' in offer ? <p className="mb-2 text-[15px] uppercase leading-[1.3] text-brand-black/70">{offer.title}</p> : null}
+                            <div className="mb-2 flex flex-wrap items-end justify-between gap-x-4 gap-y-2 max-[640px]:grid max-[640px]:justify-start">
+                              <span className="text-[25px] text-brand-black/42 line-through max-[640px]:text-[21px]">{offer.oldPrice}</span>
+                              <span className="text-[45px] leading-none text-brand-red max-[640px]:text-[34px]">{offer.price}</span>
+                            </div>
+                            <p className="m-0 break-words text-[15px] uppercase tracking-[1.5px] text-brand-black/58 max-[380px]:tracking-[0.8px]">Ваша выгода — {offer.saving}</p>
+                          </div>
+                        ))}
                       </div>
-                      <a href={sanitizeHref(content.sing_up_link)} target="_blank" rel="noopener noreferrer" className={buttonClass}>
-                        Записаться
-                      </a>
+                      <PromoCampaignAvailability>
+                        <a href={sanitizeHref(content.sing_up_link)} target="_blank" rel="noopener noreferrer" className={buttonClass}>
+                          Записаться
+                        </a>
+                      </PromoCampaignAvailability>
                     </div>
                   </div>
                 </article>
@@ -205,19 +235,23 @@ export default function PromoPage() {
           <div className="mx-auto max-w-[820px]">
             <p className="mb-5 text-[12px] uppercase tracking-[4px] text-brand-red">Запись</p>
             <h2 className="mb-6 break-words text-[54px] font-normal uppercase leading-[1] max-[640px]:mx-auto max-[640px]:max-w-[300px] max-[640px]:text-[24px]">
-              Забронируйте специальное предложение
+              Забронируйте предложение до 16 августа
             </h2>
             <p className="mx-auto mb-8 max-w-[560px] text-[21px] uppercase leading-[1.4] text-brand-black/68 max-[520px]:text-[17px]">
               Администратор поможет выбрать комбо и подберет свободное окно в расписании.
             </p>
-            <div className="mx-auto flex max-w-full flex-wrap justify-center gap-3 max-[420px]:max-w-[250px] max-[420px]:flex-col">
-              <a href={sanitizeHref(content.sing_up_link)} target="_blank" rel="noopener noreferrer" className={buttonClass}>
-                Записаться
-              </a>
-              <a href={sanitizeHref(TELEGRAM_LINK)} target="_blank" rel="noopener noreferrer" className={buttonClass}>
-                Telegram
-              </a>
-            </div>
+            <PromoCampaignAvailability
+              expired={<p className="text-[19px] uppercase tracking-[2px] text-brand-red">Акция завершена</p>}
+            >
+              <div className="mx-auto flex max-w-full flex-wrap justify-center gap-3 max-[420px]:max-w-[250px] max-[420px]:flex-col">
+                <a href={sanitizeHref(content.sing_up_link)} target="_blank" rel="noopener noreferrer" className={buttonClass}>
+                  Записаться
+                </a>
+                <a href={sanitizeHref(TELEGRAM_LINK)} target="_blank" rel="noopener noreferrer" className={buttonClass}>
+                  Telegram
+                </a>
+              </div>
+            </PromoCampaignAvailability>
           </div>
         </section>
       </main>

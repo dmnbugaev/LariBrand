@@ -9,7 +9,7 @@ import ServiceSchema from '@/components/ServiceSchema'
 export const metadata: Metadata = {
   title: 'Кератин и ботокс для волос в Саратове | Цены — LariBrand',
   description:
-    'Кератиновое выпрямление и ботокс для волос в Саратове. Прямые, гладкие, блестящие волосы после одной процедуры. Цены от 3400 ₽. Запись в салон LariBrand онлайн.',
+    'Кератиновое выпрямление и ботокс для волос в Саратове. Прямые, гладкие, блестящие волосы после одной процедуры. Цены от 3700 ₽. Запись в салон LariBrand онлайн.',
   keywords: [
     'кератин Саратов',
     'кератиновое выпрямление Саратов',
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'Кератин и ботокс для волос в Саратове — LariBrand',
-    description: 'Кератиновое выпрямление и ботокс для волос в Саратове. Прямые, гладкие, блестящие волосы. Цены от 3400 ₽.',
+    description: 'Кератиновое выпрямление и ботокс для волос в Саратове. Прямые, гладкие, блестящие волосы. Цены от 3700 ₽.',
     url: 'https://laribrand.ru/keratin_and_botox',
     images: [{ url: '/upload/1762285489176-IMG_5231.JPG', width: 1200, height: 630, alt: 'Кератиновое выпрямление волос — LariBrand Саратов' }],
   },
@@ -39,7 +39,7 @@ export default function KeratinAndBotoxPage() {
         description="Кератиновое выпрямление и ботокс для волос в горячей технике. Результат: прямые, гладкие, плотные и блестящие волосы."
         url="https://laribrand.ru/keratin_and_botox"
         image="/upload/1762285489176-IMG_5231.JPG"
-        priceFrom="3400"
+        priceFrom="3700"
       />
       <Header />
       <KeratinAndBotoxComponent />

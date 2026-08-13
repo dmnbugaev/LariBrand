@@ -9,7 +9,7 @@ import ServiceSchema from '@/components/ServiceSchema'
 export const metadata: Metadata = {
   title: 'Безопасное выпрямление волос в Саратове | Антихимия — LariBrand',
   description:
-    'Безопасное выпрямление (антихимия, антизавивка) волос в Саратове. Комплексная процедура: холодная + горячая реконструкция. Самый безопасный метод. Цены от 6200 ₽.',
+    'Безопасное выпрямление (антихимия, антизавивка) волос в Саратове. Комплексная процедура: холодная + горячая реконструкция. Самый безопасный метод. Цены от 6700 ₽.',
   keywords: [
     'безопасное выпрямление волос Саратов',
     'антихимия Саратов',
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'Безопасное выпрямление волос в Саратове — LariBrand',
-    description: 'Антихимия, антизавивка — самое безопасное выпрямление волос в Саратове. Цены от 6200 ₽.',
+    description: 'Антихимия, антизавивка — самое безопасное выпрямление волос в Саратове. Цены от 6700 ₽.',
     url: 'https://laribrand.ru/safe_hair_straightening',
     images: [{ url: '/upload/1762285562476-IMG_5760.JPG', width: 1200, height: 630, alt: 'Безопасное выпрямление волос — LariBrand Саратов' }],
   },
@@ -37,7 +37,7 @@ export default function SafeHairStraighteningPage() {
         description="Комплексная процедура выпрямления волос: сочетание холодной и горячей реконструкции. Самый безопасный метод для восстановления и выпрямления волос."
         url="https://laribrand.ru/safe_hair_straightening"
         image="/upload/1762285562476-IMG_5760.JPG"
-        priceFrom="6200"
+        priceFrom="6700"
       />
       <Header />
       <SafeHairStraighteningComponent />

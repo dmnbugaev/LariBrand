@@ -9,7 +9,7 @@ import ServiceSchema from '@/components/ServiceSchema'
 export const metadata: Metadata = {
   title: 'Стрижка волос в Саратове | Каскад, каре, боб-каре — LariBrand',
   description:
-    'Профессиональные стрижки в Саратове: каскад, каре, боб-каре, лесенка, слои, ровный срез, женская и мужская стрижка, стрижка чёлки, текстурная стрижка. Цены от 400 ₽.',
+    'Профессиональные стрижки в Саратове: каскад, каре, боб-каре, лесенка, слои, ровный срез, женская и мужская стрижка, стрижка чёлки, текстурная стрижка. Цены от 1200 ₽.',
   keywords: [
     'стрижка волос Саратов',
     'стрижка каскад Саратов',
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'Стрижка волос в Саратове — LariBrand',
-    description: 'Каскад, каре, боб-каре, лесенка, мужская стрижка в Саратове. Цены от 400 ₽.',
+    description: 'Каскад, каре, боб-каре, лесенка, мужская стрижка в Саратове. Цены от 1200 ₽.',
     url: 'https://laribrand.ru/hair_cutting',
     images: [{ url: '/upload/1763929243995-IMG_8434.JPG', width: 1200, height: 630, alt: 'Стрижка волос — LariBrand Саратов' }],
   },
@@ -42,7 +42,7 @@ export default function HairCuttingPage() {
         description="Профессиональные стрижки: каскад, каре, боб-каре, лесенка, слои, ровный срез, женская и мужская стрижка, стрижка чёлки, текстурная стрижка. Форма под тип волос."
         url="https://laribrand.ru/hair_cutting"
         image="/upload/1763929243995-IMG_8434.JPG"
-        priceFrom="400"
+        priceFrom="1200"
       />
       <Header />
       <HairCuttingComponent />

@@ -9,7 +9,7 @@ import ServiceSchema from '@/components/ServiceSchema'
 export const metadata: Metadata = {
   title: 'Окрашивание волос в Саратове | Балаяж, омбре, AirTouch — LariBrand',
   description:
-    'Профессиональное окрашивание волос в Саратове: балаяж, омбре, AirTouch, брондирование, однотонное окрашивание, тонирование, контуринг, скрытое окрашивание. Цены от 4000 ₽.',
+    'Профессиональное окрашивание волос в Саратове: балаяж, омбре, AirTouch, брондирование, однотонное окрашивание, тонирование, контуринг, скрытое окрашивание. Цены от 4500 ₽.',
   keywords: [
     'окрашивание волос Саратов',
     'балаяж Саратов',
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'Окрашивание волос в Саратове — LariBrand',
-    description: 'Балаяж, омбре, AirTouch, брондирование в Саратове. Премиальные красители. Цены от 4000 ₽.',
+    description: 'Балаяж, омбре, AirTouch, брондирование в Саратове. Премиальные красители. Цены от 4500 ₽.',
     url: 'https://laribrand.ru/hair_coloring',
     images: [{ url: '/upload/1762876574232-IMG_4353.jpg', width: 1200, height: 630, alt: 'Окрашивание волос балаяж омбре — LariBrand Саратов' }],
   },
@@ -42,7 +42,7 @@ export default function HairColoringPage() {
         description="Профессиональное окрашивание волос: балаяж, омбре, AirTouch, брондирование, однотонное окрашивание, тонирование, контуринг. Премиальные красители, подбор оттенка стилистом."
         url="https://laribrand.ru/hair_coloring"
         image="/upload/1762876574232-IMG_4353.jpg"
-        priceFrom="4000"
+        priceFrom="4500"
       />
       <Header />
       <HairColoringComponent />

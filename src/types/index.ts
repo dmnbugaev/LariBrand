@@ -60,9 +60,17 @@ export interface GalleryItem {
   id: number
   title: string
   category: string
+  categories?: string[]
+  media?: GalleryMedia[]
   beforeImage?: string
   afterImage?: string
   singleImage?: string
+}
+
+export interface GalleryMedia {
+  type: 'image' | 'video'
+  src: string
+  poster?: string
 }
 
 export interface ContentData {

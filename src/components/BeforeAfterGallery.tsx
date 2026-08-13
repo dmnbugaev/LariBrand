@@ -3,9 +3,31 @@
 import { useState, useEffect, useMemo, useCallback } from 'react'
 import Image from 'next/image'
 import { BeforeAfterSlider } from './BeforeAfterSlider'
+import GalleryMediaCarousel from './GalleryMediaCarousel'
 import type { GalleryItem } from '../types'
+import { galleryItemMatchesCategory, getGalleryItemCategories } from '@/lib/gallery'
 
 const galleryItems: GalleryItem[] = [
+  { id: 54, title: 'Укладка по кудрявому методу', category: 'Укладка волос', media: [{ type: 'video', src: '/videos/gallery/aug-2026/IMG_5494.mp4', poster: '/images/gallery/aug-2026/posters/IMG_5494.webp' }] },
+  { id: 55, title: 'Ботокс', category: 'Кератин и ботокс', media: [{ type: 'image', src: '/images/gallery/aug-2026/IMG_5478.JPG' }] },
+  { id: 56, title: 'Ботокс', category: 'Кератин и ботокс', media: [{ type: 'image', src: '/images/gallery/aug-2026/IMG_5479.JPG' }] },
+  { id: 57, title: 'Кератин и SPA-уход', category: 'Кератин и ботокс', media: [{ type: 'video', src: '/videos/gallery/aug-2026/IMG_5811.mp4', poster: '/images/gallery/aug-2026/posters/IMG_5811.webp' }] },
+  { id: 58, title: 'Корейская биозавивка, стрижка и экспресс-уход', category: 'Корейская биозавивка', categories: ['Корейская биозавивка', 'Стрижка волос'], media: [{ type: 'video', src: '/videos/gallery/aug-2026/IMG_6013.mp4', poster: '/images/gallery/aug-2026/posters/IMG_6013.webp' }, { type: 'image', src: '/images/gallery/aug-2026/IMG_5744.jpg' }] },
+  { id: 59, title: 'Кератин и оформление ровного среза', category: 'Кератин и ботокс', categories: ['Кератин и ботокс', 'Стрижка волос'], media: [{ type: 'video', src: '/videos/gallery/aug-2026/IMG_5997.mp4', poster: '/images/gallery/aug-2026/posters/IMG_5997.webp' }] },
+  { id: 60, title: 'Мужская стрижка', category: 'Мужская стрижка', media: [{ type: 'image', src: '/images/gallery/aug-2026/IMG_6016.jpg' }] },
+  { id: 61, title: 'Мужская стрижка', category: 'Мужская стрижка', media: [{ type: 'video', src: '/videos/gallery/aug-2026/IMG_6029.mp4', poster: '/images/gallery/aug-2026/posters/IMG_6029.webp' }] },
+  { id: 62, title: 'Кератин и SPA-уход', category: 'Кератин и ботокс', media: [{ type: 'video', src: '/videos/gallery/aug-2026/IMG_6041.mp4', poster: '/images/gallery/aug-2026/posters/IMG_6041.webp' }, { type: 'video', src: '/videos/gallery/aug-2026/IMG_6046.mp4', poster: '/images/gallery/aug-2026/posters/IMG_6046.webp' }] },
+  { id: 63, title: 'Классическая биозавивка, стрижка и холодная реконструкция', category: 'Классическая биозавивка', categories: ['Классическая биозавивка', 'Стрижка волос', 'Холодная реконструкция'], media: [{ type: 'image', src: '/images/gallery/aug-2026/IMG_6757.jpg' }, { type: 'video', src: '/videos/gallery/aug-2026/IMG_6751.mp4', poster: '/images/gallery/aug-2026/posters/IMG_6751.webp' }] },
+  { id: 64, title: 'Стрижка каскад и холодная реконструкция', category: 'Стрижка волос', categories: ['Стрижка волос', 'Холодная реконструкция'], media: [{ type: 'video', src: '/videos/gallery/aug-2026/IMG_7034.mp4', poster: '/images/gallery/aug-2026/posters/IMG_7034.webp' }, { type: 'image', src: '/images/gallery/aug-2026/IMG_7029.jpg' }] },
+  { id: 65, title: 'Классическая биозавивка', category: 'Классическая биозавивка', media: [{ type: 'image', src: '/images/gallery/aug-2026/IMG_7197.jpg' }] },
+  { id: 66, title: 'Укладка по кудрявому методу', category: 'Укладка волос', media: [{ type: 'image', src: '/images/gallery/aug-2026/IMG_7198.jpg' }, { type: 'video', src: '/videos/gallery/aug-2026/IMG_7200.mp4', poster: '/images/gallery/aug-2026/posters/IMG_7200.webp' }] },
+  { id: 67, title: 'Тонирование пенной баней', category: 'Окрашивание', media: [{ type: 'video', src: '/videos/gallery/aug-2026/IMG_7073.mp4', poster: '/images/gallery/aug-2026/posters/IMG_7073.webp' }] },
+  { id: 68, title: 'Горячая реконструкция (кератин) и оформление ровного среза', category: 'Кератин и ботокс', categories: ['Кератин и ботокс', 'Стрижка волос'], media: [{ type: 'video', src: '/videos/gallery/aug-2026/IMG_7077.mp4', poster: '/images/gallery/aug-2026/posters/IMG_7077.webp' }] },
+  { id: 69, title: 'Стрижка каскад и укладка по форме', category: 'Стрижка волос', categories: ['Стрижка волос', 'Укладка волос'], media: [{ type: 'video', src: '/videos/gallery/aug-2026/IMG_7211.mp4', poster: '/images/gallery/aug-2026/posters/IMG_7211.webp' }, { type: 'image', src: '/images/gallery/aug-2026/IMG_6764.jpg' }] },
+  { id: 70, title: 'Стрижка каскад и укладка на Dyson', category: 'Стрижка волос', categories: ['Стрижка волос', 'Укладка волос'], media: [{ type: 'video', src: '/videos/gallery/aug-2026/IMG_7208.mp4', poster: '/images/gallery/aug-2026/posters/IMG_7208.webp' }, { type: 'image', src: '/images/gallery/aug-2026/IMG_6866.jpg' }] },
+  { id: 71, title: 'Стрижка каскад и укладка по форме на брашинг', category: 'Стрижка волос', categories: ['Стрижка волос', 'Укладка волос'], media: [{ type: 'image', src: '/images/gallery/aug-2026/IMG_7222.jpg' }] },
+  { id: 72, title: 'Корейская биозавивка', category: 'Корейская биозавивка', media: [{ type: 'image', src: '/images/gallery/aug-2026/IMG_7354.jpg' }] },
+  { id: 73, title: 'Горячая реконструкция (кератин) и оформление ровного среза', category: 'Кератин и ботокс', categories: ['Кератин и ботокс', 'Стрижка волос'], media: [{ type: 'image', src: '/images/gallery/aug-2026/IMG_7357.jpg' }] },
   { id: 1, title: 'Кератиновое выпрямление', category: 'Кератин и ботокс', beforeImage: '/images/IMG_7336.jpg', afterImage: '/images/IMG_7405.jpg' },
   { id: 2, title: 'Кератиновое выпрямление', category: 'Кератин и ботокс', beforeImage: '/images/IMG_7970.jpg', afterImage: '/images/IMG_7969.jpg' },
   { id: 3, title: 'Кератиновое выпрямление', category: 'Кератин и ботокс', beforeImage: '/images/IMG_7971.jpg', afterImage: '/images/IMG_7972.jpg' },
@@ -98,15 +120,19 @@ export function BeforeAfterGallery({ defaultCategory = 'Все' }: BeforeAfterGa
 
   const filteredItems = useMemo(() => {
     if (isBioWavePage) {
-      const bioItems = galleryItems.filter((item) => BIO_WAVE_SUBCATEGORIES.includes(item.category))
+      const bioItems = galleryItems.filter((item) =>
+        getGalleryItemCategories(item).some((category) => BIO_WAVE_SUBCATEGORIES.includes(category))
+      )
       if (selectedCategory === 'Все') return bioItems
-      return bioItems.filter((item) => item.category === selectedCategory)
+      return bioItems.filter((item) => galleryItemMatchesCategory(item, selectedCategory))
     }
     if (selectedCategory === 'Все') return galleryItems
     if (selectedCategory === 'Биозавивка') {
-      return galleryItems.filter((item) => BIO_WAVE_SUBCATEGORIES.includes(item.category))
+      return galleryItems.filter((item) =>
+        getGalleryItemCategories(item).some((category) => BIO_WAVE_SUBCATEGORIES.includes(category))
+      )
     }
-    return galleryItems.filter((item) => item.category === selectedCategory)
+    return galleryItems.filter((item) => galleryItemMatchesCategory(item, selectedCategory))
   }, [selectedCategory, isBioWavePage])
 
   const isCutCategory = useMemo(
@@ -130,7 +156,7 @@ export function BeforeAfterGallery({ defaultCategory = 'Все' }: BeforeAfterGa
         <p className="text-brand-black opacity-60 max-w-[42rem] mx-auto text-lg leading-7">
           {isCutCategory
             ? 'Примеры наших работ по стрижкам. Для других услуг проведите пальцем по фото, чтобы увидеть результат "до и после"'
-            : 'Посмотрите удивительные преображения наших клиентов. Проведите пальцем по фото, чтобы увидеть результат "до и после"'}
+            : 'Посмотрите преображения наших клиентов. Листайте медиа внутри карточек и запускайте видео по нажатию.'}
         </p>
       </div>
 
@@ -160,8 +186,10 @@ export function BeforeAfterGallery({ defaultCategory = 'Все' }: BeforeAfterGa
             className="transition-transform duration-300 hover:-translate-y-1"
           >
             <div className="bg-white rounded-2xl overflow-hidden shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-2px_rgba(0,0,0,0.05)] transition-shadow duration-300 h-full flex flex-col hover:shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1),0_10px_10px_-5px_rgba(0,0,0,0.04)]">
-              <div className="w-full aspect-[4/3] relative overflow-hidden bg-brand-bg max-[640px]:aspect-[3/4]">
-                {item.singleImage ? (
+              <div className={`w-full relative overflow-hidden bg-brand-bg ${item.media ? 'aspect-[3/4]' : 'aspect-[4/3] max-[640px]:aspect-[3/4]'}`}>
+                {item.media ? (
+                  <GalleryMediaCarousel media={item.media} title={item.title} />
+                ) : item.singleImage ? (
                   <div className="single-image-container relative w-full h-full">
                     <Image
                       src={item.singleImage}
@@ -179,7 +207,7 @@ export function BeforeAfterGallery({ defaultCategory = 'Все' }: BeforeAfterGa
               </div>
               <div className="p-6 flex-grow flex flex-col">
                 <span className="inline-block py-1 px-3 bg-brand-bg text-brand-black rounded-full text-sm mb-2 self-start">
-                  {item.category}
+                  {getGalleryItemCategories(item).join(' · ')}
                 </span>
                 <h3 className="text-[1.25rem] font-semibold text-brand-black mt-auto">
                   {item.title}

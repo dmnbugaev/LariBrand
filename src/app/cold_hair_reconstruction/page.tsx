@@ -9,7 +9,7 @@ import ServiceSchema from '@/components/ServiceSchema'
 export const metadata: Metadata = {
   title: 'Холодная реконструкция волос в Саратове | Холодный уход — LariBrand',
   description:
-    'Холодная реконструкция волос в Саратове: восстановление, укрепление, блеск без нагрева. Холодный уход, холодное восстановление. Подбор под тип повреждения. Цены от 3900 ₽.',
+    'Холодная реконструкция волос в Саратове: восстановление, укрепление, блеск без нагрева. Холодный уход, холодное восстановление. Подбор под тип повреждения. Цены от 3000 ₽.',
   keywords: [
     'холодная реконструкция волос Саратов',
     'холодный уход Саратов',
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'Холодная реконструкция волос в Саратове — LariBrand',
-    description: 'Холодный уход и холодное восстановление волос в Саратове. Восстановление без нагрева. Цены от 3900 ₽.',
+    description: 'Холодный уход и холодное восстановление волос в Саратове. Восстановление без нагрева. Цены от 3000 ₽.',
     url: 'https://laribrand.ru/cold_hair_reconstruction',
     images: [{ url: '/upload/1762876982434-IMG_0863.jpg', width: 1200, height: 630, alt: 'Холодная реконструкция волос — LariBrand Саратов' }],
   },
@@ -37,7 +37,7 @@ export default function ColdHairReconstructionPage() {
         description="Восстановление волос без нагрева: холодная реконструкция, холодный уход, холодное восстановление. Укрепляет, уплотняет, придаёт блеск и эластичность."
         url="https://laribrand.ru/cold_hair_reconstruction"
         image="/upload/1762876982434-IMG_0863.jpg"
-        priceFrom="3900"
+        priceFrom="3000"
       />
       <Header />
       <ColdHairReconstructionComponent />
