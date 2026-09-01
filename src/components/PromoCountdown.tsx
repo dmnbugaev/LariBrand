@@ -35,7 +35,7 @@ const labels = [
   ['seconds', 'секунд'],
 ] as const
 
-export default function PromoCountdown({ deadline, compact = false, deadlineLabel = 'до 16 августа включительно' }: PromoCountdownProps) {
+export default function PromoCountdown({ deadline, compact = false, deadlineLabel = 'до 10 сентября включительно' }: PromoCountdownProps) {
   const [timeLeft, setTimeLeft] = useState<TimeLeft | null>(null)
 
   useEffect(() => {
@@ -48,24 +48,24 @@ export default function PromoCountdown({ deadline, compact = false, deadlineLabe
   return (
     <div
       className={`border border-[#4b0010]/15 bg-white/72 text-[#3b0711] shadow-[0_18px_48px_rgba(92,0,28,0.12)] backdrop-blur ${
-        compact ? 'p-4' : 'p-5 sm:p-6'
+        compact ? 'p-4' : 'p-5 max-[420px]:p-3 sm:p-6'
       }`}
     >
-      <div className="mb-4 flex items-center justify-between gap-4">
-        <p className="text-[11px] uppercase tracking-[3px] text-[#7b1231]/70">
+      <div className="mb-4 flex items-center justify-between gap-4 max-[420px]:gap-2">
+        <p className="text-[11px] uppercase tracking-[3px] text-[#7b1231]/70 max-[420px]:text-[9px] max-[420px]:tracking-[1.5px]">
           До конца акции
         </p>
-        <p className="text-[12px] uppercase tracking-[2px] text-[#3b0711]/55">
+        <p className="text-right text-[12px] uppercase tracking-[2px] text-[#3b0711]/55 max-[420px]:text-[9px] max-[420px]:tracking-[1px]">
           {deadlineLabel}
         </p>
       </div>
-      <div className={`grid grid-cols-4 ${compact ? 'gap-2' : 'gap-3'}`}>
+      <div className={`grid min-w-0 grid-cols-4 ${compact ? 'gap-2' : 'gap-3 max-[420px]:gap-1.5'}`}>
         {labels.map(([key, label]) => (
-          <div key={key} className="bg-[#3b0711] px-2 py-3 text-center text-[#ffe5ef]">
-            <span className={`block font-forum leading-none ${compact ? 'text-[26px]' : 'text-[34px] sm:text-[42px]'}`}>
+          <div key={key} className="min-w-0 bg-[#3b0711] px-2 py-3 text-center text-[#ffe5ef] max-[420px]:px-1.5">
+            <span className={`block font-forum leading-none ${compact ? 'text-[26px]' : 'text-[34px] max-[420px]:text-[27px] sm:text-[42px]'}`}>
               {timeLeft ? String(timeLeft[key]).padStart(2, '0') : '--'}
             </span>
-            <span className="mt-2 block text-[9px] uppercase tracking-[1.6px] text-[#ffe5ef]/68">
+            <span className="mt-2 block text-[9px] uppercase tracking-[1.6px] text-[#ffe5ef]/68 max-[420px]:text-[7px] max-[420px]:tracking-[0.6px]">
               {label}
             </span>
           </div>

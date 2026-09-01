@@ -74,10 +74,11 @@ export default function PromoLoopVideo({
       ref={videoRef}
       className={`block h-full w-full bg-white object-cover ${className}`}
       autoPlay
+      loop
       muted
       playsInline
       poster={poster}
-      preload="auto"
+      preload="metadata"
       aria-label={title}
     >
       <source src={src} />

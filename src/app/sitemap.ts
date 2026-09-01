@@ -1,9 +1,23 @@
 import { MetadataRoute } from 'next'
+import { isPromoActive } from '@/lib/promo'
 
 const BASE_URL = 'https://laribrand.ru'
 
+export const dynamic = 'force-dynamic'
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date()
+
+  const promoEntry: MetadataRoute.Sitemap = isPromoActive()
+    ? [
+        {
+          url: `${BASE_URL}/promo`,
+          lastModified,
+          changeFrequency: 'daily',
+          priority: 0.9,
+        },
+      ]
+    : []
 
   return [
     {
@@ -12,12 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 1,
     },
-    {
-      url: `${BASE_URL}/promo`,
-      lastModified,
-      changeFrequency: 'daily',
-      priority: 0.9,
-    },
+    ...promoEntry,
     {
       url: `${BASE_URL}/keratin_and_botox`,
       lastModified,

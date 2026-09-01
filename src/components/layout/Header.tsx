@@ -7,17 +7,39 @@ import content from '../../../content/content.json'
 import { SERVICE_NAV_LINKS } from '../../lib/nav-links'
 import { useMenu } from '../../context/MenuContext'
 import { sanitizeHref } from '../../lib/security'
+import { isPromoActive, PROMO_END, PROMO_START } from '../../lib/promo'
 
-const NAV_LINKS = [
+const BASE_NAV_LINKS = [
   { href: '/', label: 'ГЛАВНАЯ' },
-  { href: '/promo', label: 'АКЦИЯ' },
   ...SERVICE_NAV_LINKS.map(({ href, label }) => ({ href, label: label.toUpperCase() })),
 ]
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [showPromoLink, setShowPromoLink] = useState(false)
   const { setMenuOpen } = useMenu()
+
+  useEffect(() => {
+    let timer: number | undefined
+
+    const updatePromoLink = () => {
+      const now = Date.now()
+      setShowPromoLink(isPromoActive(now))
+
+      const start = new Date(PROMO_START).getTime()
+      const end = new Date(PROMO_END).getTime()
+      const nextBoundary = now < start ? start : now < end ? end : null
+      if (nextBoundary !== null) {
+        timer = window.setTimeout(updatePromoLink, Math.min(nextBoundary - now + 50, 2_147_483_647))
+      }
+    }
+
+    updatePromoLink()
+    return () => {
+      if (timer !== undefined) window.clearTimeout(timer)
+    }
+  }, [])
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 10)
@@ -53,6 +75,9 @@ export default function Header() {
   }, [isOpen, setMenuOpen])
 
   const close = () => setIsOpen(false)
+  const navLinks = showPromoLink
+    ? [BASE_NAV_LINKS[0], { href: '/promo', label: 'АКЦИЯ' }, ...BASE_NAV_LINKS.slice(1)]
+    : BASE_NAV_LINKS
 
   return (
     <header
@@ -113,7 +138,7 @@ export default function Header() {
           </div>
 
           <div className="burger-links flex-1 flex flex-col gap-2 overflow-y-auto pr-[5px] my-[15px] max-h-[calc(100vh-280px)] box-border">
-            {NAV_LINKS.map(({ href, label }) => (
+            {navLinks.map(({ href, label }) => (
               <Link
                 key={href}
                 href={href}
