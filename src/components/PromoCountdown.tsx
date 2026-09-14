@@ -35,7 +35,7 @@ const labels = [
   ['seconds', 'секунд'],
 ] as const
 
-export default function PromoCountdown({ deadline, compact = false, deadlineLabel = 'до 10 сентября включительно' }: PromoCountdownProps) {
+export default function PromoCountdown({ deadline, compact = false, deadlineLabel = 'до 18 сентября включительно' }: PromoCountdownProps) {
   const [timeLeft, setTimeLeft] = useState<TimeLeft | null>(null)
 
   useEffect(() => {

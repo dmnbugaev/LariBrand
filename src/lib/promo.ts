@@ -1,51 +1,66 @@
-export const PROMO_START = '2026-09-01T00:00:00+04:00'
-export const PROMO_END = '2026-09-11T00:00:00+04:00'
-export const PROMO_PERIOD_LABEL = 'с 1 по 10 сентября включительно'
-export const PROMO_STORAGE_KEY = 'laribrand-promo-popup-september-2026-closed'
+export const PROMO_START = '2026-09-14T00:00:00+04:00'
+export const PROMO_END = '2026-09-19T00:00:00+04:00'
+export const PROMO_PERIOD_LABEL = 'с 14 по 18 сентября включительно'
+export const PROMO_STORAGE_KEY = 'laribrand-promo-popup-september-14-18-2026-closed'
 
 export type PromoStatus = 'scheduled' | 'active' | 'expired'
 
 export const PROMO_MEDIA = {
-  campaignCover: '/promo/IMG_9146.JPG',
-  campaignStory: '/promo/IMG_9120.JPG',
-  lebel: '/promo/IMG_9119.JPG',
-  brandVideo: '/promo/IMG_9151.mp4',
+  campaignCover: '/promo/IMG_0378.JPG',
 } as const
 
 export type PromoOffer = {
   id: string
   title: string
-  subtitle?: string
+  subtitle: string
+  description: string
   media: string
-  mediaType: 'image' | 'video'
   duration: string
-  oldPrice: string
-  price: string
+  oldPrice?: string
+  price?: string
+  gift?: string
   benefits: readonly string[]
 }
 
 export const PROMO_OFFERS = [
   {
-    id: 'keratin-peeling',
-    title: 'Комбо 2в1: кератин + пилинг',
-    media: '/promo/IMG_9114.mp4',
-    mediaType: 'video',
-    duration: '≈ 3–3,5 часа',
-    oldPrice: '8 700 ₽',
-    price: '4 900 ₽',
+    id: 'shape-refresh',
+    title: 'Комбо 3в1 «Обновление формы»',
+    subtitle: 'Пилинг + SPA-уход + стрижка',
+    description: 'Идеальное решение для обновления длины и оздоровления кожи головы.',
+    media: '/promo/IMG_0379.JPG',
+    duration: '≈ 1,5–2 часа',
+    oldPrice: '5 900 ₽',
+    price: '3 300 ₽',
     benefits: [
-      'Полностью убирает пух и нежелательную волну',
-      'Создаёт глянцевый блеск и запечатывает кутикулу',
-      'Сглаживает «ёлочку» и частично секущиеся кончики',
-      'Пилинг очищает кожу головы от себума и стайлингов',
+      'Избавит от секущихся и истончённых кончиков',
+      'Вернёт стрижке чёткую и аккуратную форму',
+      'Напитает волосы по всей длине',
+      'Глубоко очистит кожу головы для лучшего роста волос',
+    ],
+  },
+  {
+    id: 'mirror-finish',
+    title: 'Комбо 3в1 «Зеркальное полотно»',
+    subtitle: 'Пилинг + SPA-уход + ботокс в тёплой технике',
+    description: 'Интенсивная процедура для зеркального блеска и прикорневого объёма.',
+    media: '/promo/IMG_0380.JPG',
+    duration: '≈ 3–3,5 часа',
+    oldPrice: '8 900 ₽',
+    price: '5 500 ₽',
+    benefits: [
+      'Убирает пух и нежелательную волну',
+      'Создаёт глянцевый блеск',
+      'Пилинг обеспечивает прикорневой объём',
+      'SPA-уход защищает структуру от пересушивания',
     ],
   },
   {
     id: 'deep-recovery',
-    title: 'Комбо 3в1: терапия глубокого восстановления',
+    title: 'Комбо 3в1 «Терапия глубокого восстановления»',
     subtitle: 'Пилинг + холодная реконструкция Dr. Sorbie + визуальное завершение',
-    media: '/promo/IMG_9117.mp4',
-    mediaType: 'video',
+    description: 'Мощное восстановление и реконструкция даже для сильно повреждённых волос.',
+    media: '/promo/IMG_0381.JPG',
     duration: '≈ 2–2,5 часа',
     oldPrice: '9 700 ₽',
     price: '5 500 ₽',
@@ -57,49 +72,41 @@ export const PROMO_OFFERS = [
     ],
   },
   {
-    id: 'donatti',
-    title: 'Холодная реконструкция Donatti',
-    media: '/promo/IMG_9118.mp4',
-    mediaType: 'video',
+    id: 'safe-straightening',
+    title: 'Безопасное выпрямление',
+    subtitle: 'Холодная реконструкция + кератин или ботокс',
+    description:
+      'Комплексная и самая безопасная для волос процедура: холодная реконструкция восстанавливает и питает волос, а горячая создаёт эстетичный вид прямых и блестящих волос.',
+    media: '/promo/IMG_0382.JPG',
+    duration: '≈ 2,5–3 часа',
+    oldPrice: '11 400 ₽',
+    price: '8 500 ₽',
+    benefits: [],
+  },
+  {
+    id: 'rich-color',
+    title: 'Комбо 3в1 «Сочный цвет»',
+    subtitle: 'Пилинг + SPA-уход + однотонное окрашивание или тонирование',
+    description: 'Комплексный подход, направленный на выравнивание цвета и защиту структуры волос.',
+    media: '/promo/IMG_0383.JPG',
     duration: '≈ 2–2,5 часа',
-    oldPrice: '5 900 ₽',
-    price: '4 500 ₽',
+    oldPrice: '10 400 ₽',
+    price: '6 000 ₽',
     benefits: [
-      'Питает, увлажняет, восстанавливает и придаёт блеск',
-      'Делает волосы более послушными',
-      'Идеальна после морской и хлорированной воды и палящего солнца',
+      'Полностью выравнивает тон',
+      'SPA-уход защищает структуру от пересушивания и глубоко питает',
     ],
   },
   {
-    id: 'shape-refresh',
-    title: 'Комбо 3в1: обновление формы',
-    subtitle: 'Пилинг + SPA-уход + стрижка',
-    media: '/promo/IMG_9138.mp4',
-    mediaType: 'video',
-    duration: '≈ 1,5–2 часа',
-    oldPrice: '5 900 ₽',
-    price: '3 300 ₽',
-    benefits: [
-      'Избавляет от секущихся и истончённых кончиков',
-      'Возвращает стрижке чёткую и аккуратную форму',
-      'Напитывает волосы по всей длине',
-      'Глубоко очищает кожу головы для лучшего роста волос',
-    ],
-  },
-  {
-    id: 'lebel',
-    title: 'Холодная реконструкция Lebel',
-    subtitle: 'Счастье для волос от японского бренда',
-    media: PROMO_MEDIA.lebel,
-    mediaType: 'image',
-    duration: '≈ 2–2,5 часа',
-    oldPrice: '6 500 ₽',
-    price: '5 000 ₽',
-    benefits: [
-      'Устраняет ломкость и улучшает качество волос',
-      'Делает волосы более мягкими и послушными',
-      'Идеальна после морской и хлорированной воды и палящего солнца',
-    ],
+    id: 'bio-wave',
+    title: 'Женская биозавивка',
+    subtitle: 'Классическая или корейская техника',
+    description:
+      'Процедура направлена на формирование кудрей с применением современных составов. Мастер подбирает технику и вид завитка индивидуально перед процедурой.',
+    media: '/promo/IMG_0384.JPG',
+    duration: '≈ 3–5 часов',
+    gift: 'Холодная реконструкция в подарок',
+    benefits: [],
   },
 ] as const satisfies readonly PromoOffer[]
 
