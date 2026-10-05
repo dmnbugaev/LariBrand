@@ -4,11 +4,13 @@ import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import PromoCampaignAvailability from '@/components/PromoCampaignAvailability'
 import PromoCountdown from '@/components/PromoCountdown'
+import PromoOfferMedia from '@/components/PromoOfferMedia'
 import content from '../../../content/content.json'
 import { sanitizeHref } from '@/lib/security'
 import {
   getPromoStatus,
   PROMO_END,
+  PROMO_MASTER_PRICES,
   PROMO_MEDIA,
   PROMO_OFFERS,
   PROMO_PERIOD_LABEL,
@@ -18,15 +20,15 @@ import {
 export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
-  title: 'Процедуры для волос с выгодой до 60% — акция 14–18 сентября',
+  title: 'Процедуры для волос с выгодой до 60% — акция 1–10 октября',
   description:
-    'Шесть специальных предложений LariBrand в Саратове с 14 по 18 сентября 2026 года: восстановление, выпрямление, окрашивание, стрижка и биозавивка.',
+    'Четыре комбо-предложения LariBrand в Саратове с 1 по 10 октября 2026 года: обновление формы, зеркальный блеск, глубокое восстановление и холодная реконструкция.',
   alternates: {
     canonical: 'https://laribrand.ru/promo',
   },
   openGraph: {
     title: 'Процедуры с выгодой до 60% — LariBrand',
-    description: 'Шесть комплексов для волос по специальным условиям с 14 по 18 сентября.',
+    description: 'Четыре комбо для гладкости, объёма, восстановления и изменения образа с 1 по 10 октября.',
     images: [{ url: PROMO_MEDIA.campaignCover, width: 1080, height: 1920 }],
   },
 }
@@ -55,12 +57,12 @@ function InactivePromo({ scheduled = false }: { scheduled?: boolean }) {
           LariBrand / специальное предложение
         </p>
         <h1 className="mb-6 font-sans text-[62px] font-black uppercase leading-[0.94] text-[#a30f16] max-[640px]:text-[36px]">
-          {scheduled ? 'Акция начнётся 14 сентября' : 'Акция завершена'}
+          {scheduled ? 'Акция начнётся 1 октября' : 'Акция завершена'}
         </h1>
         <p className="mx-auto max-w-[620px] text-[20px] leading-[1.5] text-[#642427]/75 max-[560px]:text-[17px]">
           {scheduled
-            ? 'Шесть специальных предложений будут доступны с 14 по 18 сентября по саратовскому времени.'
-            : 'Спасибо всем, кто воспользовался специальными предложениями LariBrand с 14 по 18 сентября.'}
+            ? 'Четыре комбо-предложения будут доступны с 1 по 10 октября по саратовскому времени.'
+            : 'Спасибо всем, кто воспользовался специальными предложениями LariBrand с 1 по 10 октября.'}
         </p>
       </div>
     </main>
@@ -89,6 +91,65 @@ function OfferPrice({ offer }: { offer: PromoOffer }) {
   )
 }
 
+function MasterPricesSection() {
+  return (
+    <section className="px-5 pb-20 max-[640px]:pb-12" aria-labelledby="promo-master-prices-title">
+      <div className="mx-auto grid w-full max-w-[1180px] overflow-hidden border border-[#a30f16]/16 bg-[#fffdf7] shadow-[0_22px_60px_rgba(91,52,28,0.1)] md:grid-cols-[minmax(280px,0.6fr)_minmax(0,1.4fr)]">
+        <div className="flex items-center justify-center bg-[#e9e2d4] p-5 max-[520px]:p-3">
+          <div className="relative aspect-[9/16] w-full max-w-[360px] overflow-hidden bg-[#f5f0e5] shadow-[0_18px_48px_rgba(72,42,28,0.16)]">
+            <Image
+              src={PROMO_MASTER_PRICES.poster}
+              alt="Постер предложения: кератин и ботокс — 4 500 ₽, безопасное выпрямление — 7 500 ₽"
+              fill
+              sizes="(max-width: 768px) 90vw, 360px"
+              className="object-cover"
+            />
+          </div>
+        </div>
+
+        <div className="flex min-w-0 flex-col justify-center p-10 max-[640px]:p-7 max-[420px]:p-5">
+          <p className="mb-5 text-[11px] font-bold uppercase tracking-[0.28em] text-[#a30f16]/65">
+            К фиксированным ценам / только в октябре
+          </p>
+          <h3
+            id="promo-master-prices-title"
+            className="mb-4 break-words font-sans text-[42px] font-black uppercase leading-[0.98] text-[#a30f16] [overflow-wrap:anywhere] max-[640px]:text-[30px]"
+          >
+            Кератин, ботокс и безопасное выпрямление
+          </h3>
+          <p className="mb-7 text-[18px] leading-[1.55] text-[#642427]/75 max-[520px]:text-[16px]">
+            Фиксированные цены на самые востребованные процедуры для гладкости и ухода. Предложение
+            действует {PROMO_MASTER_PRICES.periodLabel}.
+          </p>
+
+          <div className="mb-6 grid gap-3 border-y border-[#a30f16]/20 py-6 text-[19px] font-semibold leading-[1.35] text-[#642427] max-[520px]:text-[16px]">
+            {PROMO_MASTER_PRICES.items.map((item) => (
+              <p key={item.id} className="flex flex-wrap items-center justify-between gap-x-6 gap-y-1">
+                <span>{item.title}</span>
+                <span className="font-sans text-[26px] font-black text-[#a30f16] max-[520px]:text-[22px]">
+                  {item.price}
+                </span>
+              </p>
+            ))}
+          </div>
+
+          <p className="mb-7 text-[13px] leading-[1.5] text-[#642427]/60 max-[520px]:text-[12px]">
+            {PROMO_MASTER_PRICES.note}
+          </p>
+          <a
+            href={sanitizeHref(content.sing_up_link)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`${bookingButtonClass} w-fit max-[460px]:w-full`}
+          >
+            Записаться
+          </a>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 function ActivePromo() {
   return (
     <main className="overflow-x-hidden bg-[#f5f0e5] pt-[80px] text-[#642427]">
@@ -96,7 +157,7 @@ function ActivePromo() {
         <div className="mx-auto grid w-full max-w-[1180px] grid-cols-[minmax(0,1fr)_minmax(320px,0.72fr)] items-center gap-14 max-[920px]:grid-cols-1 max-[560px]:gap-9">
           <div className="promo-fade-1 min-w-0 pt-10 max-[920px]:pt-4">
             <p className="mb-5 w-fit border border-[#a30f16] bg-[#f5f0e5]/75 px-4 py-2 text-[11px] font-bold uppercase tracking-[0.28em] text-[#a30f16] backdrop-blur-sm max-[560px]:mx-auto max-[560px]:tracking-[0.18em]">
-              LariBrand / 14–18 сентября
+              LariBrand / 1–10 октября
             </p>
             <h1 className="mb-6 max-w-[720px] break-words font-sans text-[72px] font-black uppercase leading-[0.92] text-[#a30f16] [overflow-wrap:anywhere] max-[720px]:text-[50px] max-[560px]:text-center max-[560px]:text-[36px]">
               Процедуры с выгодой до 60%
@@ -105,10 +166,11 @@ function ActivePromo() {
               Перезагрузка для ваших волос без крайних мер
             </p>
             <p className="mb-7 max-w-[620px] text-[18px] leading-[1.55] text-[#642427]/75 max-[560px]:text-center max-[560px]:text-[16px]">
-              Собрали шесть комплексов для гладкости, объёма, восстановления и смены образа. {PROMO_PERIOD_LABEL}.
+              Собрали четыре эффективных комбо для гладкости, объёма, восстановления и изменения
+              образа. {PROMO_PERIOD_LABEL}.
             </p>
             <div className="mb-7 max-w-[620px]">
-              <PromoCountdown deadline={PROMO_END} deadlineLabel="до 18 сентября включительно" />
+              <PromoCountdown deadline={PROMO_END} deadlineLabel="до 10 октября включительно" />
             </div>
             <a
               href={sanitizeHref(content.sing_up_link)}
@@ -123,11 +185,11 @@ function ActivePromo() {
           <div className="promo-fade-2 relative mx-auto aspect-[9/16] w-full max-w-[440px] overflow-hidden border border-[#a30f16]/20 bg-[#eee6d7] shadow-[0_30px_90px_rgba(81,42,25,0.25)]">
             <Image
               src={PROMO_MEDIA.campaignCover}
-              alt="Постер акции LariBrand: процедуры с выгодой до 60 процентов с 14 по 18 сентября"
+              alt="Постер акции LariBrand: процедуры с выгодой до 60 процентов с 1 по 10 октября"
               fill
               priority
               sizes="(max-width: 920px) 88vw, 440px"
-              className="object-contain"
+              className="object-cover"
             />
           </div>
         </div>
@@ -138,14 +200,15 @@ function ActivePromo() {
           <div className="mb-12 grid grid-cols-[1fr_0.62fr] items-end gap-8 max-[760px]:grid-cols-1 max-[760px]:gap-4">
             <div>
               <p className="mb-4 text-[11px] font-bold uppercase tracking-[0.3em] text-[#a30f16]">
-                Шесть специальных предложений
+                Четыре комбо-предложения
               </p>
               <h2 className="max-w-[820px] font-sans text-[56px] font-black uppercase leading-[0.95] text-[#a30f16] max-[640px]:text-[34px]">
                 Выберите свою перезагрузку
               </h2>
             </div>
             <p className="text-[17px] leading-[1.55] text-[#642427]/70 max-[640px]:text-[15px]">
-              Откройте постер, сравните условия и забронируйте удобное время у администратора LariBrand.
+              Посмотрите ролики с результатами процедур, сравните условия и забронируйте удобное время
+              у администратора LariBrand.
             </p>
           </div>
 
@@ -161,15 +224,7 @@ function ActivePromo() {
                     index % 2 === 1 ? 'md:order-2' : ''
                   }`}
                 >
-                  <div className="relative aspect-[9/16] w-full max-w-[430px] overflow-hidden bg-[#f5f0e5] shadow-[0_18px_48px_rgba(72,42,28,0.16)]">
-                    <Image
-                      src={offer.media}
-                      alt={`Постер предложения «${offer.title}»`}
-                      fill
-                      sizes="(max-width: 768px) 90vw, 430px"
-                      className="object-contain"
-                    />
-                  </div>
+                  <PromoOfferMedia offer={offer} />
                 </div>
 
                 <div className="flex min-w-0 flex-col justify-center p-10 max-[640px]:p-7 max-[420px]:p-5">
@@ -197,12 +252,14 @@ function ActivePromo() {
                     </ul>
                   ) : null}
 
-                  <p className="mb-5 flex items-center gap-3 text-[16px] font-bold uppercase tracking-[0.08em] text-[#642427]/70">
-                    <span aria-hidden="true" className="text-[22px] text-[#d89c16]">
-                      ◷
-                    </span>
-                    Время процедуры: {offer.duration}
-                  </p>
+                  {offer.duration ? (
+                    <p className="mb-5 flex items-center gap-3 text-[16px] font-bold uppercase tracking-[0.08em] text-[#642427]/70">
+                      <span aria-hidden="true" className="text-[22px] text-[#d89c16]">
+                        ◷
+                      </span>
+                      Время процедуры: {offer.duration}
+                    </p>
+                  ) : null}
                   <OfferPrice offer={offer} />
                   <a
                     href={sanitizeHref(content.sing_up_link)}
@@ -219,9 +276,11 @@ function ActivePromo() {
         </div>
       </section>
 
+      <MasterPricesSection />
+
       <section className="relative isolate overflow-hidden bg-[#771018] px-5 py-20 text-[#fffaf0] max-[640px]:py-12">
         <Image
-          src="/promo/IMG_0384.JPG"
+          src="/promo/IMG_2287.JPG"
           alt=""
           fill
           sizes="100vw"
@@ -230,13 +289,14 @@ function ActivePromo() {
         <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#651018] via-[#771018]/95 to-[#771018]/72" />
         <div className="mx-auto max-w-[880px] text-center">
           <p className="mb-5 text-[11px] font-bold uppercase tracking-[0.3em] text-[#f1c456]">
-            Только 14–18 сентября
+            Только 1–10 октября
           </p>
           <h2 className="mb-6 font-sans text-[58px] font-black uppercase leading-[0.95] max-[640px]:text-[35px]">
             Время для нового образа
           </h2>
           <p className="mx-auto mb-8 max-w-[650px] text-[19px] leading-[1.55] text-[#fffaf0]/80 max-[520px]:text-[16px]">
-            Выберите подходящий комплекс и забронируйте время. Администратор поможет уточнить состав процедуры и подобрать мастера.
+            Выберите подходящий комплекс и забронируйте время. Администратор поможет уточнить состав
+            процедуры и подобрать мастера.
           </p>
           <a
             href={sanitizeHref(content.sing_up_link)}

@@ -145,11 +145,11 @@ export default function PromoPopup() {
         <div className="relative min-h-[620px] bg-[#e9e1d2] max-[760px]:hidden">
           <Image
             src={PROMO_MEDIA.campaignCover}
-            alt="Постер акции LariBrand с 14 по 18 сентября"
+            alt="Постер акции LariBrand с 1 по 10 октября"
             fill
             priority
             sizes="370px"
-            className="object-contain"
+            className="object-cover"
           />
         </div>
 
@@ -167,7 +167,7 @@ export default function PromoPopup() {
           </div>
 
           <p className="mb-5 w-fit border border-[#a30f16] px-3 py-2 pr-12 text-[10px] font-bold uppercase tracking-[0.24em] text-[#a30f16] max-[520px]:mb-3 max-[380px]:tracking-[0.12em]">
-            LariBrand / 14–18 сентября
+            LariBrand / 1–10 октября
           </p>
           <h2
             id="promo-popup-title"
@@ -179,7 +179,7 @@ export default function PromoPopup() {
             id="promo-popup-description"
             className="mb-6 text-[19px] leading-[1.42] text-[#642427]/78 max-[520px]:text-[16px]"
           >
-            Шесть комплексов для гладкости, объёма, восстановления и смены образа.
+            Четыре комбо для гладкости, объёма, восстановления и изменения образа.
           </p>
 
           <div className="mb-6 grid gap-3 border-y border-[#a30f16]/18 py-5 text-[14px] font-semibold uppercase leading-[1.35] tracking-[0.04em] text-[#642427]/72 max-[520px]:text-[12px]">
@@ -187,15 +187,15 @@ export default function PromoPopup() {
               <span className="mr-2 text-[#d89c16]">{'//'}</span>Комбо-процедуры от 3 300 ₽
             </p>
             <p>
-              <span className="mr-2 text-[#d89c16]">{'//'}</span>Безопасное выпрямление — 8 500 ₽
+              <span className="mr-2 text-[#d89c16]">{'//'}</span>Холодная реконструкция — 4 500 ₽
             </p>
             <p>
-              <span className="mr-2 text-[#d89c16]">{'//'}</span>К биозавивке — реконструкция в подарок
+              <span className="mr-2 text-[#d89c16]">{'//'}</span>Кератин и ботокс — фиксированные цены
             </p>
           </div>
 
           <p className="mb-6 text-[12px] font-bold uppercase tracking-[0.16em] text-[#a30f16]">
-            Предложение действует 14–18 сентября
+            Предложение действует 1–10 октября
           </p>
 
           <div className="grid grid-cols-2 gap-3 max-[440px]:grid-cols-1">
