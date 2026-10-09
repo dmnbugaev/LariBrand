@@ -1,0 +1,68 @@
+name: CI/CD — LariBrand
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-laribrand
+  cancel-in-progress: false
+
+jobs:
+  quality:
+    name: Линт и тесты
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - name: Установка зависимостей
+        run: npm ci
+      - name: ESLint
+        run: npm run lint
+      - name: Тесты
+        run: npm test
+
+  deploy:
+    name: Деплой на VPS
+    needs: quality
+    runs-on: ubuntu-latest
+    env:
+      # Секрет задаётся один раз: Settings → Secrets and variables → Actions
+      SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+    steps:
+      - name: Деплой по SSH
+        if: env.SSH_PRIVATE_KEY != ''
+        run: |
+          install -m 700 -d ~/.ssh
+          install -m 600 /dev/null ~/.ssh/id_ed25519
+          printf '%s\n' "$SSH_PRIVATE_KEY" > ~/.ssh/id_ed25519
+          ssh-keyscan -p 22222 -H 130.49.149.189 >> ~/.ssh/known_hosts 2>/dev/null
+          ssh -T -p 22222 -i ~/.ssh/id_ed25519 -o IdentitiesOnly=yes admin@130.49.149.189 'bash -s' << 'EOF'
+          set -euo pipefail
+          cd /var/www/LariBrand
+          echo "=== Обновление кода ==="
+          git fetch origin main
+          git reset --hard origin/main
+          echo "=== Зависимости ==="
+          npm ci
+          echo "=== Сборка ==="
+          npm run build
+          echo "=== Перезапуск ==="
+          pm2 restart laribrand
+          pm2 save
+          echo "DEPLOY OK: $(git rev-parse --short HEAD)"
+          EOF
+
+      - name: Секрет не задан (деплой пропущен)
+        if: env.SSH_PRIVATE_KEY == ''
+        run: |
+          echo "⚠️ Секрет SSH_PRIVATE_KEY не задан — шаг деплоя пропущен."
+          echo "Добавьте его один раз: GitHub → репозиторий LariBrand → Settings →"
+          echo "Secrets and variables → Actions → New repository secret:"
+          echo "  Name:  SSH_PRIVATE_KEY"
+          echo "  Value: приватный ключ деплоя (ed25519, выдаст его администратор)"
+          echo "Затем: Actions → CI/CD — LariBrand → Run workflow (или новый push)."
