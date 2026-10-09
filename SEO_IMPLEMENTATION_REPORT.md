@@ -86,10 +86,33 @@
   - `og:image` биозавивки — JPEG;
   - CSP/HSTS/X-Frame-Options на месте; noindex на юридических страницах.
 
-## 7. Что осталось сделать вручную (вне репозитория)
+## 7. Развёртывание и CI/CD (обновлено 09.10.2026, позже базового отчёта)
 
-1. Задеплоить изменения и проверить `https://laribrand.ru/yandex_5103e65f2910a91e.html` (200).
-2. В Яндекс Вебмастере: добавить сайт → подтверждение пройдёт автоматически по файлу; указать главное зеркало `laribrand.ru`; добавить sitemap.xml.
-3. Настроить 301 `www.laribrand.ru → laribrand.ru` на хостинге.
-4. Создать цели в интерфейсе Метрики (список идентификаторов — SEO_ANALYTICS.md).
-5. Снять PageSpeed Insights после деплоя (базовые замеры).
+**Инфраструктура (VPS 130.49.149.189, `ssh myserver`):** сайт уже работал на VPS —
+nginx (80/443, Let's Encrypt) → pm2-процесс `laribrand` (`next start`, порт 3000) из
+git-клонa `/var/www/LariBrand`. Доработано:
+
+- **nginx: 301 www → без-www** — отдельные server-блоки для www на :80 и :443, пути сохраняются
+  (`https://www.laribrand.ru/promo` → `https://laribrand.ru/promo`). Проверено на живом сайте.
+- **CI/CD GitHub Actions** (`.github/workflows/deploy.yml`): push в main → job «Линт и тесты»
+  (node 20, npm ci, eslint, jest) → job «Деплой на VPS» (SSH: git reset → npm ci → build →
+  pm2 restart). Для SSH создан отдельный ed25519-ключ `~/.ssh/laribrand_deploy` (Mac) /
+  публичная часть добавлена в `authorized_keys` сервера.
+- **Фикс совместимости:** `jest.config.ts` → `jest.config.mjs` — под Node 20 (CI и VPS)
+  Jest 30 требовал ts-node для TS-конфига и падал; локально под Node 22/24 маскировалось.
+- Секрет `SSH_PRIVATE_KEY` в репозитории существует со старой попытки CI/CD и содержит
+  невалидное значение (подтверждено auth.log: раннер падает в парольную аутентификацию).
+  **Нужно один раз обновить** значением из `~/.ssh/laribrand_deploy` — после этого пуш в main
+  деплоится автоматически.
+- Все изменения задеплоены на VPS вручную тем же скриптом, что использует CI (сервер на коммите
+  с nginx/jest-фиксами); живой сайт проверен: файл Яндекс Вебмастера 200, robots/sitemap, title
+  без дубля бренда, OG jpeg, FAQ/перелинковка в HTML, цели в бандлах, www 301.
+
+## 8. Что осталось сделать вручную
+
+1. **Обновить секрет** GitHub → LariBrand → Settings → Secrets and variables → Actions →
+   `SSH_PRIVATE_KEY` → вставить целиком содержимое `~/.ssh/laribrand_deploy` (на Mac:
+   `cat ~/.ssh/laribrand_deploy | pbcopy`). Затем Actions → «CI/CD — LariBrand» → Run workflow.
+2. В Яндекс Вебмастере: добавить сайт laribrand.ru (права подтвердятся по файлу
+   `/yandex_5103e65f2910a91e.html`), указать зеркало `laribrand.ru`, добавить sitemap.xml.
+3. Снять PageSpeed Insights после стабилизации (базовые замеры).
