@@ -5,6 +5,8 @@ import Footer from '@/components/layout/Footer'
 import { BeforeAfterGallery } from '@/components/BeforeAfterGallery'
 import Reviews from '@/components/services/reviews'
 import ServiceSchema from '@/components/ServiceSchema'
+import ServiceFaq from '@/components/services/ServiceFaq'
+import RelatedServices from '@/components/services/RelatedServices'
 
 export const metadata: Metadata = {
   title: 'Стрижка волос в Саратове | Каскад, каре, боб-каре — LariBrand',
@@ -48,6 +50,8 @@ export default function HairCuttingPage() {
       <HairCuttingComponent />
       <BeforeAfterGallery defaultCategory="Стрижка волос" />
       <Reviews />
+      <ServiceFaq slug="hair_cutting" />
+      <RelatedServices slug="hair_cutting" />
       <Footer />
     </>
   )

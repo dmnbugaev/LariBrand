@@ -1,4 +1,5 @@
 import { safeJsonLd } from '../lib/security'
+import { SITE_URL, BUSINESS } from '../lib/seo/site'
 
 interface ServiceSchemaProps {
   name: string
@@ -8,24 +9,31 @@ interface ServiceSchemaProps {
   priceFrom?: string
 }
 
+/**
+ * Service + BreadcrumbList для страницы услуги.
+ * Главная › <Услуга> — видимая навигация на страницах услуг отсутствует
+ * по дизайну, разметка отражает фактическую структуру сайта.
+ */
 export default function ServiceSchema({ name, description, url, image, priceFrom }: ServiceSchemaProps) {
   const schema: Record<string, unknown> = {
     '@context': 'https://schema.org',
     '@type': 'Service',
+    '@id': `${url}#service`,
     name,
     description,
     url,
     provider: {
       '@type': 'HairSalon',
-      name: 'LariBrand',
-      url: 'https://laribrand.ru',
+      '@id': `${SITE_URL}/#localsalon`,
+      name: BUSINESS.name,
+      url: SITE_URL,
       telephone: '+79873298996',
       address: {
         '@type': 'PostalAddress',
-        streetAddress: 'ул. Н.Г. Чернышевского, 145',
-        addressLocality: 'Саратов',
-        addressRegion: 'Саратовская область',
-        addressCountry: 'RU',
+        streetAddress: BUSINESS.address.street,
+        addressLocality: BUSINESS.address.city,
+        addressRegion: BUSINESS.address.region,
+        addressCountry: BUSINESS.address.country,
       },
     },
     areaServed: {
@@ -36,7 +44,7 @@ export default function ServiceSchema({ name, description, url, image, priceFrom
   }
 
   if (image) {
-    schema.image = `https://laribrand.ru${image}`
+    schema.image = `${SITE_URL}${image}`
   }
 
   if (priceFrom) {
@@ -49,10 +57,35 @@ export default function ServiceSchema({ name, description, url, image, priceFrom
     }
   }
 
+  const breadcrumb = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Главная',
+        item: SITE_URL,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name,
+        item: url,
+      },
+    ],
+  }
+
   return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: safeJsonLd(schema) }}
-    />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: safeJsonLd(schema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: safeJsonLd(breadcrumb) }}
+      />
+    </>
   )
 }

@@ -1,29 +1,33 @@
 import { safeJsonLd } from '../lib/security'
+import { BUSINESS, SITE_URL } from '../lib/seo/site'
 
 export default function LocalBusinessSchema() {
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'HairSalon',
-    name: 'LariBrand',
+    '@id': `${SITE_URL}/#localsalon`,
+    name: BUSINESS.name,
     alternateName: 'Салон красоты LariBrand',
-    description:
-      'Профессиональный салон красоты в Саратове: кератиновое выпрямление, ботокс для волос, биозавивка, окрашивание, стрижки, тотальная реконструкция волос.',
-    url: 'https://laribrand.ru',
+    description: BUSINESS.description,
+    url: SITE_URL,
     telephone: '+79873298996',
-    priceRange: '₽₽',
-    image: 'https://laribrand.ru/upload/1762277381106-IMG_5217.JPG',
+    priceRange: BUSINESS.priceRange,
+    currenciesAccepted: 'RUB',
+    image: `${SITE_URL}${BUSINESS.image}`,
+    logo: `${SITE_URL}${BUSINESS.logo}`,
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'ул. Н.Г. Чернышевского, 145',
-      addressLocality: 'Саратов',
-      addressRegion: 'Саратовская область',
-      addressCountry: 'RU',
+      streetAddress: BUSINESS.address.street,
+      addressLocality: BUSINESS.address.city,
+      addressRegion: BUSINESS.address.region,
+      addressCountry: BUSINESS.address.country,
     },
     geo: {
       '@type': 'GeoCoordinates',
-      latitude: '51.5406',
-      longitude: '46.0086',
+      latitude: String(BUSINESS.geo.latitude),
+      longitude: String(BUSINESS.geo.longitude),
     },
+    hasMap: BUSINESS.yandexMapsUrl,
     openingHoursSpecification: [
       {
         '@type': 'OpeningHoursSpecification',
@@ -36,14 +40,11 @@ export default function LocalBusinessSchema() {
           'Saturday',
           'Sunday',
         ],
-        opens: '10:00',
-        closes: '20:00',
+        opens: BUSINESS.openingHours.opens,
+        closes: BUSINESS.openingHours.closes,
       },
     ],
-    sameAs: [
-      'https://vk.com/lari_brand',
-      'https://max.ru/u/f9LHodD0cOID7BufLjRhKQsdUk99Sz2soXHkc3bJp__hN1mSBXPsk4-52wg',
-    ],
+    sameAs: [BUSINESS.social.vk, BUSINESS.social.max],
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: 'Услуги салона LariBrand',

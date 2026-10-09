@@ -21,17 +21,17 @@ const canelope = localFont({
   variable: '--font-canelope',
   display: 'swap',
   fallback: ['Palatino Linotype', 'Palatino', 'Georgia', 'serif'],
-  preload: true,
+  // Декоративный шрифт используется только в подвале — не блокируем LCP предзагрузкой.
+  preload: false,
 })
 
 const BASE_URL = 'https://laribrand.ru'
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
-  title: {
-    default: 'Салон красоты LariBrand в Саратове | Кератин, ботокс, стрижки, окрашивание',
-    template: '%s | LariBrand Саратов',
-  },
+  // Просто строка = default-title без template-суффикса: у каждой страницы
+  // свой абсолютный title с брендом, дублирование суффикса удлиняло title в выдаче.
+  title: 'Салон красоты LariBrand в Саратове | Кератин, ботокс, стрижки, окрашивание',
   description:
     'Салон красоты LariBrand в Саратове: кератиновое выпрямление, ботокс для волос, биозавивка, стрижки, окрашивание балаяж, омбре, AirTouch. Профессиональный уход за волосами.',
   keywords: [

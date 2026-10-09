@@ -5,6 +5,8 @@ import Footer from '@/components/layout/Footer'
 import { BeforeAfterGallery } from '@/components/BeforeAfterGallery'
 import Reviews from '@/components/services/reviews'
 import ServiceSchema from '@/components/ServiceSchema'
+import ServiceFaq from '@/components/services/ServiceFaq'
+import RelatedServices from '@/components/services/RelatedServices'
 
 export const metadata: Metadata = {
   title: 'Кератин и ботокс для волос в Саратове | Цены — LariBrand',
@@ -45,6 +47,8 @@ export default function KeratinAndBotoxPage() {
       <KeratinAndBotoxComponent />
       <BeforeAfterGallery defaultCategory="Кератин и ботокс" />
       <Reviews />
+      <ServiceFaq slug="keratin_and_botox" />
+      <RelatedServices slug="keratin_and_botox" />
       <Footer />
     </>
   )

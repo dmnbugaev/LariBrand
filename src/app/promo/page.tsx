@@ -7,6 +7,7 @@ import PromoCountdown from '@/components/PromoCountdown'
 import PromoOfferMedia from '@/components/PromoOfferMedia'
 import content from '../../../content/content.json'
 import { sanitizeHref } from '@/lib/security'
+import BookingButton from '@/components/analytics/BookingButton'
 import {
   getPromoStatus,
   PROMO_END,
@@ -136,14 +137,13 @@ function MasterPricesSection() {
           <p className="mb-7 text-[13px] leading-[1.5] text-[#642427]/60 max-[520px]:text-[12px]">
             {PROMO_MASTER_PRICES.note}
           </p>
-          <a
+          <BookingButton
             href={sanitizeHref(content.sing_up_link)}
-            target="_blank"
-            rel="noopener noreferrer"
+            placement="promo"
             className={`${bookingButtonClass} w-fit max-[460px]:w-full`}
           >
             Записаться
-          </a>
+          </BookingButton>
         </div>
       </div>
     </section>
@@ -172,14 +172,13 @@ function ActivePromo() {
             <div className="mb-7 max-w-[620px]">
               <PromoCountdown deadline={PROMO_END} deadlineLabel="до 10 октября включительно" />
             </div>
-            <a
+            <BookingButton
               href={sanitizeHref(content.sing_up_link)}
-              target="_blank"
-              rel="noopener noreferrer"
+              placement="promo"
               className={bookingButtonClass}
             >
               Записаться
-            </a>
+            </BookingButton>
           </div>
 
           <div className="promo-fade-2 relative mx-auto aspect-[9/16] w-full max-w-[440px] overflow-hidden border border-[#a30f16]/20 bg-[#eee6d7] shadow-[0_30px_90px_rgba(81,42,25,0.25)]">
@@ -261,14 +260,13 @@ function ActivePromo() {
                     </p>
                   ) : null}
                   <OfferPrice offer={offer} />
-                  <a
+                  <BookingButton
                     href={sanitizeHref(content.sing_up_link)}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    placement="promo"
                     className={`${bookingButtonClass} mt-7 w-fit max-[460px]:w-full`}
                   >
                     Записаться
-                  </a>
+                  </BookingButton>
                 </div>
               </article>
             ))}
@@ -298,14 +296,13 @@ function ActivePromo() {
             Выберите подходящий комплекс и забронируйте время. Администратор поможет уточнить состав
             процедуры и подобрать мастера.
           </p>
-          <a
+          <BookingButton
             href={sanitizeHref(content.sing_up_link)}
-            target="_blank"
-            rel="noopener noreferrer"
+            placement="promo"
             className="inline-flex min-h-[54px] items-center justify-center rounded-[12px] bg-[#fff7e8] px-8 py-4 text-[15px] font-bold uppercase tracking-[0.12em] text-[#8f0d13] no-underline shadow-[0_16px_36px_rgba(36,0,5,0.25)] transition hover:-translate-y-0.5 hover:bg-white active:translate-y-0 max-[460px]:w-full"
           >
             Записаться
-          </a>
+          </BookingButton>
         </div>
       </section>
     </main>

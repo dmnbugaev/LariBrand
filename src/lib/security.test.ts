@@ -22,6 +22,9 @@ describe('sanitizeHref', () => {
     expect(sanitizeHref('https://n782275.yclients.com/company/734555')).toBe(
       'https://n782275.yclients.com/company/734555',
     )
+    expect(sanitizeHref('https://yandex.ru/maps/org/laribrand/103694209198/reviews/')).toContain(
+      'https://yandex.ru/maps/org/laribrand',
+    )
     expect(sanitizeHref('http://n782275.yclients.com/company/734555')).toBe('#')
     expect(sanitizeHref('https://example.com')).toBe('#')
   })

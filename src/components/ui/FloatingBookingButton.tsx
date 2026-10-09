@@ -5,6 +5,8 @@ import { usePathname } from 'next/navigation'
 import content from '../../../content/content.json'
 import { useMenu } from '../../context/MenuContext'
 import { sanitizeHref } from '../../lib/security'
+import { ymReachGoal, serviceParamFromPath } from '../../lib/analytics'
+import BookingButton from '../analytics/BookingButton'
 
 export default function FloatingBookingButton() {
   const { isMenuOpen } = useMenu()
@@ -22,18 +24,24 @@ export default function FloatingBookingButton() {
           : 'opacity-100 translate-y-0 pointer-events-auto',
       ].join(' ')}
     >
-      <Link
+      <BookingButton
         href={sanitizeHref(content.sing_up_link)}
-        aria-label="Записаться онлайн"
+        placement="floating"
         className="bg-brand-red text-white font-forum text-[17px] px-7 py-[14px] rounded-[14px] shadow-lg hover:scale-105 active:scale-95 transition-transform duration-200 no-underline whitespace-nowrap"
       >
         Записаться
-      </Link>
+      </BookingButton>
       <Link
         href={sanitizeHref(content.telegram_link)}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Написать в Max"
+        onClick={() =>
+          ymReachGoal('messenger_click', {
+            channel: 'max',
+            service: serviceParamFromPath(pathname),
+          })
+        }
         className="bg-brand-red text-white font-forum text-[17px] px-7 py-[14px] rounded-[14px] shadow-lg hover:scale-105 active:scale-95 transition-transform duration-200 no-underline whitespace-nowrap"
       >
         Max

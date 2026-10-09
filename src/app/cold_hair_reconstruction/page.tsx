@@ -5,6 +5,8 @@ import Footer from '@/components/layout/Footer'
 import { BeforeAfterGallery } from '@/components/BeforeAfterGallery'
 import Reviews from '@/components/services/reviews'
 import ServiceSchema from '@/components/ServiceSchema'
+import ServiceFaq from '@/components/services/ServiceFaq'
+import RelatedServices from '@/components/services/RelatedServices'
 
 export const metadata: Metadata = {
   title: 'Холодная реконструкция волос в Саратове | Холодный уход — LariBrand',
@@ -43,6 +45,8 @@ export default function ColdHairReconstructionPage() {
       <ColdHairReconstructionComponent />
       <BeforeAfterGallery defaultCategory="Холодная реконструкция" />
       <Reviews />
+      <ServiceFaq slug="cold_hair_reconstruction" />
+      <RelatedServices slug="cold_hair_reconstruction" />
       <Footer />
     </>
   )

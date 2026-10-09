@@ -7,6 +7,7 @@ import { usePathname } from 'next/navigation'
 import content from '../../content/content.json'
 import { isPromoActive, PROMO_END, PROMO_MEDIA, PROMO_STORAGE_KEY } from '@/lib/promo'
 import { sanitizeHref } from '@/lib/security'
+import BookingButton from './analytics/BookingButton'
 
 const actionButton =
   'flex min-h-[52px] min-w-0 items-center justify-center rounded-[12px] bg-[#a30f16] px-5 py-4 text-center text-[14px] font-bold uppercase leading-none tracking-[0.1em] text-white no-underline shadow-[0_12px_28px_rgba(103,17,23,0.24)] transition duration-200 hover:-translate-y-0.5 hover:bg-[#8f0d13] active:translate-y-0 max-[520px]:min-h-[48px] max-[520px]:text-[13px]'
@@ -202,15 +203,14 @@ export default function PromoPopup() {
             <Link href="/promo" onClick={close} className={actionButton}>
               Подробнее
             </Link>
-            <a
+            <BookingButton
               href={sanitizeHref(content.sing_up_link)}
-              target="_blank"
-              rel="noopener noreferrer"
+              placement="promo_popup"
               onClick={close}
               className={actionButton}
             >
               Записаться
-            </a>
+            </BookingButton>
           </div>
         </div>
       </div>

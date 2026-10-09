@@ -5,6 +5,8 @@ import Footer from '@/components/layout/Footer'
 import { BeforeAfterGallery } from '@/components/BeforeAfterGallery'
 import Reviews from '@/components/services/reviews'
 import ServiceSchema from '@/components/ServiceSchema'
+import ServiceFaq from '@/components/services/ServiceFaq'
+import RelatedServices from '@/components/services/RelatedServices'
 
 export const metadata: Metadata = {
   title: 'Биозавивка волос в Саратове | Корейская завивка — LariBrand',
@@ -26,7 +28,7 @@ export const metadata: Metadata = {
     title: 'Биозавивка волос в Саратове — LariBrand',
     description: 'Классическая и корейская биозавивка в Саратове. Мягкие кудри без повреждений. Цены от 6500 ₽.',
     url: 'https://laribrand.ru/bioavailability',
-    images: [{ url: '/upload/1762876368682-IMG_1885.DNG', width: 1200, height: 630, alt: 'Биозавивка волос — LariBrand Саратов' }],
+    images: [{ url: '/upload/1762876368682-IMG_1885.jpg', width: 2268, height: 4032, alt: 'Биозавивка волос — LariBrand Саратов' }],
   },
 }
 
@@ -37,13 +39,15 @@ export default function BioavailabilityPage() {
         name="Биозавивка волос"
         description="Биозавивка волос — классическая и корейская. Мягкие натуральные кудри без повреждения структуры волос. Сочетает восстановительные компоненты и щадящую технологию."
         url="https://laribrand.ru/bioavailability"
-        image="/upload/1762876368682-IMG_1885.DNG"
+        image="/upload/1762876368682-IMG_1885.jpg"
         priceFrom="6500"
       />
       <Header />
       <BioavailabilityComponent />
       <BeforeAfterGallery defaultCategory="Биозавивка" />
       <Reviews />
+      <ServiceFaq slug="bioavailability" />
+      <RelatedServices slug="bioavailability" />
       <Footer />
     </>
   )

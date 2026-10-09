@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
+import TrackedLink from '../analytics/TrackedLink'
 
 const YANDEX_REVIEWS_URL =
   'https://yandex.ru/maps/org/laribrand/103694209198/reviews/?ll=46.029038%2C51.522243&z=16'
@@ -52,14 +53,14 @@ const Reviews = React.memo(function Reviews() {
         <p className="font-forum text-[18px] text-brand-black text-center">
           Больше отзывов на Яндекс картах
         </p>
-        <a
+        <TrackedLink
           href={YANDEX_REVIEWS_URL}
+          goal="reviews_click"
           target="_blank"
-          rel="noopener noreferrer"
           className="font-forum text-[18px] inline-block py-[14px] px-8 bg-brand-red text-white rounded-[14px] no-underline uppercase font-normal transition-all duration-300 hover:scale-105 hover:shadow-[0_8px_24px_rgba(137,29,26,0.3)] active:scale-95"
         >
           Перейти к отзывам
-        </a>
+        </TrackedLink>
       </div>
     </section>
   )

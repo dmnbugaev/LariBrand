@@ -5,6 +5,7 @@ import Image from 'next/image'
 import content from '../../../../content/content.json'
 import type { PriceV2Section } from '../../../types'
 import { sanitizeHref } from '../../../lib/security'
+import BookingButton from '../../analytics/BookingButton'
 
 const data = content.bioavailability
 const singUpLink = sanitizeHref(content.sing_up_link)
@@ -33,7 +34,7 @@ export default function BioavailabilityComponent() {
       <section className="service-hero relative bg-brand-black w-full h-[60vh] min-h-[400px] flex justify-center items-center uppercase overflow-hidden font-forum max-[1200px]:h-screen max-[1200px]:max-h-[1200px] max-[1200px]:min-h-[600px] max-[1199px]:h-[80vh] max-[1199px]:min-h-[500px] max-[768px]:h-[60vh] max-[540px]:h-[50vh] max-[480px]:h-[45vh] max-[420px]:h-[40vh] max-[350px]:h-[35vh]">
         <Image
           src={data.hero.image}
-          alt="Биозавивка"
+          alt="Биозавивка волос — результат в салоне LariBrand, Саратов"
           fill
           className="object-cover object-center service-hero-image"
           priority
@@ -71,6 +72,7 @@ export default function BioavailabilityComponent() {
 
       {/* Price table */}
       <section className="w-full max-w-[860px] px-4 -mb-10">
+        <h2 className="sr-only">Прайс-лист: биозавивка волос в Саратове</h2>
         <div className="w-full border border-gray-200 overflow-hidden">
           <div className="bg-brand-black py-3 px-6 text-center">
             <h3 className="font-forum text-white uppercase tracking-[3px] text-[13px] font-normal m-0">
@@ -134,15 +136,9 @@ export default function BioavailabilityComponent() {
             {data.book.text}
           </p>
         )}
-        <a
-          href={singUpLink}
-          className="font-forum text-[20px] inline-block py-[15px] px-[30px] bg-brand-red text-white rounded-[10px] no-underline uppercase font-normal transition-all duration-300 hover:scale-105 hover:shadow-[0_8px_24px_rgba(137,29,26,0.3)] active:scale-95"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Записаться онлайн"
-        >
+        <BookingButton href={singUpLink} placement="service_page">
           Записаться
-        </a>
+        </BookingButton>
       </section>
     </main>
   )

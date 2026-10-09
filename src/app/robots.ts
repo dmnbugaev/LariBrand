@@ -1,17 +1,16 @@
 import { MetadataRoute } from 'next'
+import { SITE_URL } from '@/lib/seo/site'
 
-const BASE_URL = 'https://laribrand.ru'
-
+// /_next/ не блокируем: роботам нужны CSS/JS для рендеринга страниц
+// (Яндекс и Google оценивают мобильную версию и отрисованное содержимое).
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/api/', '/_next/'],
       },
     ],
-    sitemap: `${BASE_URL}/sitemap.xml`,
-    host: BASE_URL,
+    sitemap: `${SITE_URL}/sitemap.xml`,
   }
 }

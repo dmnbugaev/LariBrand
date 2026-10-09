@@ -8,6 +8,8 @@ import { SERVICE_NAV_LINKS } from '../../lib/nav-links'
 import { useMenu } from '../../context/MenuContext'
 import { sanitizeHref } from '../../lib/security'
 import { isPromoActive, PROMO_END, PROMO_START } from '../../lib/promo'
+import { ymReachGoal } from '../../lib/analytics'
+import BookingButton from '../analytics/BookingButton'
 
 const BASE_NAV_LINKS = [
   { href: '/', label: 'ГЛАВНАЯ' },
@@ -89,14 +91,14 @@ export default function Header() {
     >
       <nav className="flex-1 px-[60px] flex items-center justify-between max-[780px]:px-[20px]">
         <Link href="/" onClick={close} aria-label="На главную страницу">
-          <Image
-            src="/icons/Logo.svg"
-            alt="Саратов LariBrand"
-            width={50}
-            height={50}
-            className="max-[780px]:h-[53px] max-[780px]:w-[45px]"
-            priority
-          />
+              <Image
+                src="/icons/Logo.svg"
+                alt="LariBrand — салон красоты в Саратове"
+                width={50}
+                height={50}
+                className="max-[780px]:h-[53px] max-[780px]:w-[45px]"
+                priority
+              />
         </Link>
 
         <div className="flex items-center gap-[30px] max-[780px]:flex-col max-[780px]:gap-1 max-[780px]:items-center max-[780px]:flex-1 ml-auto mr-[60px] max-[780px]:ml-0 max-[780px]:mr-0">
@@ -158,6 +160,7 @@ export default function Header() {
               {content.phone_number_2 && (
                 <a
                   href={sanitizeHref(content.phone_number_2_link)}
+                  onClick={() => ymReachGoal('phone_click', { placement: 'header' })}
                   className="no-underline text-brand-black text-[1.1rem] font-normal transition-colors duration-300 hover:text-brand-red font-forum"
                 >
                   {content.phone_number_2}
@@ -165,6 +168,7 @@ export default function Header() {
               )}
               <a
                 href={sanitizeHref(content.phone_number_1_link)}
+                onClick={() => ymReachGoal('phone_click', { placement: 'header' })}
                 className="no-underline text-brand-black text-[1.1rem] font-normal transition-colors duration-300 hover:text-brand-red font-forum"
               >
                 {content.phone_number_1}
@@ -173,17 +177,20 @@ export default function Header() {
           </div>
 
           <div className="burger-buttons-container flex flex-col gap-[10px] pt-5 mt-auto shrink-0 pb-5">
-            <Link
+            <BookingButton
               href={sanitizeHref(content.sing_up_link)}
+              placement="header"
               onClick={close}
-              aria-label="Записаться онлайн"
-              className="flex justify-center items-center w-full py-[18px] px-5 text-white bg-brand-red font-normal text-[17px] rounded-[14px] no-underline text-center shrink-0 box-border min-h-[56px] font-forum transition-transform duration-200 hover:scale-105 active:scale-95"
+              className="flex justify-center items-center w-full py-[18px] px-5 text-white bg-brand-red font-normal text-[17px] rounded-[14px] no-underline text-center shrink-0 box-border min-h-[56px] font-forum transition-transform duration-200 hover:scale-105 active:scale-95 uppercase"
             >
               Записаться
-            </Link>
+            </BookingButton>
             <Link
               href={sanitizeHref(content.telegram_link)}
-              onClick={close}
+              onClick={() => {
+                ymReachGoal('messenger_click', { channel: 'max' })
+                close()
+              }}
               aria-label="Написать в Max"
               target="_blank"
               rel="noopener noreferrer"

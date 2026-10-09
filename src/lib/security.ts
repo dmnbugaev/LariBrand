@@ -4,6 +4,7 @@ const ALLOWED_EXTERNAL_HOSTS = new Set([
   'n782275.yclients.com',
   't.me',
   'vk.com',
+  'yandex.ru',
 ])
 
 const SAFE_RELATIVE_PATH = /^\/(?!\/)/

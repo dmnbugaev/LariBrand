@@ -5,6 +5,7 @@ import Hero from '@/components/home/hero'
 import About_Us from '@/components/home/about_us'
 import Services from '@/components/home/services'
 import Sing_Up from '@/components/home/sing_up'
+import WebSiteSchema from '@/components/WebSiteSchema'
 export const metadata: Metadata = {
   title: 'LariBrand Саратов — Салон красоты | Кератин, ботокс, стрижки, окрашивание',
   description:
@@ -41,6 +42,7 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <>
+      <WebSiteSchema />
       <Header />
       <Hero />
       <About_Us />

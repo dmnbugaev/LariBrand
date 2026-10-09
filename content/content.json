@@ -10,7 +10,7 @@
   "grid_1": "/upload/1762285489176-IMG_5231.JPG",
   "grid_2": "/upload/1762285562476-IMG_5760.JPG",
   "grid_3": "/upload/1762876882074-IMG_0863.jpg",
-  "grid_4": "/upload/1762876846693-IMG_1885.DNG",
+  "grid_4": "/upload/1762876846693-IMG_1885.jpg",
   "grid_5": "/upload/1762876816862-IMG_4353.jpg",
   "grid_6": "/upload/1762286058065-IMG_5235.jpg",
   "grid_7": "/upload/1762286099188-IMG_5269.jpg",
@@ -140,7 +140,7 @@
   },
   "bioavailability": {
     "hero": {
-      "image": "/upload/1762876368682-IMG_1885.DNG",
+      "image": "/upload/1762876368682-IMG_1885.jpg",
       "title": "Биозавивка"
     },
     "info": {

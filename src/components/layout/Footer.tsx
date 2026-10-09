@@ -7,6 +7,8 @@ import content from '../../../content/content.json'
 import { useScrollReveal } from '../../hooks/useScrollReveal'
 import { SERVICE_NAV_LINKS } from '../../lib/nav-links'
 import { sanitizeHref } from '../../lib/security'
+import { ymReachGoal } from '../../lib/analytics'
+import BookingButton from '../analytics/BookingButton'
 
 export default function Footer() {
   const footerRef = useScrollReveal<HTMLElement>(0.1)
@@ -70,6 +72,7 @@ export default function Footer() {
                   {content.phone_number_2 && (
                     <a
                       href={sanitizeHref(content.phone_number_2_link)}
+                      onClick={() => ymReachGoal('phone_click', { placement: 'footer' })}
                       className="text-[16px] text-brand-black no-underline transition-colors duration-200 hover:text-brand-red"
                     >
                       {content.phone_number_2}
@@ -77,6 +80,7 @@ export default function Footer() {
                   )}
                   <a
                     href={sanitizeHref(content.phone_number_1_link)}
+                    onClick={() => ymReachGoal('phone_click', { placement: 'footer' })}
                     className="text-[16px] text-brand-black no-underline transition-colors duration-200 hover:text-brand-red"
                   >
                     {content.phone_number_1}
@@ -88,6 +92,7 @@ export default function Footer() {
                 <div className="flex gap-3">
                   <a
                     href={sanitizeHref(content.telegram_link)}
+                    onClick={() => ymReachGoal('messenger_click', { channel: 'max' })}
                     className="w-[44px] h-[44px] bg-brand-red rounded-full flex items-center justify-center transition-transform duration-200 hover:scale-110 active:scale-95"
                     aria-label="Написать в Max"
                     target="_blank"
@@ -97,6 +102,7 @@ export default function Footer() {
                   </a>
                   <a
                     href={sanitizeHref(content.phone_number_1_link)}
+                    onClick={() => ymReachGoal('phone_click', { placement: 'footer' })}
                     className="w-[44px] h-[44px] bg-brand-red rounded-full flex items-center justify-center transition-transform duration-200 hover:scale-110 active:scale-95"
                     aria-label="Позвонить"
                   >
@@ -113,12 +119,13 @@ export default function Footer() {
           <p className="text-[15px] text-brand-black opacity-50 m-0">
             © {new Date().getFullYear()} LariBrand. Все права защищены.
           </p>
-          <Link
+          <BookingButton
             href={sanitizeHref(content.sing_up_link)}
-            className="text-[15px] text-brand-red no-underline transition-opacity duration-200 hover:opacity-70"
+            placement="footer"
+            variant="outline"
           >
             Записаться онлайн →
-          </Link>
+          </BookingButton>
         </div>
 
         {/* Реквизиты и юридические ссылки */}

@@ -3,6 +3,7 @@ import { memo } from 'react'
 import type { ServiceData, PriceV2Section } from '../../types'
 import content from '../../../content/content.json'
 import { sanitizeHref } from '../../lib/security'
+import BookingButton from '../analytics/BookingButton'
 
 function PriceSectionBlock({ section }: { section: PriceV2Section }) {
   const isMultiCol = section.headers && section.headers.length > 2
@@ -138,7 +139,7 @@ const ServicePage = memo(function ServicePage({ data }: { data: ServiceData }) {
         {data.hero.image && (
           <Image
             src={data.hero.image}
-            alt={data.hero.title}
+            alt={`${data.hero.title} — салон LariBrand, Саратов`}
             fill
             className="object-cover object-center service-hero-image"
             priority
@@ -159,6 +160,7 @@ const ServicePage = memo(function ServicePage({ data }: { data: ServiceData }) {
 
       {data.priceV2 && (
         <section className="w-full max-w-[860px] px-4 -mb-10 flex flex-col gap-8">
+          <h2 className="sr-only">Прайс-лист: {data.hero.title} в Саратове</h2>
           {data.priceV2.sections.map((section, i) => (
             <div key={i} className="w-full border border-gray-200 overflow-hidden">
               <PriceSectionBlock section={section} />
@@ -173,15 +175,9 @@ const ServicePage = memo(function ServicePage({ data }: { data: ServiceData }) {
             {data.book.text}
           </p>
         )}
-        <a
-          href={sanitizeHref(content.sing_up_link)}
-          className="font-forum text-[20px] inline-block py-[15px] px-[30px] bg-brand-red text-white rounded-[10px] no-underline uppercase font-normal transition-all duration-300 hover:scale-105 hover:shadow-[0_8px_24px_rgba(137,29,26,0.3)] active:scale-95"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Записаться онлайн"
-        >
+        <BookingButton href={sanitizeHref(content.sing_up_link)} placement="service_page">
           Записаться
-        </a>
+        </BookingButton>
       </section>
     </main>
   )
