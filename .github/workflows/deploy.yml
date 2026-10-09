@@ -40,8 +40,15 @@ jobs:
           install -m 700 -d ~/.ssh
           install -m 600 /dev/null ~/.ssh/id_ed25519
           printf '%s\n' "$SSH_PRIVATE_KEY" > ~/.ssh/id_ed25519
-          ssh-keyscan -p 22222 -H 130.49.149.189 >> ~/.ssh/known_hosts 2>/dev/null
-          ssh -T -p 22222 -i ~/.ssh/id_ed25519 -o IdentitiesOnly=yes admin@130.49.149.189 'bash -s' << 'EOF'
+          ssh-keyscan -t ed25519 -p 22222 -H 130.49.149.189 >> ~/.ssh/known_hosts 2>/dev/null
+          if ! ssh -T -p 22222 -i ~/.ssh/id_ed25519 -o IdentitiesOnly=yes \
+               -o PasswordAuthentication=no -o ConnectTimeout=15 \
+               admin@130.49.149.189 true 2>/dev/null; then
+            echo "::error::SSH-аутентификация не удалась. Секрет SSH_PRIVATE_KEY, судя по всему, не содержит валидный приватный ключ. Обновите его: Settings → Secrets and variables → Actions → SSH_PRIVATE_KEY — вставьте целиком содержимое файла ~/.ssh/laribrand_deploy (включая строки BEGIN/END OPENSSH PRIVATE KEY)."
+            exit 1
+          fi
+          ssh -T -p 22222 -i ~/.ssh/id_ed25519 -o IdentitiesOnly=yes \
+              -o PasswordAuthentication=no admin@130.49.149.189 'bash -s' << 'EOF'
           set -euo pipefail
           cd /var/www/LariBrand
           echo "=== Обновление кода ==="
