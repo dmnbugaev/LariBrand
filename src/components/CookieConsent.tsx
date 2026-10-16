@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Link from 'next/link'
 
 const CookieConsent: React.FC = () => {
   const [showBanner, setShowBanner] = useState<boolean>(false)
@@ -31,8 +32,16 @@ const CookieConsent: React.FC = () => {
     >
       <div className="max-w-[1200px] mx-auto flex justify-between items-center gap-5 max-[768px]:flex-col max-[768px]:text-center max-[768px]:gap-0">
         <p className="m-0 flex-1 text-sm leading-[1.4] max-[768px]:mb-5">
-          Мы используем файлы cookie для улучшения работы сайта.
-          Продолжая использовать сайт, вы соглашаетесь с этим.
+          Мы используем сервисы Яндекса (Метрику, карту проезда и виджет
+          отзывов), чтобы анализировать посещаемость сайта и показывать карту
+          и отзывы. Они включаются только после вашего согласия. Подробнее —{' '}
+          <Link
+            href="/privacy-policy"
+            className="underline transition-colors duration-200 hover:text-brand-red"
+          >
+            политика обработки персональных данных
+          </Link>
+          .
         </p>
         <div className="flex flex-row-reverse gap-5 shrink-0">
           <button

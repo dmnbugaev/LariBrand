@@ -7,12 +7,15 @@ interface BeforeAfterSliderProps {
   beforeImage: string
   afterImage: string
   className?: string
+  /** Без собственной рамки, тени и фона — когда слайдер вставлен в родительский контейнер-карточку. */
+  bare?: boolean
 }
 
 export const BeforeAfterSlider = memo(function BeforeAfterSlider({
   beforeImage,
   afterImage,
   className = '',
+  bare = false,
 }: BeforeAfterSliderProps) {
   const [sliderPosition, setSliderPosition] = useState<number>(50)
   const [isDragging, setIsDragging] = useState<boolean>(false)
@@ -96,7 +99,9 @@ export const BeforeAfterSlider = memo(function BeforeAfterSlider({
       aria-valuemin={0}
       aria-valuemax={100}
       aria-valuenow={Math.round(sliderPosition)}
-      className={`relative w-full h-full overflow-hidden cursor-ew-resize select-none rounded-[8px] shadow-[0_4px_20px_rgba(0,0,0,0.15)] bg-[#f5f5f5] ${className}`}
+      className={`relative w-full h-full overflow-hidden cursor-ew-resize select-none ${
+        bare ? 'bg-transparent' : 'rounded-[8px] shadow-[0_4px_20px_rgba(0,0,0,0.15)] bg-[#f5f5f5]'
+      } ${className}`}
       onMouseMove={handleMouseMove}
       onMouseDown={() => setIsDragging(true)}
       onMouseUp={() => setIsDragging(false)}

@@ -4,6 +4,7 @@ import Footer from '@/components/layout/Footer'
 import Hero from '@/components/home/hero'
 import About_Us from '@/components/home/about_us'
 import Services from '@/components/home/services'
+import Works from '@/components/home/works'
 import Sing_Up from '@/components/home/sing_up'
 import WebSiteSchema from '@/components/WebSiteSchema'
 export const metadata: Metadata = {
@@ -47,6 +48,7 @@ export default function HomePage() {
       <Hero />
       <About_Us />
       <Services />
+      <Works />
       <Sing_Up />
       <Footer />
     </>

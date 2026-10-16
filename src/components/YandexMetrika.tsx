@@ -5,15 +5,15 @@ import { usePathname } from 'next/navigation'
 import Script from 'next/script'
 import { YM_COUNTER_ID, ymHit, ymReachGoal } from '../lib/analytics'
 import { serviceFromPath } from '../lib/seo/services'
+import { useCookieConsent } from '../hooks/useCookieConsent'
 
 /**
  * Счётчик Яндекс Метрики № 105193463.
  *
- * Модель согласия: счётчик загружается всем посетителям (визиты, цели,
- * SPA-переходы), а Вебвизор включается только при сохранённом согласии
- * на cookie — его чтение выполняется внутри сниппета на клиенте.
- * Если согласие дали в текущем визите, запись Вебвизора начнётся
- * со следующей загрузки страницы (переключить флаг на лету API не позволяет).
+ * Модель согласия: счётчик целиком (включая Вебвизор) загружается только при
+ * сохранённом согласии на cookie — без согласия на сайт не уходит ни один
+ * запрос к Метрике. Цели и hit'ы, отправленные до согласия, копятся в
+ * стандартной очереди ym и обрабатываются после загрузки счётчика.
  *
  * Next.js App Router: tag.js отправляет первый hit сам; для клиентских
  * переходов (Link) дополнительно отправляются виртуальные hit'ы,
@@ -22,6 +22,7 @@ import { serviceFromPath } from '../lib/seo/services'
  */
 const YandexMetrika: React.FC = () => {
   const pathname = usePathname()
+  const hasConsent = useCookieConsent()
   const lastTrackedPath = useRef<string | null>(null)
 
   useEffect(() => {
@@ -41,6 +42,8 @@ const YandexMetrika: React.FC = () => {
     }
   }, [pathname])
 
+  if (!hasConsent) return null
+
   return (
     <>
       <Script
@@ -57,7 +60,7 @@ const YandexMetrika: React.FC = () => {
 
             ym(${YM_COUNTER_ID}, 'init', {
               ssr:true,
-              webvisor:(function(){try{return localStorage.getItem('cookieConsent')==='accepted'}catch(e){return false}})(),
+              webvisor:true,
               clickmap:true,
               accurateTrackBounce:true,
               trackLinks:true

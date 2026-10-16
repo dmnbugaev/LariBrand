@@ -64,7 +64,7 @@ export default function Footer() {
               </div>
               <div>
                 <p className="text-[13px] uppercase tracking-[1px] text-brand-black opacity-60 mb-1">Время работы</p>
-                <p className="text-[16px] text-brand-black m-0">10:00 — 20:00</p>
+                <p className="text-[16px] text-brand-black m-0">пн–вс, 10:00 — 20:00</p>
               </div>
               <div>
                 <p className="text-[13px] uppercase tracking-[1px] text-brand-black opacity-60 mb-1">Телефон</p>

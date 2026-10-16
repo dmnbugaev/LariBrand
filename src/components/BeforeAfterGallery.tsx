@@ -7,7 +7,7 @@ import GalleryMediaCarousel from './GalleryMediaCarousel'
 import type { GalleryItem } from '../types'
 import { galleryItemMatchesCategory, getGalleryItemCategories } from '@/lib/gallery'
 
-const galleryItems: GalleryItem[] = [
+export const galleryItems: GalleryItem[] = [
   { id: 54, title: 'Укладка по кудрявому методу', category: 'Укладка волос', media: [{ type: 'video', src: '/videos/gallery/aug-2026/IMG_5494.mp4', poster: '/images/gallery/aug-2026/posters/IMG_5494.webp' }] },
   { id: 55, title: 'Ботокс', category: 'Кератин и ботокс', media: [{ type: 'image', src: '/images/gallery/aug-2026/IMG_5478.JPG' }] },
   { id: 56, title: 'Ботокс', category: 'Кератин и ботокс', media: [{ type: 'image', src: '/images/gallery/aug-2026/IMG_5479.JPG' }] },

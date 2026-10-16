@@ -28,7 +28,7 @@ export const PROMO_OFFERS = [
     id: 'shape-refresh',
     title: 'Комбо 3в1 «Обновление формы»',
     subtitle: 'Пилинг + SPA-уход + стрижка',
-    description: 'Идеальное решение для обновления длины и оздоровления кожи головы.',
+    description: 'Идеальное решение для обновления длины и ухода за кожей головы.',
     poster: '/promo/IMG_2277.JPG',
     videos: [],
     duration: '≈ 1,5–2 часа',
@@ -59,7 +59,7 @@ export const PROMO_OFFERS = [
   },
   {
     id: 'deep-recovery',
-    title: 'Комбо 3в1 «Терапия глубокого восстановления»',
+    title: 'Комбо 3в1 «Глубокое восстановление»',
     subtitle: 'Пилинг + холодная реконструкция Dr. Sorbie + визуальное завершение',
     description: 'Мощное восстановление и реконструкция даже для сильно повреждённых волос.',
     videos: ['/promo/IMG_2291.mp4', '/promo/IMG_2294.mp4', '/promo/IMG_2295.mp4'],

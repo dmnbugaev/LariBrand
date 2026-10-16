@@ -174,7 +174,7 @@ export default function PromoPopup() {
             id="promo-popup-title"
             className="mb-4 font-sans text-[48px] font-black uppercase leading-[0.92] text-[#a30f16] max-[520px]:text-[34px] max-[380px]:text-[30px]"
           >
-            Выгода до 60%
+            Выгода до 44%
           </h2>
           <p
             id="promo-popup-description"

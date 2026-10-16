@@ -21,15 +21,15 @@ import {
 export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
-  title: 'Процедуры для волос с выгодой до 60% — акция 1–10 октября',
+  title: 'Акции и специальные предложения | LariBrand',
   description:
-    'Четыре комбо-предложения LariBrand в Саратове с 1 по 10 октября 2026 года: обновление формы, зеркальный блеск, глубокое восстановление и холодная реконструкция.',
+    'Акции и комбо-предложения салона красоты LariBrand в Саратове: специальные цены на процедуры для волос. Актуальные условия и сроки — на странице акций.',
   alternates: {
     canonical: 'https://laribrand.ru/promo',
   },
   openGraph: {
-    title: 'Процедуры с выгодой до 60% — LariBrand',
-    description: 'Четыре комбо для гладкости, объёма, восстановления и изменения образа с 1 по 10 октября.',
+    title: 'Акции LariBrand — салон красоты в Саратове',
+    description: 'Специальные предложения и комбо-процедуры для волос в LariBrand. Условия и сроки — на странице акций.',
     images: [{ url: PROMO_MEDIA.campaignCover, width: 1080, height: 1920 }],
   },
 }
@@ -160,7 +160,7 @@ function ActivePromo() {
               LariBrand / 1–10 октября
             </p>
             <h1 className="mb-6 max-w-[720px] break-words font-sans text-[72px] font-black uppercase leading-[0.92] text-[#a30f16] [overflow-wrap:anywhere] max-[720px]:text-[50px] max-[560px]:text-center max-[560px]:text-[36px]">
-              Процедуры с выгодой до 60%
+              Процедуры с выгодой до 44%
             </h1>
             <p className="mb-4 max-w-[640px] text-[26px] leading-[1.18] text-[#642427] max-[560px]:text-center max-[560px]:text-[21px]">
               Перезагрузка для ваших волос без крайних мер
@@ -184,7 +184,7 @@ function ActivePromo() {
           <div className="promo-fade-2 relative mx-auto aspect-[9/16] w-full max-w-[440px] overflow-hidden border border-[#a30f16]/20 bg-[#eee6d7] shadow-[0_30px_90px_rgba(81,42,25,0.25)]">
             <Image
               src={PROMO_MEDIA.campaignCover}
-              alt="Постер акции LariBrand: процедуры с выгодой до 60 процентов с 1 по 10 октября"
+              alt="Постер акции LariBrand: процедуры для волос, специальные цены октября"
               fill
               priority
               sizes="(max-width: 920px) 88vw, 440px"
