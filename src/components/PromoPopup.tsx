@@ -5,12 +5,22 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import content from '../../content/content.json'
-import { isPromoActive, PROMO_END, PROMO_MEDIA, PROMO_STORAGE_KEY } from '@/lib/promo'
+import {
+  isPromoActive,
+  PROMO_BENEFIT_LABEL,
+  PROMO_DEADLINE_LABEL,
+  PROMO_END,
+  PROMO_MEDIA,
+  PROMO_STORAGE_KEY,
+} from '@/lib/promo'
 import { sanitizeHref } from '@/lib/security'
 import BookingButton from './analytics/BookingButton'
 
 const actionButton =
-  'flex min-h-[52px] min-w-0 items-center justify-center rounded-[12px] bg-[#a30f16] px-5 py-4 text-center text-[14px] font-bold uppercase leading-none tracking-[0.1em] text-white no-underline shadow-[0_12px_28px_rgba(103,17,23,0.24)] transition duration-200 hover:-translate-y-0.5 hover:bg-[#8f0d13] active:translate-y-0 max-[520px]:min-h-[48px] max-[520px]:text-[13px]'
+  'flex min-h-[52px] min-w-0 items-center justify-center rounded-[12px] bg-brand-red px-5 py-4 text-center font-forum text-[15px] leading-none text-white no-underline transition-all duration-300 hover:scale-105 hover:shadow-[0_8px_24px_rgba(137,29,26,0.3)] active:scale-95 max-[520px]:min-h-[48px] max-[520px]:text-[14px]'
+
+const secondaryButton =
+  'flex min-h-[52px] min-w-0 items-center justify-center rounded-[12px] border border-brand-red/45 bg-white px-5 py-4 text-center font-forum text-[15px] leading-none text-brand-red no-underline transition-all duration-300 hover:scale-105 hover:border-brand-red hover:shadow-[0_8px_24px_rgba(137,29,26,0.15)] active:scale-95 max-[520px]:min-h-[48px] max-[520px]:text-[14px]'
 
 export default function PromoPopup() {
   const pathname = usePathname()
@@ -117,13 +127,13 @@ export default function PromoPopup() {
       className={`fixed inset-0 z-[300] flex items-center justify-center p-5 transition-opacity duration-300 max-[560px]:items-end max-[560px]:p-3 ${
         visible ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
       }`}
-      style={{ backgroundColor: 'rgba(38, 11, 8, 0.72)', backdropFilter: 'blur(7px)' }}
+      style={{ backgroundColor: 'rgba(34, 34, 34, 0.62)', backdropFilter: 'blur(7px)' }}
       onClick={close}
       aria-hidden={!visible}
     >
       <div
         ref={dialogRef}
-        className={`relative grid max-h-[calc(100dvh-40px)] w-full max-w-[900px] grid-cols-[0.82fr_1.18fr] overflow-hidden border border-[#fff7e8]/45 bg-[#f7f1e5] text-[#642427] shadow-[0_34px_100px_rgba(39,12,8,0.52)] transition-all duration-300 max-[760px]:max-w-[470px] max-[760px]:grid-cols-1 max-[560px]:max-h-[calc(100dvh-24px)] ${
+        className={`relative grid max-h-[calc(100dvh-40px)] w-full max-w-[900px] grid-cols-[0.82fr_1.18fr] overflow-hidden border border-brand-black/15 bg-[#FCFAF6] text-brand-black shadow-[0_34px_100px_rgba(0,0,0,0.45)] transition-all duration-300 max-[760px]:max-w-[470px] max-[760px]:grid-cols-1 max-[560px]:max-h-[calc(100dvh-24px)] ${
           visible ? 'translate-y-0 scale-100 opacity-100' : 'translate-y-4 scale-95 opacity-0'
         }`}
         onClick={(event) => event.stopPropagation()}
@@ -135,7 +145,7 @@ export default function PromoPopup() {
         <button
           ref={closeButtonRef}
           onClick={close}
-          className="absolute right-4 top-4 z-20 flex h-11 w-11 items-center justify-center rounded-full bg-[#a30f16] text-white shadow-[0_8px_20px_rgba(77,7,12,0.28)] transition hover:scale-105 active:scale-95 max-[520px]:right-3 max-[520px]:top-3"
+          className="absolute right-4 top-4 z-20 flex h-11 w-11 items-center justify-center rounded-full border border-brand-black/15 bg-white text-brand-black shadow-[0_8px_20px_rgba(0,0,0,0.12)] transition hover:scale-105 hover:bg-brand-bg active:scale-95 max-[520px]:right-3 max-[520px]:top-3"
           aria-label="Закрыть окно акции"
         >
           <svg width="15" height="15" viewBox="0 0 13 13" fill="none" aria-hidden="true">
@@ -143,10 +153,10 @@ export default function PromoPopup() {
           </svg>
         </button>
 
-        <div className="relative min-h-[620px] bg-[#e9e1d2] max-[760px]:hidden">
+        <div className="relative min-h-[620px] bg-brand-bg max-[760px]:hidden">
           <Image
             src={PROMO_MEDIA.campaignCover}
-            alt="Постер акции LariBrand с 1 по 10 октября"
+            alt="Постер акции LariBrand: специальное предложение октября"
             fill
             priority
             sizes="370px"
@@ -155,7 +165,7 @@ export default function PromoPopup() {
         </div>
 
         <div className="relative overflow-y-auto px-9 py-10 max-[760px]:max-h-[calc(100dvh-40px)] max-[520px]:max-h-[calc(100dvh-24px)] max-[520px]:px-5 max-[520px]:pb-5 max-[520px]:pt-4">
-          <div className="relative -mx-5 -mt-4 mb-5 hidden h-[150px] overflow-hidden bg-[#e9e1d2] max-[760px]:block">
+          <div className="relative -mx-5 -mt-4 mb-5 hidden h-[150px] overflow-hidden bg-brand-bg max-[760px]:block">
             <Image
               src={PROMO_MEDIA.campaignCover}
               alt=""
@@ -164,43 +174,52 @@ export default function PromoPopup() {
               sizes="470px"
               className="object-cover object-top"
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#f7f1e5]/20 to-[#f7f1e5]" />
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#FCFAF6]/20 to-[#FCFAF6]" />
           </div>
 
-          <p className="mb-5 w-fit border border-[#a30f16] px-3 py-2 pr-12 text-[10px] font-bold uppercase tracking-[0.24em] text-[#a30f16] max-[520px]:mb-3 max-[380px]:tracking-[0.12em]">
-            LariBrand / 1–10 октября
+          <p className="mb-5 w-fit border border-brand-red bg-white px-3 py-2 pr-12 font-forum text-[11px] uppercase tracking-[0.24em] text-brand-red max-[520px]:mb-3 max-[380px]:tracking-[0.12em]">
+            LariBrand / 26–31 октября
           </p>
           <h2
             id="promo-popup-title"
-            className="mb-4 font-sans text-[48px] font-black uppercase leading-[0.92] text-[#a30f16] max-[520px]:text-[34px] max-[380px]:text-[30px]"
+            className="mb-4 font-forum text-[44px] leading-[1.05] text-brand-red max-[520px]:text-[32px] max-[380px]:text-[28px]"
           >
-            Выгода до 44%
+            Предложения октября
           </h2>
           <p
             id="promo-popup-description"
-            className="mb-6 text-[19px] leading-[1.42] text-[#642427]/78 max-[520px]:text-[16px]"
+            className="mb-6 text-[18px] leading-[1.45] text-brand-black/80 max-[520px]:text-[16px]"
           >
-            Четыре комбо для гладкости, объёма, восстановления и изменения образа.
+            Четыре комбо-процедуры для волос — {PROMO_BENEFIT_LABEL}.
           </p>
 
-          <div className="mb-6 grid gap-3 border-y border-[#a30f16]/18 py-5 text-[14px] font-semibold uppercase leading-[1.35] tracking-[0.04em] text-[#642427]/72 max-[520px]:text-[12px]">
+          <div className="mb-6 grid gap-3 border-y border-brand-red/20 py-5 text-[15px] font-medium leading-[1.4] text-brand-black/80 max-[520px]:text-[13px]">
             <p>
-              <span className="mr-2 text-[#d89c16]">{'//'}</span>Комбо-процедуры от 3 300 ₽
+              <span aria-hidden="true" className="mr-2 font-forum text-brand-red">
+                {'//'}
+              </span>
+              Комбо-процедуры от 3 300 ₽
             </p>
             <p>
-              <span className="mr-2 text-[#d89c16]">{'//'}</span>Холодная реконструкция — 4 500 ₽
+              <span aria-hidden="true" className="mr-2 font-forum text-brand-red">
+                {'//'}
+              </span>
+              Кератин | Ботокс — 4 500 ₽
             </p>
             <p>
-              <span className="mr-2 text-[#d89c16]">{'//'}</span>Кератин и ботокс — фиксированные цены
+              <span aria-hidden="true" className="mr-2 font-forum text-brand-red">
+                {'//'}
+              </span>
+              Пилинг и SPA-уход в каждом комбо
             </p>
           </div>
 
-          <p className="mb-6 text-[12px] font-bold uppercase tracking-[0.16em] text-[#a30f16]">
-            Предложение действует 1–10 октября
+          <p className="mb-6 font-forum text-[13px] uppercase tracking-[0.14em] text-brand-red">
+            Предложение действует {PROMO_DEADLINE_LABEL}
           </p>
 
           <div className="grid grid-cols-2 gap-3 max-[440px]:grid-cols-1">
-            <Link href="/promo" onClick={close} className={actionButton}>
+            <Link href="/promo" onClick={close} className={secondaryButton}>
               Подробнее
             </Link>
             <BookingButton

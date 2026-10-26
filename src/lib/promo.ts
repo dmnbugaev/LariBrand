@@ -1,12 +1,23 @@
-export const PROMO_START = '2026-10-01T00:00:00+04:00'
-export const PROMO_END = '2026-10-11T00:00:00+04:00'
-export const PROMO_PERIOD_LABEL = 'с 1 по 10 октября включительно'
-export const PROMO_STORAGE_KEY = 'laribrand-promo-popup-october-1-10-2026-closed'
+export const PROMO_START = '2026-10-26T00:00:00+04:00'
+export const PROMO_END = '2026-11-01T00:00:00+04:00'
+export const PROMO_PERIOD_LABEL = 'с 26 по 31 октября включительно'
+export const PROMO_DEADLINE_LABEL = 'до 31 октября включительно'
+export const PROMO_STORAGE_KEY = 'laribrand-promo-popup-october-26-31-2026-closed'
+
+/** Заголовок кампании (обложка IMG_3618). */
+export const PROMO_HEADLINE = 'Специальное предложение октября'
+/**
+ * Максимальная выгода по кампании: 9 700 − 5 500 = 4 200 ₽ («Глубокое
+ * восстановление»). На обложке указано «до 5 500 ₽» — эту цифру на сайте
+ * не используем: она не подтверждается ценами постеров (юрриск R-09).
+ */
+export const PROMO_BENEFIT_LABEL = 'с выгодой до 4 200 ₽'
 
 export type PromoStatus = 'scheduled' | 'active' | 'expired'
 
 export const PROMO_MEDIA = {
-  campaignCover: '/promo/IMG_2275.JPG',
+  campaignCover: '/promo/IMG_3618.JPG',
+  summaryPoster: '/promo/IMG_3619.JPG',
 } as const
 
 export type PromoOffer = {
@@ -20,6 +31,8 @@ export type PromoOffer = {
   oldPrice?: string
   price?: string
   gift?: string
+  /** Проверяемая выгода: oldPrice − price (для метки в карточке). */
+  benefitLabel?: string
   benefits: readonly string[]
 }
 
@@ -29,16 +42,17 @@ export const PROMO_OFFERS = [
     title: 'Комбо 3в1 «Обновление формы»',
     subtitle: 'Пилинг + SPA-уход + стрижка',
     description: 'Идеальное решение для обновления длины и ухода за кожей головы.',
-    poster: '/promo/IMG_2277.JPG',
+    poster: '/promo/IMG_3620.JPG',
     videos: [],
     duration: '≈ 1,5–2 часа',
     oldPrice: '5 900 ₽',
     price: '3 300 ₽',
+    benefitLabel: 'выгода 2 600 ₽',
     benefits: [
       'Избавит от секущихся и истончённых кончиков',
-      'Вернёт стрижке чёткую и аккуратную форму',
-      'Напитает волосы по всей длине',
-      'Глубоко очистит кожу головы для лучшего роста волос',
+      'Вернёт стрижке чёткую и аккуратную форму — любая стрижка, кроме креативных',
+      'Идеально дополняется окрашиванием для нового образа',
+      'Глубоко очищает кожу головы, возвращая здоровье и ускоряя рост',
     ],
   },
   {
@@ -46,10 +60,12 @@ export const PROMO_OFFERS = [
     title: 'Комбо 3в1 «Зеркальное полотно»',
     subtitle: 'Пилинг + SPA-уход + ботокс в тёплой технике',
     description: 'Интенсивная процедура для зеркального блеска и прикорневого объёма.',
-    videos: ['/promo/IMG_2276.mp4', '/promo/IMG_2278.mp4', '/promo/IMG_2280.mp4'],
+    poster: '/promo/IMG_3621.JPG',
+    videos: [],
     duration: '≈ 3–3,5 часа',
-    oldPrice: '8 980 ₽',
+    oldPrice: '8 900 ₽',
     price: '5 500 ₽',
+    benefitLabel: 'выгода 3 400 ₽',
     benefits: [
       'Убирает пух и нежелательную волну',
       'Создаёт глянцевый блеск',
@@ -62,10 +78,12 @@ export const PROMO_OFFERS = [
     title: 'Комбо 3в1 «Глубокое восстановление»',
     subtitle: 'Пилинг + холодная реконструкция Dr. Sorbie + визуальное завершение',
     description: 'Мощное восстановление и реконструкция даже для сильно повреждённых волос.',
-    videos: ['/promo/IMG_2291.mp4', '/promo/IMG_2294.mp4', '/promo/IMG_2295.mp4'],
+    poster: '/promo/IMG_3622.JPG',
+    videos: [],
     duration: '≈ 2–2,5 часа',
     oldPrice: '9 700 ₽',
     price: '5 500 ₽',
+    benefitLabel: 'выгода 4 200 ₽',
     benefits: [
       'Глубоко восстанавливает повреждённую структуру',
       'Очищает и освежает кожу головы благодаря пилингу',
@@ -74,38 +92,23 @@ export const PROMO_OFFERS = [
     ],
   },
   {
-    id: 'cold-reconstruction',
-    title: 'Холодная реконструкция с ламинирующим эффектом',
-    subtitle: 'Предложение октября в LariBrand',
+    id: 'hot-straightening',
+    title: 'Кератин | Ботокс',
+    subtitle: 'Горячая реконструкция — техника выпрямления',
     description:
-      'Процедура холодного восстановления увлажняет, питает и укрепляет волосы — без термического воздействия.',
-    poster: '/promo/IMG_2287.JPG',
-    videos: ['/promo/IMG_2296.mp4'],
-    oldPrice: '6 500 ₽',
+      'Процедура в горячей технике для выпрямления и плотности волос. Подбор процедуры — в индивидуальном порядке, после консультации с мастером.',
+    poster: '/promo/IMG_3623.JPG',
+    videos: [],
+    duration: '≈ 2,5–3 часа',
+    oldPrice: '8 200 ₽',
     price: '4 500 ₽',
+    benefitLabel: 'выгода 3 700 ₽',
     benefits: [
-      'Волосы гладкие, блестящие и шелковистые',
-      'Послушные волосы без пуха по всей длине',
-      'Глубокое увлажнение и укрепление структуры',
+      'Прямые, гладкие, плотные и блестящие волосы',
+      'Индивидуальный подбор процедуры после консультации с мастером',
     ],
   },
 ] as const satisfies readonly PromoOffer[]
-
-export type PromoMasterPrice = {
-  id: string
-  title: string
-  price: string
-}
-
-export const PROMO_MASTER_PRICES = {
-  poster: '/promo/IMG_2642.JPG',
-  periodLabel: '5–11 октября',
-  note: 'Фиксированная цена действует только к категории «Мастер».',
-  items: [
-    { id: 'keratin-botox', title: 'Кератин | Ботокс', price: '4 500 ₽' },
-    { id: 'safe-straightening', title: 'Безопасное выпрямление', price: '7 500 ₽' },
-  ] as const satisfies readonly PromoMasterPrice[],
-} as const
 
 export function getPromoStatus(now: number | Date = Date.now()): PromoStatus {
   const timestamp = now instanceof Date ? now.getTime() : now
