@@ -10,7 +10,7 @@ jest.mock('next/navigation', () => ({
 describe('PromoPopup', () => {
   beforeEach(() => {
     jest.useFakeTimers()
-    jest.setSystemTime(new Date('2026-10-27T12:00:00+04:00'))
+    jest.setSystemTime(new Date('2026-11-02T12:00:00+04:00'))
     jest.mocked(usePathname).mockReturnValue('/')
     window.sessionStorage.clear()
     Object.defineProperty(window, 'scrollY', {
@@ -25,22 +25,15 @@ describe('PromoPopup', () => {
     jest.useRealTimers()
   })
 
-  it('opens after the scroll threshold and stays dismissed for the session', () => {
+  it('opens on entry and stays dismissed for the session', () => {
     render(<PromoPopup />)
 
     expect(screen.queryByRole('dialog', { hidden: true })).not.toBeInTheDocument()
 
-    window.scrollY = 239
-    fireEvent.scroll(window)
-    expect(screen.queryByRole('dialog', { hidden: true })).not.toBeInTheDocument()
-
-    window.scrollY = 240
-    fireEvent.scroll(window)
+    act(() => { jest.advanceTimersByTime(900) })
     expect(screen.getByRole('dialog', { hidden: true })).toBeInTheDocument()
 
-    act(() => {
-      jest.advanceTimersByTime(60)
-    })
+    act(() => { jest.advanceTimersByTime(30) })
     expect(screen.getByRole('dialog')).toBeInTheDocument()
 
     fireEvent.click(screen.getByRole('button', { name: 'Закрыть окно акции' }))
@@ -53,7 +46,7 @@ describe('PromoPopup', () => {
   })
 
   it('does not render when the campaign is inactive', () => {
-    jest.setSystemTime(new Date('2026-11-01T00:00:00+04:00'))
+    jest.setSystemTime(new Date('2026-11-09T00:00:00+04:00'))
     window.scrollY = 400
 
     render(<PromoPopup />)

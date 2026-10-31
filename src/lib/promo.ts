@@ -1,23 +1,16 @@
-export const PROMO_START = '2026-10-26T00:00:00+04:00'
-export const PROMO_END = '2026-11-01T00:00:00+04:00'
-export const PROMO_PERIOD_LABEL = 'с 26 по 31 октября включительно'
-export const PROMO_DEADLINE_LABEL = 'до 31 октября включительно'
-export const PROMO_STORAGE_KEY = 'laribrand-promo-popup-october-26-31-2026-closed'
+export const PROMO_START = '2026-11-01T00:00:00+04:00'
+export const PROMO_END = '2026-11-09T00:00:00+04:00'
+export const PROMO_PERIOD_LABEL = 'с 1 по 8 ноября включительно'
+export const PROMO_DEADLINE_LABEL = 'до 8 ноября включительно'
+export const PROMO_STORAGE_KEY = 'laribrand-promo-popup-november-1-8-2026-closed'
 
-/** Заголовок кампании (обложка IMG_3618). */
-export const PROMO_HEADLINE = 'Специальное предложение октября'
-/**
- * Максимальная выгода по кампании: 9 700 − 5 500 = 4 200 ₽ («Глубокое
- * восстановление»). На обложке указано «до 5 500 ₽» — эту цифру на сайте
- * не используем: она не подтверждается ценами постеров (юрриск R-09).
- */
-export const PROMO_BENEFIT_LABEL = 'с выгодой до 4 200 ₽'
+export const PROMO_HEADLINE = 'Особенное время для ваших волос'
+export const PROMO_BENEFIT_LABEL = 'пять предложений по специальной цене'
 
 export type PromoStatus = 'scheduled' | 'active' | 'expired'
 
 export const PROMO_MEDIA = {
-  campaignCover: '/promo/IMG_3618.JPG',
-  summaryPoster: '/promo/IMG_3619.JPG',
+  campaignCover: '/promo/IMG_4664.JPG',
 } as const
 
 export type PromoOffer = {
@@ -25,87 +18,99 @@ export type PromoOffer = {
   title: string
   subtitle: string
   description: string
-  poster?: string
+  poster: string
   videos: readonly string[]
-  duration?: string
-  oldPrice?: string
-  price?: string
-  gift?: string
-  /** Проверяемая выгода: oldPrice − price (для метки в карточке). */
-  benefitLabel?: string
+  duration: string
+  oldPrice: string
+  price: string
+  benefitLabel: string
   benefits: readonly string[]
 }
 
 export const PROMO_OFFERS = [
   {
     id: 'shape-refresh',
-    title: 'Комбо 3в1 «Обновление формы»',
-    subtitle: 'Пилинг + SPA-уход + стрижка',
-    description: 'Идеальное решение для обновления длины и ухода за кожей головы.',
-    poster: '/promo/IMG_3620.JPG',
-    videos: [],
+    title: 'Обновление формы',
+    subtitle: 'Комбо 3 в 1 · пилинг + SPA-уход + стрижка',
+    description: 'Обновить длину, освежить форму и позаботиться о коже головы за один визит.',
+    poster: '/promo/IMG_4681-poster.jpg',
+    videos: ['/promo/IMG_4681.mp4'],
     duration: '≈ 1,5–2 часа',
     oldPrice: '5 900 ₽',
-    price: '3 300 ₽',
-    benefitLabel: 'выгода 2 600 ₽',
+    price: '3 500 ₽',
+    benefitLabel: 'выгода 2 400 ₽',
     benefits: [
-      'Избавит от секущихся и истончённых кончиков',
-      'Вернёт стрижке чёткую и аккуратную форму — любая стрижка, кроме креативных',
-      'Идеально дополняется окрашиванием для нового образа',
-      'Глубоко очищает кожу головы, возвращая здоровье и ускоряя рост',
+      'Убирает секущиеся и истончённые кончики',
+      'Возвращает стрижке аккуратную форму',
+      'Глубоко очищает кожу головы',
     ],
   },
   {
-    id: 'mirror-finish',
-    title: 'Комбо 3в1 «Зеркальное полотно»',
-    subtitle: 'Пилинг + SPA-уход + ботокс в тёплой технике',
-    description: 'Интенсивная процедура для зеркального блеска и прикорневого объёма.',
-    poster: '/promo/IMG_3621.JPG',
-    videos: [],
+    id: 'deep-recovery',
+    title: 'Терапия глубокого восстановления',
+    subtitle: 'Комбо 3 в 1 · пилинг + холодная реконструкция Dr. Sorbie + визуальное завершение',
+    description: 'Уход для повреждённых волос: питание, восстановление и ухоженный вид.',
+    poster: '/promo/IMG_4682-poster.jpg',
+    videos: ['/promo/IMG_4682.mp4'],
+    duration: '≈ 2–2,5 часа',
+    oldPrice: '9 700 ₽',
+    price: '5 500 ₽',
+    benefitLabel: 'выгода 4 200 ₽',
+    benefits: [
+      'Питает и восстанавливает повреждённую структуру',
+      'Очищает кожу головы благодаря пилингу',
+      'Помогает защитить волосы от ломкости',
+    ],
+  },
+  {
+    id: 'color-and-shine',
+    title: 'Цвет и блеск',
+    subtitle: 'Комбо 3 в 1 · окрашивание корней + тонирование + холодный уход',
+    description: 'Ровный цвет, блеск и бережный уход за структурой волос.',
+    poster: '/promo/IMG_4685-poster.jpg',
+    videos: ['/promo/IMG_4685.mp4'],
+    duration: '≈ 2–2,5 часа',
+    oldPrice: '10 900 ₽',
+    price: '7 500 ₽',
+    benefitLabel: 'выгода 3 400 ₽',
+    benefits: [
+      'Выравнивает тон волос',
+      'Уход помогает сохранить цвет и блеск',
+      'Питает и защищает от пересушивания',
+    ],
+  },
+  {
+    id: 'donatti-reconstruction',
+    title: 'Холодная реконструкция Donatti',
+    subtitle: 'Уход от бразильского бренда Donatti',
+    description: 'Восстанавливающий уход для мягкости, гладкости и блеска волос.',
+    poster: '/promo/IMG_4686-poster.jpg',
+    videos: ['/promo/IMG_4686.mp4'],
+    duration: '≈ 2–2,5 часа',
+    oldPrice: '5 900 ₽',
+    price: '3 900 ₽',
+    benefitLabel: 'выгода 2 000 ₽',
+    benefits: [
+      'Питает и увлажняет волосы',
+      'Придаёт блеск и послушность',
+      'Подходит для ухода после моря, хлорированной воды и солнца',
+    ],
+  },
+  {
+    id: 'autumn-combo',
+    title: 'Осеннее комбо',
+    subtitle: 'Пилинг + холодная реконструкция + ботокс в тёплой технике',
+    description: 'Интенсивная программа для гладкости, зеркального блеска и прикорневого объёма.',
+    poster: '/promo/IMG_4691-poster.jpg',
+    videos: ['/promo/IMG_4691.mp4'],
     duration: '≈ 3–3,5 часа',
     oldPrice: '8 900 ₽',
     price: '5 500 ₽',
     benefitLabel: 'выгода 3 400 ₽',
     benefits: [
       'Убирает пух и нежелательную волну',
-      'Создаёт глянцевый блеск',
-      'Пилинг обеспечивает прикорневой объём',
-      'SPA-уход защищает структуру от пересушивания',
-    ],
-  },
-  {
-    id: 'deep-recovery',
-    title: 'Комбо 3в1 «Глубокое восстановление»',
-    subtitle: 'Пилинг + холодная реконструкция Dr. Sorbie + визуальное завершение',
-    description: 'Мощное восстановление и реконструкция даже для сильно повреждённых волос.',
-    poster: '/promo/IMG_3622.JPG',
-    videos: [],
-    duration: '≈ 2–2,5 часа',
-    oldPrice: '9 700 ₽',
-    price: '5 500 ₽',
-    benefitLabel: 'выгода 4 200 ₽',
-    benefits: [
-      'Глубоко восстанавливает повреждённую структуру',
-      'Очищает и освежает кожу головы благодаря пилингу',
-      'Придаёт волосам здоровый и ухоженный вид',
-      'Питает, уплотняет и защищает от ломкости',
-    ],
-  },
-  {
-    id: 'hot-straightening',
-    title: 'Кератин | Ботокс',
-    subtitle: 'Горячая реконструкция — техника выпрямления',
-    description:
-      'Процедура в горячей технике для выпрямления и плотности волос. Подбор процедуры — в индивидуальном порядке, после консультации с мастером.',
-    poster: '/promo/IMG_3623.JPG',
-    videos: [],
-    duration: '≈ 2,5–3 часа',
-    oldPrice: '8 200 ₽',
-    price: '4 500 ₽',
-    benefitLabel: 'выгода 3 700 ₽',
-    benefits: [
-      'Прямые, гладкие, плотные и блестящие волосы',
-      'Индивидуальный подбор процедуры после консультации с мастером',
+      'Придаёт глянцевый блеск',
+      'Пилинг помогает создать прикорневой объём',
     ],
   },
 ] as const satisfies readonly PromoOffer[]
