@@ -11,6 +11,7 @@ export const YM_GOALS = [
   'booking_click',
   'phone_click',
   'messenger_click',
+  'email_click',
   'reviews_click',
   'promo_click',
   'service_view',

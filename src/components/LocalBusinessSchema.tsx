@@ -11,6 +11,7 @@ export default function LocalBusinessSchema() {
     description: BUSINESS.description,
     url: SITE_URL,
     telephone: '+79873298996',
+    email: BUSINESS.email,
     priceRange: BUSINESS.priceRange,
     currenciesAccepted: 'RUB',
     image: `${SITE_URL}${BUSINESS.image}`,

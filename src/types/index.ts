@@ -96,6 +96,8 @@ export interface ContentData {
   our_team_img: string
   phone_number_1: string
   phone_number_1_link: string
+  email: string
+  email_link: string
   phone_number_2: string
   phone_number_2_link: string
   telegram_link: string

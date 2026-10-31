@@ -88,6 +88,16 @@ export default function Footer() {
                 </div>
               </div>
               <div>
+                <p className="text-[13px] uppercase tracking-[1px] text-brand-black opacity-60 mb-1">Почта</p>
+                <a
+                  href={sanitizeHref(content.email_link)}
+                  onClick={() => ymReachGoal('email_click', { placement: 'footer' })}
+                  className="text-[16px] text-brand-black no-underline transition-colors duration-200 hover:text-brand-red"
+                >
+                  {content.email}
+                </a>
+              </div>
+              <div>
                 <p className="text-[13px] uppercase tracking-[1px] text-brand-black opacity-60 mb-2">Мессенджеры</p>
                 <div className="flex gap-3">
                   <a
