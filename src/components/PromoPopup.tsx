@@ -5,7 +5,17 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import content from '../../content/content.json'
-import { isPromoActive, PROMO_END, PROMO_MEDIA, PROMO_STORAGE_KEY } from '@/lib/promo'
+import {
+  isPromoActive,
+  PROMO_DATES_LABEL,
+  PROMO_DEADLINE_LABEL,
+  PROMO_END,
+  PROMO_HEADLINE,
+  PROMO_MEDIA,
+  PROMO_MIN_PRICE_LABEL,
+  PROMO_OFFERS_COUNT,
+  PROMO_STORAGE_KEY,
+} from '@/lib/promo'
 import { sanitizeHref } from '@/lib/security'
 import BookingButton from './analytics/BookingButton'
 
@@ -88,7 +98,7 @@ export default function PromoPopup() {
 
   return (
     <div
-      className={`fixed inset-0 z-[300] flex items-center justify-center bg-[#24170F]/75 p-3 backdrop-blur-[7px] transition-opacity duration-300 sm:p-6 ${visible ? 'opacity-100' : 'pointer-events-none opacity-0'}`}
+      className={`fixed inset-0 z-[1100] flex items-center justify-center bg-[#24170F]/75 p-3 backdrop-blur-[7px] transition-opacity duration-300 sm:p-6 ${visible ? 'opacity-100' : 'pointer-events-none opacity-0'}`}
       onClick={close}
       aria-hidden={!visible}
     >
@@ -111,25 +121,27 @@ export default function PromoPopup() {
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 2l12 12M14 2L2 14" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" /></svg>
         </button>
 
-        <div className="relative hidden min-h-[570px] bg-[#E9DCC4] md:block">
-          <Image src={PROMO_MEDIA.campaignCover} alt="Обложка акции LariBrand 1–8 ноября" fill priority sizes="370px" className="object-cover" />
+        <div className="relative hidden items-center bg-[#E9DCC4] p-6 md:flex">
+          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[14px] shadow-[0_22px_55px_rgba(61,36,24,.28)]">
+            <Image src={PROMO_MEDIA.campaignCover} alt={`Обложка акции LariBrand ${PROMO_DATES_LABEL}`} fill priority sizes="370px" className="object-cover" />
+          </div>
         </div>
 
         <div className="max-h-[calc(100dvh-24px)] overflow-y-auto p-5 pt-0 sm:p-9 sm:pt-0 md:p-10 md:pt-14">
-          <div className="relative -mx-5 mb-5 h-[150px] overflow-hidden bg-[#E9DCC4] sm:-mx-9 md:hidden">
-            <Image src={PROMO_MEDIA.campaignCover} alt="" fill priority sizes="(max-width: 768px) 100vw, 470px" className="object-cover object-[center_42%]" />
-            <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#F8F3E7] to-transparent" />
+          <div className="relative -mx-5 mb-4 h-[132px] overflow-hidden bg-[#E9DCC4] sm:-mx-9 md:hidden">
+            <Image src={PROMO_MEDIA.campaignCover} alt="" fill priority sizes="(max-width: 768px) 100vw, 470px" className="object-cover object-[center_22%]" />
+            <div className="absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-[#F8F3E7] to-transparent" />
           </div>
-          <p className="mb-4 text-[11px] uppercase tracking-[.25em] text-[#986B46]">Ваше приглашение · 1–8 ноября</p>
-          <h2 id="promo-popup-title" className="mb-4 max-w-[420px] font-forum text-[clamp(34px,4vw,54px)] leading-[1.02]">Особенное время для ваших волос</h2>
-          <p id="promo-popup-description" className="mb-6 max-w-[420px] text-[17px] leading-relaxed text-[#6A4D39]">
-            Пять предложений по специальной цене: от обновления формы до глубокого восстановления и цвета.
+          <p className="mb-3 text-[11px] uppercase tracking-[.25em] text-[#986B46] sm:mb-4">Ваше приглашение · {PROMO_DATES_LABEL}</p>
+          <h2 id="promo-popup-title" className="mb-3 max-w-[420px] font-forum text-[clamp(34px,4vw,54px)] leading-[1.02] sm:mb-4">{PROMO_HEADLINE}</h2>
+          <p id="promo-popup-description" className="mb-5 max-w-[420px] text-[17px] leading-relaxed text-[#6A4D39] sm:mb-6">
+            Четыре комбо для волос по специальной цене: гладкость и блеск, восстановление, обновление формы и осенний уход.
           </p>
-          <div className="mb-6 grid grid-cols-2 gap-3 border-y border-[#B59573]/40 py-5">
-            <div><span className="block font-forum text-[30px] leading-none text-[#A46D12]">5</span><span className="text-[13px] text-[#72553F]">процедур на выбор</span></div>
-            <div><span className="block font-forum text-[30px] leading-none text-[#A46D12]">3 500 ₽</span><span className="text-[13px] text-[#72553F]">цены от</span></div>
+          <div className="mb-5 grid grid-cols-2 gap-3 border-y border-[#B59573]/40 py-4 sm:mb-6 sm:py-5">
+            <div><span className="block font-forum text-[30px] leading-none text-[#A46D12]">{PROMO_OFFERS_COUNT}</span><span className="text-[13px] text-[#72553F]">комбо на выбор</span></div>
+            <div><span className="block font-forum text-[30px] leading-none text-[#A46D12]">{PROMO_MIN_PRICE_LABEL}</span><span className="text-[13px] text-[#72553F]">цены от</span></div>
           </div>
-          <p className="mb-6 text-[13px] uppercase tracking-[.14em] text-[#8B5E3D]">Только до 8 ноября включительно</p>
+          <p className="mb-5 text-[13px] uppercase tracking-[.14em] text-[#8B5E3D] sm:mb-6">Только {PROMO_DEADLINE_LABEL}</p>
           <div className="grid gap-3 sm:grid-cols-2">
             <Link href="/promo" onClick={close} className={`${buttonBase} border border-[#9B765B] text-[#3D2418] hover:bg-white`}>Смотреть акцию</Link>
             <BookingButton href={sanitizeHref(content.sing_up_link)} placement="promo_popup" onClick={close} className={`${buttonBase} bg-[#3D2418] text-[#FFF9ED] hover:bg-[#65402B]`}>Записаться</BookingButton>

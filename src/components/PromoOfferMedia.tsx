@@ -38,7 +38,7 @@ export default function PromoOfferMedia({ offer, sizes = '(max-width: 768px) 90v
   return (
     <div
       ref={frameRef}
-      className="relative aspect-[9/16] w-full overflow-hidden bg-[#f5f0e5] shadow-[0_18px_48px_rgba(72,42,28,0.16)]"
+      className="relative aspect-[4/5] w-full overflow-hidden bg-[#f5f0e5] shadow-[0_18px_48px_rgba(72,42,28,0.16)]"
     >
       {hasVideo ? (
         <video
