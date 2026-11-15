@@ -122,14 +122,14 @@ export default function PromoPopup() {
         </button>
 
         <div className="relative hidden items-center bg-[#E9DCC4] p-6 md:flex">
-          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[14px] shadow-[0_22px_55px_rgba(61,36,24,.28)]">
+          <div className="relative aspect-[9/16] w-full overflow-hidden rounded-[14px] shadow-[0_22px_55px_rgba(61,36,24,.28)]">
             <Image src={PROMO_MEDIA.campaignCover} alt={`Обложка акции LariBrand ${PROMO_DATES_LABEL}`} fill priority sizes="370px" className="object-cover" />
           </div>
         </div>
 
         <div className="max-h-[calc(100dvh-24px)] overflow-y-auto p-5 pt-0 sm:p-9 sm:pt-0 md:p-10 md:pt-14">
           <div className="relative -mx-5 mb-4 h-[132px] overflow-hidden bg-[#E9DCC4] sm:-mx-9 md:hidden">
-            <Image src={PROMO_MEDIA.campaignCover} alt="" fill priority sizes="(max-width: 768px) 100vw, 470px" className="object-cover object-[center_22%]" />
+            <Image src={PROMO_MEDIA.campaignCover} alt="" fill priority sizes="(max-width: 768px) 100vw, 470px" className="object-cover object-[center_18%]" />
             <div className="absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-[#F8F3E7] to-transparent" />
           </div>
           <p className="mb-3 text-[11px] uppercase tracking-[.25em] text-[#986B46] sm:mb-4">Ваше приглашение · {PROMO_DATES_LABEL}</p>

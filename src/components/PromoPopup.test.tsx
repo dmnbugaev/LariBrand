@@ -10,7 +10,7 @@ jest.mock('next/navigation', () => ({
 describe('PromoPopup', () => {
   beforeEach(() => {
     jest.useFakeTimers()
-    jest.setSystemTime(new Date('2026-11-10T12:00:00+04:00'))
+    jest.setSystemTime(new Date('2026-11-17T12:00:00+04:00'))
     jest.mocked(usePathname).mockReturnValue('/')
     window.sessionStorage.clear()
     Object.defineProperty(window, 'scrollY', {
@@ -46,7 +46,7 @@ describe('PromoPopup', () => {
   })
 
   it('does not render when the campaign is inactive', () => {
-    jest.setSystemTime(new Date('2026-11-16T00:00:00+04:00'))
+    jest.setSystemTime(new Date('2026-11-23T00:00:00+04:00'))
     window.scrollY = 400
 
     render(<PromoPopup />)

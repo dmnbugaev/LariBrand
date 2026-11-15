@@ -24,12 +24,12 @@ export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
   title: `Акция ${PROMO_DATES_LABEL} | LariBrand`,
-  description: `Четыре комбо-ухода для волос по специальной цене в LariBrand: гладкость и блеск, глубокое восстановление, обновление формы. С 9 по 15 ноября 2026 года.`,
+  description: `Четыре комбо-ухода для волос по специальной цене в LariBrand: гладкость и блеск, глубокое восстановление, обновление формы. С 15 по 22 ноября 2026 года.`,
   alternates: { canonical: 'https://laribrand.ru/promo' },
   openGraph: {
     title: `Специальное предложение ${PROMO_DATES_LABEL} | LariBrand`,
     description: 'Четыре комбо для волос с выгодой до 60%. Выберите своё в LariBrand.',
-    images: [{ url: PROMO_MEDIA.campaignCover, width: 1080, height: 1350 }],
+    images: [{ url: PROMO_MEDIA.campaignCover, width: 1080, height: 1920 }],
   },
 }
 
@@ -51,7 +51,7 @@ function InactivePromo({ scheduled = false }: { scheduled?: boolean }) {
               : 'Спасибо, что провели эти дни с LariBrand. Будем рады видеть вас снова.'}
           </p>
         </div>
-        <div className="relative mx-auto aspect-[4/5] w-full max-w-[340px] overflow-hidden rounded-[20px]">
+        <div className="relative mx-auto aspect-[9/16] w-full max-w-[300px] overflow-hidden rounded-[20px]">
           <Image src={PROMO_MEDIA.campaignCover} alt={`Обложка акции LariBrand ${PROMO_DATES_LABEL}`} fill priority sizes="(max-width: 768px) 80vw, 340px" className="object-cover" />
         </div>
       </div>
@@ -83,9 +83,9 @@ function ActivePromo() {
             </div>
             <div className="max-w-[510px]"><PromoCountdown deadline={PROMO_END} deadlineLabel={PROMO_DEADLINE_LABEL} /></div>
           </div>
-          <div className="promo-fade-2 relative mx-auto w-full max-w-[480px]">
+          <div className="promo-fade-2 relative mx-auto w-full max-w-[440px]">
             <div className="absolute -inset-4 rotate-[3deg] rounded-[24px] border border-[#B8936C]/50" />
-            <div className="relative aspect-[4/5] overflow-hidden rounded-[18px] bg-[#EEE4D1] shadow-[0_36px_80px_rgba(61,36,24,.22)]">
+            <div className="relative aspect-[9/16] overflow-hidden rounded-[18px] bg-[#EEE4D1] shadow-[0_36px_80px_rgba(61,36,24,.22)]">
               <Image src={PROMO_MEDIA.campaignCover} alt={`Специальное предложение LariBrand ${PROMO_DATES_LABEL}`} fill priority sizes="(max-width: 1024px) 85vw, 480px" className="object-cover" />
             </div>
           </div>

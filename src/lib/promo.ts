@@ -1,9 +1,9 @@
-export const PROMO_START = '2026-11-09T00:00:00+04:00'
-export const PROMO_END = '2026-11-16T00:00:00+04:00'
-export const PROMO_PERIOD_LABEL = 'с 9 по 15 ноября включительно'
-export const PROMO_DATES_LABEL = '9–15 ноября'
-export const PROMO_DEADLINE_LABEL = 'до 15 ноября включительно'
-export const PROMO_STORAGE_KEY = 'laribrand-promo-popup-november-9-15-2026-closed'
+export const PROMO_START = '2026-11-15T00:00:00+04:00'
+export const PROMO_END = '2026-11-23T00:00:00+04:00'
+export const PROMO_PERIOD_LABEL = 'с 15 по 22 ноября включительно'
+export const PROMO_DATES_LABEL = '15–22 ноября'
+export const PROMO_DEADLINE_LABEL = 'до 22 ноября включительно'
+export const PROMO_STORAGE_KEY = 'laribrand-promo-popup-november-15-22-2026-closed'
 
 export const PROMO_HEADLINE = 'Выгода до 60% на комбо-уходы'
 export const PROMO_BENEFIT_LABEL = 'четыре комбо по специальной цене'
@@ -11,7 +11,7 @@ export const PROMO_BENEFIT_LABEL = 'четыре комбо по специал�
 export type PromoStatus = 'scheduled' | 'active' | 'expired'
 
 export const PROMO_MEDIA = {
-  campaignCover: '/promo/IMG_5389.JPG',
+  campaignCover: '/promo/IMG_6027.JPG',
 } as const
 
 export type PromoOffer = {
@@ -52,7 +52,7 @@ export const PROMO_OFFERS = [
     title: 'Терапия глубокого восстановления',
     subtitle: 'Комбо 3 в 1 · пилинг + холодная реконструкция Dr. Sorbie + визуальное завершение',
     description: 'Уход для повреждённых волос: питание, восстановление и ухоженный вид.',
-    poster: '/promo/IMG_5399-poster.jpg',
+    poster: '/promo/IMG_6031-poster.jpg',
     videos: [],
     duration: '≈ 2–2,5 часа',
     oldPrice: '9 700 ₽',
@@ -70,7 +70,7 @@ export const PROMO_OFFERS = [
     title: 'Обновление формы',
     subtitle: 'Комбо 3 в 1 · пилинг + SPA-уход + стрижка',
     description: 'Обновить длину, освежить форму и позаботиться о коже головы за один визит.',
-    poster: '/promo/IMG_5398-poster.jpg',
+    poster: '/promo/IMG_6030-poster.jpg',
     videos: [],
     duration: '≈ 1,5–2 часа',
     oldPrice: '5 900 ₽',
