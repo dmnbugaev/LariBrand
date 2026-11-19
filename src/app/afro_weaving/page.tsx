@@ -45,7 +45,7 @@ export default function AfroWeavingPage() {
       />
       <Header />
       <AfroWeavingComponent />
-      <BeforeAfterGallery />
+      <BeforeAfterGallery defaultCategory="Афроплетение" />
       <Reviews />
       <ServiceFaq slug="afro_weaving" />
       <RelatedServices slug="afro_weaving" />

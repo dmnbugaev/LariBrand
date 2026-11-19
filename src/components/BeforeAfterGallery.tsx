@@ -8,6 +8,23 @@ import type { GalleryItem } from '../types'
 import { galleryItemMatchesCategory, getGalleryItemCategories } from '@/lib/gallery'
 
 export const galleryItems: GalleryItem[] = [
+  { id: 74, title: 'Кератин и SPA-уход', category: 'Кератин и ботокс', media: [{ type: 'image', src: '/images/gallery/nov-2026/IMG_5955.jpg' }, { type: 'image', src: '/images/gallery/nov-2026/IMG_6036.jpg' }, { type: 'image', src: '/images/gallery/nov-2026/IMG_6037.jpg' }] },
+  { id: 75, title: 'Классическая биозавивка', category: 'Классическая биозавивка', media: [{ type: 'image', src: '/images/gallery/nov-2026/IMG_6017.jpg' }] },
+  { id: 76, title: 'Горячая реконструкция (кератин) и оформление ровного среза', category: 'Кератин и ботокс', categories: ['Кератин и ботокс', 'Стрижка волос'], media: [{ type: 'image', src: '/images/gallery/nov-2026/IMG_6224.jpg' }, { type: 'image', src: '/images/gallery/nov-2026/IMG_6225.jpg' }] },
+  { id: 77, title: 'Женская классическая биозавивка', category: 'Классическая биозавивка', media: [{ type: 'image', src: '/images/gallery/nov-2026/IMG_6226.jpg' }, { type: 'image', src: '/images/gallery/nov-2026/IMG_6227.jpg' }] },
+  { id: 78, title: 'Мужская классическая биозавивка', category: 'Классическая биозавивка', categories: ['Классическая биозавивка', 'Мужская стрижка'], media: [{ type: 'image', src: '/images/gallery/nov-2026/IMG_6228.jpg' }, { type: 'image', src: '/images/gallery/nov-2026/IMG_6229.jpg' }] },
+  { id: 79, title: 'Женская классическая биозавивка', category: 'Классическая биозавивка', media: [{ type: 'image', src: '/images/gallery/nov-2026/IMG_6230.jpg' }, { type: 'image', src: '/images/gallery/nov-2026/IMG_6231.jpg' }, { type: 'image', src: '/images/gallery/nov-2026/IMG_6237.jpg' }, { type: 'image', src: '/images/gallery/nov-2026/IMG_6238.jpg' }] },
+  { id: 80, title: 'Женская классическая биозавивка', category: 'Классическая биозавивка', media: [{ type: 'image', src: '/images/gallery/nov-2026/IMG_6232.jpg' }] },
+  { id: 81, title: 'Женская классическая биозавивка', category: 'Классическая биозавивка', media: [{ type: 'image', src: '/images/gallery/nov-2026/IMG_6233.jpg' }] },
+  { id: 82, title: 'Женская классическая биозавивка', category: 'Классическая биозавивка', media: [{ type: 'image', src: '/images/gallery/nov-2026/IMG_6246.jpg' }, { type: 'image', src: '/images/gallery/nov-2026/IMG_6247.jpg' }, { type: 'image', src: '/images/gallery/nov-2026/IMG_6248.jpg' }] },
+  { id: 83, title: 'Женская классическая биозавивка', category: 'Классическая биозавивка', media: [{ type: 'image', src: '/images/gallery/nov-2026/IMG_6249.jpg' }] },
+  { id: 84, title: 'Антизавивка', category: 'Кератин и ботокс', media: [{ type: 'image', src: '/images/gallery/nov-2026/IMG_6245.jpg' }, { type: 'image', src: '/images/gallery/nov-2026/IMG_6251.jpg' }] },
+  { id: 85, title: 'Афроплетение', category: 'Афроплетение', media: [{ type: 'image', src: '/images/gallery/nov-2026/IMG_6250.jpg' }] },
+  { id: 86, title: 'Контурирование и окрашивание с фокусом на топовую зону', category: 'Окрашивание', media: [{ type: 'image', src: '/images/gallery/nov-2026/IMG_6241.jpg' }] },
+  { id: 87, title: 'Окрашивание и укладка локонами', category: 'Окрашивание', media: [{ type: 'image', src: '/images/gallery/nov-2026/IMG_6242.jpg' }] },
+  { id: 88, title: 'Корейская биозавивка', category: 'Корейская биозавивка', media: [{ type: 'image', src: '/images/gallery/nov-2026/IMG_6244.jpg' }] },
+  { id: 89, title: 'Комбо 3в1: обновление формы или стрижка каре', category: 'Стрижка волос', media: [{ type: 'image', src: '/images/gallery/nov-2026/IMG_6243.jpg' }] },
+  { id: 90, title: 'Комбо 3в1: обновление формы или стрижка каскад', category: 'Стрижка волос', media: [{ type: 'image', src: '/images/gallery/nov-2026/IMG_6239.jpg' }] },
   { id: 54, title: 'Укладка по кудрявому методу', category: 'Укладка волос', media: [{ type: 'video', src: '/videos/gallery/aug-2026/IMG_5494.mp4', poster: '/images/gallery/aug-2026/posters/IMG_5494.webp' }] },
   { id: 55, title: 'Ботокс', category: 'Кератин и ботокс', media: [{ type: 'image', src: '/images/gallery/aug-2026/IMG_5478.JPG' }] },
   { id: 56, title: 'Ботокс', category: 'Кератин и ботокс', media: [{ type: 'image', src: '/images/gallery/aug-2026/IMG_5479.JPG' }] },
@@ -92,6 +109,7 @@ const CATEGORIES = [
   'Стрижка волос',
   'Тотальная реконструкция',
   'Мужская стрижка',
+  'Афроплетение',
 ]
 
 const BIO_WAVE_SUBCATEGORIES = ['Классическая биозавивка', 'Корейская биозавивка']
