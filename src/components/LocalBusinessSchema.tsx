@@ -58,7 +58,6 @@ export default function LocalBusinessSchema() {
         { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Окрашивание волос' } },
         { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Стрижка волос' } },
         { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Афроплетение' } },
-        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Укладки' } },
         { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Безопасное выпрямление волос' } },
       ],
     },

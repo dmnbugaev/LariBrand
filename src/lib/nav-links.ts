@@ -7,6 +7,5 @@ export const SERVICE_NAV_LINKS = [
   { href: '/hair_coloring', label: 'Окрашивание' },
   { href: '/hair_cutting', label: 'Стрижка волос' },
   { href: '/afro_weaving', label: 'Афро-плетение' },
-  { href: '/hair_styling', label: 'Укладки' },
   { href: '/additional_services', label: 'Доп. услуги' },
 ]

@@ -17,7 +17,6 @@ const services: ServiceItem[] = [
   { title: 'ОКРАШИВАНИЕ', img: content.grid_5, link: '/hair_coloring' },
   { title: 'СТРИЖКА ВОЛОС', img: content.grid_6, link: '/hair_cutting' },
   { title: 'АФРО-ПЛЕТЕНИЕ', img: content.grid_7, link: '/afro_weaving' },
-  { title: 'УКЛАДКА', img: content.grid_8, link: '/hair_styling' },
 ]
 
 export default function Services() {

@@ -101,7 +101,7 @@ export const SERVICES: ServiceEntry[] = [
       priceFaq(6500, 'биозавивку'),
       bookingFaq(),
     ],
-    related: ['hair_styling', 'hair_coloring', 'additional_services'],
+    related: ['hair_coloring', 'additional_services'],
   },
   {
     slug: 'total_reconstruction',
@@ -152,7 +152,7 @@ export const SERVICES: ServiceEntry[] = [
       bookingFaq(),
       addressFaq(),
     ],
-    related: ['hair_styling', 'hair_coloring', 'additional_services'],
+    related: ['hair_coloring', 'additional_services'],
   },
   {
     slug: 'afro_weaving',
@@ -167,22 +167,7 @@ export const SERVICES: ServiceEntry[] = [
       priceFaq(2000, 'афроплетение'),
       bookingFaq(),
     ],
-    related: ['hair_styling', 'hair_cutting', 'additional_services'],
-  },
-  {
-    slug: 'hair_styling',
-    name: 'Укладки волос',
-    priceFrom: 500,
-    faq: [
-      {
-        question: 'Какие укладки вы делаете?',
-        answer:
-          'Голливудские волны, прикорневой объём, собранные причёски, выпрямление утюжком, укладка на DYSON — для съёмки, события или на каждый день.',
-      },
-      priceFaq(500, 'укладку'),
-      bookingFaq(),
-    ],
-    related: ['hair_cutting', 'bioavailability', 'additional_services'],
+    related: ['hair_cutting', 'additional_services'],
   },
   {
     slug: 'additional_services',
@@ -197,7 +182,7 @@ export const SERVICES: ServiceEntry[] = [
       priceFaq(700, 'дополнительные услуги'),
       bookingFaq(),
     ],
-    related: ['cold_hair_reconstruction', 'keratin_and_botox', 'hair_styling'],
+    related: ['cold_hair_reconstruction', 'keratin_and_botox'],
   },
 ]
 

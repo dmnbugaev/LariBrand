@@ -3,8 +3,8 @@ import { SERVICE_NAV_LINKS } from '../nav-links'
 import { YM_GOALS, ymReachGoal, ymHit, YM_COUNTER_ID } from '../analytics'
 
 describe('Реестр услуг (SEO)', () => {
-  it('содержит все 10 услуг с уникальными slug', () => {
-    expect(SERVICES).toHaveLength(10)
+  it('содержит все 9 услуг с уникальными slug', () => {
+    expect(SERVICES).toHaveLength(9)
     expect(new Set(SERVICE_SLUGS).size).toBe(SERVICE_SLUGS.length)
   })
 
